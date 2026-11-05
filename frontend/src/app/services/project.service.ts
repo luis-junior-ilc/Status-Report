@@ -57,6 +57,13 @@ export class ProjectService {
   isAdminOpen = signal<boolean>(false);
   adminPin = signal<string>('admin');
   isAuthenticated = signal<boolean>(false);
+  isPublishingOnline = signal<boolean>(false);
+
+  // Environment check: Curadoria and Azure Sync are restricted strictly to the local machine (localhost / 127.0.0.1)
+  isLocalEnvironment = signal<boolean>(
+    typeof window !== 'undefined' &&
+    (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  );
 
   // Client Portal Mode (secure token-gated access)
   isClientPortalMode = signal<boolean>(false);
@@ -364,9 +371,11 @@ export class ProjectService {
       }
 
       // Load weekly status reports list and current edition
-      this.loadWeeklyReports();
-      this.loadWeeklyReport('latest');
-      this.loadMaintenanceMetrics();
+      await Promise.all([
+        this.loadWeeklyReports(),
+        this.loadWeeklyReport(this.selectedReportId() || 'latest'),
+        this.loadMaintenanceMetrics()
+      ]);
     } catch (err: any) {
       this.lastError.set('Falha ao conectar com a API do Dashboard.');
       console.error(err);
@@ -447,9 +456,7 @@ export class ProjectService {
       await this.loadPublicData();
       await this.loadAdminData();
       await this.loadWeeklyReports();
-      if (this.selectedReportId()) {
-        await this.loadWeeklyReport(this.selectedReportId()!);
-      }
+      await this.loadWeeklyReport(this.selectedReportId() || 'latest');
     }
     return res?.data;
   }
@@ -464,9 +471,7 @@ export class ProjectService {
       await this.loadPublicData();
       await this.loadAdminData();
       await this.loadWeeklyReports();
-      if (this.selectedReportId()) {
-        await this.loadWeeklyReport(this.selectedReportId()!);
-      }
+      await this.loadWeeklyReport(this.selectedReportId() || 'latest');
     }
     return res?.data;
   }
@@ -801,7 +806,49 @@ export class ProjectService {
     }
   }
 
+  getProjectCurrentStatusReport(p: Project | null | undefined): string {
+    if (!p) return 'Acompanhamento regular sem ocorrências impeditivas reportadas.';
+    const rep = this.currentWeeklyReport();
+    const summaries = this.weeklyReports();
+    const isLatestLoaded = rep && summaries.length > 0 && rep.id === summaries[0].id;
+    if (isLatestLoaded && rep) {
+      const activeMatch = (rep.activeProjects || []).find(ap => ap.projectId === p.id || ap.name === p.name);
+      if (activeMatch && activeMatch.statusReport && activeMatch.statusReport.trim()) {
+        return activeMatch.statusReport.trim();
+      }
+      const maintMatch = (rep.maintenanceSection?.projects || []).find(mp => (mp.projectId === p.id || mp.id === p.id || mp.name === p.name));
+      if (maintMatch && maintMatch.statusReport && maintMatch.statusReport.trim()) {
+        return maintMatch.statusReport.trim();
+      }
+    }
+    return p.executiveSummary || 'Acompanhamento regular sem ocorrências impeditivas reportadas.';
+  }
+
   togglePresentationMode() {
     this.presentationMode.update(v => !v);
+  }
+
+  async publishOnline(): Promise<{ success: boolean; message: string }> {
+    if (!this.isLocalEnvironment() || this.isPublishingOnline()) {
+      return { success: false, message: 'Operação disponível apenas no ambiente local.' };
+    }
+    this.isPublishingOnline.set(true);
+    try {
+      const res = await firstValueFrom(
+        this.http.post<{ success: boolean; message: string }>(
+          '/api/admin/publish-online',
+          {},
+          { headers: { 'x-admin-pin': this.adminPin() } }
+        )
+      );
+      return res || { success: true, message: 'Dados publicados com sucesso!' };
+    } catch (err: any) {
+      return {
+        success: false,
+        message: err?.error?.message || err?.message || 'Erro ao publicar atualizações no GitHub.'
+      };
+    } finally {
+      this.isPublishingOnline.set(false);
+    }
   }
 }

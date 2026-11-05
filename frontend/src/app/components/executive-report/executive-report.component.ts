@@ -10,7 +10,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
   standalone: true,
   imports: [CommonModule, FormsModule, FiltersComponent],
   template: `
-    <div class="print:p-0 print:bg-white print:text-slate-900 transition-all font-sans mb-10">
+    <div class="print:p-0 print:m-0 print:mb-0 print:bg-white print:text-slate-900 transition-all font-sans mb-10">
 
       <!-- ======================================================== -->
       <!-- TOP EXECUTIVE CONTROL BAR (SCREEN ONLY)                  -->
@@ -69,9 +69,10 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           <!-- Download PDF Landscape Button -->
           <button
             (click)="printReport()"
-            class="px-3 py-1.5 rounded-xl text-[11px] font-extrabold transition flex items-center gap-1.5 shadow-2xs cursor-pointer bg-blue-600 hover:bg-blue-700 text-white border border-blue-500"
-            title="Baixar ou imprimir o relatório formatado em apresentação PPT Paisagem">
-            <span>📥 Baixar PDF (PPT Paisagem)</span>
+            [disabled]="isDownloadingPdf()"
+            class="px-3 py-1.5 rounded-xl text-[11px] font-extrabold transition flex items-center gap-1.5 shadow-2xs cursor-pointer bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white border border-blue-500"
+            title="Baixar o relatório formatado em apresentação PPT Paisagem">
+            <span>{{ isDownloadingPdf() ? '⏳ Gerando PDF Paisagem...' : '📥 Baixar PDF (PPT Paisagem)' }}</span>
           </button>
         </div>
       </div>
@@ -480,7 +481,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           <!-- Systems Distribution Bar -->
           <div *ngIf="systemMetrics().length > 0"
             class="mt-3.5 pt-3.5 border-t border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
+            <div class="flex items-center gap-2 shrink-0">
               <span class="text-xs">🖥️</span>
               <span class="text-xs font-black text-slate-950 tracking-tight">Projetos por Sistema:</span>
               <button
@@ -492,13 +493,13 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </button>
             </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+            <div class="flex flex-wrap items-center justify-end gap-2">
               <button
                 *ngFor="let s of systemMetrics()"
                 type="button"
                 (click)="toggleSystemFilter(s.name)"
                 [ngClass]="service.selectedSystem() === s.name ? s.activeClass : s.idleClass"
-                class="px-3 py-2 rounded-xl border text-left flex items-center justify-between gap-2.5 transition-all cursor-pointer shadow-2xs">
+                class="px-3 py-2 rounded-xl border text-left flex items-center justify-between gap-3 transition-all cursor-pointer shadow-2xs">
                 <div class="flex items-center gap-1.5 min-w-0">
                   <span class="text-xs shrink-0">{{ s.icon }}</span>
                   <span class="text-[10px] font-black truncate leading-tight" [ngClass]="s.textClass">{{ s.name }}</span>
@@ -540,8 +541,14 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 </p>
               </div>
               <div class="mt-2.5 pt-2 border-t border-slate-200 flex items-center justify-between text-[10px] text-slate-600">
-                <span>Meta: <strong class="text-slate-900 font-bold">{{ formatDate(item.targetDelivery) }}</strong></span>
-                <span class="font-black text-slate-900">{{ item.progress }}% concluído</span>
+                <ng-container *ngIf="item.category === 'maintenance'; else regularCritFooter">
+                  <span class="font-bold text-purple-800">🛠️ Sustentação Contínua</span>
+                  <span class="font-black text-slate-900">{{ formatHours(item.hoursExecuted) }}h no ciclo</span>
+                </ng-container>
+                <ng-template #regularCritFooter>
+                  <span>Meta: <strong class="text-slate-900 font-bold">{{ formatDate(item.targetDelivery) }}</strong></span>
+                  <span class="font-black text-slate-900">{{ item.progress }}% concluído</span>
+                </ng-template>
               </div>
             </div>
           </div>
@@ -628,7 +635,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
 
         <!-- 5. BARRA DE FILTROS & BUSCA DO PORTFÓLIO -->
         <div class="pt-4 sm:pt-6">
-          <app-filters></app-filters>
+          <app-filters [customProjects]="reportNewProjects()"></app-filters>
         </div>
 
         <!-- 6. CARDS EXECUTIVOS DOS PROJETOS (HIGH CONTRAST) -->
@@ -749,9 +756,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 <div class="p-2.5 rounded-xl bg-slate-100 border border-slate-300">
                   <div class="flex items-center justify-between gap-1.5 mb-1">
                     <span class="text-[9px] font-extrabold text-slate-700 uppercase tracking-wider">Status report anterior</span>
-                    <span class="text-[9px] font-bold text-slate-700 bg-slate-200 px-1.5 py-0.2 rounded border border-slate-300">
-                      {{ getPreviousReportDate(p) }}
-                    </span>
                   </div>
                   <p class="text-[11px] leading-relaxed text-slate-800 font-medium">
                     {{ p.previousStatusReport || 'Sem reporte anterior registrado.' }}
@@ -761,9 +765,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 <div class="p-2.5 rounded-xl bg-blue-100/70 border-2 border-blue-300">
                   <div class="flex items-center justify-between gap-1.5 mb-1">
                     <span class="text-[9px] font-black text-blue-950 uppercase tracking-wider">Status report atual</span>
-                    <span class="text-[9px] font-black text-blue-800 bg-blue-200 px-1.5 py-0.2 rounded border border-blue-300">
-                      {{ getCurrentReportDate(p) }}
-                    </span>
                   </div>
                   <p class="text-[11px] leading-relaxed text-blue-950 font-semibold">
                     {{ p.statusReport || 'Nenhum reporte registrado para este ciclo.' }}
@@ -1038,9 +1039,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 <div class="p-2.5 rounded-xl bg-slate-100 border border-slate-300 text-xs">
                   <div class="flex items-center justify-between gap-1.5 mb-1">
                     <span class="text-[9px] font-extrabold text-slate-700 uppercase tracking-wider">Status report anterior</span>
-                    <span class="text-[9px] font-bold text-slate-700 bg-slate-200 px-1.5 py-0.2 rounded border border-slate-300">
-                      {{ getPreviousReportDate(mp) }}
-                    </span>
                   </div>
                   <p class="text-[11px] leading-relaxed text-slate-800 font-medium">
                     {{ mp.previousStatusReport || 'Sem reporte anterior registrado.' }}
@@ -1051,9 +1049,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 <div class="p-2.5 rounded-xl bg-purple-100/70 border-2 border-purple-300 text-xs">
                   <div class="flex items-center justify-between gap-1.5 mb-1">
                     <span class="text-[9px] font-black text-purple-950 uppercase tracking-wider">Status report atual</span>
-                    <span class="text-[9px] font-black text-purple-900 bg-purple-200 px-1.5 py-0.2 rounded border border-purple-300">
-                      {{ getCurrentReportDate(mp) }}
-                    </span>
                   </div>
                   <p class="text-[11px] leading-relaxed text-purple-950 font-semibold">
                     {{ mp.statusReport || mp.summary || 'Sustentação contínua e acompanhamento regular.' }}
@@ -1168,9 +1163,10 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
 
             <button
               (click)="printReport()"
-              class="px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-500 text-white transition flex items-center gap-1.5 cursor-pointer shadow-xs"
-              title="Baixar ou imprimir esta apresentação em PDF Paisagem">
-              <span>📥</span> Baixar PDF Paisagem
+              [disabled]="isDownloadingPdf()"
+              class="px-3 py-1.5 rounded-xl text-xs font-bold bg-blue-600 hover:bg-blue-500 disabled:opacity-60 text-white transition flex items-center gap-1.5 cursor-pointer shadow-xs"
+              title="Baixar esta apresentação em PDF Paisagem">
+              <span>{{ isDownloadingPdf() ? '⏳ Gerando PDF...' : '📥 Baixar PDF Paisagem' }}</span>
             </button>
 
             <button
@@ -1201,9 +1197,20 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </ng-container>
             </ng-container>
 
-            <!-- Final Slide: Roadmap Estratégico (if exists) -->
-            <ng-container *ngIf="hasRoadmap() && currentSlideIndex() === totalSlides() - 1">
-              <ng-container [ngTemplateOutlet]="roadmapSlideTpl"></ng-container>
+            <!-- Slide Sustentação (if exists) -->
+            <ng-container *ngIf="hasMaintenance() && currentSlideIndex() === getMaintenanceSlideIndex()">
+              <ng-container [ngTemplateOutlet]="maintenanceSlideTpl"></ng-container>
+            </ng-container>
+
+            <!-- Slides Roadmap Estratégico (paginated in chunks of 15 cards: 3 rows x 5 cols) -->
+            <ng-container *ngIf="hasRoadmap() && currentSlideIndex() >= getRoadmapStartSlideIndex() && currentSlideIndex() < totalSlides()">
+              <ng-container
+                [ngTemplateOutlet]="roadmapSlideTpl"
+                [ngTemplateOutletContext]="{
+                  chunk: roadmapChunks()[currentSlideIndex() - getRoadmapStartSlideIndex()],
+                  chunkIdx: currentSlideIndex() - getRoadmapStartSlideIndex()
+                }">
+              </ng-container>
             </ng-container>
 
           </div>
@@ -1234,9 +1241,17 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </ng-container>
         </div>
 
-        <!-- Slide Final: Roadmap Estratégico & Pipeline Futuro -->
-        <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'" *ngIf="hasRoadmap()">
-          <ng-container [ngTemplateOutlet]="roadmapSlideTpl"></ng-container>
+        <!-- Slide Sustentação: Indicadores, Gráficos e Sistemas Mantidos -->
+        <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'" *ngIf="hasMaintenance()">
+          <ng-container [ngTemplateOutlet]="maintenanceSlideTpl"></ng-container>
+        </div>
+
+        <!-- Slides Finais: Roadmap Estratégico & Pipeline Futuro (15 por página paisagem) -->
+        <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'" *ngFor="let rChunk of roadmapChunks(); let rChunkIdx = index">
+          <ng-container
+            [ngTemplateOutlet]="roadmapSlideTpl"
+            [ngTemplateOutletContext]="{ chunk: rChunk, chunkIdx: rChunkIdx }">
+          </ng-container>
         </div>
 
       </div>
@@ -1245,11 +1260,11 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
       <!-- REUSABLE SLIDE TEMPLATES (SHARED BY SCREEN AND PRINT)     -->
       <!-- ======================================================== -->
 
-      <!-- TEMPLATE 1: CAPA & VISÃO CONSOLIDADA -->
+      <!-- TEMPLATE 1: CAPA & VISÃO CONSOLIDADA (TODOS OS 13 INDICADORES + PRIORIDADES + SISTEMAS) -->
       <ng-template #slide1Tpl>
         <div class="h-full flex flex-col justify-between">
           <!-- Slide Header (Executive High-Contrast Header Bar) -->
-          <div class="flex items-center justify-between px-3.5 py-2 rounded-xl border mb-2 bg-slate-900 border-slate-800 text-white shadow-xs">
+          <div class="flex items-center justify-between px-3.5 py-2 rounded-xl border mb-1.5 bg-slate-900 border-slate-800 text-white shadow-xs">
             <div class="flex items-center gap-3">
               <img src="/assets/logos/ilc.png" alt="ILC Logística" class="h-7 w-auto object-contain bg-white rounded p-0.5 border border-slate-300 shadow-2xs" onerror="this.style.display='none'" />
               <div *ngIf="service.selectedClient() !== 'Todos' && service.getClientLogo(service.selectedClient())" class="flex items-center gap-2">
@@ -1275,115 +1290,183 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </div>
 
           <!-- Slide Body -->
-          <div class="flex-1 flex flex-col justify-between gap-2.5 overflow-hidden my-1">
-            <!-- Top Row: Resumo Executivo (col-span-5) + Pulse KPIs (col-span-7) -->
-            <div class="grid grid-cols-12 gap-3 h-[46%]">
+          <div class="flex-1 flex flex-col justify-between gap-2 overflow-hidden my-0.5">
+            <!-- Top Row: Resumo Executivo (col-span-4) + Todos os 13 Indicadores Executivos (col-span-8) -->
+            <div class="grid grid-cols-12 gap-2.5 h-[54%]">
               
-              <!-- Resumo Executivo -->
+              <!-- Resumo Executivo + Sistemas -->
               <div
-                class="col-span-5 p-3 rounded-xl flex flex-col justify-between shadow-xs border"
+                class="col-span-4 p-2.5 rounded-xl flex flex-col justify-between shadow-xs border"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-blue-500/40 text-slate-200' : 'bg-white border-2 border-blue-300 text-slate-900'">
                 <div>
-                  <div class="flex items-center gap-1.5 mb-1.5">
+                  <div class="flex items-center gap-1.5 mb-1">
                     <span class="text-xs">📌</span>
-                    <h3 class="text-xs font-black uppercase tracking-tight"
+                    <h3 class="text-[11px] font-black uppercase tracking-tight"
                       [ngClass]="presentationTheme() === 'dark' ? 'text-blue-400' : 'text-blue-950'">
                       Síntese Executiva do Ciclo
                     </h3>
                   </div>
-                  <p class="text-[11px] leading-relaxed font-medium"
+                  <p class="text-[10px] leading-snug font-medium line-clamp-6"
                     [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-800'">
                     {{ currentReport()?.executiveSummary || 'Acompanhamento semanal de entregas e alinhamento dos marcos operacionais com a diretoria.' }}
                   </p>
                 </div>
-                <div class="pt-1.5 border-t flex items-center justify-between text-[10px] font-bold"
-                  [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800 text-blue-300' : 'border-blue-200 text-blue-950'">
-                  <span>Avanço Físico Médio dos Ativos:</span>
-                  <span class="text-xs font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-blue-400' : 'text-blue-700'">
-                    {{ getAverageProgress() }}% concluído
+
+                <!-- Distribuição por Sistemas -->
+                <div *ngIf="systemMetrics().length > 0" class="pt-1.5 border-t"
+                  [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800' : 'border-blue-200'">
+                  <span class="text-[8px] font-black uppercase tracking-wider block mb-1"
+                    [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                    🖥️ Projetos por Sistema:
                   </span>
+                  <div class="flex flex-wrap gap-1">
+                    <span *ngFor="let s of systemMetrics()"
+                      class="px-1.5 py-0.5 rounded text-[8px] font-black border flex items-center gap-1"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-700 text-slate-200' : 'bg-slate-100 border-slate-300 text-slate-900'">
+                      <span>{{ s.icon }} {{ s.name }}:</span>
+                      <strong class="text-blue-500">{{ s.count }}</strong>
+                    </span>
+                  </div>
                 </div>
               </div>
 
-              <!-- Pulse Metrics & Priorização -->
+              <!-- Todos os 13 Indicadores Executivos + Prioridades -->
               <div
-                class="col-span-7 p-3 rounded-xl flex flex-col justify-between shadow-xs border"
+                class="col-span-8 p-3 rounded-xl flex flex-col justify-between shadow-xs border h-full"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-slate-800 text-white' : 'bg-white border-2 border-slate-300 text-slate-900'">
-                <div>
-                  <div class="flex items-center justify-between mb-2">
-                    <h3 class="text-xs font-black uppercase tracking-tight flex items-center gap-1.5"
-                      [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-950'">
-                      <span>📊</span> Indicadores de Saúde dos Projetos Ativos
-                    </h3>
-                    <span class="text-[9px] font-bold"
-                      [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
-                      Monitoramento Contínuo
-                    </span>
+                
+                <!-- Card Header -->
+                <div class="flex items-center justify-between shrink-0">
+                  <h3 class="text-xs font-black uppercase tracking-tight flex items-center gap-1.5"
+                    [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-950'">
+                    <span>📊</span> Painel de Indicadores Executivos (13 KPIs)
+                  </h3>
+                  <span class="text-[9px] font-bold"
+                    [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                    Snapshot Oficial da Edição {{ service.formatEditionTitle(currentReport()) }}
+                  </span>
+                </div>
+
+                <!-- Grid de Indicadores (Ocupando 100% da altura livre do card) -->
+                <div class="flex-1 grid grid-rows-2 gap-2 my-2 min-h-0">
+                  <!-- Linha 1: 7 Indicadores Principais -->
+                  <div class="grid grid-cols-7 gap-2 h-full">
+                    <!-- 1. Ativos -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-100 border border-slate-300 text-slate-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full text-slate-400">⚡ Ativos</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getActiveCount() }}</span>
+                      <span class="text-[8px] font-semibold block truncate w-full text-slate-400">em andamento</span>
+                    </div>
+                    <!-- 2. Saúde -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-teal-950/70 border-teal-600/70 text-teal-300' : 'bg-emerald-50 border border-emerald-300 text-emerald-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">💚 Saúde</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getPortfolioHealth() }}%</span>
+                      <span class="text-[8px] block truncate w-full font-bold">do portfólio</span>
+                    </div>
+                    <!-- 3. Avanço -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950/70 border-blue-600/70 text-blue-300' : 'bg-blue-50 border border-blue-300 text-blue-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">📈 Avanço</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getAverageProgress() }}%</span>
+                      <span class="text-[8px] block truncate w-full font-bold">conclusão física</span>
+                    </div>
+                    <!-- 4. Horas -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-sky-950/70 border-sky-600/70 text-sky-300' : 'bg-sky-50 border border-sky-300 text-sky-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">⏱️ Horas</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getHoursConsumption().percent }}%</span>
+                      <span class="text-[7.5px] block truncate w-full font-bold">{{ formatHours(getHoursConsumption().executed) }}h/{{ formatHours(getHoursConsumption().agreed) }}h</span>
+                    </div>
+                    <!-- 5. No Prazo -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-emerald-950/70 border-emerald-600/70 text-emerald-300' : 'bg-emerald-50 border border-emerald-300 text-emerald-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🟢 No Prazo</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getOnTrackCount() }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">{{ getPercent(getOnTrackCount(), getActiveCount()) }}% ativos</span>
+                    </div>
+                    <!-- 6. Atenção -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-amber-950/70 border-amber-600/70 text-amber-300' : 'bg-amber-50 border border-amber-300 text-amber-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🟡 Atenção</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getAttentionCount() }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">risco moderado</span>
+                    </div>
+                    <!-- 7. Desvio -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-rose-950/70 border-rose-600/70 text-rose-300' : 'bg-rose-50 border border-rose-300 text-rose-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🔴 Desvio</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getCriticalCount() }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">desvio crítico</span>
+                    </div>
                   </div>
-                  <div class="grid grid-cols-6 gap-2">
-                    <!-- Ativos -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-800 text-white' : 'bg-slate-100 border-2 border-slate-300 text-slate-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate text-slate-400">Ativos</span>
-                      <span class="text-base font-black block leading-tight">{{ getActiveCount() }}</span>
-                      <span class="text-[8px] block truncate text-slate-400">em curso</span>
+
+                  <!-- Linha 2: 6 Indicadores de Prazos, Governança e Pipeline -->
+                  <div class="grid grid-cols-6 gap-2 h-full">
+                    <!-- 8. Desvio Médio -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="getAverageVarianceDays().delayedCount > 0 ? (presentationTheme() === 'dark' ? 'bg-rose-950/70 border-rose-600/70 text-rose-300' : 'bg-rose-50 border border-rose-300 text-rose-950') : (presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-800 text-slate-300' : 'bg-slate-100 border border-slate-300 text-slate-800')">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">⏳ Desvio Médio</span>
+                      <span class="text-xl font-black block leading-none my-1">+{{ getAverageVarianceDays().avgDays }}d</span>
+                      <span class="text-[8px] block truncate w-full font-bold">{{ getAverageVarianceDays().delayedCount > 0 ? (getAverageVarianceDays().delayedCount + ' projeto(s)') : 'sem atrasos' }}</span>
                     </div>
-                    <!-- No Prazo -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-emerald-950/70 border-emerald-600/70 text-emerald-300' : 'bg-emerald-50 border-2 border-emerald-300 text-emerald-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate">No Prazo</span>
-                      <span class="text-base font-black block leading-tight">{{ getOnTrackCount() }}</span>
-                      <span class="text-[8px] block truncate font-semibold">{{ getPercent(getOnTrackCount(), getActiveCount()) }}%</span>
+                    <!-- 9. Entregas -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-emerald-950/70 border-emerald-600/70 text-emerald-300' : 'bg-emerald-50 border border-emerald-300 text-emerald-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🎯 Entregas</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getDeliveriesThisMonthCount() }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">em {{ currentMonthName }}</span>
                     </div>
-                    <!-- Atenção -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-amber-950/70 border-amber-600/70 text-amber-300' : 'bg-amber-50 border-2 border-amber-300 text-amber-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate">Atenção</span>
-                      <span class="text-base font-black block leading-tight">{{ getAttentionCount() }}</span>
-                      <span class="text-[8px] block truncate font-semibold">moderado</span>
+                    <!-- 10. No Radar -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-orange-950/70 border-orange-600/70 text-orange-300' : 'bg-orange-50 border border-orange-300 text-orange-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🚨 No radar</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ topCriticalProjects().length }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">radar diretoria</span>
                     </div>
-                    <!-- Desvio -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-rose-950/70 border-rose-600/70 text-rose-300' : 'bg-rose-50 border-2 border-rose-300 text-rose-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate">Desvio</span>
-                      <span class="text-base font-black block leading-tight">{{ getCriticalCount() }}</span>
-                      <span class="text-[8px] block truncate font-semibold">crítico</span>
+                    <!-- 11. Deliberações -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-purple-950/70 border-purple-600/70 text-purple-300' : 'bg-purple-50 border border-purple-300 text-purple-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">⚖️ Pautas</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ currentReport()?.boardDecisions?.length || 0 }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">deliberações</span>
                     </div>
-                    <!-- Saúde -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-teal-950/70 border-teal-600/70 text-teal-300' : 'bg-teal-50 border-2 border-teal-300 text-teal-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate">Saúde</span>
-                      <span class="text-base font-black block leading-tight">{{ getPortfolioHealth() }}%</span>
-                      <span class="text-[8px] block truncate font-semibold">portfólio</span>
+                    <!-- 12. Congelados -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-700 text-slate-300' : 'bg-slate-200 border border-slate-300 text-slate-800'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">❄️ Pausa</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ getFrozenCount() }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">congelados</span>
                     </div>
-                    <!-- Avanço -->
-                    <div class="p-1.5 rounded-lg border text-center"
-                      [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950/70 border-blue-600/70 text-blue-300' : 'bg-blue-50 border-2 border-blue-300 text-blue-950'">
-                      <span class="text-[8px] font-bold uppercase block truncate">Avanço</span>
-                      <span class="text-base font-black block leading-tight">{{ getAverageProgress() }}%</span>
-                      <span class="text-[8px] block truncate font-semibold">físico</span>
+                    <!-- 13. Roadmap -->
+                    <div class="h-full px-1.5 py-2 rounded-xl border text-center flex flex-col items-center justify-center"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950/70 border-blue-600/70 text-blue-300' : 'bg-blue-50 border border-blue-300 text-blue-950'">
+                      <span class="text-[8.5px] font-extrabold uppercase block truncate w-full">🔭 Roadmap</span>
+                      <span class="text-xl font-black block leading-none my-1">{{ currentReport()?.roadmapProjects?.length || 0 }}</span>
+                      <span class="text-[8px] block truncate w-full font-bold">pipeline futuro</span>
                     </div>
                   </div>
                 </div>
 
                 <!-- Priority Row -->
-                <div class="pt-2 border-t flex items-center justify-between text-[10px]"
+                <div class="pt-2 border-t flex items-center justify-between text-[10px] shrink-0"
                   [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800' : 'border-slate-200'">
-                  <span class="font-bold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">Distribuição por Prioridade:</span>
-                  <div class="flex items-center gap-1.5">
-                    <span class="px-2 py-0.5 rounded font-black text-[9px]"
+                  <span class="font-extrabold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-300' : 'text-slate-700'">🎯 Projetos por Prioridade:</span>
+                  <div class="flex items-center gap-2">
+                    <span class="px-2.5 py-0.5 rounded-lg font-black text-[9px]"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-rose-950/80 text-rose-200 border border-rose-700' : 'bg-rose-100 text-rose-900 border border-rose-300'">
                       P1 Crítica: {{ getPriorityCount('P1') }}
                     </span>
-                    <span class="px-2 py-0.5 rounded font-black text-[9px]"
+                    <span class="px-2.5 py-0.5 rounded-lg font-black text-[9px]"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-amber-950/80 text-amber-200 border border-amber-700' : 'bg-amber-100 text-amber-900 border border-amber-300'">
                       P2 Alta: {{ getPriorityCount('P2') }}
                     </span>
-                    <span class="px-2 py-0.5 rounded font-black text-[9px]"
+                    <span class="px-2.5 py-0.5 rounded-lg font-black text-[9px]"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950/80 text-blue-200 border border-blue-700' : 'bg-blue-100 text-blue-900 border border-blue-300'">
                       P3 Média: {{ getPriorityCount('P3') }}
                     </span>
-                    <span class="px-2 py-0.5 rounded font-black text-[9px]"
+                    <span class="px-2.5 py-0.5 rounded-lg font-black text-[9px]"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-800 text-slate-300 border border-slate-700' : 'bg-slate-100 text-slate-800 border border-slate-300'">
                       P4 Baixa: {{ getPriorityCount('P4') }}
                     </span>
@@ -1393,7 +1476,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             </div>
 
             <!-- Bottom Row: Radar de Atenção (50%) + Deliberações da Diretoria (50%) -->
-            <div class="grid grid-cols-2 gap-3 h-[50%]">
+            <div class="grid grid-cols-2 gap-2.5 h-[44%]">
               
               <!-- Radar de Atenção -->
               <div
@@ -1647,7 +1730,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                     <div class="flex items-center justify-between text-[8px] font-black mb-0.5 uppercase tracking-wider"
                       [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
                       <span>Reporte Anterior</span>
-                      <span [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-500'">{{ getPreviousReportDate(p) }}</span>
                     </div>
                     <p class="text-[9px] leading-snug line-clamp-3">
                       {{ p.previousStatusReport || 'Sem reporte anterior registrado.' }}
@@ -1659,7 +1741,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                     <div class="flex items-center justify-between text-[8px] font-black mb-0.5 uppercase tracking-wider"
                       [ngClass]="presentationTheme() === 'dark' ? 'text-blue-300' : 'text-blue-900'">
                       <span>Reporte Atual</span>
-                      <span [ngClass]="presentationTheme() === 'dark' ? 'text-blue-300' : 'text-blue-700'">{{ getCurrentReportDate(p) }}</span>
                     </div>
                     <p class="text-[9px] leading-snug font-semibold line-clamp-3">
                       {{ p.statusReport || 'Nenhum reporte registrado para este ciclo.' }}
@@ -1694,8 +1775,199 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
         </div>
       </ng-template>
 
-      <!-- TEMPLATE 3: ROADMAP ESTRATÉGICO -->
-      <ng-template #roadmapSlideTpl>
+      <!-- TEMPLATE 2.5: SUSTENTAÇÃO (INDICADORES, GRÁFICOS & SISTEMAS MANTIDOS) -->
+      <ng-template #maintenanceSlideTpl>
+        <div class="h-full flex flex-col justify-between">
+          <!-- Slide Header -->
+          <div class="flex items-center justify-between px-3.5 py-2 rounded-xl border mb-1.5 bg-slate-900 border-slate-800 text-white shadow-xs">
+            <div class="flex items-center gap-3">
+              <img src="/assets/logos/ilc.png" alt="ILC Logística" class="h-7 w-auto object-contain bg-white rounded p-0.5 border border-slate-300 shadow-2xs" onerror="this.style.display='none'" />
+              <div class="flex flex-col">
+                <span class="text-xs font-black tracking-wider uppercase text-white leading-none">SUSTENTAÇÃO • OPERAÇÕES & SUPORTE N2/N3</span>
+                <span class="text-[9px] text-slate-400 font-semibold mt-0.5 leading-none">
+                  {{ currentReport()?.maintenanceSection?.projects?.length || 0 }} sistemas mantidos • {{ formatHours(currentReport()?.maintenanceSection?.totalHours) }}h executadas no ciclo
+                </span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-[9px] font-black px-2.5 py-1 rounded-md bg-purple-900/90 text-purple-200 border border-purple-700">
+                Edição {{ service.formatEditionTitle(currentReport()) }}
+              </span>
+              <span class="text-[9px] font-bold px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 border border-slate-700">
+                Período: {{ currentReport()?.period }}
+              </span>
+            </div>
+          </div>
+
+          <!-- Slide Body: 4 KPIs de Sustentação + 4 Cards de Sistemas Mantidos -->
+          <div class="flex-1 flex flex-col justify-between gap-2 overflow-hidden my-0.5">
+            <!-- Top KPI Strip (4 Indicadores de Sustentação) -->
+            <div class="grid grid-cols-4 gap-2.5">
+              <!-- KPI 1: Esforço em Suporte -->
+              <div class="p-2.5 rounded-xl border shadow-2xs"
+                [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-purple-500/40 text-white' : 'bg-white border-2 border-purple-300 text-slate-900'">
+                <span class="text-[8px] font-extrabold uppercase tracking-wider block"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-purple-300' : 'text-purple-900'">
+                  ⏱️ Esforço em Suporte
+                </span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-lg font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-purple-950'">
+                    {{ formatHours(currentReport()?.maintenanceSection?.totalHours) }}
+                  </span>
+                  <span class="text-[9px] font-bold" [ngClass]="presentationTheme() === 'dark' ? 'text-purple-300' : 'text-purple-700'">horas</span>
+                </div>
+                <span class="text-[8px] font-semibold block mt-0.5 truncate"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-purple-800'">
+                  {{ currentReport()?.maintenanceSection?.maintenancePercent || 0 }}% da capacidade no ciclo ({{ formatHours(currentReport()?.maintenanceSection?.totalPeriodHours) }}h)
+                </span>
+              </div>
+
+              <!-- KPI 2: Divisão de Capacidade -->
+              <div class="p-2.5 rounded-xl border shadow-2xs"
+                [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-purple-500/40 text-white' : 'bg-white border-2 border-purple-300 text-slate-900'">
+                <span class="text-[8px] font-extrabold uppercase tracking-wider block"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                  ⚖️ Divisão de Capacidade
+                </span>
+                <div class="flex items-baseline justify-between mt-1">
+                  <span class="text-[10px] font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-blue-400' : 'text-blue-700'">
+                    🚀 {{ currentReport()?.maintenanceSection?.newProjectPercent ?? 100 }}% Novos
+                  </span>
+                  <span class="text-[10px] font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-purple-400' : 'text-purple-700'">
+                    🛠️ {{ currentReport()?.maintenanceSection?.maintenancePercent ?? 0 }}% Sust.
+                  </span>
+                </div>
+                <span class="text-[8px] font-medium block mt-1 truncate"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                  {{ formatHours(currentReport()?.maintenanceSection?.newProjectHours) }}h Novos vs {{ formatHours(currentReport()?.maintenanceSection?.totalHours) }}h Sust.
+                </span>
+              </div>
+
+              <!-- KPI 3: Sistemas Mantidos -->
+              <div class="p-2.5 rounded-xl border shadow-2xs"
+                [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-purple-500/40 text-white' : 'bg-white border-2 border-purple-300 text-slate-900'">
+                <span class="text-[8px] font-extrabold uppercase tracking-wider block"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-emerald-300' : 'text-emerald-900'">
+                  🖥️ Sistemas Mantidos
+                </span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-lg font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-emerald-950'">
+                    {{ currentReport()?.maintenanceSection?.projects?.length || 4 }}
+                  </span>
+                  <span class="text-[9px] font-bold" [ngClass]="presentationTheme() === 'dark' ? 'text-emerald-300' : 'text-emerald-700'">aplicações</span>
+                </div>
+                <span class="text-[8px] font-semibold block mt-0.5 truncate"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-emerald-800'">
+                  {{ currentReport()?.maintenanceSection?.activeSystemsCount || 0 }} com esforço apontado no ciclo
+                </span>
+              </div>
+
+              <!-- KPI 4: Equipe Alocada -->
+              <div class="p-2.5 rounded-xl border shadow-2xs"
+                [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-purple-500/40 text-white' : 'bg-white border-2 border-purple-300 text-slate-900'">
+                <span class="text-[8px] font-extrabold uppercase tracking-wider block"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                  👥 Equipe Alocada
+                </span>
+                <div class="flex items-baseline gap-1 mt-0.5">
+                  <span class="text-lg font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-900'">
+                    {{ getMaintenanceTeamMembersCount() }}
+                  </span>
+                  <span class="text-[9px] font-bold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-300' : 'text-slate-600'">profissionais</span>
+                </div>
+                <span class="text-[8px] font-medium block mt-0.5 truncate"
+                  [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-500'">
+                  Atuando em sustentação no período
+                </span>
+              </div>
+            </div>
+
+            <!-- 4 Maintenance Systems Grid (2x2 in Landscape) -->
+            <div class="grid grid-cols-2 gap-2.5 flex-1 overflow-hidden">
+              <div *ngFor="let mp of currentReport()?.maintenanceSection?.projects"
+                class="p-2.5 rounded-xl border flex flex-col justify-between overflow-hidden shadow-2xs"
+                [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-purple-500/40 text-slate-100' : 'bg-white border-2 border-purple-200 text-slate-900'">
+                <div class="space-y-1.5">
+                  <div class="flex items-center justify-between gap-2">
+                    <div class="flex items-center gap-1.5 min-w-0">
+                      <span class="text-[8px] font-black px-1.5 py-0.2 rounded border shrink-0"
+                        [ngClass]="presentationTheme() === 'dark' ? 'bg-purple-950 text-purple-200 border-purple-700' : 'bg-purple-100 text-purple-900 border-purple-200'">
+                        {{ mp.client }}
+                      </span>
+                      <h4 class="text-xs font-black truncate leading-tight"
+                        [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-950'">
+                        {{ mp.name }}
+                      </h4>
+                    </div>
+                    <div class="flex items-center gap-1 shrink-0">
+                      <span class="text-[8px] font-extrabold px-1.5 py-0.2 rounded-full"
+                        [ngClass]="mp.ragStatus === 'red' ? 'bg-rose-100 text-rose-800 border border-rose-300' : (mp.ragStatus === 'amber' ? 'bg-amber-100 text-amber-800 border border-amber-300' : 'bg-emerald-100 text-emerald-800 border border-emerald-300')">
+                        {{ mp.ragStatus === 'red' ? '⚠️ Desvio' : (mp.ragStatus === 'amber' ? '⚠️ Atenção' : '✓ No Prazo') }}
+                      </span>
+                      <span class="text-[8px] font-black px-1.5 py-0.2 rounded-full border"
+                        [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 text-purple-300 border-slate-700' : 'bg-slate-100 text-slate-800 border-slate-300'">
+                        {{ formatHours(mp.hoursExecuted) }}h ({{ getProjectMaintenanceShare(mp.hoursExecuted) }}%)
+                      </span>
+                    </div>
+                  </div>
+
+                  <!-- Ponto de Atenção -->
+                  <div *ngIf="hasAttentionPoints(mp)"
+                    class="p-1.5 rounded-lg border text-[8px] leading-snug font-semibold line-clamp-2"
+                    [ngClass]="getAttentionBoxClass(mp, presentationTheme())">
+                    <strong>⚠️ Ponto de Atenção:</strong> {{ mp.attentionPoints }}
+                  </div>
+
+                  <!-- Status Reports Anterior & Atual -->
+                  <div class="grid grid-cols-2 gap-1.5">
+                    <div class="p-1.5 rounded-lg border"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950/90 border-slate-800 text-slate-300' : 'bg-slate-100 border border-slate-300 text-slate-800'">
+                      <span class="text-[7px] font-black uppercase tracking-wider block mb-0.5"
+                        [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                        Status report anterior
+                      </span>
+                      <p class="text-[8px] leading-snug line-clamp-2">
+                        {{ mp.previousStatusReport || 'Sem reporte anterior registrado.' }}
+                      </p>
+                    </div>
+                    <div class="p-1.5 rounded-lg border"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-purple-950/60 border-purple-600/70 text-purple-100' : 'bg-purple-100/70 border border-purple-300 text-purple-950'">
+                      <span class="text-[7px] font-black uppercase tracking-wider block mb-0.5"
+                        [ngClass]="presentationTheme() === 'dark' ? 'text-purple-300' : 'text-purple-900'">
+                        Status report atual
+                      </span>
+                      <p class="text-[8px] leading-snug font-semibold line-clamp-2">
+                        {{ mp.statusReport || mp.summary || 'Sustentação contínua e acompanhamento regular.' }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Footer: Equipe -->
+                <div class="pt-1 mt-1 border-t text-[8px] flex items-center justify-between"
+                  [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-600'">
+                  <span class="truncate">
+                    <strong [ngClass]="presentationTheme() === 'dark' ? 'text-slate-300' : 'text-slate-800'">👥 Equipe:</strong> {{ getAllTeamMembers(mp).join(', ') || 'Equipe de Sustentação' }}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide Footer -->
+          <div class="flex items-center justify-between pt-1.5 mt-1 border-t text-[9px] font-semibold"
+            [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800 text-slate-400' : 'border-slate-300 text-slate-600'">
+            <span>ILC • Governança de Sustentação & Suporte N2/N3</span>
+            <span class="text-slate-500">Operações Contínuas</span>
+            <span class="font-extrabold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-900'">
+              Slide {{ getMaintenanceSlideIndex() + 1 }} de {{ totalSlides() }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+
+      <!-- TEMPLATE 3: ROADMAP ESTRATÉGICO (PAGINADO EM ATÉ 15 CARDS POR SLIDE: 3 FILEIRAS X 5 COLUNAS) -->
+      <ng-template #roadmapSlideTpl let-chunk="chunk" let-chunkIdx="chunkIdx">
         <div class="h-full flex flex-col justify-between">
           <!-- Slide Header (Executive High-Contrast Header Bar) -->
           <div class="flex items-center justify-between px-3.5 py-2 rounded-xl border mb-2 bg-slate-900 border-slate-800 text-white shadow-xs">
@@ -1703,10 +1975,15 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               <img src="/assets/logos/ilc.png" alt="ILC Logística" class="h-7 w-auto object-contain bg-white rounded p-0.5 border border-slate-300 shadow-2xs" onerror="this.style.display='none'" />
               <div class="flex flex-col">
                 <span class="text-xs font-black tracking-wider uppercase text-white leading-none">ROADMAP ESTRATÉGICO & PIPELINE DE OPORTUNIDADES</span>
-                <span class="text-[9px] text-slate-400 font-semibold mt-0.5 leading-none">Visão de Médio e Longo Prazo do Portfólio</span>
+                <span class="text-[9px] text-slate-400 font-semibold mt-0.5 leading-none">
+                  Iniciativas {{ chunkIdx * roadmapChunkSize + 1 }} a {{ getRoadmapChunkEnd(chunkIdx) }} de {{ currentReport()?.roadmapProjects?.length || 0 }} • Visão de Médio e Longo Prazo
+                </span>
               </div>
             </div>
             <div class="flex items-center gap-2">
+              <span *ngIf="roadmapChunks().length > 1" class="text-[9px] font-black px-2.5 py-1 rounded-md bg-indigo-900/90 text-indigo-200 border border-indigo-700">
+                Página {{ chunkIdx + 1 }}/{{ roadmapChunks().length }} do Roadmap
+              </span>
               <span class="text-[9px] font-black px-2.5 py-1 rounded-md bg-blue-900/90 text-blue-200 border border-blue-700">
                 Edição {{ service.formatEditionTitle(currentReport()) }}
               </span>
@@ -1717,7 +1994,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </div>
 
           <!-- Roadmap Cards Grid & Governança -->
-          <div class="flex-1 flex flex-col justify-between gap-3 overflow-hidden my-1">
+          <div class="flex-1 flex flex-col justify-between gap-2.5 overflow-hidden my-0.5">
             <div>
               <div class="flex items-center justify-between mb-2">
                 <h3 class="text-xs font-black uppercase tracking-tight flex items-center gap-1.5"
@@ -1725,11 +2002,11 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                   <span>🔭</span> Projetos no Radar & Expansões Planejadas ({{ currentReport()?.roadmapProjects?.length || 0 }})
                 </h3>
                 <span class="text-[9px] font-extrabold" [ngClass]="presentationTheme() === 'dark' ? 'text-blue-400' : 'text-blue-800'">
-                  Novas Demandas e Extensões
+                  Exibindo {{ chunkIdx * roadmapChunkSize + 1 }}–{{ getRoadmapChunkEnd(chunkIdx) }} de {{ currentReport()?.roadmapProjects?.length || 0 }}
                 </span>
               </div>
               <div class="grid grid-cols-5 gap-2.5">
-                <div *ngFor="let road of currentReport()?.roadmapProjects"
+                <div *ngFor="let road of chunk"
                   class="p-2.5 rounded-xl border shadow-xs flex flex-col justify-between"
                   [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-blue-800/60 text-slate-200' : 'bg-white border-2 border-blue-200 text-slate-900'">
                   <div>
@@ -1764,24 +2041,25 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </div>
             </div>
 
-            <!-- Governança & Próximos Passos -->
-            <div class="p-3 rounded-xl border flex items-center justify-between gap-4 shadow-xs"
+            <!-- Governança & Próximos Passos (Exibido na última página do Roadmap quando há espaço confortável) -->
+            <div *ngIf="chunkIdx === roadmapChunks().length - 1 && chunk.length <= 10"
+              class="p-2.5 rounded-xl border flex items-center justify-between gap-4 shadow-xs"
               [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-slate-800 text-slate-300' : 'bg-white border-2 border-slate-300 text-slate-800'">
               <div class="flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-sm shrink-0">
+                <div class="w-7 h-7 rounded-lg bg-blue-600 text-white flex items-center justify-center font-black text-xs shrink-0">
                   🗓️
                 </div>
                 <div>
-                  <h4 class="text-xs font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-950'">
+                  <h4 class="text-[11px] font-black" [ngClass]="presentationTheme() === 'dark' ? 'text-white' : 'text-slate-950'">
                     Calendário de Governança & Próximos Passos
                   </h4>
-                  <p class="text-[10px] mt-0.5" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
+                  <p class="text-[9px] mt-0.5" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
                     Acompanhamento semanal às sextas-feiras com a diretoria executiva de tecnologia e operações.
                   </p>
                 </div>
               </div>
               <div class="flex items-center gap-2 shrink-0">
-                <span class="text-[9px] font-bold px-2.5 py-1 rounded-lg border shadow-2xs"
+                <span class="text-[8px] font-bold px-2.5 py-1 rounded-lg border shadow-2xs"
                   [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-slate-100 border-slate-300 text-slate-800'">
                   PMO ILC • Governança Ágil
                 </span>
@@ -1793,9 +2071,9 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           <div class="flex items-center justify-between pt-1.5 mt-1 border-t text-[9px] font-semibold"
             [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800 text-slate-400' : 'border-slate-300 text-slate-600'">
             <span>ILC • Planejamento Estratégico & Pipeline Futuro</span>
-            <span class="text-slate-500">Roadmap Corporativo</span>
+            <span class="text-slate-500">Roadmap Corporativo ({{ chunkIdx + 1 }}/{{ roadmapChunks().length }})</span>
             <span class="font-extrabold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-900'">
-              Slide {{ totalSlides() }} de {{ totalSlides() }}
+              Slide {{ getRoadmapStartSlideIndex() + chunkIdx + 1 }} de {{ totalSlides() }}
             </span>
           </div>
         </div>
@@ -1814,7 +2092,14 @@ export class ExecutiveReportComponent implements OnInit {
   // Interactive Presenter signals
   isPresenterOpen = signal<boolean>(false);
   currentSlideIndex = signal<number>(0);
-  currentMonthName = new Date().toLocaleDateString('pt-BR', { month: 'short', year: '2-digit' }).replace('.', '');
+  isDownloadingPdf = signal<boolean>(false);
+
+  get currentMonthName(): string {
+    const meetingDate = this.currentReport()?.meetingDate;
+    const refDate = meetingDate ? new Date(meetingDate + 'T12:00:00') : new Date();
+    const validDate = !isNaN(refDate.getTime()) ? refDate : new Date();
+    return validDate.toLocaleDateString('pt-BR', { month: 'short', year: '2-digit' }).replace('.', '');
+  }
 
   ngOnInit() {
     this.service.sortBy.set('targetDelivery');
@@ -1992,13 +2277,42 @@ export class ExecutiveReportComponent implements OnInit {
     return chunks;
   });
 
-  hasRoadmap = computed<boolean>(() => {
-    return (this.currentReport()?.roadmapProjects?.length || 0) > 0;
+  // Roadmap chunks: 15 items per slide (3 rows x 5 columns) so no row is ever clipped in landscape
+  readonly roadmapChunkSize = 15;
+
+  roadmapChunks = computed<RoadmapProject[][]>(() => {
+    const list = this.currentReport()?.roadmapProjects || [];
+    const chunks: RoadmapProject[][] = [];
+    for (let i = 0; i < list.length; i += this.roadmapChunkSize) {
+      chunks.push(list.slice(i, i + this.roadmapChunkSize));
+    }
+    return chunks;
   });
 
+  hasMaintenance = computed<boolean>(() => {
+    return (this.currentReport()?.maintenanceSection?.projects?.length || 0) > 0;
+  });
+
+  hasRoadmap = computed<boolean>(() => {
+    return this.roadmapChunks().length > 0;
+  });
+
+  getMaintenanceSlideIndex(): number {
+    return 1 + this.projectChunks().length;
+  }
+
+  getRoadmapStartSlideIndex(): number {
+    return 1 + this.projectChunks().length + (this.hasMaintenance() ? 1 : 0);
+  }
+
+  getRoadmapChunkEnd(chunkIdx: number): number {
+    const total = this.currentReport()?.roadmapProjects?.length || 0;
+    return Math.min((chunkIdx + 1) * this.roadmapChunkSize, total);
+  }
+
   totalSlides = computed<number>(() => {
-    // Slide 1 (Capa & Visão Consolidada) + N project slides + 1 roadmap slide (if exists)
-    return 1 + this.projectChunks().length + (this.hasRoadmap() ? 1 : 0);
+    // Slide 1 (Capa & Visão Consolidada) + N project slides + 1 maintenance slide (if exists) + M roadmap slides
+    return 1 + this.projectChunks().length + (this.hasMaintenance() ? 1 : 0) + this.roadmapChunks().length;
   });
 
   getChunkEnd(chunkIdx: number): number {
@@ -2049,6 +2363,7 @@ export class ExecutiveReportComponent implements OnInit {
 
   topCriticalProjects = computed(() => {
     const list = this.reportNewProjects();
+
     return list
       .filter(p => p.ragStatus === 'red' || p.ragStatus === 'amber' || this.hasAttentionPoints(p))
       .sort((a, b) => {
@@ -2146,7 +2461,7 @@ export class ExecutiveReportComponent implements OnInit {
 
     for (const p of activeList) {
       const origProj = allProjects.find(x => x.id === p.projectId);
-      const agreedH = origProj?.agreedHours ?? (origProj as any)?.hours?.agreed ?? p.hoursPlanned ?? 0;
+      const agreedH = p.hoursAgreed ?? origProj?.agreedHours ?? (origProj as any)?.hours?.agreed ?? p.hoursPlanned ?? 0;
       const execH = p.hoursExecuted || 0;
       totalExec += Number(execH) || 0;
       totalAgreed += Number(agreedH) || 0;
@@ -2162,8 +2477,10 @@ export class ExecutiveReportComponent implements OnInit {
 
   getAverageVarianceDays(): { avgDays: number; delayedCount: number } {
     const list = this.reportNewProjects();
-    const today = new Date();
-    today.setHours(0, 0, 0, 0);
+    const meetingDate = this.currentReport()?.meetingDate;
+    const refDate = meetingDate ? new Date(meetingDate + 'T00:00:00') : new Date();
+    const validRef = !isNaN(refDate.getTime()) ? refDate : new Date();
+    validRef.setHours(0, 0, 0, 0);
 
     let totalVariance = 0;
     let delayedCount = 0;
@@ -2176,8 +2493,8 @@ export class ExecutiveReportComponent implements OnInit {
       let days = p.varianceDays || 0;
       if (days === 0 && p.agreedDelivery && (p.progress || 0) < 100) {
         const agreed = new Date(p.agreedDelivery + 'T00:00:00');
-        if (!isNaN(agreed.getTime()) && agreed < today) {
-          days = Math.max(0, Math.ceil((today.getTime() - agreed.getTime()) / (1000 * 3600 * 24)));
+        if (!isNaN(agreed.getTime()) && agreed < validRef) {
+          days = Math.max(0, Math.ceil((validRef.getTime() - agreed.getTime()) / (1000 * 3600 * 24)));
         }
       }
       if (days > 0) {
@@ -2192,12 +2509,14 @@ export class ExecutiveReportComponent implements OnInit {
 
   getDeliveriesThisMonthCount(): number {
     const list = this.reportNewProjects();
-    const today = new Date();
-    const curMonth = today.getMonth();
-    const curYear = today.getFullYear();
+    const meetingDate = this.currentReport()?.meetingDate;
+    const refDate = meetingDate ? new Date(meetingDate + 'T12:00:00') : new Date();
+    const validRef = !isNaN(refDate.getTime()) ? refDate : new Date();
+    const curMonth = validRef.getMonth();
+    const curYear = validRef.getFullYear();
 
     return list.filter(p => {
-      if ((p.status || 'Ativo') !== 'Ativo') return false;
+      if (p.status === 'Congelado') return false;
       const target = p.targetDelivery || p.agreedDelivery;
       if (!target) return false;
       const d = new Date(target + 'T00:00:00');
@@ -2489,11 +2808,135 @@ export class ExecutiveReportComponent implements OnInit {
     return Math.max(10, Math.min(100, Math.round((hours / max) * 100)));
   }
 
-  printReport() {
-    const prevTitle = document.title;
+  private loadExternalScript(src: string): Promise<void> {
+    return new Promise((resolve, reject) => {
+      if (document.querySelector(`script[src="${src}"]`)) {
+        resolve();
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => resolve();
+      s.onerror = (e) => reject(e);
+      document.head.appendChild(s);
+    });
+  }
+
+  async printReport() {
+    if (this.isDownloadingPdf()) return;
+    this.isDownloadingPdf.set(true);
+
     const edition = this.currentReport()?.id || 'Semana';
     const themeName = this.presentationTheme() === 'dark' ? 'Escuro' : 'Claro';
-    document.title = `Status_Report_Executivo_${edition}_ILC_Paisagem_${themeName}`;
+    const fileName = `Status_Report_Executivo_${edition}_ILC_Paisagem_${themeName}.pdf`;
+
+    try {
+      const container = document.querySelector('.ppt-slides-print-container') as HTMLElement | null;
+      if (container) {
+        // 1. Try native headless browser PDF export on local machine
+        if (this.service.isLocalEnvironment()) {
+          const styleNodes = Array.from(document.head.querySelectorAll('style, link[rel="stylesheet"]'));
+          const stylesHtml = styleNodes.map(n => n.outerHTML).join('\n');
+
+          const res = await fetch('/api/public/export-pdf', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              html: container.outerHTML,
+              styles: stylesHtml,
+              filename: fileName
+            })
+          });
+
+          if (res.ok) {
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            setTimeout(() => window.URL.revokeObjectURL(url), 5000);
+            return;
+          }
+        }
+
+        // 2. Client-side A4 Landscape PDF generator (for Vercel / Online Read-Only View)
+        await Promise.all([
+          this.loadExternalScript('https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.js'),
+          this.loadExternalScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js')
+        ]);
+
+        const htmlToImage = (window as any).htmlToImage;
+        const jsPDF = (window as any).jspdf?.jsPDF;
+
+        if (htmlToImage && jsPDF) {
+          const prevDisplay = container.style.display;
+          const prevPosition = container.style.position;
+          const prevLeft = container.style.left;
+          const prevTop = container.style.top;
+          const prevWidth = container.style.width;
+          const prevZIndex = container.style.zIndex;
+
+          container.style.display = 'block';
+          container.style.position = 'fixed';
+          container.style.left = '-9999px';
+          container.style.top = '0';
+          container.style.width = '1122px';
+          container.style.zIndex = '-1';
+
+          try {
+            const slides = Array.from(container.querySelectorAll('.ppt-slide')) as HTMLElement[];
+            const pdf = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4', compress: true });
+
+            for (let i = 0; i < slides.length; i++) {
+              const slide = slides[i];
+              slide.style.width = '1122px';
+              slide.style.height = '793px';
+              slide.style.maxHeight = '793px';
+              slide.style.minHeight = '793px';
+              slide.style.display = 'flex';
+              slide.style.flexDirection = 'column';
+              slide.style.justifyContent = 'space-between';
+              slide.style.padding = '20px 26px';
+              slide.style.boxSizing = 'border-box';
+              slide.style.backgroundColor = this.presentationTheme() === 'dark' ? '#090d16' : '#e2e8f0';
+              slide.style.color = this.presentationTheme() === 'dark' ? '#f8fafc' : '#0f172a';
+
+              const dataUrl = await htmlToImage.toJpeg(slide, {
+                quality: 0.95,
+                pixelRatio: 2,
+                width: 1122,
+                height: 793,
+                backgroundColor: this.presentationTheme() === 'dark' ? '#090d16' : '#e2e8f0'
+              });
+
+              if (i > 0) pdf.addPage('a4', 'landscape');
+              pdf.addImage(dataUrl, 'JPEG', 0, 0, 297, 210);
+            }
+
+            pdf.save(fileName);
+            return;
+          } finally {
+            container.style.display = prevDisplay;
+            container.style.position = prevPosition;
+            container.style.left = prevLeft;
+            container.style.top = prevTop;
+            container.style.width = prevWidth;
+            container.style.zIndex = prevZIndex;
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Erro ao gerar PDF direto, abrindo diálogo de impressão:', err);
+    } finally {
+      this.isDownloadingPdf.set(false);
+    }
+
+    // Fallback to browser print if needed
+    const prevTitle = document.title;
+    document.title = fileName.replace(/\.pdf$/i, '');
     window.print();
     setTimeout(() => {
       document.title = prevTitle;

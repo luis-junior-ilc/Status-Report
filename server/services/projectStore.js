@@ -528,15 +528,15 @@ class ProjectStore {
         existing.hours.agreed = preservedAgreed;
         existing.hours.agreedHours = preservedAgreed;
 
-        // Overwrite hours from Azure if field is locked to Azure
-        if (existing.lockedFields.ilcHours !== false) {
+        // Overwrite hours from Azure ONLY if field is locked to Azure and not manually overridden
+        if (existing.lockedFields.ilcHours !== false && !existing.hasManualIlcHours) {
           existing.hours.ilcPlanned = azure.taskHours?.totalPlanned || 0;
           existing.hours.ilcExecuted = azure.taskHours?.totalExecuted || 0;
           existing.hasManualIlcHours = false;
         }
 
-        // Overwrite progress from Azure if field is locked to Azure
-        if (existing.lockedFields.progress !== false) {
+        // Overwrite progress from Azure ONLY if field is locked to Azure and not manually overridden
+        if (existing.lockedFields.progress !== false && !existing.hasManualProgress) {
           const acts = existing.activities || [];
           const allActsClosed = acts.length > 0 && acts.every(a => a.status === 'completed' || ['closed', 'done', 'resolved', 'finalizado', 'concluído', 'completed'].includes((a.state || '').toLowerCase()));
           let allTasksClosed = false;
@@ -566,8 +566,8 @@ class ProjectStore {
           existing.currentMilestone = azure.currentMilestone;
         }
 
-        // Only overwrite dates if locked and Azure provided valid dates
-        if (existing.lockedFields.dates !== false && (azure.detectedStartDate || azure.detectedFinishDate)) {
+        // Only overwrite dates if locked and not manually overridden and Azure provided valid dates
+        if (existing.lockedFields.dates !== false && !existing.hasManualAgreedDates && (azure.detectedStartDate || azure.detectedFinishDate)) {
           if (azure.detectedStartDate) {
             existing.plannedDates.start = azure.detectedStartDate;
             if (!existing.hasManualAgreedDates) {
@@ -885,28 +885,6 @@ class ProjectStore {
         ...proj.lockedFields,
         ...updates.lockedFields
       };
-      if (updates.lockedFields.progress === true) {
-        proj.hasManualProgress = false;
-        if (proj.azureOriginal?.progress !== undefined) {
-          proj.progress = proj.azureOriginal.progress;
-        }
-      }
-      if (updates.lockedFields.ilcHours === true) {
-        proj.hasManualIlcHours = false;
-        if (proj.azureOriginal?.ilcPlanned !== undefined) {
-          proj.hours.ilcPlanned = proj.azureOriginal.ilcPlanned;
-          proj.hours.ilcExecuted = proj.azureOriginal.ilcExecuted;
-        }
-      }
-      if (updates.lockedFields.dates === true) {
-        proj.hasManualAgreedDates = false;
-        if (proj.azureOriginal?.agreedDates) {
-          proj.agreedDates = { ...proj.azureOriginal.agreedDates };
-        }
-        if (proj.azureOriginal?.plannedDates) {
-          proj.plannedDates = { ...proj.azureOriginal.plannedDates };
-        }
-      }
     }
 
     if (updates.name !== undefined && updates.name.trim()) proj.name = updates.name.trim();
@@ -919,10 +897,11 @@ class ProjectStore {
     if (updates.manualRagStatus !== undefined) proj.manualRagStatus = updates.manualRagStatus;
     if (updates.executiveSummary !== undefined) proj.executiveSummary = updates.executiveSummary;
     if (updates.progress !== undefined) {
-      proj.progress = Number(updates.progress);
-      if (proj.lockedFields?.progress === false) {
+      const nextProgress = Number(updates.progress);
+      if (proj.progress !== nextProgress || proj.lockedFields?.progress === false || (proj.azureOriginal && nextProgress !== Number(proj.azureOriginal.progress))) {
         proj.hasManualProgress = true;
       }
+      proj.progress = nextProgress;
     }
 
     if (updates.agreedDates) {

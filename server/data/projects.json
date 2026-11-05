@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-10-28T13:18:54.181Z",
+  "lastSync": "2026-11-05T16:04:39.676Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -12,11 +12,11 @@
       "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2025-07-01",
-        "end": "2026-10-20"
+        "end": "2026-11-04"
       },
       "plannedDates": {
         "start": "2025-07-01",
-        "end": "2026-10-20"
+        "end": "2026-11-04"
       },
       "executedDates": {
         "start": "2025-07-01",
@@ -24,11 +24,11 @@
       },
       "progress": 99,
       "manualRagStatus": "amber",
-      "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 26.",
-      "azureLastUpdated": "2026-10-28T13:18:36.875Z",
+      "executiveSummary": ".",
+      "azureLastUpdated": "2026-11-05T16:04:23.391Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
-      "varianceDays": 337,
+      "varianceDays": 343,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -7030,12 +7030,12 @@
           "state": "Active",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Desenvolvimento",
-          "month": "OUT / 26",
+          "month": "NOV / 26",
           "startDate": "2026-05-01",
-          "targetDate": "2026-10-20",
-          "dateStr": "20/10/2026",
-          "ilcHours": 132,
-          "ilcHoursTotal": 131,
+          "targetDate": "2026-11-04",
+          "dateStr": "04/11/2026",
+          "ilcHours": 139,
+          "ilcHoursTotal": 147,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -7320,7 +7320,7 @@
               "id": 6979,
               "title": "🧠 Reunião IA OPAH",
               "type": "Task",
-              "state": "QA",
+              "state": "Closed",
               "assignedTo": "Thiago Rodrigues do Nascimento Silva",
               "originalEstimate": 3,
               "completedWork": 3,
@@ -7331,7 +7331,7 @@
               "id": 6983,
               "title": "[DEPLOY]",
               "type": "Task",
-              "state": "QA",
+              "state": "Closed",
               "assignedTo": "Thiago Rodrigues do Nascimento Silva",
               "originalEstimate": 1,
               "completedWork": 1,
@@ -7375,12 +7375,56 @@
               "id": 7358,
               "title": "[BUG][BE] Corrigir integração de anexos com o Rodopar",
               "type": "Task",
-              "state": "QA",
+              "state": "Closed",
               "assignedTo": "Thiago Rodrigues do Nascimento Silva",
               "originalEstimate": 4,
               "completedWork": 4,
               "startDate": "2026-10-20",
               "targetDate": "2026-10-20"
+            },
+            {
+              "id": 7501,
+              "title": "Termo de aceite não carrega na entrada do aplicativo",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 4,
+              "completedWork": 3,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-03"
+            },
+            {
+              "id": 7502,
+              "title": "Formulários obrigatórios não aparecem no onboarding",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 4,
+              "completedWork": 3,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-03"
+            },
+            {
+              "id": 7507,
+              "title": "[BE] Formulários obrigatórios não aparecem no onboarding",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 4,
+              "completedWork": 1,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-03"
+            },
+            {
+              "id": 7512,
+              "title": "[BUG][BE] Link não encontrado | Envio notificação",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-04",
+              "targetDate": "2026-11-04"
             }
           ]
         },
@@ -7709,14 +7753,14 @@
       "hours": {
         "agreed": 698,
         "agreedHours": 698,
-        "planned": 1791.5,
-        "executed": 770.3,
+        "planned": 1807.5,
+        "executed": 777.3,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 1791.5,
-        "ilcExecuted": 770.3,
-        "totalPlanned": 1791.5,
-        "totalExecuted": 770.3,
+        "ilcPlanned": 1807.5,
+        "ilcExecuted": 777.3,
+        "totalPlanned": 1807.5,
+        "totalExecuted": 777.3,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -7729,8 +7773,8 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 1583,
-            "executed": 717.3,
+            "planned": 1599,
+            "executed": 724.3,
             "percentage": 45,
             "completed": false,
             "deliverablesTotal": 40,
@@ -7766,16 +7810,16 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 1676.5,
-        "ilcExecuted": 770.3,
+        "ilcPlanned": 1692.5,
+        "ilcExecuted": 777.3,
         "progress": 99,
         "agreedDates": {
           "start": "2025-07-01",
-          "end": "2026-10-20"
+          "end": "2026-11-04"
         },
         "plannedDates": {
           "start": "2025-07-01",
-          "end": "2026-10-20"
+          "end": "2026-11-04"
         }
       },
       "lockedFields": {
@@ -7825,30 +7869,30 @@
         "start": "2026-10-06",
         "end": null
       },
-      "progress": 0,
+      "progress": 5,
       "manualRagStatus": "auto",
-      "executiveSummary": "Projeto Safety está em fase de elicitação de requisitos.",
-      "azureLastUpdated": "2026-10-28T13:18:37.222Z",
+      "executiveSummary": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
+      "azureLastUpdated": "2026-11-05T16:04:24.250Z",
       "currentIterationName": null,
-      "ragStatus": "red",
-      "varianceDays": 6,
-      "hasManualProgress": false,
+      "ragStatus": "green",
+      "varianceDays": 0,
+      "hasManualProgress": true,
       "hasManualPlannedDates": true,
       "activities": [
         {
-          "id": "7353",
-          "azureId": 7353,
-          "title": "Treinamento",
-          "fullTitle": "#7353 Treinamento",
-          "rawTitle": "Treinamento",
+          "id": "7348",
+          "azureId": 7348,
+          "title": "Levantamento de requisitos",
+          "fullTitle": "#7348 Levantamento de requisitos",
+          "rawTitle": "Levantamento de requisitos",
           "type": "Feature",
           "state": "New",
           "assignedTo": "Vitor Neves",
-          "eapPhase": "Treinamento",
-          "month": "DEZ / 26",
-          "startDate": "2026-12-12",
-          "targetDate": "2026-12-20",
-          "dateStr": "20/12/2026",
+          "eapPhase": "Planejamento",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
@@ -7867,10 +7911,32 @@
           "state": "New",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Operação Assistida",
-          "month": "JAN / 27",
-          "startDate": "2026-12-20",
-          "targetDate": "2027-01-17",
-          "dateStr": "17/01/2027",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
+          "ilcHours": 0,
+          "ilcHoursTotal": 0,
+          "clientHours": 0,
+          "status": "planned",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": []
+        },
+        {
+          "id": "7353",
+          "azureId": 7353,
+          "title": "Treinamento",
+          "fullTitle": "#7353 Treinamento",
+          "rawTitle": "Treinamento",
+          "type": "Feature",
+          "state": "New",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Treinamento",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
@@ -7889,37 +7955,15 @@
           "state": "New",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Homologação",
-          "month": "DEZ / 26",
-          "startDate": "2026-12-04",
-          "targetDate": "2026-12-12",
-          "dateStr": "12/12/2026",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
           "status": "planned",
           "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": []
-        },
-        {
-          "id": "7348",
-          "azureId": 7348,
-          "title": "Levantamento de requisitos",
-          "fullTitle": "#7348 Levantamento de requisitos",
-          "rawTitle": "Levantamento de requisitos",
-          "type": "Feature",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Planejamento",
-          "month": "OUT / 26",
-          "startDate": "2026-10-05",
-          "targetDate": "2026-10-20",
-          "dateStr": "20/10/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 0,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
           "isTightMargin": false,
           "linkedTasks": []
         },
@@ -7933,10 +7977,10 @@
           "state": "New",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Desenvolvimento",
-          "month": "DEZ / 26",
-          "startDate": "2026-11-19",
-          "targetDate": "2026-12-04",
-          "dateStr": "04/12/2026",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
@@ -7955,10 +7999,10 @@
           "state": "New",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-11-04",
-          "targetDate": "2026-11-19",
-          "dateStr": "19/11/2026",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
@@ -7977,10 +8021,10 @@
           "state": "New",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-20",
-          "targetDate": "2026-11-04",
-          "dateStr": "04/11/2026",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Mirassol - Projeto Safety",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
@@ -8054,25 +8098,25 @@
         "ilcExecuted": 0,
         "progress": 0,
         "agreedDates": {
-          "start": "2026-10-05",
-          "end": "2027-01-17"
+          "start": "2026-08-01",
+          "end": "2027-01-31"
         },
         "plannedDates": {
-          "start": "2026-10-05",
-          "end": "2027-01-17"
+          "start": "2026-08-01",
+          "end": "2027-01-31"
         }
       },
       "lockedFields": {
-        "ilcHours": true,
-        "progress": true,
-        "dates": true
+        "ilcHours": false,
+        "progress": false,
+        "dates": false
       },
       "inconsistencies": [
         "NO_HOURS",
-        "DELAYED_ITEMS"
+        "NO_ACTIVITIES_WITH_DATES"
       ],
-      "hasManualIlcHours": false,
-      "hasManualAgreedDates": false,
+      "hasManualIlcHours": true,
+      "hasManualAgreedDates": true,
       "priority": "P3",
       "systems": [
         "App Smart Tracking"
@@ -8112,10 +8156,10 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-10-28T13:18:38.753Z",
+      "azureLastUpdated": "2026-11-05T16:04:25.774Z",
       "currentIterationName": null,
       "ragStatus": "red",
-      "varianceDays": 38,
+      "varianceDays": 44,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -8505,7 +8549,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-10-28T13:18:39.798Z",
+      "azureLastUpdated": "2026-11-05T16:04:26.530Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8849,7 +8893,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-10-28T13:18:40.669Z",
+      "azureLastUpdated": "2026-11-05T16:04:27.908Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8971,10 +9015,10 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-10-28T13:18:41.528Z",
+      "azureLastUpdated": "2026-11-05T16:04:28.594Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "red",
-      "varianceDays": 297,
+      "varianceDays": 303,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -9786,8 +9830,8 @@
       },
       "progress": 100,
       "manualRagStatus": "auto",
-      "executiveSummary": "Realizada subida do processo da Komatsu para produção.",
-      "azureLastUpdated": "2026-10-28T13:18:43.402Z",
+      "executiveSummary": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
+      "azureLastUpdated": "2026-11-05T16:04:30.347Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -9795,26 +9839,137 @@
       "hasManualPlannedDates": true,
       "activities": [
         {
-          "id": "7275",
-          "azureId": 7275,
-          "title": "Implantação - KOMATSU",
-          "fullTitle": "#7275 Implantação - KOMATSU",
-          "rawTitle": "Implantação - KOMATSU",
+          "id": "7509",
+          "azureId": 7509,
+          "title": "Homologação Input Demandas",
+          "fullTitle": "#7509 Homologação Input Demandas",
+          "rawTitle": "Homologação Input Demandas",
           "type": "User Story",
           "state": "Closed",
           "assignedTo": "Vitor Neves",
-          "eapPhase": "Desenvolvimento",
+          "eapPhase": "Homologação",
           "month": "OUT / 26",
-          "startDate": "2026-09-21",
-          "targetDate": "2026-10-16",
-          "dateStr": "16/10/2026",
-          "ilcHours": 66,
-          "ilcHoursTotal": 82,
+          "startDate": "2026-11-04",
+          "targetDate": "2026-10-27",
+          "dateStr": "27/10/2026",
+          "ilcHours": 28,
+          "ilcHoursTotal": 28,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
+            {
+              "id": 7510,
+              "title": "Reunião de Homologação Mirassol - Todos Clientes",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 7,
+              "completedWork": 7,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-10-27"
+            },
+            {
+              "id": 7511,
+              "title": "Testes Funcionais - todos Clientes",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 21,
+              "completedWork": 21,
+              "startDate": "2026-10-19",
+              "targetDate": "2026-10-23"
+            }
+          ]
+        },
+        {
+          "id": "7508",
+          "azureId": 7508,
+          "title": "Planejamento e Mapeamento de Processos",
+          "fullTitle": "#7508 Planejamento e Mapeamento de Processos",
+          "rawTitle": "Planejamento e Mapeamento de Processos",
+          "type": "User Story",
+          "state": "Closed",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Planejamento",
+          "month": "OUT / 26",
+          "startDate": "2026-06-09",
+          "targetDate": "2026-10-27",
+          "dateStr": "27/10/2026",
+          "ilcHours": 54,
+          "ilcHoursTotal": 54,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 6456,
+              "title": "TASK - Mapear processo operacional do cliente",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Luis Carlos Oliveira Santos Junior",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-06-09",
+              "targetDate": "2026-06-09"
+            },
+            {
+              "id": 6462,
+              "title": "Mapear processo ICL",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-06-15",
+              "targetDate": "2026-06-15"
+            },
+            {
+              "id": 6469,
+              "title": "TASK - Mapear processo Ouro Fino",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-07-08",
+              "targetDate": "2026-07-08"
+            },
+            {
+              "id": 6476,
+              "title": "TASK - Mapear processo Rainbow",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-06-09",
+              "targetDate": "2026-06-09"
+            },
+            {
+              "id": 6484,
+              "title": "TASK - Mapear processo LD Celulose",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-08-11",
+              "targetDate": "2026-08-11"
+            },
+            {
+              "id": 6489,
+              "title": "TASK - Mapear fluxo de e-mails SERTRADING",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-07-27",
+              "targetDate": "2026-07-27"
+            },
             {
               "id": 7276,
               "title": "Mapear fluxo operacional KOMATSU",
@@ -9858,7 +10013,30 @@
               "completedWork": 8,
               "startDate": "2026-09-23",
               "targetDate": "2026-09-23"
-            },
+            }
+          ]
+        },
+        {
+          "id": "7275",
+          "azureId": 7275,
+          "title": "Implantação - KOMATSU",
+          "fullTitle": "#7275 Implantação - KOMATSU",
+          "rawTitle": "Implantação - KOMATSU",
+          "type": "User Story",
+          "state": "Closed",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Desenvolvimento",
+          "month": "OUT / 26",
+          "startDate": "2026-09-21",
+          "targetDate": "2026-10-16",
+          "dateStr": "16/10/2026",
+          "ilcHours": 34,
+          "ilcHoursTotal": 50,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
             {
               "id": 7280,
               "title": "Ajustar schema de triagem para KOMATSU",
@@ -9876,8 +10054,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 10,
-              "completedWork": 10,
+              "originalEstimate": 7,
+              "completedWork": 7,
               "startDate": "2026-09-24",
               "targetDate": "2026-09-25"
             },
@@ -9920,8 +10098,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 4,
+              "originalEstimate": 11,
+              "completedWork": 3,
               "startDate": "2026-10-08",
               "targetDate": "2026-10-09"
             },
@@ -10473,24 +10651,13 @@
           "startDate": "2026-08-11",
           "targetDate": "2026-08-14",
           "dateStr": "14/08/2026",
-          "ilcHours": 36,
-          "ilcHoursTotal": 36,
+          "ilcHours": 28,
+          "ilcHoursTotal": 28,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6484,
-              "title": "TASK - Mapear processo LD Celulose",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-08-11",
-              "targetDate": "2026-08-11"
-            },
             {
               "id": 6485,
               "title": "TASK - Configurar identificação dos e-mails",
@@ -10519,8 +10686,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 10,
-              "completedWork": 10,
+              "originalEstimate": 6,
+              "completedWork": 6,
               "startDate": "2026-08-12",
               "targetDate": "2026-08-13"
             },
@@ -10551,24 +10718,13 @@
           "startDate": "2026-07-27",
           "targetDate": "2026-08-06",
           "dateStr": "06/08/2026",
-          "ilcHours": 95,
-          "ilcHoursTotal": 87,
+          "ilcHours": 85,
+          "ilcHoursTotal": 79,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6489,
-              "title": "TASK - Mapear fluxo de e-mails SERTRADING",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 6,
-              "startDate": "2026-07-27",
-              "targetDate": "2026-07-27"
-            },
             {
               "id": 6490,
               "title": "TASK - Identificar etapa Forecast",
@@ -10619,8 +10775,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 8,
+              "originalEstimate": 7,
+              "completedWork": 7,
               "startDate": "2026-07-29",
               "targetDate": "2026-07-30"
             },
@@ -10630,8 +10786,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 14,
+              "originalEstimate": 11,
+              "completedWork": 11,
               "startDate": "2026-07-30",
               "targetDate": "2026-07-31"
             },
@@ -10706,24 +10862,13 @@
           "startDate": "2026-06-09",
           "targetDate": "2026-06-12",
           "dateStr": "12/06/2026",
-          "ilcHours": 40,
-          "ilcHoursTotal": 40,
+          "ilcHours": 32,
+          "ilcHoursTotal": 32,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6476,
-              "title": "TASK - Mapear processo Rainbow",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-06-09",
-              "targetDate": "2026-06-09"
-            },
             {
               "id": 6477,
               "title": "TASK - Configurar identificação das demandas",
@@ -10741,8 +10886,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 8,
+              "originalEstimate": 4,
+              "completedWork": 4,
               "startDate": "2026-06-09",
               "targetDate": "2026-06-10"
             },
@@ -10795,24 +10940,13 @@
           "startDate": "2026-07-08",
           "targetDate": "2026-07-16",
           "dateStr": "16/07/2026",
-          "ilcHours": 60,
-          "ilcHoursTotal": 56,
+          "ilcHours": 52,
+          "ilcHoursTotal": 48,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6469,
-              "title": "TASK - Mapear processo Ouro Fino",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-07-08",
-              "targetDate": "2026-07-08"
-            },
             {
               "id": 6470,
               "title": "TASK - Implementar identificação das demandas",
@@ -10841,8 +10975,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 14,
+              "originalEstimate": 11,
+              "completedWork": 13,
               "startDate": "2026-07-10",
               "targetDate": "2026-07-13"
             },
@@ -10852,8 +10986,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 8,
+              "originalEstimate": 5,
+              "completedWork": 5,
               "startDate": "2026-07-13",
               "targetDate": "2026-07-14"
             },
@@ -10895,24 +11029,13 @@
           "startDate": "2026-06-15",
           "targetDate": "2026-06-18",
           "dateStr": "18/06/2026",
-          "ilcHours": 34,
-          "ilcHoursTotal": 34,
+          "ilcHours": 26,
+          "ilcHoursTotal": 26,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6462,
-              "title": "Mapear processo ICL",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-06-15",
-              "targetDate": "2026-06-15"
-            },
             {
               "id": 6463,
               "title": "Configurar identificação dos e-mails ICL",
@@ -10930,8 +11053,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 8,
+              "originalEstimate": 4,
+              "completedWork": 4,
               "startDate": "2026-06-15",
               "targetDate": "2026-06-16"
             },
@@ -10973,24 +11096,13 @@
           "startDate": "2026-06-09",
           "targetDate": "2026-06-15",
           "dateStr": "15/06/2026",
-          "ilcHours": 52,
-          "ilcHoursTotal": 50,
+          "ilcHours": 44,
+          "ilcHoursTotal": 44,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
-            {
-              "id": 6456,
-              "title": "TASK - Mapear processo operacional do cliente",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-06-09",
-              "targetDate": "2026-06-09"
-            },
             {
               "id": 6457,
               "title": "TASK - Implementar identificação dos e-mails",
@@ -11019,8 +11131,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 14,
+              "originalEstimate": 10,
+              "completedWork": 10,
               "startDate": "2026-06-10",
               "targetDate": "2026-06-11"
             },
@@ -11052,41 +11164,41 @@
       "hours": {
         "agreed": 646,
         "agreedHours": 646,
-        "planned": 662,
+        "planned": 666,
         "executed": 651,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 662,
+        "ilcPlanned": 666,
         "ilcExecuted": 651,
-        "totalPlanned": 662,
+        "totalPlanned": 666,
         "totalExecuted": 651,
         "distribution": [
           {
             "phase": "Planejamento",
-            "planned": 0,
-            "executed": 0,
-            "percentage": 0,
-            "completed": false,
-            "deliverablesTotal": 0,
-            "deliverablesCompleted": 0
+            "planned": 54,
+            "executed": 54,
+            "percentage": 100,
+            "completed": true,
+            "deliverablesTotal": 1,
+            "deliverablesCompleted": 1
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 641,
-            "executed": 628,
-            "percentage": 98,
+            "planned": 563,
+            "executed": 546,
+            "percentage": 97,
             "completed": true,
             "deliverablesTotal": 10,
             "deliverablesCompleted": 10
           },
           {
             "phase": "Homologação",
-            "planned": 21,
-            "executed": 23,
-            "percentage": 110,
+            "planned": 49,
+            "executed": 51,
+            "percentage": 104,
             "completed": true,
-            "deliverablesTotal": 1,
-            "deliverablesCompleted": 1
+            "deliverablesTotal": 2,
+            "deliverablesCompleted": 2
           },
           {
             "phase": "Treinamento",
@@ -11109,7 +11221,7 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 662,
+        "ilcPlanned": 666,
         "ilcExecuted": 651,
         "progress": 100,
         "agreedDates": {
@@ -11165,10 +11277,10 @@
         "start": "2026-08-10",
         "end": null
       },
-      "progress": 88,
+      "progress": 80,
       "manualRagStatus": "auto",
-      "executiveSummary": "Treinamento realizado com sucesso, atualização do módulo em ambinete de produção e inicio da operação assistida.",
-      "azureLastUpdated": "2026-10-28T13:18:43.940Z",
+      "executiveSummary": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
+      "azureLastUpdated": "2026-11-05T16:04:31.003Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11189,7 +11301,7 @@
           "startDate": "2026-10-26",
           "targetDate": "2026-11-30",
           "dateStr": "30/11/2026",
-          "ilcHours": 0,
+          "ilcHours": 6,
           "ilcHoursTotal": 30,
           "clientHours": 0,
           "status": "in-progress",
@@ -11203,7 +11315,7 @@
               "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 30,
-              "completedWork": 0,
+              "completedWork": 6,
               "startDate": "2026-10-26",
               "targetDate": "2026-11-30"
             }
@@ -11394,13 +11506,13 @@
         "agreed": 120,
         "agreedHours": 120,
         "planned": 120,
-        "executed": 90,
+        "executed": 96,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 120,
-        "ilcExecuted": 90,
+        "ilcExecuted": 96,
         "totalPlanned": 120,
-        "totalExecuted": 90,
+        "totalExecuted": 96,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -11441,8 +11553,8 @@
           {
             "phase": "Operação Assistida",
             "planned": 30,
-            "executed": 0,
-            "percentage": 0,
+            "executed": 6,
+            "percentage": 20,
             "completed": false,
             "deliverablesTotal": 1,
             "deliverablesCompleted": 0
@@ -11451,8 +11563,8 @@
       },
       "azureOriginal": {
         "ilcPlanned": 120,
-        "ilcExecuted": 90,
-        "progress": 88,
+        "ilcExecuted": 96,
+        "progress": 80,
         "agreedDates": {
           "start": "2026-09-01",
           "end": "2026-11-30"
@@ -11492,7 +11604,7 @@
       "client": "John Deere",
       "status": "Ativo",
       "isVisible": true,
-      "currentMilestone": "Treinamento",
+      "currentMilestone": "Operação Assistida",
       "agreedDates": {
         "start": "2026-09-01",
         "end": "2026-11-17"
@@ -11505,10 +11617,10 @@
         "start": "2026-10-06",
         "end": null
       },
-      "progress": 66,
+      "progress": 78,
       "manualRagStatus": "auto",
-      "executiveSummary": "Treinamento foi reagendado para o dia 29/10.",
-      "azureLastUpdated": "2026-10-28T13:18:44.872Z",
+      "executiveSummary": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
+      "azureLastUpdated": "2026-11-05T16:04:31.443Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11522,17 +11634,17 @@
           "fullTitle": "#7184 Operação Assistida",
           "rawTitle": "Operação Assistida",
           "type": "Feature",
-          "state": "New",
+          "state": "Active",
           "assignedTo": "Luis Carlos Oliveira Santos Junior",
           "eapPhase": "Operação Assistida",
           "month": "NOV / 26",
           "startDate": "2026-10-30",
           "targetDate": "2026-11-17",
           "dateStr": "17/11/2026",
-          "ilcHours": 0,
+          "ilcHours": 6,
           "ilcHoursTotal": 32,
           "clientHours": 0,
-          "status": "planned",
+          "status": "in-progress",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
@@ -11540,10 +11652,10 @@
               "id": 7198,
               "title": "Acompanhamento em operação assistida",
               "type": "Task",
-              "state": "New",
+              "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 32,
-              "completedWork": 0,
+              "completedWork": 6,
               "startDate": "2026-10-30",
               "targetDate": "2026-11-17"
             }
@@ -11556,17 +11668,17 @@
           "fullTitle": "#7183 Treinamento",
           "rawTitle": "Treinamento",
           "type": "Feature",
-          "state": "New",
+          "state": "Closed",
           "assignedTo": "Luis Carlos Oliveira Santos Junior",
           "eapPhase": "Treinamento",
           "month": "OUT / 26",
           "startDate": "2026-10-29",
           "targetDate": "2026-10-30",
           "dateStr": "30/10/2026",
-          "ilcHours": 0,
+          "ilcHours": 8,
           "ilcHoursTotal": 8,
           "clientHours": 0,
-          "status": "planned",
+          "status": "completed",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
@@ -11574,10 +11686,10 @@
               "id": 7196,
               "title": "Capacitação (JD, Fornecedores, Transportadores)",
               "type": "Task",
-              "state": "New",
+              "state": "Closed",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 8,
-              "completedWork": 0,
+              "completedWork": 8,
               "startDate": "2026-10-29",
               "targetDate": "2026-10-30"
             }
@@ -11734,13 +11846,13 @@
         "agreed": 116,
         "agreedHours": 116,
         "planned": 116,
-        "executed": 76,
+        "executed": 90,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 116,
-        "ilcExecuted": 76,
+        "ilcExecuted": 90,
         "totalPlanned": 116,
-        "totalExecuted": 76,
+        "totalExecuted": 90,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -11772,17 +11884,17 @@
           {
             "phase": "Treinamento",
             "planned": 8,
-            "executed": 0,
-            "percentage": 0,
-            "completed": false,
+            "executed": 8,
+            "percentage": 100,
+            "completed": true,
             "deliverablesTotal": 1,
-            "deliverablesCompleted": 0
+            "deliverablesCompleted": 1
           },
           {
             "phase": "Operação Assistida",
             "planned": 32,
-            "executed": 0,
-            "percentage": 0,
+            "executed": 6,
+            "percentage": 19,
             "completed": false,
             "deliverablesTotal": 1,
             "deliverablesCompleted": 0
@@ -11791,8 +11903,8 @@
       },
       "azureOriginal": {
         "ilcPlanned": 116,
-        "ilcExecuted": 76,
-        "progress": 66,
+        "ilcExecuted": 90,
+        "progress": 78,
         "agreedDates": {
           "start": "2026-09-01",
           "end": "2026-11-17"
@@ -11847,8 +11959,8 @@
       },
       "progress": 50,
       "manualRagStatus": "auto",
-      "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-10-28T13:18:45.871Z",
+      "executiveSummary": ".",
+      "azureLastUpdated": "2026-11-05T16:04:31.927Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -13076,12 +13188,12 @@
         "start": "2026-09-21",
         "end": null
       },
-      "progress": 45,
+      "progress": 71,
       "manualRagStatus": "auto",
-      "executiveSummary": "Desenvolvimento backend em andamento, integração com ZapSign, e envio de notificações. Agora será iniciado o desenvolvimento frontend no Smart Tracking.",
-      "azureLastUpdated": "2026-10-28T13:18:46.629Z",
+      "executiveSummary": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
+      "azureLastUpdated": "2026-11-05T16:04:32.743Z",
       "currentIterationName": "Iteration 1",
-      "ragStatus": "amber",
+      "ragStatus": "green",
       "varianceDays": 0,
       "activities": [
         {
@@ -13091,19 +13203,19 @@
           "fullTitle": "#7310 Integração backend API",
           "rawTitle": "Integração backend API",
           "type": "Feature",
-          "state": "Active",
+          "state": "Closed",
           "assignedTo": "Luis Carlos Oliveira Santos Junior",
           "eapPhase": "Desenvolvimento",
           "month": "OUT / 26",
           "startDate": "2026-10-13",
           "targetDate": "2026-10-28",
           "dateStr": "28/10/2026",
-          "ilcHours": 26,
-          "ilcHoursTotal": 52.6,
+          "ilcHours": 30,
+          "ilcHoursTotal": 30,
           "clientHours": 0,
-          "status": "in-progress",
+          "status": "completed",
           "isDelayed": false,
-          "isTightMargin": true,
+          "isTightMargin": false,
           "linkedTasks": [
             {
               "id": 7026,
@@ -13111,10 +13223,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7027,
@@ -13122,10 +13234,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7028,
@@ -13133,10 +13245,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7029,
@@ -13144,10 +13256,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7355,
@@ -13177,32 +13289,32 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7034,
               "title": "[BE] - Normalizar dados do Subcontratado",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             },
             {
               "id": 7035,
               "title": "[BE] - Implementar tratamento PF/PJ do Subcontratado",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             },
             {
               "id": 7036,
@@ -13221,10 +13333,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7072,
@@ -13232,10 +13344,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7073,
@@ -13243,10 +13355,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7074,
@@ -13254,10 +13366,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7075,
@@ -13265,10 +13377,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7076,
@@ -13276,10 +13388,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
               "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "startDate": null,
+              "targetDate": null
             },
             {
               "id": 7077,
@@ -13287,9 +13399,253 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            }
+          ]
+        },
+        {
+          "id": "7312",
+          "azureId": 7312,
+          "title": "Implementação no Smart Tracking",
+          "fullTitle": "#7312 Implementação no Smart Tracking",
+          "rawTitle": "Implementação no Smart Tracking",
+          "type": "Feature",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-11-12",
+          "targetDate": "2026-11-27",
+          "dateStr": "27/11/2026",
+          "ilcHours": 2,
+          "ilcHoursTotal": 26,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7052,
+              "title": "[BE] - Disponibilizar status do contrato no onboarding",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            },
+            {
+              "id": 7053,
+              "title": "[FE] - Implementar card de status da assinatura",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 4.8,
               "completedWork": 0,
               "startDate": "2026-09-21",
+              "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7054,
+              "title": "[FE] - Implementar ação de assinatura para Motorista Subcontratado",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 4.8,
+              "completedWork": 0,
+              "startDate": "2026-09-21",
+              "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7055,
+              "title": "[FE] - Implementar status de assinatura por terceiro",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 4.8,
+              "completedWork": 0,
+              "startDate": "2026-09-21",
+              "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7056,
+              "title": "[FE] - Implementar abertura da ZapSign em WebView",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 4.8,
+              "completedWork": 0,
+              "startDate": "2026-09-21",
+              "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7057,
+              "title": "[BE] - Implementar envio do contrato ao Subcontratado externo",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
+            },
+            {
+              "id": 7058,
+              "title": "[BE] - Bloquear conclusão do onboarding sem contrato assinado",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            },
+            {
+              "id": 7059,
+              "title": "[FE] - Remover card após conclusão do onboarding",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 4.8,
+              "completedWork": 0,
+              "startDate": "2026-09-21",
+              "targetDate": "2026-11-20"
+            }
+          ]
+        },
+        {
+          "id": "7311",
+          "azureId": 7311,
+          "title": "Retorno de status e notificações",
+          "fullTitle": "#7311 Retorno de status e notificações",
+          "rawTitle": "Retorno de status e notificações",
+          "type": "Feature",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-28",
+          "targetDate": "2026-11-12",
+          "dateStr": "12/11/2026",
+          "ilcHours": 199,
+          "ilcHoursTotal": 199,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7062,
+              "title": "[BE] - Criar endpoint seguro de webhook ZapSign",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-10-26",
+              "targetDate": "2026-11-04"
+            },
+            {
+              "id": 7063,
+              "title": "[BE] - Validar eventos recebidos da ZapSign",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-11-04",
+              "targetDate": "2026-11-04"
+            },
+            {
+              "id": 7064,
+              "title": "[BE] - Processar conclusão da assinatura do Subcontratado",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-11-04"
+            },
+            {
+              "id": 7065,
+              "title": "[BE] - Controlar status individual dos signatários",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            },
+            {
+              "id": 7066,
+              "title": "[BE] - Implementar idempotência do webhook",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-11-04"
+            },
+            {
+              "id": 7067,
+              "title": "[BE] - Persistir referência ao documento final e Audit Trail",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            },
+            {
+              "id": 7068,
+              "title": "[BE] - Implementar logs da integração ZapSign",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
+            },
+            {
+              "id": 7491,
+              "title": "[BE] DISPARO DE NOTIFICAÇÃO PUSH MOTORISTA - Novo contrato para assinatura",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
+            },
+            {
+              "id": 7492,
+              "title": "[BE] Disparar notificação via whatsapp",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 3,
+              "completedWork": 3,
+              "startDate": "2026-10-29",
+              "targetDate": "2026-10-28"
+            },
+            {
+              "id": 7497,
+              "title": "[BE] Liberar rota de webhook da ZapSign no API Gateway",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-10-28",
               "targetDate": "2026-11-20"
             }
           ]
@@ -13671,128 +14027,6 @@
           ]
         },
         {
-          "id": "7311",
-          "azureId": 7311,
-          "title": "Retorno de status e notificações",
-          "fullTitle": "#7311 Retorno de status e notificações",
-          "rawTitle": "Retorno de status e notificações",
-          "type": "Feature",
-          "state": "New",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-28",
-          "targetDate": "2026-11-12",
-          "dateStr": "12/11/2026",
-          "ilcHours": 2,
-          "ilcHoursTotal": 13.4,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7062,
-              "title": "[BE] - Criar endpoint seguro de webhook ZapSign",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 0,
-              "completedWork": 0,
-              "startDate": "2026-10-26",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7063,
-              "title": "[BE] - Validar eventos recebidos da ZapSign",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7064,
-              "title": "[BE] - Processar conclusão da assinatura do Subcontratado",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7065,
-              "title": "[BE] - Controlar status individual dos signatários",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7066,
-              "title": "[BE] - Implementar idempotência do webhook",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7067,
-              "title": "[BE] - Persistir referência ao documento final e Audit Trail",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7068,
-              "title": "[BE] - Implementar logs da integração ZapSign",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7491,
-              "title": "[BE] DISPARO DE NOTIFICAÇÃO PUSH MOTORISTA - Novo contrato para assinatura",
-              "type": "Task",
-              "state": "QA",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 2,
-              "completedWork": 2,
-              "startDate": "2026-10-28",
-              "targetDate": "2026-10-28"
-            },
-            {
-              "id": 7492,
-              "title": "[BE] Disparar notificação via whatsapp",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 0,
-              "completedWork": 0,
-              "startDate": "2026-10-28",
-              "targetDate": "2026-11-20"
-            }
-          ]
-        },
-        {
           "id": "7313",
           "azureId": 7313,
           "title": "Homologação",
@@ -13807,7 +14041,7 @@
           "targetDate": "2026-12-05",
           "dateStr": "05/12/2026",
           "ilcHours": 0,
-          "ilcHoursTotal": 28,
+          "ilcHoursTotal": 24,
           "clientHours": 0,
           "status": "planned",
           "isDelayed": false,
@@ -13841,7 +14075,7 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues do Nascimento Silva",
-              "originalEstimate": 2,
+              "originalEstimate": 0,
               "completedWork": 0,
               "startDate": "2026-11-30",
               "targetDate": "2026-12-05"
@@ -13852,121 +14086,10 @@
               "type": "Task",
               "state": "New",
               "assignedTo": "Thiago Rodrigues do Nascimento Silva",
-              "originalEstimate": 2,
+              "originalEstimate": 0,
               "completedWork": 0,
               "startDate": "2026-11-30",
               "targetDate": "2026-12-05"
-            }
-          ]
-        },
-        {
-          "id": "7312",
-          "azureId": 7312,
-          "title": "Implementação no Smart Tracking",
-          "fullTitle": "#7312 Implementação no Smart Tracking",
-          "rawTitle": "Implementação no Smart Tracking",
-          "type": "Feature",
-          "state": "New",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-11-12",
-          "targetDate": "2026-11-27",
-          "dateStr": "27/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 29.7,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7052,
-              "title": "[BE] - Disponibilizar status do contrato no onboarding",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7053,
-              "title": "[FE] - Implementar card de status da assinatura",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 4.8,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7054,
-              "title": "[FE] - Implementar ação de assinatura para Motorista Subcontratado",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 4.8,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7055,
-              "title": "[FE] - Implementar status de assinatura por terceiro",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 4.8,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7056,
-              "title": "[FE] - Implementar abertura da ZapSign em WebView",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 4.8,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7057,
-              "title": "[BE] - Implementar envio do contrato ao Subcontratado externo",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7058,
-              "title": "[BE] - Bloquear conclusão do onboarding sem contrato assinado",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7059,
-              "title": "[FE] - Remover card após conclusão do onboarding",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 4.8,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
             }
           ]
         },
@@ -13977,17 +14100,17 @@
           "fullTitle": "#7039 Gerar e assinar contrato via ZapSign",
           "rawTitle": "Gerar e assinar contrato via ZapSign",
           "type": "User Story",
-          "state": "New",
+          "state": "Active",
           "assignedTo": "Vitor Neves",
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
-          "startDate": "2026-09-21",
+          "startDate": "2026-10-20",
           "targetDate": "2026-11-20",
           "dateStr": "20/11/2026",
-          "ilcHours": 14,
-          "ilcHoursTotal": 32.2,
+          "ilcHours": 114,
+          "ilcHoursTotal": 117,
           "clientHours": 0,
-          "status": "planned",
+          "status": "in-progress",
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": [
@@ -14006,89 +14129,45 @@
               "id": 7041,
               "title": "[BE] - Implementar geração de contrato por template",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             },
             {
               "id": 7042,
               "title": "[BE] - Mapear variáveis do contrato ZapSign",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7043,
-              "title": "[BE] - Implementar criação dos signatários",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7044,
-              "title": "[BE] - Implementar assinatura automática do Subcontratante",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7045,
-              "title": "[BE] - Implementar assinatura automática em lote do Subcontratante",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             },
             {
               "id": 7046,
               "title": "[BE] - Persistir dados da integração ZapSign",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-11-04"
             },
             {
               "id": 7047,
               "title": "[BE] - Implementar idempotência da geração do contrato",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
-            },
-            {
-              "id": 7048,
-              "title": "[BE] - Implementar tratamento de erros ZapSign",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 1.9,
-              "completedWork": 0,
-              "startDate": "2026-09-21",
-              "targetDate": "2026-11-20"
+              "originalEstimate": 48,
+              "completedWork": 48,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-11-04"
             },
             {
               "id": 7467,
@@ -14140,14 +14219,14 @@
       "hours": {
         "agreed": 173.6,
         "agreedHours": 173.6,
-        "planned": 218.9,
-        "executed": 105,
+        "planned": 459,
+        "executed": 408,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 218.9,
-        "ilcExecuted": 105,
-        "totalPlanned": 218.9,
-        "totalExecuted": 105,
+        "ilcPlanned": 459,
+        "ilcExecuted": 408,
+        "totalPlanned": 459,
+        "totalExecuted": 408,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -14160,16 +14239,16 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 127.9,
-            "executed": 42,
-            "percentage": 33,
+            "planned": 372,
+            "executed": 345,
+            "percentage": 93,
             "completed": false,
             "deliverablesTotal": 4,
-            "deliverablesCompleted": 0
+            "deliverablesCompleted": 1
           },
           {
             "phase": "Homologação",
-            "planned": 28,
+            "planned": 24,
             "executed": 0,
             "percentage": 0,
             "completed": false,
@@ -14197,9 +14276,9 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 218.9,
-        "ilcExecuted": 105,
-        "progress": 45,
+        "ilcPlanned": 459,
+        "ilcExecuted": 408,
+        "progress": 71,
         "agreedDates": {
           "start": "2026-08-31",
           "end": "2026-12-05"
@@ -14256,16 +14335,94 @@
         "start": "2026-06-01",
         "end": null
       },
-      "progress": 59,
+      "progress": 63,
       "manualRagStatus": "auto",
       "executiveSummary": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
-      "azureLastUpdated": "2026-10-28T13:18:48.360Z",
+      "azureLastUpdated": "2026-11-05T16:04:34.272Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "red",
-      "varianceDays": 3,
+      "varianceDays": 9,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
+        {
+          "id": "7222",
+          "azureId": 7222,
+          "title": "Aprovação e custos extras",
+          "fullTitle": "#7222 Aprovação e custos extras",
+          "rawTitle": "Aprovação e custos extras",
+          "type": "Feature",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-11-01",
+          "targetDate": "2026-11-15",
+          "dateStr": "15/11/2026",
+          "ilcHours": 4,
+          "ilcHoursTotal": 51,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7260,
+              "title": "Aprovação e custos extras",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 43,
+              "completedWork": 0,
+              "startDate": "2026-11-01",
+              "targetDate": "2026-10-15"
+            },
+            {
+              "id": 7488,
+              "title": "Implementar Step 03 — aprovação de cotações, alçadas e custo extra",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-10-27"
+            },
+            {
+              "id": 7261,
+              "title": "QA Aprovação e custo extra",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Luis Carlos Oliveira Santos Junior",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-01",
+              "targetDate": "2026-11-15"
+            }
+          ]
+        },
+        {
+          "id": "7223",
+          "azureId": 7223,
+          "title": "QA Aprovação e custos extras",
+          "fullTitle": "#7223 QA Aprovação e custos extras",
+          "rawTitle": "QA Aprovação e custos extras",
+          "type": "Feature",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Homologação",
+          "month": "NOV / 26",
+          "startDate": "2026-11-01",
+          "targetDate": "2026-11-15",
+          "dateStr": "15/11/2026",
+          "ilcHours": 0,
+          "ilcHoursTotal": 0,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": []
+        },
         {
           "id": "7227",
           "azureId": 7227,
@@ -14284,7 +14441,7 @@
           "ilcHoursTotal": 95,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": false,
+          "isDelayed": true,
           "isTightMargin": false,
           "linkedTasks": [
             {
@@ -14312,84 +14469,6 @@
           ]
         },
         {
-          "id": "7223",
-          "azureId": 7223,
-          "title": "QA Aprovação e custos extras",
-          "fullTitle": "#7223 QA Aprovação e custos extras",
-          "rawTitle": "QA Aprovação e custos extras",
-          "type": "Feature",
-          "state": "New",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Homologação",
-          "month": "NOV / 26",
-          "startDate": "2026-11-01",
-          "targetDate": "2026-11-15",
-          "dateStr": "15/11/2026",
-          "ilcHours": 4,
-          "ilcHoursTotal": 51,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7260,
-              "title": "Aprovação e custos extras",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Silvio Torres",
-              "originalEstimate": 43,
-              "completedWork": 0,
-              "startDate": "2026-11-01",
-              "targetDate": "2026-10-15"
-            },
-            {
-              "id": 7488,
-              "title": "Implementar Step 03 — aprovação de cotações, alçadas e custo extra",
-              "type": "Task",
-              "state": "QA",
-              "assignedTo": "Silvio Torres",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-10-27"
-            },
-            {
-              "id": 7261,
-              "title": "QA Aprovação e custo extra",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-01",
-              "targetDate": "2026-11-15"
-            }
-          ]
-        },
-        {
-          "id": "7222",
-          "azureId": 7222,
-          "title": "Aprovação e custos extras",
-          "fullTitle": "#7222 Aprovação e custos extras",
-          "rawTitle": "Aprovação e custos extras",
-          "type": "Feature",
-          "state": "New",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-11-01",
-          "targetDate": "2026-11-15",
-          "dateStr": "15/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 0,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": []
-        },
-        {
           "id": "7226",
           "azureId": 7226,
           "title": "Módulo Transportador",
@@ -14407,7 +14486,7 @@
           "ilcHoursTotal": 0,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": false,
+          "isDelayed": true,
           "isTightMargin": false,
           "linkedTasks": []
         },
@@ -14526,8 +14605,8 @@
           "startDate": "2026-10-16",
           "targetDate": "2026-10-25",
           "dateStr": "25/10/2026",
-          "ilcHours": 78,
-          "ilcHoursTotal": 106,
+          "ilcHours": 83,
+          "ilcHoursTotal": 111,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": true,
@@ -14543,6 +14622,17 @@
               "completedWork": 78,
               "startDate": "2026-10-16",
               "targetDate": "2026-10-25"
+            },
+            {
+              "id": 7495,
+              "title": "Corrigir remanescentes de cotação, agrupamento, alçadas e interface",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 5,
+              "completedWork": 5,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             }
           ]
         },
@@ -14888,14 +14978,14 @@
       "hours": {
         "agreed": 750,
         "agreedHours": 750,
-        "planned": 754,
-        "executed": 448,
+        "planned": 759,
+        "executed": 453,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 754,
-        "ilcExecuted": 448,
-        "totalPlanned": 754,
-        "totalExecuted": 448,
+        "ilcPlanned": 759,
+        "ilcExecuted": 453,
+        "totalPlanned": 759,
+        "totalExecuted": 453,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -14908,18 +14998,18 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 354,
-            "executed": 326,
-            "percentage": 92,
+            "planned": 410,
+            "executed": 335,
+            "percentage": 82,
             "completed": false,
             "deliverablesTotal": 5,
             "deliverablesCompleted": 1
           },
           {
             "phase": "Homologação",
-            "planned": 263,
-            "executed": 31,
-            "percentage": 12,
+            "planned": 212,
+            "executed": 27,
+            "percentage": 13,
             "completed": false,
             "deliverablesTotal": 9,
             "deliverablesCompleted": 1
@@ -14945,9 +15035,9 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 754,
-        "ilcExecuted": 448,
-        "progress": 59,
+        "ilcPlanned": 759,
+        "ilcExecuted": 453,
+        "progress": 63,
         "agreedDates": {
           "start": "2026-08-03",
           "end": "2027-01-16"
@@ -14993,11 +15083,11 @@
       "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2025-04-22",
-        "end": "2026-10-27"
+        "end": "2026-10-31"
       },
       "plannedDates": {
         "start": "2025-04-22",
-        "end": "2026-10-27"
+        "end": "2026-10-31"
       },
       "executedDates": {
         "start": "2025-07-28",
@@ -15005,11 +15095,11 @@
       },
       "progress": 82,
       "manualRagStatus": "auto",
-      "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: SPRINT 7a.",
-      "azureLastUpdated": "2026-10-28T13:18:50.021Z",
+      "executiveSummary": ".",
+      "azureLastUpdated": "2026-11-05T16:04:35.715Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "red",
-      "varianceDays": 392,
+      "varianceDays": 398,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -19740,8 +19830,8 @@
           "ilcHoursTotal": 61,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": false,
-          "isTightMargin": true,
+          "isDelayed": true,
+          "isTightMargin": false,
           "linkedTasks": [
             {
               "id": 7464,
@@ -19810,11 +19900,11 @@
           "state": "Active",
           "assignedTo": "Francisco Molaia Santos",
           "eapPhase": "Desenvolvimento",
-          "month": "NOV / 25",
+          "month": "OUT / 26",
           "startDate": "2026-10-27",
-          "targetDate": "2025-11-25",
-          "dateStr": "25/11/2025",
-          "ilcHours": 0,
+          "targetDate": "2026-10-29",
+          "dateStr": "29/10/2026",
+          "ilcHours": 8,
           "ilcHoursTotal": 6,
           "clientHours": 0,
           "status": "in-progress",
@@ -19825,12 +19915,12 @@
               "id": 7486,
               "title": "Controle de permissão para lançamento manual no Smart Tracking",
               "type": "Task",
-              "state": "Active",
+              "state": "Closed",
               "assignedTo": "Francisco Molaia Santos",
               "originalEstimate": 6,
-              "completedWork": 0,
+              "completedWork": 8,
               "startDate": "2026-10-27",
-              "targetDate": "2025-11-25"
+              "targetDate": "2026-10-29"
             }
           ]
         },
@@ -19846,10 +19936,10 @@
           "eapPhase": "Operação Assistida",
           "month": "OUT / 26",
           "startDate": "2025-05-06",
-          "targetDate": "2026-10-26",
-          "dateStr": "26/10/2026",
+          "targetDate": "2026-10-31",
+          "dateStr": "31/10/2026",
           "ilcHours": 315.3,
-          "ilcHoursTotal": 488.8,
+          "ilcHoursTotal": 496.8,
           "clientHours": 0,
           "status": "in_progress",
           "isDelayed": true,
@@ -20899,6 +20989,17 @@
               "completedWork": 0.5,
               "startDate": "2026-10-26",
               "targetDate": "2026-10-26"
+            },
+            {
+              "id": 7500,
+              "title": "Sincronização de Eventos entre Gestão Embarcada e Relatório 54",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": "2026-10-29",
+              "targetDate": "2026-10-31"
             }
           ]
         }
@@ -20906,14 +21007,14 @@
       "hours": {
         "agreed": 1215.5,
         "agreedHours": 1215.5,
-        "planned": 3392.4,
-        "executed": 2074.5,
+        "planned": 3400.4,
+        "executed": 2082.5,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 3392.4,
-        "ilcExecuted": 2074.5,
-        "totalPlanned": 3392.4,
-        "totalExecuted": 2074.5,
+        "ilcPlanned": 3400.4,
+        "ilcExecuted": 2082.5,
+        "totalPlanned": 3400.4,
+        "totalExecuted": 2082.5,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -20927,8 +21028,8 @@
           {
             "phase": "Desenvolvimento",
             "planned": 2327.1,
-            "executed": 1376.7,
-            "percentage": 59,
+            "executed": 1384.7,
+            "percentage": 60,
             "completed": false,
             "deliverablesTotal": 48,
             "deliverablesCompleted": 15
@@ -20953,9 +21054,9 @@
           },
           {
             "phase": "Operação Assistida",
-            "planned": 1065.3,
+            "planned": 1073.3,
             "executed": 697.8,
-            "percentage": 66,
+            "percentage": 65,
             "completed": false,
             "deliverablesTotal": 2,
             "deliverablesCompleted": 0
@@ -20963,16 +21064,16 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 3145.4,
-        "ilcExecuted": 2027.5,
+        "ilcPlanned": 3153.4,
+        "ilcExecuted": 2035.5,
         "progress": 82,
         "agreedDates": {
           "start": "2025-04-22",
-          "end": "2026-10-27"
+          "end": "2026-10-31"
         },
         "plannedDates": {
           "start": "2025-04-22",
-          "end": "2026-10-27"
+          "end": "2026-10-31"
         }
       },
       "lockedFields": {
@@ -21020,11 +21121,11 @@
       },
       "progress": 91,
       "manualRagStatus": "auto",
-      "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: SPRINT JUL - 2022 - 1 QUINZENA.",
-      "azureLastUpdated": "2026-10-28T13:18:51.267Z",
+      "executiveSummary": ".",
+      "azureLastUpdated": "2026-11-05T16:04:37.248Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "red",
-      "varianceDays": 1380,
+      "varianceDays": 1386,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -22959,7 +23060,7 @@
               "title": "[Pesquisa empresa SMS] ",
               "type": "Task",
               "state": "Closed",
-              "assignedTo": "Renata Reis",
+              "assignedTo": "renata.reis@opah.com.br",
               "originalEstimate": 32,
               "completedWork": 0,
               "startDate": "2022-05-16",
@@ -23283,7 +23384,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-10-28T13:18:52.065Z",
+      "azureLastUpdated": "2026-11-05T16:04:37.765Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24144,10 +24245,10 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-10-28T13:18:53.522Z",
+      "azureLastUpdated": "2026-11-05T16:04:39.206Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
-      "varianceDays": 233,
+      "varianceDays": 239,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -29004,10 +29105,10 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-10-28T13:18:54.180Z",
+      "azureLastUpdated": "2026-11-05T16:04:39.676Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "red",
-      "varianceDays": 38,
+      "varianceDays": 44,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -29702,7 +29803,7 @@
       "client": "ILC (Interno)",
       "status": "Ativo",
       "isVisible": true,
-      "currentMilestone": "Planejamento",
+      "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2026-10-05",
         "end": "2026-12-01"
@@ -29715,12 +29816,102 @@
         "start": "2026-10-05",
         "end": null
       },
-      "progress": 9,
+      "progress": 16,
       "manualRagStatus": "auto",
-      "executiveSummary": "Conclusão do desenvolvimento to protótipo, alinhamento para refinamento e estruturação dos pacotes de entregas.",
-      "azureLastUpdated": "2026-10-28T13:18:50.659Z",
+      "executiveSummary": "Em fase de integração com o backend.",
+      "azureLastUpdated": "2026-11-05T16:04:36.490Z",
       "currentIterationName": "Iteration 1",
       "activities": [
+        {
+          "id": "7334",
+          "azureId": 7334,
+          "title": "Desenvolvimento login, home, tela de módulos e perfil",
+          "fullTitle": "#7334 Desenvolvimento login, home, tela de módulos e perfil",
+          "rawTitle": "Desenvolvimento login, home, tela de módulos e perfil",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-29",
+          "targetDate": "2026-11-14",
+          "dateStr": "14/11/2026",
+          "ilcHours": 0,
+          "ilcHoursTotal": 54,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7341,
+              "title": "[FE] Desenvolvimento login, home, tela de módulos e perfil",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 20,
+              "completedWork": 0,
+              "startDate": "2026-10-29",
+              "targetDate": "2026-11-05"
+            },
+            {
+              "id": 7473,
+              "title": "[BE] Desenvolvimentos adicionais backend + BD (Em análise)",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 6,
+              "completedWork": 0,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-18"
+            },
+            {
+              "id": 7475,
+              "title": "[BE] Integrações (frontend + backend)",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 28,
+              "completedWork": 0,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-14"
+            }
+          ]
+        },
+        {
+          "id": "7330",
+          "azureId": 7330,
+          "title": "Protótipo + Documentação",
+          "fullTitle": "#7330 Protótipo + Documentação",
+          "rawTitle": "Protótipo + Documentação",
+          "type": "User Story",
+          "state": "Closed",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Planejamento",
+          "month": "OUT / 26",
+          "startDate": "2026-10-05",
+          "targetDate": "2026-10-29",
+          "dateStr": "29/10/2026",
+          "ilcHours": 32,
+          "ilcHoursTotal": 40,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7332,
+              "title": "Protótipo",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 40,
+              "completedWork": 32,
+              "startDate": "2026-10-05",
+              "targetDate": "2026-10-29"
+            }
+          ]
+        },
         {
           "id": "7336",
           "azureId": 7336,
@@ -29785,62 +29976,6 @@
               "completedWork": 0,
               "startDate": "2026-11-24",
               "targetDate": "2026-11-27"
-            }
-          ]
-        },
-        {
-          "id": "7334",
-          "azureId": 7334,
-          "title": "Desenvolvimento login, home, tela de módulos e perfil",
-          "fullTitle": "#7334 Desenvolvimento login, home, tela de módulos e perfil",
-          "rawTitle": "Desenvolvimento login, home, tela de módulos e perfil",
-          "type": "User Story",
-          "state": "New",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-29",
-          "targetDate": "2026-11-14",
-          "dateStr": "14/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 54,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7341,
-              "title": "[FE] Desenvolvimento login, home, tela de módulos e perfil",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 20,
-              "completedWork": 0,
-              "startDate": "2026-10-29",
-              "targetDate": "2026-11-05"
-            },
-            {
-              "id": 7473,
-              "title": "[BE] Desenvolvimentos adicionais backend + BD (Em análise)",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Francisco Molaia Santos",
-              "originalEstimate": 6,
-              "completedWork": 0,
-              "startDate": "2026-11-13",
-              "targetDate": "2026-11-18"
-            },
-            {
-              "id": 7475,
-              "title": "[BE] Integrações (frontend + backend)",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 28,
-              "completedWork": 0,
-              "startDate": "2026-11-05",
-              "targetDate": "2026-11-14"
             }
           ]
         },
@@ -29980,40 +30115,6 @@
           ]
         },
         {
-          "id": "7330",
-          "azureId": 7330,
-          "title": "Protótipo + Documentação",
-          "fullTitle": "#7330 Protótipo + Documentação",
-          "rawTitle": "Protótipo + Documentação",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Planejamento",
-          "month": "OUT / 26",
-          "startDate": "2026-10-05",
-          "targetDate": "2026-10-29",
-          "dateStr": "29/10/2026",
-          "ilcHours": 32,
-          "ilcHoursTotal": 40,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": false,
-          "isTightMargin": true,
-          "linkedTasks": [
-            {
-              "id": 7332,
-              "title": "Protótipo",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Mike Andrade",
-              "originalEstimate": 40,
-              "completedWork": 32,
-              "startDate": "2026-10-05",
-              "targetDate": "2026-10-29"
-            }
-          ]
-        },
-        {
           "id": "7483",
           "azureId": 7483,
           "title": "Publicação na loja (Gestão de Demandas)",
@@ -30090,7 +30191,7 @@
       "azureOriginal": {
         "ilcPlanned": 340,
         "ilcExecuted": 32,
-        "progress": 9,
+        "progress": 16,
         "agreedDates": {
           "start": "2026-10-05",
           "end": "2026-12-01"
@@ -30117,9 +30218,9 @@
             "planned": 40,
             "executed": 32,
             "percentage": 80,
-            "completed": false,
+            "completed": true,
             "deliverablesTotal": 1,
-            "deliverablesCompleted": 0
+            "deliverablesCompleted": 1
           },
           {
             "phase": "Desenvolvimento",
@@ -30159,7 +30260,7 @@
           }
         ]
       },
-      "ragStatus": "amber",
+      "ragStatus": "green",
       "varianceDays": 0,
       "inconsistencies": [],
       "hasManualIlcHours": false,
@@ -30202,10 +30303,10 @@
         "start": "2026-08-01",
         "end": null
       },
-      "progress": 41,
+      "progress": 44,
       "manualRagStatus": "auto",
-      "executiveSummary": "Melhoria no Portal ILC módulo Gestão de Demandas para uso da operação, incluindo rastreamentos de demandas ponta a ponta. Desenvolvimento dos BIs, visibilidade de demandas geradas, ajustes na integração com o Rodopar.",
-      "azureLastUpdated": "2026-10-28T13:18:42.052Z",
+      "executiveSummary": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
+      "azureLastUpdated": "2026-11-05T16:04:29.132Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30267,19 +30368,19 @@
           "startDate": "2026-10-26",
           "targetDate": "2026-11-06",
           "dateStr": "06/11/2026",
-          "ilcHours": 0,
+          "ilcHours": 2,
           "ilcHoursTotal": 10,
           "clientHours": 0,
           "status": "planned",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7458,
               "title": "Preparar roteiro de treinamento do Portal ILC",
               "type": "Task",
               "state": "New",
-              "assignedTo": "Vitor Neves",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
               "originalEstimate": 3,
               "completedWork": 0,
               "startDate": "2026-10-26",
@@ -30289,10 +30390,10 @@
               "id": 7459,
               "title": "Realizar treinamento do backoffice Mirassol",
               "type": "Task",
-              "state": "New",
+              "state": "Closed",
               "assignedTo": "Vitor Neves",
               "originalEstimate": 4,
-              "completedWork": 0,
+              "completedWork": 2,
               "startDate": "2026-11-03",
               "targetDate": "2026-11-05"
             },
@@ -30301,7 +30402,7 @@
               "title": "Disponibilizar material de apoio",
               "type": "Task",
               "state": "New",
-              "assignedTo": "Vitor Neves",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
               "originalEstimate": 3,
               "completedWork": 0,
               "startDate": "2026-11-05",
@@ -30323,7 +30424,7 @@
           "startDate": "2026-10-20",
           "targetDate": "2026-11-13",
           "dateStr": "13/11/2026",
-          "ilcHours": 4,
+          "ilcHours": 8,
           "ilcHoursTotal": 36,
           "clientHours": 0,
           "status": "in-progress",
@@ -30345,10 +30446,10 @@
               "id": 7453,
               "title": "Alinhar desenvolvimento da integração com Datapar",
               "type": "Task",
-              "state": "Active",
+              "state": "Closed",
               "assignedTo": "Vitor Neves",
               "originalEstimate": 4,
-              "completedWork": 0,
+              "completedWork": 4,
               "startDate": "2026-10-20",
               "targetDate": "2026-10-30"
             },
@@ -30484,7 +30585,7 @@
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7442,
@@ -30535,12 +30636,12 @@
           "startDate": "2026-10-13",
           "targetDate": "2026-11-06",
           "dateStr": "06/11/2026",
-          "ilcHours": 24,
-          "ilcHoursTotal": 24,
+          "ilcHours": 32,
+          "ilcHoursTotal": 32,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7436,
@@ -30590,12 +30691,67 @@
               "id": 7489,
               "title": "[BI] - Ajustar cálculo de SLA de coleta e entrega para viagens pendentes",
               "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-10-27"
+            },
+            {
+              "id": 7498,
+              "title": "Investigar divergência nos tempos médios de coleta e viagem",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-29"
+            },
+            {
+              "id": 7499,
+              "title": "Implementar interatividade nos botões e indicadores do Power BI",
+              "type": "Task",
               "state": "New",
               "assignedTo": "Lucas Maier Gomes Bruno",
               "originalEstimate": 0,
               "completedWork": 0,
               "startDate": "2026-10-01",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7503,
+              "title": "Correção da hora atual para considerar horário de Brasília",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-10-30",
               "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7504,
+              "title": "Ajuste na janela do prazo de coleta e entrega",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-10-30",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7515,
+              "title": "BI – Substituir indicadores de tempo médio por indicadores de vencimento de entrega (72h)",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-10-01",
+              "targetDate": "2026-11-13"
             }
           ]
         },
@@ -30618,7 +30774,7 @@
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7431,
@@ -30807,7 +30963,7 @@
           "ilcHoursTotal": 11,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": false,
+          "isDelayed": true,
           "isTightMargin": false,
           "linkedTasks": [
             {
@@ -30815,7 +30971,7 @@
               "title": "Realizar treinamento da operação Mirassol no Smart Tracking",
               "type": "Task",
               "state": "Closed",
-              "assignedTo": "Vitor Neves",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
               "originalEstimate": 4,
               "completedWork": 4,
               "startDate": "2026-10-13",
@@ -30826,7 +30982,7 @@
               "title": "Ajustar vídeo de orientação aos motoristas",
               "type": "Task",
               "state": "Closed",
-              "assignedTo": "Vitor Neves",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
               "originalEstimate": 3,
               "completedWork": 3,
               "startDate": "2026-10-19",
@@ -30837,7 +30993,7 @@
               "title": "Disponibilizar material nos grupos dos motoristas",
               "type": "Task",
               "state": "Closed",
-              "assignedTo": "Vitor Neves",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
               "originalEstimate": 1,
               "completedWork": 1,
               "startDate": "2026-10-23",
@@ -30853,6 +31009,17 @@
               "completedWork": 0,
               "startDate": "2026-10-26",
               "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7505,
+              "title": "Mapear os cenários de cadastro e elaborar procedimento de acesso ao Smart Tracking",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-10-01",
+              "targetDate": "2026-11-13"
             }
           ]
         },
@@ -30942,7 +31109,7 @@
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7405,
@@ -31109,9 +31276,9 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 288,
-        "ilcExecuted": 95,
-        "progress": 41,
+        "ilcPlanned": 296,
+        "ilcExecuted": 109,
+        "progress": 44,
         "agreedDates": {
           "start": "2026-10-01",
           "end": "2026-11-13"
@@ -31124,14 +31291,14 @@
       "hours": {
         "agreed": 264,
         "agreedHours": 264,
-        "planned": 288,
-        "executed": 95,
+        "planned": 296,
+        "executed": 109,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 288,
-        "ilcExecuted": 95,
-        "totalPlanned": 288,
-        "totalExecuted": 95,
+        "ilcPlanned": 296,
+        "ilcExecuted": 109,
+        "totalPlanned": 296,
+        "totalExecuted": 109,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -31144,9 +31311,9 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 150,
-            "executed": 34,
-            "percentage": 23,
+            "planned": 158,
+            "executed": 46,
+            "percentage": 29,
             "completed": false,
             "deliverablesTotal": 5,
             "deliverablesCompleted": 0
@@ -31163,8 +31330,8 @@
           {
             "phase": "Treinamento",
             "planned": 21,
-            "executed": 8,
-            "percentage": 38,
+            "executed": 10,
+            "percentage": 48,
             "completed": false,
             "deliverablesTotal": 2,
             "deliverablesCompleted": 0
@@ -31180,9 +31347,11 @@
           }
         ]
       },
-      "ragStatus": "green",
-      "varianceDays": 0,
-      "inconsistencies": [],
+      "ragStatus": "red",
+      "varianceDays": 4,
+      "inconsistencies": [
+        "DELAYED_ITEMS"
+      ],
       "hasManualIlcHours": false,
       "hasManualProgress": false,
       "hasManualAgreedDates": false,
@@ -31214,7 +31383,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-10-28T13:18:47.620Z",
+      "azureLastUpdated": "2026-11-05T16:04:33.301Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31762,7 +31931,7 @@
       "azureId": "53f7da8a-e2d4-4a4a-bdcf-5a8d4a8bfad6",
       "isManual": false,
       "name": "Mirassol - Projeto Check List por Viagem",
-      "description": "Desenvolvimento de um formulário de checagem da situação do veículo a cada viagem.",
+      "description": "Implementar um processo digital de inspeção de veículos por meio de formulários configurados no Smart X e disponibilizados aos motoristas no aplicativo Smart Tracking.",
       "client": "Mirassol",
       "status": "Ativo",
       "isVisible": true,
@@ -31779,14 +31948,17 @@
         "start": "2026-08-01",
         "end": null
       },
-      "progress": 0,
+      "progress": 5,
       "manualRagStatus": "auto",
-      "executiveSummary": "Desenvolvimento de escopo do projeto.",
-      "azureLastUpdated": "2026-10-28T13:18:40.187Z",
+      "executiveSummary": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
+      "azureLastUpdated": "2026-11-05T16:04:27.421Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
-      "systems": [],
+      "systems": [
+        "App Smart Tracking",
+        "Smart X"
+      ],
       "team": {
         "leader": "Vitor Neves",
         "members": [
@@ -31797,9 +31969,9 @@
         ]
       },
       "lockedFields": {
-        "ilcHours": true,
-        "progress": true,
-        "dates": true
+        "ilcHours": false,
+        "progress": false,
+        "dates": false
       },
       "azureOriginal": {
         "ilcPlanned": 0,
@@ -31879,10 +32051,10 @@
         "NO_AZURE_ITEMS",
         "NO_HOURS"
       ],
-      "hasManualIlcHours": false,
-      "hasManualProgress": false,
+      "hasManualIlcHours": true,
+      "hasManualProgress": true,
       "agreedHours": 0,
-      "hasManualAgreedDates": false,
+      "hasManualAgreedDates": true,
       "category": "new_project"
     }
   ]

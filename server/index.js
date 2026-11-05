@@ -14,9 +14,11 @@ app.use(express.json({ limit: '10mb' }));
 
 // Serve static logos if uploaded
 const publicLogos = path.join(__dirname, 'public/assets/logos');
-if (!require('fs').existsSync(publicLogos)) {
-  require('fs').mkdirSync(publicLogos, { recursive: true });
-}
+try {
+  if (!require('fs').existsSync(publicLogos)) {
+    require('fs').mkdirSync(publicLogos, { recursive: true });
+  }
+} catch (_) {}
 app.use('/assets/logos', express.static(publicLogos));
 
 // Public API endpoints
@@ -112,8 +114,17 @@ app.get('/api/public/weekly-reports/:id', (req, res) => {
   });
 });
 
-// Admin / Curator Authentication
+// Admin / Curator Authentication (Strictly restricted to Localhost)
 function checkAdminAuth(req, res, next) {
+  const host = (req.hostname || req.headers.host || '').split(':')[0].toLowerCase();
+  const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  if (process.env.VERCEL || process.env.READ_ONLY_MODE === 'true' || !isLocal) {
+    return res.status(403).json({
+      success: false,
+      message: 'Modo somente visualização: a Curadoria e as atualizações são restritas à máquina local do administrador.'
+    });
+  }
+
   const pin = req.headers['x-admin-pin'] || req.query.pin;
   if (!pin || pin !== config.adminPin) {
     return res.status(401).json({ success: false, message: 'PIN administrativo incorreto ou ausente.' });
@@ -275,6 +286,169 @@ app.post('/api/admin/sync', checkAdminAuth, async (req, res) => {
   res.json(result);
 });
 
+app.post('/api/admin/publish-online', checkAdminAuth, (req, res) => {
+  const { exec } = require('child_process');
+  const rootDir = path.join(__dirname, '..');
+  const cmd = 'git add server/data server/public/assets/logos && (git diff --cached --quiet || git commit -m "chore: atualizacao de dados do portfolio e status report") && git push origin main';
+
+  exec(cmd, { cwd: rootDir, timeout: 60000 }, (err, stdout, stderr) => {
+    if (err) {
+      console.error('[Publish Online] Erro ao publicar no GitHub:', stderr || err.message);
+      return res.status(500).json({
+        success: false,
+        message: 'Falha ao enviar para o GitHub: ' + (stderr || err.message)
+      });
+    }
+    res.json({
+      success: true,
+      message: '🚀 Dados enviados com sucesso para o GitHub! A versão online de visualização será atualizada automaticamente em instantes.'
+    });
+  });
+});
+
+// Direct Landscape PDF Export Endpoint (uses Headless Edge/Chrome so orientation is 100% A4 Landscape)
+const pdfRenderCache = new Map();
+
+app.get('/api/internal/pdf-render/:token', (req, res) => {
+  const htmlDoc = pdfRenderCache.get(req.params.token);
+  if (!htmlDoc) {
+    return res.status(404).send('Not found');
+  }
+  res.setHeader('Content-Type', 'text/html; charset=utf-8');
+  res.send(htmlDoc);
+});
+
+app.post('/api/public/export-pdf', async (req, res) => {
+  const fs = require('fs');
+  const os = require('os');
+  const { execFile } = require('child_process');
+  const { html, styles, filename } = req.body || {};
+
+  if (!html) {
+    return res.status(400).json({ success: false, message: 'HTML do relatório ausente.' });
+  }
+
+  const browserCandidates = [
+    'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
+    'C:/Program Files/Microsoft/Edge/Application/msedge.exe',
+    'C:/Program Files/Google/Chrome/Application/chrome.exe',
+    'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
+    '/usr/bin/google-chrome-stable',
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium-browser',
+    '/usr/bin/chromium'
+  ];
+  const browserExe = browserCandidates.find(p => fs.existsSync(p));
+  if (!browserExe) {
+    return res.status(500).json({ success: false, message: 'Navegador headless não encontrado no servidor.' });
+  }
+
+  const token = `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  const fullHtml = `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <base href="http://localhost:${config.port}/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  ${styles || ''}
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 5mm 6mm;
+    }
+    html, body {
+      width: 100% !important;
+      height: auto !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: transparent !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+      font-family: 'Plus Jakarta Sans', sans-serif !important;
+    }
+    .ppt-slides-print-container {
+      display: block !important;
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+    .ppt-slide {
+      width: 100% !important;
+      height: 192mm !important;
+      max-height: 192mm !important;
+      min-height: 192mm !important;
+      page-break-after: avoid !important;
+      break-after: avoid !important;
+      page-break-inside: avoid !important;
+      break-inside: avoid !important;
+      box-sizing: border-box !important;
+      padding: 5mm 7mm !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: space-between !important;
+      border-radius: 12px !important;
+      margin: 0 !important;
+    }
+    .ppt-slide + .ppt-slide {
+      page-break-before: always !important;
+      break-before: page !important;
+    }
+    .ppt-slide.theme-dark {
+      background-color: #090d16 !important;
+      border: 1px solid #1e293b !important;
+      color: #f8fafc !important;
+    }
+    .ppt-slide.theme-light {
+      background-color: #e2e8f0 !important;
+      border: 1px solid #94a3b8 !important;
+      color: #0f172a !important;
+    }
+  </style>
+</head>
+<body>
+  ${html}
+</body>
+</html>`;
+
+  pdfRenderCache.set(token, fullHtml);
+  const tmpPdfPath = path.join(os.tmpdir(), `status_report_${token}.pdf`);
+  const renderUrl = `http://localhost:${config.port}/api/internal/pdf-render/${token}`;
+
+  execFile(
+    browserExe,
+    [
+      '--headless=new',
+      '--disable-gpu',
+      '--no-pdf-header-footer',
+      `--print-to-pdf=${tmpPdfPath}`,
+      renderUrl
+    ],
+    { timeout: 30000 },
+    (err) => {
+      pdfRenderCache.delete(token);
+      if (err || !fs.existsSync(tmpPdfPath)) {
+        console.error('[PDF Export] Erro ao gerar PDF:', err);
+        return res.status(500).json({ success: false, message: 'Falha ao gerar PDF em paisagem.' });
+      }
+      try {
+        const pdfBuffer = fs.readFileSync(tmpPdfPath);
+        fs.unlinkSync(tmpPdfPath);
+        const safeName = (filename || 'Status_Report_Executivo_Paisagem.pdf').replace(/[^a-zA-Z0-9._-]/g, '_');
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', `attachment; filename="${safeName}"`);
+        res.send(pdfBuffer);
+      } catch (readErr) {
+        console.error('[PDF Export] Erro ao ler PDF gerado:', readErr);
+        res.status(500).json({ success: false, message: 'Erro ao processar arquivo PDF.' });
+      }
+    }
+  );
+});
+
 // Serve frontend build
 const frontendDist = path.join(__dirname, '../frontend/dist/frontend/browser');
 if (require('fs').existsSync(frontendDist)) {
@@ -284,7 +458,13 @@ if (require('fs').existsSync(frontendDist)) {
   });
 }
 
-app.listen(config.port, () => {
-  console.log(`[Server] Backend executando na porta ${config.port}`);
-  syncScheduler.start();
-});
+if (!process.env.VERCEL) {
+  app.listen(config.port, () => {
+    console.log(`[Server] Backend executando na porta ${config.port}`);
+    if (process.env.READ_ONLY_MODE !== 'true') {
+      syncScheduler.start();
+    }
+  });
+}
+
+module.exports = app;

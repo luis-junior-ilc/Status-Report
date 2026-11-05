@@ -16,23 +16,33 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
       <div class="bg-white rounded-3xl shadow-2xl border border-slate-200 max-w-6xl w-full h-[92vh] flex flex-col overflow-hidden animate-in fade-in zoom-in-95 duration-200">
         
         <!-- Modal Header -->
-        <div class="p-4 sm:px-6 sm:py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+        <div class="p-4 sm:px-6 sm:py-4 border-b border-slate-200 flex items-center justify-between bg-slate-50 gap-3">
           <div>
             <h2 class="text-base font-bold text-slate-900 flex items-center gap-2">
               <span>Curadoria & Gestão Gerencial de Projetos</span>
               <span class="text-xs bg-blue-100 text-blue-800 font-semibold px-2 py-0.5 rounded-full">
-                Área Executiva
+                Área Executiva Local
               </span>
             </h2>
             <p class="text-xs text-slate-500 mt-0.5">
-              Gestão de visibilidade, clientes, logotipo, EAP detalhada por dia/mês/ano e credenciais do Azure DevOps.
+              Gestão de visibilidade, clientes, logotipo, EAP detalhada por dia/mês/ano e publicação da visão online.
             </p>
           </div>
-          <button
-            (click)="service.isAdminOpen.set(false)"
-            class="text-slate-400 hover:text-slate-700 p-2 rounded-xl text-xl font-bold leading-none">
-            ✕
-          </button>
+          <div class="flex items-center gap-2">
+            <button
+              *ngIf="service.isAuthenticated() && service.isLocalEnvironment()"
+              (click)="handlePublishOnline()"
+              [disabled]="service.isPublishingOnline()"
+              class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 disabled:opacity-60 text-white text-xs font-extrabold rounded-xl transition shadow-xs flex items-center gap-1.5 cursor-pointer"
+              title="Enviar todas as atualizações de projetos e status report para o ambiente online (GitHub / Vercel)">
+              <span>{{ service.isPublishingOnline() ? '⏳ Publicando Online...' : '🚀 Publicar Versão Online' }}</span>
+            </button>
+            <button
+              (click)="service.isAdminOpen.set(false)"
+              class="text-slate-400 hover:text-slate-700 p-2 rounded-xl text-xl font-bold leading-none cursor-pointer">
+              ✕
+            </button>
+          </div>
         </div>
 
         <!-- Auth Section if not authenticated -->
@@ -665,24 +675,6 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                       [(ngModel)]="p.plannedDates.end"
                       [disabled]="!p.isManual && isFieldLocked(p, 'dates')"
                       class="w-full border border-slate-300 rounded-lg px-2.5 py-1.5 bg-white disabled:bg-slate-100 disabled:text-slate-500 font-bold outline-none">
-                  </div>
-
-                  <!-- Status Report da Semana (Executive Summary) -->
-                  <div class="sm:col-span-2 md:col-span-4 mt-1 pt-3 border-t border-slate-200">
-                    <label class="block font-bold text-slate-800 mb-1.5 flex items-center justify-between">
-                      <span class="flex items-center gap-1.5 text-blue-900 font-extrabold text-xs">
-                        <svg class="w-4 h-4 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        Status Report da Semana:
-                      </span>
-                      <span class="text-[11px] text-slate-500 font-medium">Exibido nos Cards do Portfólio e no Cronograma Oficial EAP</span>
-                    </label>
-                    <textarea
-                      [(ngModel)]="p.executiveSummary"
-                      rows="3"
-                      placeholder="Descreva o resumo executivo, principais entregas da semana, impedimentos e próximos passos..."
-                      class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs font-normal text-slate-800 bg-white outline-none focus:ring-2 focus:ring-blue-500 leading-relaxed shadow-2xs"></textarea>
                   </div>
                 </div>
 
@@ -1597,23 +1589,23 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
               </div>
             </div>
 
-            <!-- Ajuste Fino dos Projetos Ativos -->
+            <!-- Ajuste Fino dos Projetos Ativos e de Sustentação -->
             <div *ngIf="editableReport()" class="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
               <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-slate-100 gap-3">
                 <div class="flex items-center gap-2">
                   <span class="text-base">📌</span>
                   <div>
                     <h4 class="text-xs sm:text-sm font-extrabold text-slate-900">
-                      Pontos de Atenção & Status dos Projetos Ativos ({{ filteredWeeklyActiveProjects().length }})
+                      Pontos de Atenção & Status dos Projetos ({{ weeklyOriginFilter() === 'Sustentacao' ? weeklyMaintenanceProjects().length : (weeklyOriginFilter() === 'Todos' ? filteredWeeklyActiveProjects().length + weeklyMaintenanceProjects().length : filteredWeeklyActiveProjects().length) }})
                     </h4>
                     <p class="text-[11px] text-slate-500">
-                      Personalize o texto que a diretoria verá nos cards executivos desta edição.
+                      Personalize o texto que a diretoria verá nos cards executivos de projetos e de sustentação desta edição.
                     </p>
                   </div>
                 </div>
 
-                <!-- Origin Filter for Weekly Active Projects -->
-                <div class="flex items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200 text-[10px] font-bold">
+                <!-- Origin Filter for Weekly Active & Maintenance Projects -->
+                <div class="flex flex-wrap items-center gap-1 bg-slate-100 p-0.5 rounded-xl border border-slate-200 text-[10px] font-bold">
                   <button
                     type="button"
                     (click)="weeklyOriginFilter.set('Todos')"
@@ -1637,10 +1629,18 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                     <span>✍️ Manual</span>
                     <span class="text-[9px] opacity-80">({{ getWeeklyOriginCount('Manual') }})</span>
                   </button>
+                  <button
+                    type="button"
+                    (click)="weeklyOriginFilter.set('Sustentacao')"
+                    [ngClass]="weeklyOriginFilter() === 'Sustentacao' ? 'bg-emerald-600 text-white shadow-2xs' : 'text-slate-500 hover:text-slate-800'"
+                    class="py-1 px-2.5 rounded-lg transition text-center cursor-pointer flex items-center gap-1">
+                    <span>🛠️ Sustentação</span>
+                    <span class="text-[9px] opacity-80">({{ getWeeklyOriginCount('Sustentacao') }})</span>
+                  </button>
                 </div>
               </div>
 
-              <div class="space-y-4">
+              <div *ngIf="weeklyOriginFilter() !== 'Sustentacao'" class="space-y-4">
                 <div
                   *ngFor="let p of filteredWeeklyActiveProjects()"
                   class="p-4 bg-slate-50 border border-slate-200 rounded-xl space-y-2.5">
@@ -1690,6 +1690,80 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                         [(ngModel)]="p.attentionPoints"
                         placeholder="Riscos e bloqueios mapeados..."
                         class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-700 outline-none leading-relaxed"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Projetos em Sustentação (N2/N3) -->
+              <div *ngIf="(weeklyOriginFilter() === 'Todos' || weeklyOriginFilter() === 'Sustentacao') && weeklyMaintenanceProjects().length > 0"
+                   class="space-y-3"
+                   [ngClass]="{'pt-4 border-t border-slate-200': weeklyOriginFilter() === 'Todos'}">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm">🛠️</span>
+                    <h5 class="text-xs font-extrabold text-emerald-900 uppercase tracking-wider">
+                      Projetos em Sustentação & Operação Contínua ({{ weeklyMaintenanceProjects().length }})
+                    </h5>
+                  </div>
+                  <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                    {{ editableReport()?.maintenanceSection?.periodLabel || editableReport()?.period }}
+                  </span>
+                </div>
+
+                <div class="space-y-4">
+                  <div
+                    *ngFor="let mp of weeklyMaintenanceProjects()"
+                    class="p-4 bg-emerald-50/40 border border-emerald-200/80 rounded-xl space-y-2.5">
+                    
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                      <div class="flex items-center gap-2">
+                        <span class="text-xs font-black text-slate-800">{{ mp.name }}</span>
+                        <span class="text-[10px] font-bold text-slate-500">({{ mp.client }})</span>
+                        <span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
+                          🛠️ Sustentação
+                        </span>
+                        <span class="text-[9px] font-black px-1.5 py-0.2 rounded bg-sky-100 text-sky-800 border border-sky-200">
+                          ☁️ Azure
+                        </span>
+                      </div>
+                      <div class="flex items-center gap-2">
+                        <span class="px-2 py-0.5 rounded font-bold text-[10px] bg-white text-slate-700 border border-slate-200">
+                          No período: {{ formatHours(mp.hoursExecuted) }}h
+                        </span>
+                        <span class="text-[10px] font-black px-2 py-0.5 rounded-full"
+                          [ngClass]="mp.ragStatus === 'red' ? 'bg-rose-100 text-rose-800' : (mp.ragStatus === 'amber' ? 'bg-amber-100 text-amber-800' : 'bg-emerald-100 text-emerald-800')">
+                          {{ mp.ragStatus === 'red' ? 'Crítico' : (mp.ragStatus === 'amber' ? 'Atenção' : 'Operação Normal') }}
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                      <div>
+                        <label class="block text-[10px] font-bold text-slate-600 mb-1">Status Report Anterior</label>
+                        <textarea
+                          rows="2"
+                          [(ngModel)]="mp.previousStatusReport"
+                          placeholder="Reporte de sustentação do ciclo anterior..."
+                          class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-700 outline-none leading-relaxed"></textarea>
+                      </div>
+                      <div>
+                        <label class="block text-[10px] font-bold text-emerald-700 mb-1">Status Report Atual</label>
+                        <textarea
+                          rows="2"
+                          [(ngModel)]="mp.statusReport"
+                          (ngModelChange)="mp.summary = $event"
+                          placeholder="Atendimentos, chamados N2/N3 e estabilidade na semana..."
+                          class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-700 outline-none leading-relaxed"></textarea>
+                      </div>
+                      <div>
+                        <label class="block text-[10px] font-bold text-rose-700 mb-1">Pontos de Atenção & Riscos</label>
+                        <textarea
+                          rows="2"
+                          [(ngModel)]="mp.attentionPoints"
+                          placeholder="Incidentes relevantes ou pontos de atenção..."
+                          class="w-full bg-white border border-slate-300 rounded-lg p-2 text-xs text-slate-700 outline-none leading-relaxed"></textarea>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -2185,7 +2259,7 @@ export class CuratorModalComponent implements OnInit {
   filterOnlyAlerts = signal<boolean>(false);
 
   // Weekly report tab filters
-  weeklyOriginFilter = signal<'Todos' | 'Manual' | 'Azure'>('Todos');
+  weeklyOriginFilter = signal<'Todos' | 'Manual' | 'Azure' | 'Sustentacao'>('Todos');
 
   // Custom links state
   customLinkSearch = signal<string>('');
@@ -2319,9 +2393,11 @@ export class CuratorModalComponent implements OnInit {
     return list.filter(p => this.isAzureProject(p)).length;
   }
 
-  getWeeklyOriginCount(type: 'Todos' | 'Manual' | 'Azure'): number {
+  getWeeklyOriginCount(type: 'Todos' | 'Manual' | 'Azure' | 'Sustentacao'): number {
     const list = this.editableReport()?.activeProjects || [];
-    if (type === 'Todos') return list.length;
+    const maintList = this.editableReport()?.maintenanceSection?.projects || [];
+    if (type === 'Sustentacao') return maintList.length;
+    if (type === 'Todos') return list.length + maintList.length;
     if (type === 'Manual') return list.filter(p => this.isManualProject(p)).length;
     return list.filter(p => this.isAzureProject(p)).length;
   }
@@ -2454,9 +2530,15 @@ export class CuratorModalComponent implements OnInit {
   filteredWeeklyActiveProjects = computed(() => {
     const list = this.editableReport()?.activeProjects || [];
     const origin = this.weeklyOriginFilter();
+    if (origin === 'Sustentacao') return [];
     if (origin === 'Manual') return list.filter(p => this.isManualProject(p));
     if (origin === 'Azure') return list.filter(p => this.isAzureProject(p));
     return list;
+  });
+
+  // Maintenance (Sustentação) projects for Weekly Report tab
+  weeklyMaintenanceProjects = computed(() => {
+    return this.editableReport()?.maintenanceSection?.projects || [];
   });
 
   // Active project for the right detail editor
@@ -2680,7 +2762,6 @@ export class CuratorModalComponent implements OnInit {
         currentMilestone: p.currentMilestone,
         progress: p.progress,
         manualRagStatus: p.manualRagStatus,
-        executiveSummary: p.executiveSummary,
         agreedDates: p.agreedDates,
         plannedDates: p.plannedDates,
         agreedHours: p.hours?.agreed,
@@ -2691,6 +2772,10 @@ export class CuratorModalComponent implements OnInit {
         systems: p.systems || [],
         team: p.team || { leader: '', members: [] }
       });
+      const currentRep = this.service.currentWeeklyReport();
+      if (currentRep && this.editableReport()) {
+        this.editableReport.set(JSON.parse(JSON.stringify(currentRep)));
+      }
     } catch (err) {
       console.error(err);
     } finally {
@@ -2917,16 +3002,14 @@ export class CuratorModalComponent implements OnInit {
   onOpenWeeklyReportTab() {
     this.activeTab.set('weekly-report');
     this.service.loadWeeklyReports();
-    if (!this.editableReport()) {
-      const cur = this.service.currentWeeklyReport();
-      if (cur) {
-        this.editableReport.set(JSON.parse(JSON.stringify(cur)));
-      } else {
-        this.service.loadWeeklyReport('latest').then(() => {
-          const loaded = this.service.currentWeeklyReport();
-          if (loaded) this.editableReport.set(JSON.parse(JSON.stringify(loaded)));
-        });
-      }
+    const cur = this.service.currentWeeklyReport();
+    if (cur) {
+      this.editableReport.set(JSON.parse(JSON.stringify(cur)));
+    } else {
+      this.service.loadWeeklyReport('latest').then(() => {
+        const loaded = this.service.currentWeeklyReport();
+        if (loaded) this.editableReport.set(JSON.parse(JSON.stringify(loaded)));
+      });
     }
   }
 
@@ -2941,6 +3024,10 @@ export class CuratorModalComponent implements OnInit {
   async handleGenerateWeeklyReport() {
     this.isGeneratingReport.set(true);
     try {
+      const currentDraft = this.editableReport();
+      if (currentDraft) {
+        await this.service.saveWeeklyReport(currentDraft);
+      }
       const generated = await this.service.generateWeeklyReport();
       if (generated) {
         this.editableReport.set(JSON.parse(JSON.stringify(generated)));
@@ -2956,6 +3043,10 @@ export class CuratorModalComponent implements OnInit {
     if (!report) return;
     const ok = await this.service.saveWeeklyReport(report);
     if (ok) {
+      const updated = this.service.currentWeeklyReport();
+      if (updated) {
+        this.editableReport.set(JSON.parse(JSON.stringify(updated)));
+      }
       alert('Edição semanal salva e publicada com sucesso!');
     }
   }
@@ -3015,6 +3106,11 @@ export class CuratorModalComponent implements OnInit {
     if (!report || !report.boardDecisions) return;
     report.boardDecisions.splice(index, 1);
     this.editableReport.set({ ...report });
+  }
+
+  async handlePublishOnline() {
+    const res = await this.service.publishOnline();
+    alert(res.message);
   }
 }
 

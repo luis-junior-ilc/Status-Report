@@ -70,6 +70,6 @@
     </div>
   </footer>
 
-  <!-- Curator / Admin Drawer Modal -->
-  <app-curator-modal class="print:hidden"></app-curator-modal>
+  <!-- Curator / Admin Drawer Modal (strictly rendered only on local machine) -->
+  <app-curator-modal *ngIf="service.isLocalEnvironment()" class="print:hidden"></app-curator-modal>
 </div>

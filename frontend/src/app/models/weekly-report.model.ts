@@ -36,7 +36,9 @@ export interface WeeklyReportProject {
   attentionPoints: string;
   hoursExecuted?: number;
   hoursPlanned?: number;
+  hoursAgreed?: number;
   priority?: 'P1' | 'P2' | 'P3' | 'P4';
+  category?: 'new_project' | 'maintenance';
   systems?: string[];
   teamLeader?: string;
   teamMembers?: string[];

@@ -214,7 +214,7 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
             <!-- Edit Button (visible when not editing) -->
             <button
               *ngIf="!isEditingStatusReport()"
-              (click)="startEditingStatusReport(project.executiveSummary)"
+              (click)="startEditingStatusReport(service.getProjectCurrentStatusReport(project))"
               type="button"
               class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-blue-700 bg-white hover:bg-blue-100 rounded-lg border border-blue-200 shadow-2xs transition cursor-pointer"
               title="Editar relato e sincronizar com o Status Report semanal">
@@ -228,7 +228,7 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
           <!-- Read-only View -->
           <div *ngIf="!isEditingStatusReport()">
             <p class="text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-line">
-              {{ project.executiveSummary || 'Acompanhamento regular sem ocorrências impeditivas reportadas.' }}
+              {{ service.getProjectCurrentStatusReport(project) }}
             </p>
           </div>
 

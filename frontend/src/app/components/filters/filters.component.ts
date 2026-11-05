@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
@@ -130,23 +130,28 @@ import { ProjectService } from '../../services/project.service';
 })
 export class FiltersComponent {
   service = inject(ProjectService);
+  @Input() customProjects?: any[] | null = null;
+
+  private get sourceProjects(): any[] {
+    return this.customProjects ?? this.service.projects();
+  }
 
   getCountByStatus(status: string) {
-    const list = this.service.projects();
+    const list = this.sourceProjects;
     if (status === 'Todos') return list.length;
-    return list.filter(p => p.status === status).length;
+    return list.filter(p => (p.status || 'Ativo') === status).length;
   }
 
   getCountByClient(client: string) {
-    return this.service.projects().filter(p => p.client === client).length;
+    return this.sourceProjects.filter(p => p.client === client).length;
   }
 
   getCountByPriority(priority: string) {
-    return this.service.projects().filter(p => (p.priority || 'P2') === priority).length;
+    return this.sourceProjects.filter(p => (p.priority || 'P2') === priority).length;
   }
 
   getCountBySystem(system: string) {
-    return this.service.projects().filter(p => (p.systems || []).includes(system)).length;
+    return this.sourceProjects.filter(p => (p.systems || []).includes(system)).length;
   }
 
   hasActiveFilters(): boolean {

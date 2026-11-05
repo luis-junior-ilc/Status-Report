@@ -31,10 +31,10 @@ import { ProjectService } from '../../services/project.service';
           <!-- Divider -->
           <span class="h-6 w-px bg-slate-700/80 block"></span>
 
-          <!-- Sync Button (in place of Visão Consolidada) -->
+          <!-- Sync Button (restricted to local administrator environment) -->
           <div class="flex items-center gap-2">
             <button
-              *ngIf="!service.isClientPortalMode()"
+              *ngIf="!service.isClientPortalMode() && service.isLocalEnvironment()"
               (click)="service.triggerSync()"
               [disabled]="service.isSyncing()"
               class="px-3 py-1.5 text-xs font-bold rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 hover:border-slate-600 transition flex items-center gap-1.5 shadow-2xs disabled:opacity-50 cursor-pointer"
@@ -149,9 +149,9 @@ import { ProjectService } from '../../services/project.service';
 
           </div>
 
-          <!-- Curator Button (strictly hidden in client portal mode) -->
+          <!-- Curator Button (strictly restricted to local machine and hidden in online / client portal mode) -->
           <button
-            *ngIf="!service.isClientPortalMode()"
+            *ngIf="!service.isClientPortalMode() && service.isLocalEnvironment()"
             (click)="service.isAdminOpen.set(true)"
             class="px-3 py-1.5 text-xs font-semibold rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-sm shadow-blue-500/20 transition flex items-center gap-1.5 cursor-pointer">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -471,7 +471,7 @@ class WeeklyReportStore {
 
         if (target < refDate) {
           const bDays = projectStore.getBusinessDaysDiff ? projectStore.getBusinessDaysDiff(act.targetDate, referenceDate || new Date().toISOString().split('T')[0]) : Math.round((refDate - target) / 86400000);
-          const cDays = Math.max(0, Math.round((new Date().getTime() - target.getTime()) / (1000 * 3600 * 24)));
+          const cDays = Math.max(0, Math.round((refDate.getTime() - target.getTime()) / (1000 * 3600 * 24)));
           const delay = (cDays <= 3) ? cDays : bDays;
           if (delay > maxVariance) maxVariance = delay;
         }
@@ -494,8 +494,38 @@ class WeeklyReportStore {
     return maxVariance;
   }
 
-  syncReportWithProjects(report) {
+  computeStatusPulseFromActiveProjects(activeProjects) {
+    const list = (activeProjects || []).filter(p => p.category !== 'maintenance');
+    let onTrack = 0;
+    let attention = 0;
+    let critical = 0;
+    let totalProgress = 0;
+    let totalActive = 0;
+
+    for (const p of list) {
+      if ((p.status || 'Ativo') === 'Ativo') {
+        totalActive++;
+        if (p.ragStatus === 'red') critical++;
+        else if (p.ragStatus === 'amber') attention++;
+        else onTrack++;
+        totalProgress += (Number(p.progress) || 0);
+      }
+    }
+
+    const avgProgress = totalActive > 0 ? Math.round(totalProgress / totalActive) : 0;
+    return {
+      totalActive,
+      onTrack,
+      attention,
+      critical,
+      averageProgress: avgProgress
+    };
+  }
+
+  syncReportWithProjects(report, options = {}) {
     if (!report) return;
+    const { syncLiveMetrics = false, preserveIncomingProjectTexts = false } = options;
+
     const allProjects = projectStore.getAllProjects() || [];
     const visibleProjects = allProjects
       .filter(p => p.isVisible && p.category !== 'maintenance')
@@ -504,121 +534,156 @@ class WeeklyReportStore {
     // Identify if this is the latest report and what the chronologically previous report is
     const sorted = this.reports.slice().sort((a, b) => b.id.localeCompare(a.id));
     const reportIdx = sorted.findIndex(r => r.id === report.id);
-    const isLatest = reportIdx === 0;
-    const prevReport = (reportIdx >= 0 && reportIdx < sorted.length - 1) ? sorted[reportIdx + 1] : null;
+    const isLatest = reportIdx === 0 || reportIdx === -1;
+    const prevReport = (reportIdx >= 0 && reportIdx < sorted.length - 1)
+      ? sorted[reportIdx + 1]
+      : (reportIdx === -1 && sorted.length > 0 ? sorted[0] : null);
 
-    const existingMap = new Map();
-    (report.activeProjects || []).forEach(ap => {
-      if (ap.projectId) existingMap.set(ap.projectId, ap);
-      if (ap.name) {
-        existingMap.set(ap.name.toLowerCase().trim(), ap);
-        const clean = ap.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim();
-        existingMap.set(clean, ap);
-      }
-    });
+    const hasExistingSnapshot = Array.isArray(report.activeProjects) && report.activeProjects.length > 0;
 
-    let onTrack = 0;
-    let attention = 0;
-    let critical = 0;
-    let totalProgress = 0;
-    let totalActive = 0;
-
-    const mappedProjects = visibleProjects.map(p => {
-      if (p.status === 'Ativo') {
-        totalActive++;
-        if (p.ragStatus === 'red') critical++;
-        else if (p.ragStatus === 'amber') attention++;
-        else onTrack++;
-        totalProgress += (p.progress || 0);
-      }
-
-      const cleanName = (p.name || '').replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim();
-      const existing = existingMap.get(p.id) ||
-                       existingMap.get((p.name || '').toLowerCase().trim()) ||
-                       existingMap.get(cleanName);
-
-      const details = resolveProjectWeeklyDetails(p);
-      const clientLogo = projectStore.getClientLogo ? projectStore.getClientLogo(p.client) : null;
-
-      // 1. STATUS REPORT ANTERIOR: Strictly from previous edition's statusReport if available
-      let prevReportText = null;
-      let prevReportDate = '2026-10-06';
-
-      if (prevReport && Array.isArray(prevReport.activeProjects)) {
-        const prevProject = prevReport.activeProjects.find(ap =>
-          ap.projectId === p.id ||
-          (ap.name && ap.name.toLowerCase().trim() === (p.name || '').toLowerCase().trim()) ||
-          (ap.name && cleanName && ap.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim() === cleanName)
+    if (!syncLiveMetrics && hasExistingSnapshot) {
+      // Historical snapshot protection: never overwrite project metrics (status, progress, ragStatus, hours, varianceDays)
+      // Only backfill missing metadata (e.g., hoursAgreed, clientLogo, previousStatusReport)
+      report.activeProjects = report.activeProjects.map(ap => {
+        const cleanName = (ap.name || '').replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim();
+        const liveProj = allProjects.find(p =>
+          p.id === ap.projectId ||
+          (p.name && p.name.toLowerCase().trim() === (ap.name || '').toLowerCase().trim()) ||
+          (p.name && cleanName && p.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim() === cleanName)
         );
-        if (prevProject && prevProject.statusReport) {
-          prevReportText = prevProject.statusReport;
-          prevReportDate = prevProject.statusReportDate || prevReport.meetingDate || '2026-10-16';
+        const clientLogo = ap.clientLogo || (projectStore.getClientLogo ? projectStore.getClientLogo(ap.client) : null);
+
+        let prevReportText = ap.previousStatusReport;
+        let prevReportDate = ap.previousStatusReportDate || '2026-10-06';
+        const hasExistingPrev = typeof prevReportText === 'string' &&
+          prevReportText.trim() &&
+          prevReportText.trim() !== 'Sem reporte anterior registrado.';
+
+        if (!hasExistingPrev && prevReport && Array.isArray(prevReport.activeProjects)) {
+          const prevProject = prevReport.activeProjects.find(pp =>
+            pp.projectId === ap.projectId ||
+            (pp.name && pp.name.toLowerCase().trim() === (ap.name || '').toLowerCase().trim()) ||
+            (pp.name && cleanName && pp.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim() === cleanName)
+          );
+          if (prevProject && prevProject.statusReport) {
+            prevReportText = prevProject.statusReport;
+            prevReportDate = prevProject.statusReportDate || prevReport.meetingDate || prevReportDate;
+          }
         }
-      }
 
-      if (!prevReportText) {
-        prevReportText = (existing && existing.previousStatusReport) ? existing.previousStatusReport : (details.previousStatusReport || 'Sem reporte anterior registrado.');
-        prevReportDate = (existing && existing.previousStatusReportDate) ? existing.previousStatusReportDate : '2026-10-06';
-      }
+        const hoursAgreed = ap.hoursAgreed !== undefined
+          ? ap.hoursAgreed
+          : (liveProj ? (liveProj.agreedHours ?? liveProj.hours?.agreed ?? ap.hoursPlanned ?? 0) : (ap.hoursPlanned ?? 0));
 
-      // 2. STATUS REPORT ATUAL: In the active/latest edition, p.executiveSummary is the live source of truth
-      let currentReportText = '';
-      let currentReportDate = (existing && existing.statusReportDate) ? existing.statusReportDate : (report.meetingDate || new Date().toISOString().split('T')[0]);
+        return {
+          ...ap,
+          clientLogo: clientLogo,
+          hoursExecuted: Math.round((Number(ap.hoursExecuted) || 0) * 10) / 10,
+          hoursPlanned: Math.round((Number(ap.hoursPlanned) || 0) * 10) / 10,
+          hoursAgreed: Math.round((Number(hoursAgreed) || 0) * 10) / 10,
+          previousStatusReport: prevReportText || 'Sem reporte anterior registrado.',
+          previousStatusReportDate: prevReportDate
+        };
+      });
 
-      if (isLatest) {
+      report.statusPulse = this.computeStatusPulseFromActiveProjects(report.activeProjects);
+    } else {
+      // Live sync: build/update snapshot from current live projectStore (only when generating or explicitly saving the latest report)
+      const existingMap = new Map();
+      (report.activeProjects || []).forEach(ap => {
+        if (ap.projectId) existingMap.set(ap.projectId, ap);
+        if (ap.name) {
+          existingMap.set(ap.name.toLowerCase().trim(), ap);
+          const clean = ap.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim();
+          existingMap.set(clean, ap);
+        }
+      });
+
+      const mappedProjects = visibleProjects.map(p => {
+        const cleanName = (p.name || '').replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim();
+        const existing = existingMap.get(p.id) ||
+                         existingMap.get((p.name || '').toLowerCase().trim()) ||
+                         existingMap.get(cleanName);
+
+        const details = resolveProjectWeeklyDetails(p);
+        const clientLogo = projectStore.getClientLogo ? projectStore.getClientLogo(p.client) : null;
+
+        // 1. STATUS REPORT ANTERIOR: Preserve existing user edit; otherwise pull from previous edition's statusReport
+        let prevReportText = null;
+        let prevReportDate = '2026-10-06';
+
+        if (existing && typeof existing.previousStatusReport === 'string' && existing.previousStatusReport.trim() && existing.previousStatusReport.trim() !== 'Sem reporte anterior registrado.') {
+          prevReportText = existing.previousStatusReport.trim();
+          prevReportDate = existing.previousStatusReportDate || prevReport?.meetingDate || '2026-10-16';
+        } else if (prevReport && Array.isArray(prevReport.activeProjects)) {
+          const prevProject = prevReport.activeProjects.find(ap =>
+            ap.projectId === p.id ||
+            (ap.name && ap.name.toLowerCase().trim() === (p.name || '').toLowerCase().trim()) ||
+            (ap.name && cleanName && ap.name.replace(/^Mirassol\s*-\s*/i, '').toLowerCase().trim() === cleanName)
+          );
+          if (prevProject && prevProject.statusReport) {
+            prevReportText = prevProject.statusReport;
+            prevReportDate = prevProject.statusReportDate || prevReport.meetingDate || '2026-10-16';
+          }
+        }
+
+        if (!prevReportText) {
+          prevReportText = (existing && existing.previousStatusReport) ? existing.previousStatusReport : (details.previousStatusReport || 'Sem reporte anterior registrado.');
+          prevReportDate = (existing && existing.previousStatusReportDate) ? existing.previousStatusReportDate : '2026-10-06';
+        }
+
+        // 2. STATUS REPORT ATUAL (Fonte única de verdade na aba Status Report Diretoria)
+        let currentReportText = '';
+        let currentReportDate = (existing && existing.statusReportDate) ? existing.statusReportDate : (report.meetingDate || new Date().toISOString().split('T')[0]);
+
         const hasRealSummary = p.executiveSummary && p.executiveSummary.trim() &&
           !p.executiveSummary.includes('Projeto integrado ao Azure DevOps') &&
           !p.executiveSummary.includes('Projeto cadastrado manualmente');
 
-        if (hasRealSummary) {
+        if (existing && typeof existing.statusReport === 'string' && existing.statusReport.trim()) {
+          currentReportText = existing.statusReport.trim();
+        } else if (hasRealSummary) {
           currentReportText = p.executiveSummary.trim();
-        } else if (existing && existing.statusReport) {
-          currentReportText = existing.statusReport;
+        } else if (prevReportText) {
+          currentReportText = prevReportText;
         } else {
           currentReportText = details.statusReport;
         }
-      } else {
-        // Historical reports remain frozen as originally saved
-        currentReportText = (existing && existing.statusReport) ? existing.statusReport : details.statusReport;
-      }
 
-      return {
-        projectId: p.id,
-        name: p.name,
-        client: p.client,
-        clientLogo: clientLogo,
-        status: p.status || 'Ativo',
-        currentMilestone: p.currentMilestone || 'Planejamento',
-        progress: p.progress || 0,
-        ragStatus: p.ragStatus || 'green',
-        agreedDelivery: p.agreedDates ? p.agreedDates.end : null,
-        targetDelivery: p.executedDates?.end || p.plannedDates?.end || null,
-        varianceDays: this.calculateProjectVarianceDays(p, report.meetingDate),
-        statusReport: currentReportText,
-        statusReportDate: currentReportDate,
-        previousStatusReport: prevReportText,
-        previousStatusReportDate: prevReportDate,
-        attentionPoints: (existing && existing.attentionPoints) ? existing.attentionPoints : details.attentionPoints,
-        hoursExecuted: p.hours?.totalExecuted || 0,
-        hoursPlanned: p.hours?.totalPlanned || 0,
-        priority: p.priority || 'P2',
-        category: p.category || 'new_project',
-        systems: p.systems || [],
-        teamLeader: p.team?.leader || (p.team?.members ? p.team.members.join(', ') : ''),
-        teamMembers: p.team?.members || [],
-        team: p.team || { leader: p.team?.leader || '', members: [] }
-      };
-    });
+        const hoursAgreed = p.agreedHours ?? p.hours?.agreed ?? p.hours?.totalPlanned ?? 0;
 
-    report.activeProjects = mappedProjects;
-    const avgProgress = totalActive > 0 ? Math.round(totalProgress / totalActive) : 0;
-    report.statusPulse = {
-      totalActive: totalActive,
-      onTrack: onTrack,
-      attention: attention,
-      critical: critical,
-      averageProgress: avgProgress
-    };
+        return {
+          projectId: p.id,
+          name: p.name,
+          client: p.client,
+          clientLogo: clientLogo,
+          status: p.status || 'Ativo',
+          currentMilestone: p.currentMilestone || 'Planejamento',
+          progress: p.progress || 0,
+          ragStatus: p.ragStatus || 'green',
+          agreedDelivery: p.agreedDates ? p.agreedDates.end : null,
+          targetDelivery: p.executedDates?.end || p.plannedDates?.end || null,
+          varianceDays: this.calculateProjectVarianceDays(p, report.meetingDate),
+          statusReport: currentReportText,
+          statusReportDate: currentReportDate,
+          previousStatusReport: prevReportText,
+          previousStatusReportDate: prevReportDate,
+          attentionPoints: (existing && existing.attentionPoints !== undefined) ? existing.attentionPoints : details.attentionPoints,
+          hoursExecuted: Math.round((Number(p.hours?.totalExecuted) || 0) * 10) / 10,
+          hoursPlanned: Math.round((Number(p.hours?.totalPlanned) || 0) * 10) / 10,
+          hoursAgreed: Math.round((Number(hoursAgreed) || 0) * 10) / 10,
+          priority: p.priority || 'P2',
+          category: p.category || 'new_project',
+          systems: p.systems || [],
+          teamLeader: p.team?.leader || (p.team?.members ? p.team.members.join(', ') : ''),
+          teamMembers: p.team?.members || [],
+          team: p.team || { leader: p.team?.leader || '', members: [] }
+        };
+      });
+
+      report.activeProjects = mappedProjects;
+      report.statusPulse = this.computeStatusPulseFromActiveProjects(mappedProjects);
+    }
 
     // Sessão dedicada a Sustentação no Status Report
     const allMaintenanceProjects = allProjects.filter(p => p.category === 'maintenance');
@@ -648,37 +713,37 @@ class WeeklyReportStore {
         // 1. STATUS REPORT ANTERIOR
         let prevReportText = '';
         let prevReportDate = '2026-10-06';
-        if (prevMaintProject && prevMaintProject.statusReport) {
+        if (existing && typeof existing.previousStatusReport === 'string' && existing.previousStatusReport.trim()) {
+          prevReportText = existing.previousStatusReport.trim();
+          prevReportDate = existing.previousStatusReportDate || prevReport?.meetingDate || '2026-10-16';
+        } else if (prevMaintProject && prevMaintProject.statusReport) {
           prevReportText = prevMaintProject.statusReport;
           prevReportDate = prevMaintProject.statusReportDate || prevReport?.meetingDate || '2026-10-16';
-        } else if (existing && existing.previousStatusReport) {
-          prevReportText = existing.previousStatusReport;
-          prevReportDate = existing.previousStatusReportDate || '2026-10-06';
         } else {
           prevReportText = details.previousStatusReport || 'Acompanhamento e suporte operacional contínuo no ciclo anterior.';
         }
 
-        // 2. STATUS REPORT ATUAL
+        // 2. STATUS REPORT ATUAL (Fonte única de verdade na aba Status Report Diretoria)
         let currentReportText = '';
         let currentReportDate = (existing && existing.statusReportDate) ? existing.statusReportDate : (report.meetingDate || new Date().toISOString().split('T')[0]);
 
-        if (isLatest) {
-          const hasRealSummary = p.executiveSummary && p.executiveSummary.trim() &&
-            !p.executiveSummary.includes('Projeto integrado ao Azure DevOps') &&
-            !p.executiveSummary.includes('Projeto cadastrado manualmente');
+        const hasRealSummary = p.executiveSummary && p.executiveSummary.trim() &&
+          !p.executiveSummary.includes('Projeto integrado ao Azure DevOps') &&
+          !p.executiveSummary.includes('Projeto cadastrado manualmente');
 
-          if (hasRealSummary) {
-            currentReportText = p.executiveSummary.trim();
-          } else if (existing && existing.statusReport) {
-            currentReportText = existing.statusReport;
-          } else {
-            currentReportText = details.statusReport || p.statusReport || p.executiveSummary || 'Sustentação regular e suporte contínuo às demandas de N2/N3.';
-          }
+        if (existing && typeof existing.statusReport === 'string' && existing.statusReport.trim()) {
+          currentReportText = existing.statusReport.trim();
+        } else if (hasRealSummary) {
+          currentReportText = p.executiveSummary.trim();
+        } else if (prevReportText) {
+          currentReportText = prevReportText;
         } else {
-          currentReportText = (existing && existing.statusReport) ? existing.statusReport : (details.statusReport || p.statusReport || p.executiveSummary || 'Sustentação regular.');
+          currentReportText = details.statusReport || p.statusReport || p.executiveSummary || 'Sustentação regular e suporte contínuo às demandas de N2/N3.';
         }
 
-        const attentionText = (existing && existing.attentionPoints) ? existing.attentionPoints : (details.attentionPoints || p.attentionPoints || '');
+        const attentionText = (existing && existing.attentionPoints !== undefined)
+          ? existing.attentionPoints
+          : (details.attentionPoints || p.attentionPoints || '');
 
         const recentActs = (p.activities || [])
           .filter(a => {
@@ -700,13 +765,13 @@ class WeeklyReportStore {
           projectId: p.id,
           name: p.name,
           client: p.client,
-          status: p.status || 'Ativo',
-          ragStatus: p.ragStatus || 'green',
+          status: (!syncLiveMetrics && existing && existing.status) ? existing.status : (p.status || 'Ativo'),
+          ragStatus: (!syncLiveMetrics && existing && existing.ragStatus) ? existing.ragStatus : (p.ragStatus || 'green'),
           hoursExecuted: periodHours,
           hoursExecutedInPeriod: periodHours,
-          lifetimeHoursExecuted: p.hours?.totalExecuted || 0,
-          hoursPlanned: p.hours?.totalPlanned || 0,
-          hoursAgreed: p.hours?.agreed || p.agreedHours || 0,
+          lifetimeHoursExecuted: (!syncLiveMetrics && existing && existing.lifetimeHoursExecuted !== undefined) ? existing.lifetimeHoursExecuted : (p.hours?.totalExecuted || 0),
+          hoursPlanned: (!syncLiveMetrics && existing && existing.hoursPlanned !== undefined) ? existing.hoursPlanned : (p.hours?.totalPlanned || 0),
+          hoursAgreed: (!syncLiveMetrics && existing && existing.hoursAgreed !== undefined) ? existing.hoursAgreed : (p.hours?.agreed || p.agreedHours || 0),
           statusReport: currentReportText,
           statusReportDate: currentReportDate,
           previousStatusReport: prevReportText,
@@ -723,15 +788,56 @@ class WeeklyReportStore {
     };
   }
 
-  syncAllReportsWithProjects() {
-    for (const report of this.reports) {
-      this.syncReportWithProjects(report);
+  syncLatestReportToProjects() {
+    if (!Array.isArray(this.reports) || this.reports.length === 0) return;
+    const sorted = this.reports.slice().sort((a, b) => b.id.localeCompare(a.id));
+    const latest = sorted[0];
+    if (!latest) return;
+
+    let projectsChanged = false;
+    if (Array.isArray(latest.activeProjects)) {
+      for (const ap of latest.activeProjects) {
+        if (ap.projectId && typeof ap.statusReport === 'string' && ap.statusReport.trim()) {
+          const proj = projectStore.getProjectById(ap.projectId);
+          if (proj && proj.executiveSummary !== ap.statusReport.trim()) {
+            proj.executiveSummary = ap.statusReport.trim();
+            projectsChanged = true;
+          }
+        }
+      }
     }
+    if (Array.isArray(latest.maintenanceSection?.projects)) {
+      for (const mp of latest.maintenanceSection.projects) {
+        const targetId = mp.projectId || mp.id;
+        if (targetId && typeof mp.statusReport === 'string' && mp.statusReport.trim()) {
+          const proj = projectStore.getProjectById(targetId);
+          if (proj && proj.executiveSummary !== mp.statusReport.trim()) {
+            proj.executiveSummary = mp.statusReport.trim();
+            projectsChanged = true;
+          }
+        }
+      }
+    }
+    if (projectsChanged) {
+      projectStore.save();
+    }
+  }
+
+  syncAllReportsWithProjects() {
+    this.reports.sort((a, b) => b.id.localeCompare(a.id));
+    for (let i = 0; i < this.reports.length; i++) {
+      const report = this.reports[i];
+      const isLatest = i === 0;
+      this.syncReportWithProjects(report, {
+        syncLiveMetrics: isLatest,
+        preserveIncomingProjectTexts: true
+      });
+    }
+    this.syncLatestReportToProjects();
     this.persist();
   }
 
   getAllReports() {
-    this.syncAllReportsWithProjects();
     return this.reports.map(r => ({
       id: r.id,
       weekNumber: r.weekNumber,
@@ -740,25 +846,25 @@ class WeeklyReportStore {
       period: r.period,
       meetingDate: r.meetingDate,
       executiveSummary: r.executiveSummary,
-      statusPulse: r.statusPulse,
+      statusPulse: r.statusPulse || this.computeStatusPulseFromActiveProjects(r.activeProjects),
       activeProjectsCount: r.activeProjects ? r.activeProjects.length : 0,
       roadmapCount: r.roadmapProjects ? r.roadmapProjects.length : 0
     })).sort((a, b) => b.id.localeCompare(a.id));
   }
 
   getReportById(id) {
+    this.reports.sort((a, b) => b.id.localeCompare(a.id));
     if (!id || id === 'latest') {
       const rep = this.reports[0] || null;
       if (rep) {
-        this.syncReportWithProjects(rep);
-        this.persist();
+        this.syncReportWithProjects(rep, { syncLiveMetrics: true, preserveIncomingProjectTexts: true });
       }
       return rep;
     }
     const rep = this.reports.find(r => r.id === id) || null;
     if (rep) {
-      this.syncReportWithProjects(rep);
-      this.persist();
+      const isLatest = this.reports.length > 0 && this.reports[0].id === rep.id;
+      this.syncReportWithProjects(rep, { syncLiveMetrics: isLatest, preserveIncomingProjectTexts: true });
     }
     return rep;
   }
@@ -773,59 +879,7 @@ class WeeklyReportStore {
     const year = now.getFullYear();
     const id = `${year}-W${currentWeekNumber}`;
     const period = getWeekPeriodString(now);
-
-    const allProjects = projectStore.getAllProjects() || [];
-    const visibleProjects = allProjects
-      .filter(p => p.isVisible && p.category !== 'maintenance')
-      .sort((a, b) => projectStore.compareProjects(a, b));
-
-    let onTrack = 0;
-    let attention = 0;
-    let critical = 0;
-    let totalProgress = 0;
-    let totalActive = 0;
-
-    const mappedProjects = visibleProjects.map(p => {
-      if (p.status === 'Ativo') {
-        totalActive++;
-        if (p.ragStatus === 'red') critical++;
-        else if (p.ragStatus === 'amber') attention++;
-        else onTrack++;
-        totalProgress += (p.progress || 0);
-      }
-
-      const details = resolveProjectWeeklyDetails(p);
-      const clientLogo = projectStore.getClientLogo ? projectStore.getClientLogo(p.client) : null;
-
-      return {
-        projectId: p.id,
-        name: p.name,
-        client: p.client,
-        clientLogo: clientLogo,
-        status: p.status || 'Ativo',
-        currentMilestone: p.currentMilestone || 'Planejamento',
-        progress: p.progress || 0,
-        ragStatus: p.ragStatus || 'green',
-        agreedDelivery: p.agreedDates ? p.agreedDates.end : null,
-        targetDelivery: p.executedDates?.end || p.plannedDates?.end || null,
-        varianceDays: this.calculateProjectVarianceDays(p, now.toISOString().split('T')[0]),
-        statusReport: details.statusReport,
-        statusReportDate: now.toISOString().split('T')[0],
-        previousStatusReport: details.previousStatusReport || 'Sem reporte anterior registrado.',
-        previousStatusReportDate: '2026-10-06',
-        attentionPoints: details.attentionPoints,
-        hoursExecuted: p.hours?.totalExecuted || 0,
-        hoursPlanned: p.hours?.totalPlanned || 0,
-        priority: p.priority || 'P2',
-        category: p.category || 'new_project',
-        systems: p.systems || [],
-        teamLeader: p.team?.leader || '',
-        teamMembers: p.team?.members || [],
-        team: p.team || { leader: p.team?.leader || '', members: [] }
-      };
-    });
-
-    const avgProgress = totalActive > 0 ? Math.round(totalProgress / totalActive) : 0;
+    const latestPrev = this.reports[0] || null;
 
     const reportObj = {
       id: id,
@@ -836,37 +890,39 @@ class WeeklyReportStore {
       meetingDate: now.toISOString().split('T')[0],
       executiveSummary: '',
       statusPulse: {
-        totalActive: totalActive,
-        onTrack: onTrack,
-        attention: attention,
-        critical: critical,
-        averageProgress: avgProgress
+        totalActive: 0,
+        onTrack: 0,
+        attention: 0,
+        critical: 0,
+        averageProgress: 0
       },
-      activeProjects: mappedProjects,
-      roadmapProjects: DEFAULT_ROADMAP,
-      boardDecisions: DEFAULT_DECISIONS
+      activeProjects: [],
+      roadmapProjects: latestPrev?.roadmapProjects ? JSON.parse(JSON.stringify(latestPrev.roadmapProjects)) : DEFAULT_ROADMAP,
+      boardDecisions: latestPrev?.boardDecisions ? JSON.parse(JSON.stringify(latestPrev.boardDecisions)) : DEFAULT_DECISIONS
     };
-    this.syncReportWithProjects(reportObj);
     return reportObj;
   }
 
   generateCurrentWeek() {
     const report = this.buildReportForCurrentWeek();
     const existingIndex = this.reports.findIndex(r => r.id === report.id);
+    let targetReport = report;
+
     if (existingIndex >= 0) {
-      // Preserve any custom roadmap or decisions if previously edited
       const old = this.reports[existingIndex];
-      report.roadmapProjects = old.roadmapProjects || DEFAULT_ROADMAP;
-      report.boardDecisions = old.boardDecisions || DEFAULT_DECISIONS;
-      if (old.executiveSummary && !old.executiveSummary.includes('Visão executiva consolidada')) {
-        report.executiveSummary = old.executiveSummary;
-      }
-      this.reports[existingIndex] = report;
+      old.period = old.period || report.period;
+      old.meetingDate = old.meetingDate || report.meetingDate;
+      old.roadmapProjects = old.roadmapProjects || DEFAULT_ROADMAP;
+      old.boardDecisions = old.boardDecisions || DEFAULT_DECISIONS;
+      targetReport = old;
     } else {
       this.reports.unshift(report);
+      this.reports.sort((a, b) => b.id.localeCompare(a.id));
     }
+
+    this.syncReportWithProjects(targetReport, { syncLiveMetrics: true, preserveIncomingProjectTexts: false });
     this.persist();
-    return report;
+    return targetReport;
   }
 
   saveReport(reportData) {
@@ -890,6 +946,7 @@ class WeeklyReportStore {
     }
 
     const idx = this.reports.findIndex(r => r.id === reportData.id);
+    const isNewEdition = idx === -1;
     if (idx >= 0) {
       this.reports[idx] = { ...this.reports[idx], ...reportData };
     } else {
@@ -897,26 +954,53 @@ class WeeklyReportStore {
     }
     this.reports.sort((a, b) => b.id.localeCompare(a.id));
 
-    // If saving the latest report, sync updated statusReport to project.executiveSummary in projectStore
+    const savedReport = this.reports.find(r => r.id === reportData.id);
     const isLatest = this.reports.length > 0 && this.reports[0].id === reportData.id;
-    if (isLatest && Array.isArray(reportData.activeProjects)) {
+
+    if (isLatest) {
+      // Sync live metrics ONLY for the latest/newly created edition, leaving all historical reports untouched
+      this.syncReportWithProjects(savedReport, {
+        syncLiveMetrics: true,
+        preserveIncomingProjectTexts: true
+      });
+
       let projectsChanged = false;
-      for (const ap of reportData.activeProjects) {
-        if (ap.projectId && typeof ap.statusReport === 'string' && ap.statusReport.trim()) {
-          const proj = projectStore.getProjectById(ap.projectId);
-          if (proj && proj.executiveSummary !== ap.statusReport.trim()) {
-            proj.executiveSummary = ap.statusReport.trim();
-            projectsChanged = true;
+      if (Array.isArray(savedReport.activeProjects)) {
+        for (const ap of savedReport.activeProjects) {
+          if (ap.projectId && typeof ap.statusReport === 'string' && ap.statusReport.trim()) {
+            const proj = projectStore.getProjectById(ap.projectId);
+            if (proj && proj.executiveSummary !== ap.statusReport.trim()) {
+              proj.executiveSummary = ap.statusReport.trim();
+              projectsChanged = true;
+            }
+          }
+        }
+      }
+      if (Array.isArray(savedReport.maintenanceSection?.projects)) {
+        for (const mp of savedReport.maintenanceSection.projects) {
+          const targetId = mp.projectId || mp.id;
+          if (targetId && typeof mp.statusReport === 'string' && mp.statusReport.trim()) {
+            const proj = projectStore.getProjectById(targetId);
+            if (proj && proj.executiveSummary !== mp.statusReport.trim()) {
+              proj.executiveSummary = mp.statusReport.trim();
+              projectsChanged = true;
+            }
           }
         }
       }
       if (projectsChanged) {
         projectStore.save();
       }
+    } else if (savedReport) {
+      // Historical report edit: preserve historical project metrics and recalculate statusPulse from its own snapshot
+      this.syncReportWithProjects(savedReport, {
+        syncLiveMetrics: false,
+        preserveIncomingProjectTexts: true
+      });
     }
 
     this.persist();
-    return this.reports.find(r => r.id === reportData.id);
+    return savedReport;
   }
 
   updateProjectStatusReport(projectId, newExecutiveSummary) {
@@ -924,13 +1008,26 @@ class WeeklyReportStore {
     const sorted = this.reports.slice().sort((a, b) => b.id.localeCompare(a.id));
     if (sorted.length === 0) return;
     const latest = sorted[0];
+    let updated = false;
     if (Array.isArray(latest.activeProjects)) {
       const proj = latest.activeProjects.find(ap => ap.projectId === projectId);
       if (proj) {
         proj.statusReport = newExecutiveSummary;
         proj.statusReportDate = new Date().toISOString().split('T')[0];
-        this.persist();
+        updated = true;
       }
+    }
+    if (Array.isArray(latest.maintenanceSection?.projects)) {
+      const mproj = latest.maintenanceSection.projects.find(mp => (mp.projectId === projectId || mp.id === projectId));
+      if (mproj) {
+        mproj.statusReport = newExecutiveSummary;
+        mproj.summary = newExecutiveSummary;
+        mproj.statusReportDate = new Date().toISOString().split('T')[0];
+        updated = true;
+      }
+    }
+    if (updated) {
+      this.persist();
     }
   }
 
