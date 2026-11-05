@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-05T16:04:39.676Z",
+  "lastSync": "2026-11-05T18:34:36.671Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -12,20 +12,20 @@
       "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2025-07-01",
-        "end": "2026-11-04"
+        "end": "2026-11-06"
       },
       "plannedDates": {
         "start": "2025-07-01",
-        "end": "2026-11-04"
+        "end": "2026-11-06"
       },
       "executedDates": {
         "start": "2025-07-01",
         "end": null
       },
-      "progress": 99,
+      "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-05T16:04:23.391Z",
+      "azureLastUpdated": "2026-11-05T18:34:21.030Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 343,
@@ -7032,10 +7032,10 @@
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
           "startDate": "2026-05-01",
-          "targetDate": "2026-11-04",
-          "dateStr": "04/11/2026",
-          "ilcHours": 139,
-          "ilcHoursTotal": 147,
+          "targetDate": "2026-11-06",
+          "dateStr": "06/11/2026",
+          "ilcHours": 143,
+          "ilcHoursTotal": 155,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -7419,12 +7419,23 @@
               "id": 7512,
               "title": "[BUG][BE] Link não encontrado | Envio notificação",
               "type": "Task",
-              "state": "Active",
+              "state": "QA",
               "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
               "originalEstimate": 4,
-              "completedWork": 0,
+              "completedWork": 4,
               "startDate": "2026-11-04",
               "targetDate": "2026-11-04"
+            },
+            {
+              "id": 7516,
+              "title": "[FS] VINCULAR FORM AO MOTORISTA",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-06"
             }
           ]
         },
@@ -7753,14 +7764,14 @@
       "hours": {
         "agreed": 698,
         "agreedHours": 698,
-        "planned": 1807.5,
-        "executed": 777.3,
+        "planned": 1815.5,
+        "executed": 781.3,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 1807.5,
-        "ilcExecuted": 777.3,
-        "totalPlanned": 1807.5,
-        "totalExecuted": 777.3,
+        "ilcPlanned": 1815.5,
+        "ilcExecuted": 781.3,
+        "totalPlanned": 1815.5,
+        "totalExecuted": 781.3,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -7773,8 +7784,8 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 1599,
-            "executed": 724.3,
+            "planned": 1607,
+            "executed": 728.3,
             "percentage": 45,
             "completed": false,
             "deliverablesTotal": 40,
@@ -7810,16 +7821,16 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 1692.5,
-        "ilcExecuted": 777.3,
-        "progress": 99,
+        "ilcPlanned": 1700.5,
+        "ilcExecuted": 781.3,
+        "progress": 98,
         "agreedDates": {
           "start": "2025-07-01",
-          "end": "2026-11-04"
+          "end": "2026-11-06"
         },
         "plannedDates": {
           "start": "2025-07-01",
-          "end": "2026-11-04"
+          "end": "2026-11-06"
         }
       },
       "lockedFields": {
@@ -7872,7 +7883,7 @@
       "progress": 5,
       "manualRagStatus": "auto",
       "executiveSummary": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
-      "azureLastUpdated": "2026-11-05T16:04:24.250Z",
+      "azureLastUpdated": "2026-11-05T18:34:21.563Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8156,7 +8167,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-05T16:04:25.774Z",
+      "azureLastUpdated": "2026-11-05T18:34:22.839Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 44,
@@ -8549,7 +8560,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-05T16:04:26.530Z",
+      "azureLastUpdated": "2026-11-05T18:34:23.622Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8893,7 +8904,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-05T16:04:27.908Z",
+      "azureLastUpdated": "2026-11-05T18:34:24.553Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -9015,7 +9026,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-05T16:04:28.594Z",
+      "azureLastUpdated": "2026-11-05T18:34:25.070Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "red",
       "varianceDays": 303,
@@ -9831,7 +9842,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
-      "azureLastUpdated": "2026-11-05T16:04:30.347Z",
+      "azureLastUpdated": "2026-11-05T18:34:26.716Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11280,7 +11291,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
-      "azureLastUpdated": "2026-11-05T16:04:31.003Z",
+      "azureLastUpdated": "2026-11-05T18:34:27.499Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11620,7 +11631,7 @@
       "progress": 78,
       "manualRagStatus": "auto",
       "executiveSummary": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
-      "azureLastUpdated": "2026-11-05T16:04:31.443Z",
+      "azureLastUpdated": "2026-11-05T18:34:27.941Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11947,22 +11958,22 @@
       "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2025-11-13",
-        "end": "2026-05-18"
+        "end": "2026-11-05"
       },
       "plannedDates": {
         "start": "2025-11-13",
-        "end": "2026-05-18"
+        "end": "2026-11-05"
       },
       "executedDates": {
         "start": "2026-10-06",
         "end": null
       },
-      "progress": 50,
+      "progress": 52,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-05T16:04:31.927Z",
+      "azureLastUpdated": "2026-11-05T18:34:28.649Z",
       "currentIterationName": null,
-      "ragStatus": "green",
+      "ragStatus": "amber",
       "varianceDays": 0,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
@@ -11977,16 +11988,16 @@
           "state": "Active",
           "assignedTo": "Mike Andrade",
           "eapPhase": "Desenvolvimento",
-          "month": "OUT / 26",
+          "month": "NOV / 26",
           "startDate": "2026-10-08",
-          "targetDate": null,
-          "dateStr": "Iteration 1",
-          "ilcHours": 300,
-          "ilcHoursTotal": 300,
+          "targetDate": "2026-11-05",
+          "dateStr": "05/11/2026",
+          "ilcHours": 316,
+          "ilcHoursTotal": 32,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 6280,
@@ -12058,12 +12069,12 @@
               "id": 7118,
               "title": "[FE] Medir a janela de partida a frio do plugin de geolocalização — origem comum da ANR do TSConfig e das falhas de foreground service",
               "type": "Task",
-              "state": "New",
+              "state": "Active",
               "assignedTo": "Mike Andrade",
-              "originalEstimate": 0,
+              "originalEstimate": 16,
               "completedWork": 16,
-              "startDate": null,
-              "targetDate": null
+              "startDate": "2026-11-04",
+              "targetDate": "2026-11-05"
             },
             {
               "id": 7124,
@@ -12107,6 +12118,28 @@
               "originalEstimate": 0,
               "completedWork": 32,
               "startDate": "2026-10-08",
+              "targetDate": null
+            },
+            {
+              "id": 7517,
+              "title": "[FE] Contrato de prestação de serviços: ligar a tela ao endpoint do zapsign-service",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 16,
+              "completedWork": 16,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-05"
+            },
+            {
+              "id": 7518,
+              "title": "[FE] Formulários e Documentos: lista de documentos pendentes de assinatura e aviso na Home",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": null,
               "targetDate": null
             }
           ]
@@ -13079,14 +13112,14 @@
       "hours": {
         "agreed": 720,
         "agreedHours": 720,
-        "planned": 720,
-        "executed": 720,
+        "planned": 452,
+        "executed": 736,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 720,
-        "ilcExecuted": 720,
-        "totalPlanned": 720,
-        "totalExecuted": 720,
+        "ilcPlanned": 452,
+        "ilcExecuted": 736,
+        "totalPlanned": 452,
+        "totalExecuted": 736,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -13099,9 +13132,9 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 720,
-            "executed": 720,
-            "percentage": 100,
+            "planned": 452,
+            "executed": 736,
+            "percentage": 163,
             "completed": false,
             "deliverablesTotal": 8,
             "deliverablesCompleted": 6
@@ -13136,16 +13169,16 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 40,
-        "ilcExecuted": 720,
-        "progress": 50,
+        "ilcPlanned": 72,
+        "ilcExecuted": 736,
+        "progress": 52,
         "agreedDates": {
           "start": "2025-11-13",
-          "end": "2026-05-18"
+          "end": "2026-11-05"
         },
         "plannedDates": {
           "start": "2025-11-13",
-          "end": "2026-05-18"
+          "end": "2026-11-05"
         }
       },
       "lockedFields": {
@@ -13191,7 +13224,7 @@
       "progress": 71,
       "manualRagStatus": "auto",
       "executiveSummary": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
-      "azureLastUpdated": "2026-11-05T16:04:32.743Z",
+      "azureLastUpdated": "2026-11-05T18:34:29.254Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -14107,8 +14140,8 @@
           "startDate": "2026-10-20",
           "targetDate": "2026-11-20",
           "dateStr": "20/11/2026",
-          "ilcHours": 114,
-          "ilcHoursTotal": 117,
+          "ilcHours": 120,
+          "ilcHoursTotal": 123,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -14212,6 +14245,17 @@
               "completedWork": 0,
               "startDate": "2026-10-27",
               "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7513,
+              "title": "[BE] BUSCAR CONTRATO ASSINADO NA ZAPSIGN",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-05"
             }
           ]
         }
@@ -14219,14 +14263,14 @@
       "hours": {
         "agreed": 173.6,
         "agreedHours": 173.6,
-        "planned": 459,
-        "executed": 408,
+        "planned": 465,
+        "executed": 414,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 459,
-        "ilcExecuted": 408,
-        "totalPlanned": 459,
-        "totalExecuted": 408,
+        "ilcPlanned": 465,
+        "ilcExecuted": 414,
+        "totalPlanned": 465,
+        "totalExecuted": 414,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -14239,8 +14283,8 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 372,
-            "executed": 345,
+            "planned": 378,
+            "executed": 351,
             "percentage": 93,
             "completed": false,
             "deliverablesTotal": 4,
@@ -14276,8 +14320,8 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 459,
-        "ilcExecuted": 408,
+        "ilcPlanned": 465,
+        "ilcExecuted": 414,
         "progress": 71,
         "agreedDates": {
           "start": "2026-08-31",
@@ -14338,7 +14382,7 @@
       "progress": 63,
       "manualRagStatus": "auto",
       "executiveSummary": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
-      "azureLastUpdated": "2026-11-05T16:04:34.272Z",
+      "azureLastUpdated": "2026-11-05T18:34:31.011Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "red",
       "varianceDays": 9,
@@ -15096,7 +15140,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-05T16:04:35.715Z",
+      "azureLastUpdated": "2026-11-05T18:34:32.989Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "red",
       "varianceDays": 398,
@@ -21122,7 +21166,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-05T16:04:37.248Z",
+      "azureLastUpdated": "2026-11-05T18:34:34.100Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "red",
       "varianceDays": 1386,
@@ -23384,7 +23428,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-05T16:04:37.765Z",
+      "azureLastUpdated": "2026-11-05T18:34:34.655Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24245,7 +24289,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-05T16:04:39.206Z",
+      "azureLastUpdated": "2026-11-05T18:34:36.116Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 239,
@@ -29105,7 +29149,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-05T16:04:39.676Z",
+      "azureLastUpdated": "2026-11-05T18:34:36.671Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "red",
       "varianceDays": 44,
@@ -29819,7 +29863,7 @@
       "progress": 16,
       "manualRagStatus": "auto",
       "executiveSummary": "Em fase de integração com o backend.",
-      "azureLastUpdated": "2026-11-05T16:04:36.490Z",
+      "azureLastUpdated": "2026-11-05T18:34:33.418Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30306,7 +30350,7 @@
       "progress": 44,
       "manualRagStatus": "auto",
       "executiveSummary": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
-      "azureLastUpdated": "2026-11-05T16:04:29.132Z",
+      "azureLastUpdated": "2026-11-05T18:34:25.845Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31383,7 +31427,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-05T16:04:33.301Z",
+      "azureLastUpdated": "2026-11-05T18:34:30.357Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31951,7 +31995,7 @@
       "progress": 5,
       "manualRagStatus": "auto",
       "executiveSummary": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
-      "azureLastUpdated": "2026-11-05T16:04:27.421Z",
+      "azureLastUpdated": "2026-11-05T18:34:24.212Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",

@@ -65,10 +65,51 @@ export class ProjectService {
     (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
   );
 
-  // Client Portal Mode (secure token-gated access)
+// Client Portal Mode (secure token-gated access)
   isClientPortalMode = signal<boolean>(false);
   clientPortalSlug = signal<string | null>(null);
   clientPortalError = signal<string | null>(null);
+
+  // --- VIEWER AUTHENTICATION & ACCESS CONTROL (100% Free Hybrid System) ---
+  viewerUser = signal<any | null>(null);
+  viewerSessionToken = signal<string | null>(
+    typeof window !== 'undefined' ? (localStorage.getItem('ilc_viewer_session') || null) : null
+  );
+  authConfig = signal<any | null>(null);
+  previewLoginOnLocalhost = signal<boolean>(false);
+
+  isViewerAuthenticated = computed<boolean>(() => {
+    return !!this.viewerUser() && !!this.viewerSessionToken();
+  });
+
+  requiresViewerLogin = computed<boolean>(() => {
+    // Client portal mode handles its own token in the URL
+    if (this.isClientPortalMode()) return false;
+    
+    // In local dev, require login only if previewing or explicitly enabled
+    if (this.isLocalEnvironment() && !this.previewLoginOnLocalhost()) {
+      return false;
+    }
+    
+    // Online (Vercel): require login if enabled by configuration
+    const onlineRequiresAuth = this.authConfig()?.requireAuthOnline !== false;
+    if (onlineRequiresAuth && !this.isViewerAuthenticated()) {
+      return true;
+    }
+    return false;
+  });
+
+  private getPublicHeaders(): Record<string, string> {
+    const headers: Record<string, string> = {};
+    const token = this.viewerSessionToken();
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    if (this.previewLoginOnLocalhost()) {
+      headers['x-force-auth'] = 'true';
+    }
+    return headers;
+  }
 
   // Helper to get client logo anywhere
   getClientLogo(clientName: string): string | null {
@@ -351,9 +392,15 @@ export class ProjectService {
     this.isLoading.set(true);
     this.lastError.set(null);
     try {
+      await this.loadAuthConfig();
+      if (this.viewerSessionToken() && !this.viewerUser()) {
+        await this.verifySavedSession();
+      }
+
+      const headers = this.getPublicHeaders();
       const [projRes, clientsRes] = await Promise.all([
-        firstValueFrom(this.http.get<{ success: boolean; data: Project[] }>('/api/public/projects')),
-        firstValueFrom(this.http.get<{ success: boolean; data: ClientConfig[] }>('/api/public/clients'))
+        firstValueFrom(this.http.get<{ success: boolean; data: Project[] }>('/api/public/projects', { headers })),
+        firstValueFrom(this.http.get<{ success: boolean; data: ClientConfig[] }>('/api/public/clients', { headers }))
       ]);
 
       if (projRes?.success) {
@@ -377,8 +424,12 @@ export class ProjectService {
         this.loadMaintenanceMetrics()
       ]);
     } catch (err: any) {
-      this.lastError.set('Falha ao conectar com a API do Dashboard.');
-      console.error(err);
+      if (err?.status === 401) {
+        console.warn('Dashboard requer autenticação de visualizador.');
+      } else {
+        this.lastError.set('Falha ao conectar com a API do Dashboard.');
+        console.error(err);
+      }
     } finally {
       this.isLoading.set(false);
     }
@@ -614,7 +665,8 @@ export class ProjectService {
 
   async loadWeeklyReports() {
     try {
-      const res = await firstValueFrom(this.http.get<{ success: boolean; data: WeeklyReportSummary[] }>('/api/public/weekly-reports'));
+      const headers = this.getPublicHeaders();
+      const res = await firstValueFrom(this.http.get<{ success: boolean; data: WeeklyReportSummary[] }>('/api/public/weekly-reports', { headers }));
       if (res?.success) {
         this.weeklyReports.set(res.data);
       }
@@ -627,7 +679,8 @@ export class ProjectService {
     this.isLoadingReport.set(true);
     this.selectedReportId.set(id);
     try {
-      const res = await firstValueFrom(this.http.get<{ success: boolean; data: WeeklyReport }>(`/api/public/weekly-reports/${id}`));
+      const headers = this.getPublicHeaders();
+      const res = await firstValueFrom(this.http.get<{ success: boolean; data: WeeklyReport }>(`/api/public/weekly-reports/${id}`, { headers }));
       if (res?.success) {
         this.currentWeeklyReport.set(res.data);
       }
@@ -706,8 +759,9 @@ export class ProjectService {
     const c = clientFilter || this.selectedClient();
     this.isLoadingMaintenance.set(true);
     try {
+      const headers = this.getPublicHeaders();
       const url = `/api/public/maintenance-metrics?client=${encodeURIComponent(c)}&period=${encodeURIComponent(p)}`;
-      const res = await firstValueFrom(this.http.get<{ success: boolean; data: MaintenanceMetrics }>(url));
+      const res = await firstValueFrom(this.http.get<{ success: boolean; data: MaintenanceMetrics }>(url, { headers }));
       if (res?.success && res.data) {
         this.maintenanceMetrics.set(res.data);
         return res.data;
@@ -726,8 +780,9 @@ export class ProjectService {
     const c = clientFilter || this.selectedClient();
     this.isLoadingTeam.set(true);
     try {
+      const headers = this.getPublicHeaders();
       const url = `/api/public/team-allocation?client=${encodeURIComponent(c)}&period=${encodeURIComponent(p)}`;
-      const res = await firstValueFrom(this.http.get<{ success: boolean; data: TeamAllocationReport }>(url));
+      const res = await firstValueFrom(this.http.get<{ success: boolean; data: TeamAllocationReport }>(url, { headers }));
       if (res?.success && res.data) {
         this.teamAllocationReport.set(res.data);
         return res.data;
@@ -849,6 +904,242 @@ export class ProjectService {
       };
     } finally {
       this.isPublishingOnline.set(false);
+    }
+  }
+
+  // --- VIEWER AUTH & ACCESS CONTROL API CALLS ---
+
+  async loadAuthConfig() {
+    try {
+      const res = await firstValueFrom(this.http.get<{ success: boolean; data: any }>('/api/auth/config'));
+      if (res?.success) {
+        this.authConfig.set(res.data);
+      }
+    } catch (e) {
+      console.warn('Configuração de autenticação não carregada:', e);
+    }
+  }
+
+  async verifySavedSession(): Promise<boolean> {
+    const token = this.viewerSessionToken();
+    if (!token) return false;
+    try {
+      const res = await firstValueFrom(this.http.get<{ success: boolean; user: any }>('/api/auth/me', {
+        headers: { Authorization: `Bearer ${token}` }
+      }));
+      if (res?.success && res.user) {
+        this.viewerUser.set(res.user);
+        return true;
+      }
+    } catch (_) {
+      this.logoutViewer();
+    }
+    return false;
+  }
+
+  private setViewerSession(token: string, user: any) {
+    this.viewerSessionToken.set(token);
+    this.viewerUser.set(user);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('ilc_viewer_session', token);
+      if (user.email) {
+        localStorage.setItem('ilc_last_email', user.email);
+      }
+    }
+  }
+
+  logoutViewer() {
+    this.viewerSessionToken.set(null);
+    this.viewerUser.set(null);
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('ilc_viewer_session');
+    }
+  }
+
+  togglePreviewLogin() {
+    this.previewLoginOnLocalhost.update(v => !v);
+  }
+
+  async requestEmailOtp(email: string): Promise<{ success: boolean; challengeToken?: string; message?: string }> {
+    try {
+      return await firstValueFrom(
+        this.http.post<{ success: boolean; challengeToken?: string; message?: string }>('/api/auth/request-otp', { email })
+      );
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Erro ao enviar código de acesso por e-mail.' };
+    }
+  }
+
+  async verifyEmailOtp(email: string, code: string, challengeToken: string): Promise<{ success: boolean; token?: string; user?: any; message?: string }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<{ success: boolean; token: string; user: any; message?: string }>('/api/auth/verify-otp', {
+          email,
+          code,
+          challengeToken
+        })
+      );
+      if (res?.success && res.token && res.user) {
+        this.setViewerSession(res.token, res.user);
+        await this.loadPublicData();
+      }
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Código de acesso incorreto ou expirado.' };
+    }
+  }
+
+  async loginWithPassword(email: string, password: string): Promise<{
+    success: boolean;
+    token?: string;
+    user?: any;
+    mustChangePassword?: boolean;
+    firstAccessToken?: string;
+    message?: string;
+  }> {
+    try {
+      // Check if we have a locally stored password proof for stateless Vercel logins
+      const proofKey = `ilc_pwd_proof_${email.toLowerCase().trim()}`;
+      const passwordProof = typeof window !== 'undefined' ? (localStorage.getItem(proofKey) || undefined) : undefined;
+
+      const res = await firstValueFrom(
+        this.http.post<any>('/api/auth/login-password', {
+          email,
+          password,
+          passwordProof
+        })
+      );
+
+      if (res?.mustChangePassword) {
+        return res;
+      }
+
+      if (res?.success && res.token && res.user) {
+        this.setViewerSession(res.token, res.user);
+        await this.loadPublicData();
+      }
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Credenciais inválidas ou e-mail não autorizado.' };
+    }
+  }
+
+  async completeFirstPasswordChange(email: string, newPassword: string, firstAccessToken: string): Promise<{
+    success: boolean;
+    token?: string;
+    user?: any;
+    passwordProof?: string;
+    message?: string;
+  }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<any>('/api/auth/change-first-password', {
+          email,
+          newPassword,
+          firstAccessToken
+        })
+      );
+
+      if (res?.success) {
+        if (res.passwordProof && typeof window !== 'undefined') {
+          const proofKey = `ilc_pwd_proof_${email.toLowerCase().trim()}`;
+          localStorage.setItem(proofKey, res.passwordProof);
+        }
+        if (res.token && res.user) {
+          this.setViewerSession(res.token, res.user);
+          await this.loadPublicData();
+        }
+      }
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Erro ao redefinir senha de primeiro acesso.' };
+    }
+  }
+
+  async loginWithMicrosoft(accessToken: string): Promise<{ success: boolean; token?: string; user?: any; message?: string }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<any>('/api/auth/microsoft', { accessToken })
+      );
+      if (res?.success && res.token && res.user) {
+        this.setViewerSession(res.token, res.user);
+        await this.loadPublicData();
+      }
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Falha na autenticação com Microsoft SSO.' };
+    }
+  }
+
+  // Admin access control management
+  async loadAdminAccessControl(): Promise<any | null> {
+    try {
+      const res = await firstValueFrom(
+        this.http.get<{ success: boolean; data: any }>('/api/admin/access-control', {
+          headers: { 'x-admin-pin': this.adminPin() }
+        })
+      );
+      return res?.data || null;
+    } catch (err) {
+      console.error('Erro ao carregar controle de acesso:', err);
+      return null;
+    }
+  }
+
+  async updateAdminAccessSettings(settings: any): Promise<boolean> {
+    try {
+      const res = await firstValueFrom(
+        this.http.put<{ success: boolean }>('/api/admin/access-control/settings', settings, {
+          headers: { 'x-admin-pin': this.adminPin() }
+        })
+      );
+      return !!res?.success;
+    } catch (err) {
+      console.error('Erro ao salvar configurações de controle de acesso:', err);
+      return false;
+    }
+  }
+
+  async upsertAdminAccessUser(user: any): Promise<boolean> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<{ success: boolean }>('/api/admin/access-control/users', user, {
+          headers: { 'x-admin-pin': this.adminPin() }
+        })
+      );
+      return !!res?.success;
+    } catch (err) {
+      console.error('Erro ao salvar usuário de acesso:', err);
+      return false;
+    }
+  }
+
+  async deleteAdminAccessUser(userId: string): Promise<boolean> {
+    try {
+      const res = await firstValueFrom(
+        this.http.delete<{ success: boolean }>(`/api/admin/access-control/users/${userId}`, {
+          headers: { 'x-admin-pin': this.adminPin() }
+        })
+      );
+      return !!res?.success;
+    } catch (err) {
+      console.error('Erro ao excluir usuário de acesso:', err);
+      return false;
+    }
+  }
+
+  async sendAccessInvitationEmail(userId: string, dashboardUrl?: string): Promise<{ success: boolean; message: string }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<{ success: boolean; message: string }>(
+          `/api/admin/access-control/users/${userId}/invite`,
+          { dashboardUrl: dashboardUrl || window.location.origin },
+          { headers: { 'x-admin-pin': this.adminPin() } }
+        )
+      );
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Erro ao enviar e-mail de convite.' };
     }
   }
 }

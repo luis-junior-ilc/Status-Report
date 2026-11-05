@@ -12,6 +12,7 @@ import { CuratorModalComponent } from './components/curator-modal/curator-modal.
 import { ExecutiveReportComponent } from './components/executive-report/executive-report.component';
 import { MaintenanceDashboardComponent } from './components/maintenance-dashboard/maintenance-dashboard.component';
 import { TeamAllocationComponent } from './components/team-allocation/team-allocation.component';
+import { LoginCardComponent } from './components/login-card/login-card.component';
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,8 @@ import { TeamAllocationComponent } from './components/team-allocation/team-alloc
     CuratorModalComponent,
     ExecutiveReportComponent,
     MaintenanceDashboardComponent,
-    TeamAllocationComponent
+    TeamAllocationComponent,
+    LoginCardComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.css'

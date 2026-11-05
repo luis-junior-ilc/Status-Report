@@ -1,0 +1,30 @@
+{
+  "requireAuthOnline": true,
+  "jwtSecret": "ilc-exec-dashboard-secret-2026-9f8e7d6c5b4a3f2e1d0c",
+  "microsoftSso": {
+    "enabled": true,
+    "clientId": "",
+    "tenantId": "common"
+  },
+  "smtp": {
+    "host": "smtp.office365.com",
+    "port": 587,
+    "secure": false,
+    "user": "",
+    "fromName": "PMO ILC • Painel Executivo"
+  },
+  "allowedDomains": [],
+  "users": [
+    {
+      "id": "usr-admin-1",
+      "name": "Luis Junior",
+      "email": "luis.junior@opah.com.br",
+      "organization": "Opah IT / ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "ILC@2026",
+      "createdAt": "2026-11-05T19:00:06.589Z"
+    }
+  ]
+}

@@ -6,6 +6,7 @@ const projectStore = require('./services/projectStore');
 const syncScheduler = require('./services/syncScheduler');
 const weeklyReportStore = require('./services/weeklyReportStore');
 const teamStore = require('./services/teamStore');
+const accessStore = require('./services/accessStore');
 
 const app = express();
 
@@ -21,8 +22,104 @@ try {
 } catch (_) {}
 app.use('/assets/logos', express.static(publicLogos));
 
+// Viewer Authentication & Access Control Endpoints
+app.get('/api/auth/config', (req, res) => {
+  res.json({
+    success: true,
+    data: accessStore.getPublicAuthConfig()
+  });
+});
+
+app.get('/api/auth/me', (req, res) => {
+  const authHeader = req.headers.authorization || '';
+  const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
+  const user = accessStore.verifySessionToken(token);
+  if (!user) {
+    return res.status(401).json({ success: false, message: 'Sessão inválida ou expirada.' });
+  }
+  res.json({ success: true, user });
+});
+
+app.post('/api/auth/request-otp', async (req, res) => {
+  try {
+    const result = await accessStore.requestEmailOtp(req.body.email);
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/auth/verify-otp', (req, res) => {
+  try {
+    const { email, code, challengeToken } = req.body;
+    const result = accessStore.verifyEmailOtp(email, code, challengeToken);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(401).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/auth/login-password', (req, res) => {
+  try {
+    const { email, password, passwordProof } = req.body;
+    const result = accessStore.verifyPasscode(email, password, passwordProof);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(401).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/auth/change-first-password', (req, res) => {
+  try {
+    const { email, newPassword, firstAccessToken } = req.body;
+    const result = accessStore.completeFirstAccessPasswordChange(email, newPassword, firstAccessToken);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/auth/microsoft', async (req, res) => {
+  try {
+    const result = await accessStore.verifyMicrosoftToken(req.body.accessToken);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(401).json({ success: false, message: err.message });
+  }
+});
+
+// Viewer Authorization Middleware for Public Portfolio Endpoints
+function checkViewerAuth(req, res, next) {
+  const authHeader = req.headers.authorization || '';
+  const bearerToken = authHeader.startsWith('Bearer ') ? authHeader.slice(7).trim() : '';
+  const viewerUser = bearerToken ? accessStore.verifySessionToken(bearerToken) : null;
+  if (viewerUser) {
+    req.viewerUser = viewerUser;
+  }
+
+  const host = (req.hostname || req.headers.host || '').split(':')[0].toLowerCase();
+  const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  const forceAuth = req.headers['x-force-auth'] === 'true';
+
+  const authCfg = accessStore.getPublicAuthConfig();
+  if ((!isLocal || forceAuth) && authCfg.requireAuthOnline !== false && !req.viewerUser) {
+    return res.status(401).json({
+      success: false,
+      requiresAuth: true,
+      message: 'Autenticação necessária para acessar o Portfólio Executivo.'
+    });
+  }
+
+  // Enforce client scope if viewerUser is restricted to a single client/system
+  if (req.viewerUser && req.viewerUser.clientFilter && req.viewerUser.clientFilter !== 'Todos') {
+    req.query.client = req.viewerUser.clientFilter;
+  }
+
+  next();
+}
+
 // Public API endpoints
-app.get('/api/public/projects', (req, res) => {
+app.get('/api/public/projects', checkViewerAuth, (req, res) => {
   const clientFilter = req.query.client || null;
   const includeMaintenance = req.query.includeMaintenance === 'true';
   res.json({
@@ -31,14 +128,18 @@ app.get('/api/public/projects', (req, res) => {
   });
 });
 
-app.get('/api/public/clients', (req, res) => {
+app.get('/api/public/clients', checkViewerAuth, (req, res) => {
+  let clients = projectStore.getClients();
+  if (req.viewerUser && req.viewerUser.clientFilter && req.viewerUser.clientFilter !== 'Todos') {
+    clients = clients.filter(c => c.name === req.viewerUser.clientFilter);
+  }
   res.json({
     success: true,
-    data: projectStore.getClients()
+    data: clients
   });
 });
 
-app.get('/api/public/stats', (req, res) => {
+app.get('/api/public/stats', checkViewerAuth, (req, res) => {
   const clientFilter = req.query.client || null;
   res.json({
     success: true,
@@ -46,7 +147,7 @@ app.get('/api/public/stats', (req, res) => {
   });
 });
 
-app.get('/api/public/maintenance-metrics', (req, res) => {
+app.get('/api/public/maintenance-metrics', checkViewerAuth, (req, res) => {
   const clientFilter = req.query.client || null;
   const period = req.query.period || 'year_2026';
   res.json({
@@ -55,7 +156,7 @@ app.get('/api/public/maintenance-metrics', (req, res) => {
   });
 });
 
-app.get('/api/public/team-allocation', (req, res) => {
+app.get('/api/public/team-allocation', checkViewerAuth, (req, res) => {
   const clientFilter = req.query.client || null;
   const period = req.query.period || 'year_2026';
   res.json({
@@ -96,14 +197,14 @@ app.get('/api/public/client-portal/:slug', (req, res) => {
 });
 
 // Public Weekly Status Reports (for Executive Presentation & History)
-app.get('/api/public/weekly-reports', (req, res) => {
+app.get('/api/public/weekly-reports', checkViewerAuth, (req, res) => {
   res.json({
     success: true,
     data: weeklyReportStore.getAllReports()
   });
 });
 
-app.get('/api/public/weekly-reports/:id', (req, res) => {
+app.get('/api/public/weekly-reports/:id', checkViewerAuth, (req, res) => {
   const report = weeklyReportStore.getReportById(req.params.id);
   if (!report) {
     return res.status(404).json({ success: false, message: 'Relatório semanal não encontrado.' });
@@ -131,6 +232,50 @@ function checkAdminAuth(req, res, next) {
   }
   next();
 }
+
+// Admin Access Control & Security Management
+app.get('/api/admin/access-control', checkAdminAuth, (req, res) => {
+  res.json({
+    success: true,
+    data: accessStore.getAdminConfig()
+  });
+});
+
+app.put('/api/admin/access-control/settings', checkAdminAuth, (req, res) => {
+  try {
+    const updated = accessStore.updateAdminSettings(req.body);
+    res.json({ success: true, data: updated });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/admin/access-control/users', checkAdminAuth, (req, res) => {
+  try {
+    const updated = accessStore.upsertUser(req.body);
+    res.json({ success: true, data: updated });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
+app.delete('/api/admin/access-control/users/:id', checkAdminAuth, (req, res) => {
+  try {
+    const updated = accessStore.deleteUser(req.params.id);
+    res.json({ success: true, data: updated });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
+app.post('/api/admin/access-control/users/:id/invite', checkAdminAuth, async (req, res) => {
+  try {
+    const result = await accessStore.sendInvitationEmail(req.params.id, req.body.dashboardUrl);
+    res.json(result);
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
 
 // Admin Team Management (Visibility & Project Allocation)
 app.get('/api/admin/team', checkAdminAuth, (req, res) => {

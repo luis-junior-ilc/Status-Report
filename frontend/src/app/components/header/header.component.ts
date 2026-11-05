@@ -160,6 +160,35 @@ import { ProjectService } from '../../services/project.service';
             </svg>
             <span>Curadoria</span>
           </button>
+
+          <!-- Viewer Logged-In Badge / Logout Button -->
+          <div *ngIf="service.viewerUser()" class="flex items-center gap-2 pl-2 border-l border-slate-700">
+            <div class="flex items-center gap-1.5 text-xs text-slate-300 bg-slate-800/80 px-2.5 py-1 rounded-lg border border-slate-700">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-medium truncate max-w-[120px]" [title]="service.viewerUser()?.email">{{ service.viewerUser()?.name || service.viewerUser()?.email }}</span>
+              <span *ngIf="service.viewerUser()?.clientFilter && service.viewerUser()?.clientFilter !== 'Todos'" class="px-1 py-0.5 rounded text-[10px] bg-blue-900/60 text-blue-300 font-bold">
+                {{ service.viewerUser()?.clientFilter }}
+              </span>
+            </div>
+            <button
+              (click)="service.logoutViewer()"
+              class="p-1.5 text-slate-400 hover:text-rose-400 hover:bg-slate-800 rounded-lg transition"
+              title="Encerrar sessão">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Localhost Quick Toggle for Testing Viewer Login Screen -->
+          <button
+            *ngIf="service.isLocalEnvironment()"
+            (click)="service.togglePreviewLogin()"
+            class="px-2.5 py-1 text-[11px] font-medium rounded-lg text-slate-400 hover:text-white bg-slate-800/60 hover:bg-slate-700 border border-slate-700 transition flex items-center gap-1"
+            [title]="service.previewLoginOnLocalhost() ? 'Voltar para tela autenticada' : 'Simular tela de login online'">
+            <span>🔒</span>
+            <span class="hidden sm:inline">{{ service.previewLoginOnLocalhost() ? 'Sair do Modo Teste' : 'Testar Login' }}</span>
+          </button>
         </div>
       </div>
     </header>
