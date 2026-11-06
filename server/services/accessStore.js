@@ -118,11 +118,6 @@ class AccessStore {
   }
 
   getLocalEnvSmtpPass() {
-    if (process.env.SMTP_PASS) return process.env.SMTP_PASS;
-    if (this.data.smtp?.pass) {
-      process.env.SMTP_PASS = this.data.smtp.pass;
-      return this.data.smtp.pass;
-    }
     const candidates = [
       path.join(__dirname, '../.env'),
       path.join(__dirname, '../../.env'),
@@ -133,7 +128,7 @@ class AccessStore {
       try {
         if (fs.existsSync(envPath)) {
           const content = fs.readFileSync(envPath, 'utf8');
-          const m = content.match(/^SMTP_PASS=(.*)$/m);
+          const m = content.match(/^SMTP_PASS=["']?(.*?)["']?$/m);
           if (m && m[1].trim()) {
             const val = m[1].trim();
             process.env.SMTP_PASS = val;
@@ -142,6 +137,11 @@ class AccessStore {
         }
       } catch (_) {}
     }
+    if (this.data.smtp?.pass) {
+      process.env.SMTP_PASS = this.data.smtp.pass;
+      return this.data.smtp.pass;
+    }
+    if (process.env.SMTP_PASS) return process.env.SMTP_PASS;
     return '';
   }
 
@@ -196,9 +196,9 @@ class AccessStore {
           const envPath = path.join(__dirname, '../.env');
           let envContent = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf8') : '';
           if (envContent.includes('SMTP_PASS=')) {
-            envContent = envContent.replace(/SMTP_PASS=.*/g, `SMTP_PASS=${passVal}`);
+            envContent = envContent.replace(/SMTP_PASS=.*/g, `SMTP_PASS="${passVal}"`);
           } else {
-            envContent += `\nSMTP_PASS=${passVal}\n`;
+            envContent += `\nSMTP_PASS="${passVal}"\n`;
           }
           fs.writeFileSync(envPath, envContent, 'utf8');
         } catch (e) {
@@ -424,7 +424,7 @@ class AccessStore {
           message: `Enviamos um código de 6 dígitos para ${user.email}.`
         };
       } catch (err) {
-        console.error('[AccessStore] Falha ao disparar e-mail SMTP:', err.message);
+        console.error('[AccessStore] Falha detalhada ao disparar e-mail SMTP:', err);
         // Fallback for local development if SMTP credentials fail
         return {
           challengeToken,
