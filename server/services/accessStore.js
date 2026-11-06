@@ -281,7 +281,7 @@ class AccessStore {
       return { authorized: false, reason: 'Informe um endereço de e-mail corporativo válido.' };
     }
 
-    const explicitUser = (this.data.users || []).find(u => u.email.toLowerCase() === cleanEmail);
+    const explicitUser = (this.data.users || []).find(u => (u.email || '').trim().toLowerCase() === cleanEmail);
     if (explicitUser) {
       if (explicitUser.active === false) {
         return { authorized: false, reason: 'O acesso deste e-mail encontra-se suspenso pelo administrador.' };
@@ -289,26 +289,9 @@ class AccessStore {
       return { authorized: true, user: explicitUser };
     }
 
-    const domain = cleanEmail.split('@')[1];
-    const allowedDomains = (this.data.allowedDomains || []).map(d => d.toLowerCase().replace(/^@/, ''));
-    if (domain && allowedDomains.includes(domain)) {
-      return {
-        authorized: true,
-        user: {
-          id: 'dom-' + cleanEmail,
-          name: cleanEmail.split('@')[0].replace(/[._]/g, ' '),
-          email: cleanEmail,
-          organization: domain.toUpperCase(),
-          clientFilter: 'Todos',
-          role: 'board',
-          active: true
-        }
-      };
-    }
-
     return {
       authorized: false,
-      reason: 'Este e-mail não possui permissão de acesso ao Painel Executivo. Solicite a liberação ao PMO.'
+      reason: `O e-mail "${cleanEmail}" não está cadastrado na lista de acessos autorizados deste Painel. Solicite sua inclusão na Curadoria.`
     };
   }
 

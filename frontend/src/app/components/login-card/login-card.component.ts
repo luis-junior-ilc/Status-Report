@@ -208,105 +208,18 @@ import { ProjectService } from '../../services/project.service';
             </div>
           </div>
 
-          <!-- FLUXO 3: LOGIN NORMAL (Abas: Senha ou Token OTP por E-mail) -->
+          <!-- FLUXO 3: LOGIN NORMAL (PADRÃO: SSO MICROSOFT | SECUNDÁRIO: FORMULÁRIO TRADICIONAL) -->
           <div *ngIf="!isChangingFirstPassword() && !isResettingPassword()">
-            <!-- Tab Selector -->
-            <div class="flex rounded-xl bg-slate-900/80 p-1 mb-2.5 border border-slate-700/50">
-              <button (click)="activeTab.set('password'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'password'" [class.text-white]="activeTab() === 'password'" [class.text-slate-400]="activeTab() !== 'password'" class="flex-1 py-1 text-xs font-bold rounded-lg transition cursor-pointer">
-                🔑 E-mail & Senha
-              </button>
-              <button (click)="activeTab.set('otp'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'otp'" [class.text-white]="activeTab() === 'otp'" [class.text-slate-400]="activeTab() !== 'otp'" class="flex-1 py-1 text-xs font-bold rounded-lg transition cursor-pointer">
-                ✉️ Token por E-mail
-              </button>
-            </div>
-
-            <!-- TAB A: Senha de Acesso -->
-            <div *ngIf="activeTab() === 'password'" class="space-y-2.5">
-              <div>
-                <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">E-mail Corporativo</label>
-                <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
-              </div>
-
-              <div>
-                <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">Senha de Acesso</label>
-                <input type="password" [(ngModel)]="loginPassword" (keyup.enter)="submitPasswordLogin()" placeholder="Senha cadastrada ou senha de 1º acesso" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
-              </div>
-
-              <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400">
-                {{ errorMessage() }}
-              </div>
-
-              <button (click)="submitPasswordLogin()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
-                {{ isLoading() ? 'Autenticando...' : 'Acessar Portfólio' }}
-              </button>
-
-              <div class="flex items-center justify-between pt-0.5">
-                <button
-                  type="button"
-                  (click)="startForgotPassword()"
-                  class="text-xs text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
-                  Esqueci minha senha
-                </button>
-                <button
-                  type="button"
-                  (click)="activeTab.set('otp'); errorMessage.set(null)"
-                  class="text-xs text-slate-400 hover:text-slate-200 cursor-pointer">
-                  Entrar com código
-                </button>
-              </div>
-            </div>
-
-            <!-- TAB B: Token de 6 Dígitos por E-mail (OTP) -->
-            <div *ngIf="activeTab() === 'otp'" class="space-y-2.5">
-              <div *ngIf="!otpSent()">
-                <p class="text-xs text-slate-400 mb-2">
-                  Informe seu e-mail corporativo para receber um código numérico de 6 dígitos instantâneo.
-                </p>
-                <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">E-mail Corporativo</label>
-                <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500 mb-2" />
-
-                <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2">
-                  {{ errorMessage() }}
-                </div>
-
-                <button (click)="requestOtpCode()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
-                  {{ isLoading() ? 'Enviando código...' : '📧 Enviar Código de Acesso' }}
-                </button>
-              </div>
-
-              <div *ngIf="otpSent()">
-                <div class="p-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-xs text-emerald-400 mb-2">
-                  {{ successFeedback() || ('Código de 6 dígitos enviado para ' + loginEmail() + '! Verifique sua caixa de entrada.') }}
-                </div>
-
-                <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">Código de 6 Dígitos</label>
-                <input type="text" maxlength="6" [(ngModel)]="otpCode" (keyup.enter)="verifyOtpCode()" placeholder="Ex: 849201" class="w-full text-center tracking-widest text-lg font-black bg-slate-900 border border-slate-700 text-white rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-600 mb-2" />
-
-                <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2">
-                  {{ errorMessage() }}
-                </div>
-
-                <button (click)="verifyOtpCode()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
-                  {{ isLoading() ? 'Validando...' : 'Confirmar e Entrar' }}
-                </button>
-
-                <div class="flex items-center justify-between pt-1 text-xs">
-                  <button (click)="requestOtpCode()" class="text-blue-400 hover:text-blue-300 cursor-pointer">Reenviar código</button>
-                  <button (click)="otpSent.set(false); errorMessage.set(null)" class="text-slate-400 hover:text-white cursor-pointer">Trocar e-mail</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- OPÇÃO SSO MICROSOFT (Office 365) - SEMPRE VISÍVEL -->
-            <div class="mt-3 pt-2.5 border-t border-slate-700/60">
-              <div *ngIf="service.ssoErrorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2 leading-relaxed">
+            <!-- MODO A: SSO MICROSOFT DESTACADO (PADRÃO) -->
+            <div *ngIf="!showTraditionalLogin()" class="space-y-3 text-center">
+              <div *ngIf="service.ssoErrorMessage()" class="p-2.5 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 text-left leading-relaxed">
                 <span class="font-bold">⚠️ Aviso SSO:</span> {{ service.ssoErrorMessage() }}
               </div>
 
               <a
                 [href]="microsoftAuthUrl"
                 (click)="trackMicrosoftClick()"
-                class="w-full py-2 px-3 bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition hover:border-slate-500 shadow-sm cursor-pointer no-underline text-center">
+                class="w-full py-3 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-blue-600/30 transition hover:scale-[1.01] cursor-pointer no-underline">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 21 21" fill="none">
                   <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
                   <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
@@ -315,6 +228,118 @@ import { ProjectService } from '../../services/project.service';
                 </svg>
                 <span>Entrar com Microsoft (Office 365)</span>
               </a>
+
+              <p class="text-[11px] text-slate-400">
+                Acesso restrito aos usuários e diretoria autorizados no Painel.
+              </p>
+
+              <div class="pt-2 border-t border-slate-700/50">
+                <button
+                  type="button"
+                  (click)="showTraditionalLogin.set(true)"
+                  class="text-[11px] text-slate-400 hover:text-slate-200 underline cursor-pointer transition">
+                  Outras opções de acesso (E-mail e Senha)
+                </button>
+              </div>
+            </div>
+
+            <!-- MODO B: LOGIN TRADICIONAL (EXPANSÍVEL) -->
+            <div *ngIf="showTraditionalLogin()">
+              <div class="flex items-center justify-between mb-2">
+                <button
+                  type="button"
+                  (click)="showTraditionalLogin.set(false); errorMessage.set(null)"
+                  class="text-[11px] text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
+                  ← Voltar para o Login Microsoft
+                </button>
+              </div>
+
+              <!-- Tab Selector -->
+              <div class="flex rounded-xl bg-slate-900/80 p-1 mb-2.5 border border-slate-700/50">
+                <button (click)="activeTab.set('password'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'password'" [class.text-white]="activeTab() === 'password'" [class.text-slate-400]="activeTab() !== 'password'" class="flex-1 py-1 text-xs font-bold rounded-lg transition cursor-pointer">
+                  🔑 E-mail & Senha
+                </button>
+                <button (click)="activeTab.set('otp'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'otp'" [class.text-white]="activeTab() === 'otp'" [class.text-slate-400]="activeTab() !== 'otp'" class="flex-1 py-1 text-xs font-bold rounded-lg transition cursor-pointer">
+                  ✉️ Token por E-mail
+                </button>
+              </div>
+
+              <!-- TAB A: Senha de Acesso -->
+              <div *ngIf="activeTab() === 'password'" class="space-y-2.5">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">E-mail Corporativo</label>
+                  <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+                </div>
+
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">Senha de Acesso</label>
+                  <input type="password" [(ngModel)]="loginPassword" (keyup.enter)="submitPasswordLogin()" placeholder="Senha cadastrada ou senha de 1º acesso" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+                </div>
+
+                <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400">
+                  {{ errorMessage() }}
+                </div>
+
+                <button (click)="submitPasswordLogin()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
+                  {{ isLoading() ? 'Autenticando...' : 'Acessar Portfólio' }}
+                </button>
+
+                <div class="flex items-center justify-between pt-0.5">
+                  <button
+                    type="button"
+                    (click)="startForgotPassword()"
+                    class="text-xs text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
+                    Esqueci minha senha
+                  </button>
+                  <button
+                    type="button"
+                    (click)="activeTab.set('otp'); errorMessage.set(null)"
+                    class="text-xs text-slate-400 hover:text-slate-200 cursor-pointer">
+                    Entrar com código
+                  </button>
+                </div>
+              </div>
+
+              <!-- TAB B: Token de 6 Dígitos por E-mail (OTP) -->
+              <div *ngIf="activeTab() === 'otp'" class="space-y-2.5">
+                <div *ngIf="!otpSent()">
+                  <p class="text-xs text-slate-400 mb-2">
+                    Informe seu e-mail corporativo para receber um código numérico de 6 dígitos instantâneo.
+                  </p>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">E-mail Corporativo</label>
+                  <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3 py-1.5 sm:py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500 mb-2" />
+
+                  <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2">
+                    {{ errorMessage() }}
+                  </div>
+
+                  <button (click)="requestOtpCode()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
+                    {{ isLoading() ? 'Enviando código...' : '📧 Enviar Código de Acesso' }}
+                  </button>
+                </div>
+
+                <div *ngIf="otpSent()">
+                  <div class="p-2 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-xs text-emerald-400 mb-2">
+                    {{ successFeedback() || ('Código de 6 dígitos enviado para ' + loginEmail() + '! Verifique sua caixa de entrada.') }}
+                  </div>
+
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-0.5">Código de 6 Dígitos</label>
+                  <input type="text" maxlength="6" [(ngModel)]="otpCode" (keyup.enter)="verifyOtpCode()" placeholder="Ex: 849201" class="w-full text-center tracking-widest text-lg font-black bg-slate-900 border border-slate-700 text-white rounded-xl px-3 py-1.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-600 mb-2" />
+
+                  <div *ngIf="errorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2">
+                    {{ errorMessage() }}
+                  </div>
+
+                  <button (click)="verifyOtpCode()" [disabled]="isLoading()" class="w-full py-2 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
+                    {{ isLoading() ? 'Validando...' : 'Confirmar e Entrar' }}
+                  </button>
+
+                  <div class="flex items-center justify-between pt-1 text-xs">
+                    <button (click)="requestOtpCode()" class="text-blue-400 hover:text-blue-300 cursor-pointer">Reenviar código</button>
+                    <button (click)="otpSent.set(false); errorMessage.set(null)" class="text-slate-400 hover:text-white cursor-pointer">Trocar e-mail</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -332,6 +357,7 @@ import { ProjectService } from '../../services/project.service';
 export class LoginCardComponent implements OnInit {
   service = inject(ProjectService);
 
+  showTraditionalLogin = signal<boolean>(false);
   activeTab = signal<'password' | 'otp'>('password');
   loginEmail = signal<string>(typeof window !== 'undefined' ? (localStorage.getItem('ilc_last_email') || '') : '');
   loginPassword = '';
