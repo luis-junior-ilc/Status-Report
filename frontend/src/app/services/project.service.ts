@@ -970,20 +970,21 @@ export class ProjectService {
     }
   }
 
-  async verifyEmailOtp(email: string, code: string, challengeToken: string): Promise<{ success: boolean; token?: string; user?: any; message?: string }> {
+  async verifyEmailOtp(email: string, code: string, challengeToken: string): Promise<{ success: boolean; token?: string; sessionToken?: string; user?: any; message?: string }> {
     try {
       const res = await firstValueFrom(
-        this.http.post<{ success: boolean; token: string; user: any; message?: string }>('/api/auth/verify-otp', {
+        this.http.post<{ success: boolean; token?: string; sessionToken?: string; user: any; message?: string }>('/api/auth/verify-otp', {
           email,
           code,
           challengeToken
         })
       );
-      if (res?.success && res.token && res.user) {
-        this.setViewerSession(res.token, res.user);
+      const token = res?.sessionToken || res?.token;
+      if (res?.success && token && res.user) {
+        this.setViewerSession(token, res.user);
         await this.loadPublicData();
       }
-      return res;
+      return { ...res, token };
     } catch (err: any) {
       return { success: false, message: err?.error?.message || err.message || 'Código de acesso incorreto ou expirado.' };
     }
@@ -992,6 +993,7 @@ export class ProjectService {
   async loginWithPassword(email: string, password: string): Promise<{
     success: boolean;
     token?: string;
+    sessionToken?: string;
     user?: any;
     mustChangePassword?: boolean;
     firstAccessToken?: string;
@@ -1014,11 +1016,12 @@ export class ProjectService {
         return res;
       }
 
-      if (res?.success && res.token && res.user) {
-        this.setViewerSession(res.token, res.user);
+      const token = res?.sessionToken || res?.token;
+      if (res?.success && token && res.user) {
+        this.setViewerSession(token, res.user);
         await this.loadPublicData();
       }
-      return res;
+      return { ...res, token };
     } catch (err: any) {
       return { success: false, message: err?.error?.message || err.message || 'Credenciais inválidas ou e-mail não autorizado.' };
     }
@@ -1027,6 +1030,7 @@ export class ProjectService {
   async completeFirstPasswordChange(email: string, newPassword: string, firstAccessToken: string): Promise<{
     success: boolean;
     token?: string;
+    sessionToken?: string;
     user?: any;
     passwordProof?: string;
     message?: string;
@@ -1045,8 +1049,9 @@ export class ProjectService {
           const proofKey = `ilc_pwd_proof_${email.toLowerCase().trim()}`;
           localStorage.setItem(proofKey, res.passwordProof);
         }
-        if (res.token && res.user) {
-          this.setViewerSession(res.token, res.user);
+        const token = res?.sessionToken || res?.token;
+        if (token && res.user) {
+          this.setViewerSession(token, res.user);
           await this.loadPublicData();
         }
       }
@@ -1056,16 +1061,17 @@ export class ProjectService {
     }
   }
 
-  async loginWithMicrosoft(accessToken: string): Promise<{ success: boolean; token?: string; user?: any; message?: string }> {
+  async loginWithMicrosoft(accessToken: string): Promise<{ success: boolean; token?: string; sessionToken?: string; user?: any; message?: string }> {
     try {
       const res = await firstValueFrom(
         this.http.post<any>('/api/auth/microsoft', { accessToken })
       );
-      if (res?.success && res.token && res.user) {
-        this.setViewerSession(res.token, res.user);
+      const token = res?.sessionToken || res?.token;
+      if (res?.success && token && res.user) {
+        this.setViewerSession(token, res.user);
         await this.loadPublicData();
       }
-      return res;
+      return { ...res, token };
     } catch (err: any) {
       return { success: false, message: err?.error?.message || err.message || 'Falha na autenticação com Microsoft SSO.' };
     }

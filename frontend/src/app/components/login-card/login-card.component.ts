@@ -231,7 +231,12 @@ export class LoginCardComponent implements OnInit {
         this.confirmNewPassword = '';
         return;
       }
-      if (!res.success) {
+      if (res.success) {
+        // Explicitly exit preview if simulating on localhost
+        if (this.service.isLocalEnvironment() && this.service.previewLoginOnLocalhost()) {
+          this.service.previewLoginOnLocalhost.set(false);
+        }
+      } else {
         this.errorMessage.set(res.message || 'E-mail ou senha incorretos.');
       }
     } finally {
@@ -314,7 +319,11 @@ export class LoginCardComponent implements OnInit {
         code,
         this.challengeToken()
       );
-      if (!res.success) {
+      if (res.success) {
+        if (this.service.isLocalEnvironment() && this.service.previewLoginOnLocalhost()) {
+          this.service.previewLoginOnLocalhost.set(false);
+        }
+      } else {
         this.errorMessage.set(res.message || 'Código incorreto ou expirado.');
       }
     } finally {

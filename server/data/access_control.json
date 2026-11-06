@@ -13,7 +13,9 @@
     "user": "",
     "fromName": "PMO ILC • Painel Executivo"
   },
-  "allowedDomains": [],
+  "allowedDomains": [
+    "ilc.com.br"
+  ],
   "users": [
     {
       "id": "usr-admin-1",

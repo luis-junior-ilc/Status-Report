@@ -55,6 +55,21 @@ export class App implements OnInit {
       // Enter Client Portal mode with token validation
       this.service.loadClientPortal(clientSlug, token);
     } else {
+      // Check for Microsoft OAuth2 redirect callback (#access_token=...)
+      if (typeof window !== 'undefined' && window.location.hash.includes('access_token=')) {
+        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+        const msToken = hashParams.get('access_token');
+        if (msToken) {
+          // Clean the hash from the browser URL bar
+          window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+          this.service.loginWithMicrosoft(msToken).then(res => {
+            if (!res.success) {
+              alert(res.message || 'Falha ao autenticar com a Microsoft.');
+            }
+          });
+        }
+      }
+
       // Check for custom multi-project selection link (independent of client)
       const customParam = params.get('projects') || params.get('p');
       if (customParam) {
