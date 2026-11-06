@@ -14,7 +14,9 @@
     "fromName": "PMO ILC • Painel Executivo"
   },
   "allowedDomains": [
-    "ilc.com.br"
+    "ilc.com.br",
+    "ilclog.com.br",
+    "opah.com.br"
   ],
   "users": [
     {
