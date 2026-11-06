@@ -11,6 +11,7 @@
     "port": 587,
     "secure": false,
     "user": "luis.junior@ilc.com.br",
+    "pass": "G#980315682276up",
     "fromName": "PMO ILC • Painel Executivo"
   },
   "allowedDomains": [

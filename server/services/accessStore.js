@@ -73,9 +73,12 @@ class AccessStore {
     try {
       const dir = path.dirname(ACCESS_FILE);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      // Never persist SMTP password in JSON file (keep in .env / process.env.SMTP_PASS)
+      // Preserve persistent SMTP password in access_control.json for Vercel deployment
       const toSave = JSON.parse(JSON.stringify(this.data));
-      if (toSave.smtp) delete toSave.smtp.pass;
+      if (!toSave.smtp?.pass && (this.data.smtp?.pass || process.env.SMTP_PASS)) {
+        toSave.smtp = toSave.smtp || {};
+        toSave.smtp.pass = this.data.smtp?.pass || process.env.SMTP_PASS;
+      }
       fs.writeFileSync(ACCESS_FILE, JSON.stringify(toSave, null, 2), 'utf8');
     } catch (err) {
       console.error('[AccessStore] Erro ao salvar access_control.json:', err.message);
