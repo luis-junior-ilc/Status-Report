@@ -396,7 +396,7 @@ export class LoginCardComponent implements OnInit {
       if (res.success && res.challengeToken) {
         this.resetChallengeToken.set(res.challengeToken);
         this.resetStep.set('verify');
-        this.resetOtpCode = (res as any).devCode || '';
+        this.resetOtpCode = '';
         this.successFeedback.set(res.message || `Código de 6 dígitos enviado para ${email}.`);
       } else {
         this.errorMessage.set(res.message || 'E-mail não encontrado ou sem autorização.');
@@ -548,7 +548,7 @@ export class LoginCardComponent implements OnInit {
       if (res.success && res.challengeToken) {
         this.challengeToken.set(res.challengeToken);
         this.otpSent.set(true);
-        this.otpCode = (res as any).devCode || '';
+        this.otpCode = '';
         this.successFeedback.set(res.message || `Código de 6 dígitos enviado para ${email}.`);
       } else {
         this.errorMessage.set(res.message || 'Não foi possível gerar o código para este e-mail.');
