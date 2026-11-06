@@ -20,10 +20,10 @@ import { ProjectService } from '../../services/project.service';
             <img
               src="/assets/logo-login-branco.png"
               alt="ILC Logo"
-              class="h-16 sm:h-20 w-auto max-w-[280px] object-contain drop-shadow-lg"
+              class="h-24 sm:h-28 w-auto max-w-[340px] object-contain drop-shadow-xl"
               (error)="onLogoError($event)" />
-            <div *ngIf="logoFailed()" class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
-              <span class="text-2xl font-black text-white tracking-wider">ILC</span>
+            <div *ngIf="logoFailed()" class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
+              <span class="text-3xl font-black text-white tracking-wider">ILC</span>
             </div>
           </div>
           <h2 class="text-2xl font-black tracking-tight text-white">Portfólio Estratégico ILC</h2>
