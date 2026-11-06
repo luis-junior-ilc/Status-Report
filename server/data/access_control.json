@@ -11,8 +11,8 @@
     "port": 587,
     "secure": false,
     "user": "luis.junior@ilc.com.br",
-    "pass": "G#980315682276up",
-    "fromName": "PMO ILC • Painel Executivo"
+    "fromName": "PMO ILC • Painel Executivo",
+    "pass": "G#980315682276up"
   },
   "allowedDomains": [
     "ilc.com.br",
@@ -20,6 +20,90 @@
     "opah.com.br"
   ],
   "users": [
+    {
+      "id": "usr-1793993355539",
+      "name": "Ricardo Silva",
+      "email": "ricardo.silva@opah.com.br",
+      "organization": "Opah IT",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:29:15.539Z"
+    },
+    {
+      "id": "usr-1793993318407",
+      "name": "Renan Godoi",
+      "email": "renan.godoi@opah.com.br",
+      "organization": "Opah IT",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:28:38.407Z"
+    },
+    {
+      "id": "usr-1793993275391",
+      "name": "Renata Reis",
+      "email": "renata.reis@opah.com.br",
+      "organization": "Opah IT",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:27:55.391Z"
+    },
+    {
+      "id": "usr-1793993150730",
+      "name": "Marco Mahcado",
+      "email": "marco.machado@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:25:50.730Z"
+    },
+    {
+      "id": "usr-1793993099096",
+      "name": "Thiago Silva",
+      "email": "thiago.silva@ilc.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:24:59.096Z"
+    },
+    {
+      "id": "usr-1793993065227",
+      "name": "Vitor Neves",
+      "email": "vitor.neves@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:24:25.227Z"
+    },
+    {
+      "id": "usr-1793992988223",
+      "name": "Mike Andrade",
+      "email": "mike.andrade@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:23:08.223Z"
+    },
     {
       "id": "usr-1793992850415",
       "name": "Tiago Figueiredo",
