@@ -39,7 +39,8 @@
       "active": true,
       "createdAt": "2026-11-06T17:02:32.170Z",
       "accessPasscode": "MinhaNovaSenha123!",
-      "mustChangePassword": false
+      "mustChangePassword": false,
+      "invitedAt": "2026-11-06T17:13:37.035Z"
     }
   ]
 }

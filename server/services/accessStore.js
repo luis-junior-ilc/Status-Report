@@ -119,14 +119,29 @@ class AccessStore {
 
   getLocalEnvSmtpPass() {
     if (process.env.SMTP_PASS) return process.env.SMTP_PASS;
-    try {
-      const envPath = path.join(__dirname, '../.env');
-      if (fs.existsSync(envPath)) {
-        const content = fs.readFileSync(envPath, 'utf8');
-        const m = content.match(/^SMTP_PASS=(.*)$/m);
-        if (m) return m[1].trim();
-      }
-    } catch (_) {}
+    if (this.data.smtp?.pass) {
+      process.env.SMTP_PASS = this.data.smtp.pass;
+      return this.data.smtp.pass;
+    }
+    const candidates = [
+      path.join(__dirname, '../.env'),
+      path.join(__dirname, '../../.env'),
+      path.join(process.cwd(), 'server/.env'),
+      path.join(process.cwd(), '.env')
+    ];
+    for (const envPath of candidates) {
+      try {
+        if (fs.existsSync(envPath)) {
+          const content = fs.readFileSync(envPath, 'utf8');
+          const m = content.match(/^SMTP_PASS=(.*)$/m);
+          if (m && m[1].trim()) {
+            const val = m[1].trim();
+            process.env.SMTP_PASS = val;
+            return val;
+          }
+        }
+      } catch (_) {}
+    }
     return '';
   }
 
@@ -331,11 +346,13 @@ class AccessStore {
     const host = process.env.SMTP_HOST || this.data.smtp?.host || 'smtp.office365.com';
     const port = parseInt(process.env.SMTP_PORT || this.data.smtp?.port || '587', 10);
     const secure = process.env.SMTP_SECURE === 'true' || port === 465;
+    const domain = (user && user.includes('@')) ? user.split('@')[1] : 'ilc.com.br';
 
     return nodemailer.createTransport({
       host,
       port,
       secure,
+      name: domain,
       auth: { user, pass },
       tls: { ciphers: 'SSLv3', rejectUnauthorized: false }
     });
@@ -730,7 +747,11 @@ class AccessStore {
 
     user.invitedAt = new Date().toISOString();
     this.save();
-    return user;
+    return {
+      success: true,
+      message: `Convite enviado com sucesso para ${user.email}!`,
+      user: this.sanitizeUser(user)
+    };
   }
 }
 
