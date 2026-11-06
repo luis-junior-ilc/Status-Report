@@ -91,7 +91,7 @@ app.post('/api/auth/reset-forgotten-password', (req, res) => {
 
 app.post('/api/auth/microsoft', async (req, res) => {
   try {
-    const result = await accessStore.verifyMicrosoftToken(req.body.accessToken);
+    const result = await accessStore.verifyMicrosoftToken(req.body.accessToken, req.body.idToken);
     res.json({ success: true, ...result });
   } catch (err) {
     res.status(401).json({ success: false, message: err.message });

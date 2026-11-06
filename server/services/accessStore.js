@@ -655,30 +655,56 @@ class AccessStore {
     };
   }
 
-  async verifyMicrosoftToken(accessToken) {
-    if (!accessToken) {
-      throw new Error('Token de autenticação Microsoft ausente.');
+  async verifyMicrosoftToken(accessToken, idToken) {
+    let msEmail = '';
+    let msName = '';
+
+    // Estratégia 1: Decodificar e validar o id_token (JWT assinado emitido diretamente pelo Microsoft Entra)
+    if (idToken) {
+      try {
+        const parts = idToken.split('.');
+        if (parts.length === 3) {
+          const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+          const targetClientId = (this.data.microsoftSso?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim();
+          const targetTenantId = (this.data.microsoftSso?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim();
+          if (payload.aud === targetClientId && (payload.tid === targetTenantId || (payload.iss && payload.iss.includes(targetTenantId)))) {
+            msEmail = (payload.email || payload.preferred_username || payload.upn || '').trim().toLowerCase();
+            msName = payload.name || '';
+          }
+        }
+      } catch (e) {
+        console.warn('[AccessStore] Falha ao ler id_token:', e.message);
+      }
     }
-    const resp = await fetch('https://graph.microsoft.com/v1.0/me', {
-      headers: { Authorization: `Bearer ${accessToken}` }
-    });
-    if (!resp.ok) {
-      throw new Error('Não foi possível validar sua credencial junto à Microsoft.');
+
+    // Estratégia 2: Consultar Microsoft Graph /me se e-mail ainda não resolvido
+    if (!msEmail && accessToken) {
+      try {
+        const resp = await fetch('https://graph.microsoft.com/v1.0/me', {
+          headers: { Authorization: `Bearer ${accessToken}` }
+        });
+        if (resp.ok) {
+          const profile = await resp.json();
+          msEmail = (profile.mail || profile.userPrincipalName || '').trim().toLowerCase();
+          msName = msName || profile.displayName || '';
+        }
+      } catch (e) {
+        console.warn('[AccessStore] Falha ao consultar Graph API:', e.message);
+      }
     }
-    const profile = await resp.json();
-    const msEmail = (profile.mail || profile.userPrincipalName || '').trim().toLowerCase();
+
     if (!msEmail) {
-      throw new Error('Sua conta Microsoft não retornou um endereço de e-mail válido.');
+      throw new Error('Não foi possível obter os dados de identificação da sua conta Microsoft.');
     }
 
     const check = this.findAuthorizedUser(msEmail);
     if (!check.authorized) {
-      throw new Error(`A conta Microsoft "${msEmail}" foi autenticada, mas não está na lista de acessos autorizados deste Painel.`);
+      throw new Error(`A conta Microsoft "${msEmail}" foi autenticada com sucesso, mas este e-mail não possui permissão de acesso ao Painel.`);
     }
 
     const user = {
       ...check.user,
-      name: profile.displayName || check.user.name
+      name: msName || check.user.name
     };
 
     return {

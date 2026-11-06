@@ -1096,10 +1096,10 @@ export class ProjectService {
     }
   }
 
-  async loginWithMicrosoft(accessToken: string): Promise<{ success: boolean; token?: string; sessionToken?: string; user?: any; message?: string }> {
+  async loginWithMicrosoft(accessToken: string, idToken?: string): Promise<{ success: boolean; token?: string; sessionToken?: string; user?: any; message?: string }> {
     try {
       const res = await firstValueFrom(
-        this.http.post<any>('/api/auth/microsoft', { accessToken })
+        this.http.post<any>('/api/auth/microsoft', { accessToken, idToken })
       );
       const token = res?.sessionToken || res?.token;
       if (res?.success && token && res.user) {

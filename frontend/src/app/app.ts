@@ -60,12 +60,13 @@ export class App implements OnInit {
         const hash = window.location.hash || '';
         const search = window.location.search || '';
 
-        if (hash.includes('access_token=')) {
+        if (hash.includes('access_token=') || hash.includes('id_token=')) {
           const hashParams = new URLSearchParams(hash.replace(/^#/, ''));
-          const msToken = hashParams.get('access_token');
-          if (msToken) {
+          const msToken = hashParams.get('access_token') || '';
+          const msIdToken = hashParams.get('id_token') || '';
+          if (msToken || msIdToken) {
             window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
-            this.service.loginWithMicrosoft(msToken).then(res => {
+            this.service.loginWithMicrosoft(msToken, msIdToken).then(res => {
               if (!res.success) {
                 this.service.ssoErrorMessage.set(res.message || 'Falha ao autenticar com a Microsoft.');
               }
