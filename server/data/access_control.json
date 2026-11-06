@@ -3,8 +3,8 @@
   "jwtSecret": "ilc-exec-dashboard-secret-2026-9f8e7d6c5b4a3f2e1d0c",
   "microsoftSso": {
     "enabled": true,
-    "clientId": "",
-    "tenantId": "common"
+    "clientId": "a30ef563-d535-4789-95c3-3143ad734eea",
+    "tenantId": "ab58c0ce-3b63-429b-a519-b1b2d29023ce"
   },
   "smtp": {
     "host": "smtp.office365.com",

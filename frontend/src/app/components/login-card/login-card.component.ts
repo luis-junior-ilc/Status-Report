@@ -587,14 +587,10 @@ export class LoginCardComponent implements OnInit {
 
   handleMicrosoftLogin() {
     const cfg = this.service.authConfig()?.microsoftSso;
-    if (cfg?.clientId) {
-      const tenant = cfg.tenantId || 'common';
-      const redirectUri = encodeURIComponent(window.location.origin);
-      const clientId = encodeURIComponent(cfg.clientId);
-      const authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=User.Read%20openid%20profile%20email&response_mode=fragment`;
-      window.location.href = authUrl;
-    } else {
-      alert('SSO Microsoft (Office 365): Para ativar a integração com seu Azure AD / Microsoft 365 corporativo, configure o Client ID na aba "Controle de Acesso" da Curadoria.');
-    }
+    const clientId = (cfg?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim();
+    const tenant = (cfg?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim();
+    const redirectUri = encodeURIComponent(window.location.origin);
+    const authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=User.Read%20openid%20profile%20email&response_mode=fragment`;
+    window.location.href = authUrl;
   }
 }
