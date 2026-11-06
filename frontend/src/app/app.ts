@@ -55,18 +55,31 @@ export class App implements OnInit {
       // Enter Client Portal mode with token validation
       this.service.loadClientPortal(clientSlug, token);
     } else {
-      // Check for Microsoft OAuth2 redirect callback (#access_token=...)
-      if (typeof window !== 'undefined' && window.location.hash.includes('access_token=')) {
-        const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
-        const msToken = hashParams.get('access_token');
-        if (msToken) {
-          // Clean the hash from the browser URL bar
-          window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
-          this.service.loginWithMicrosoft(msToken).then(res => {
-            if (!res.success) {
-              alert(res.message || 'Falha ao autenticar com a Microsoft.');
-            }
-          });
+      // Check for Microsoft OAuth2 redirect callback (#access_token=... or #error=...)
+      if (typeof window !== 'undefined') {
+        const hash = window.location.hash || '';
+        const search = window.location.search || '';
+
+        if (hash.includes('access_token=')) {
+          const hashParams = new URLSearchParams(hash.replace(/^#/, ''));
+          const msToken = hashParams.get('access_token');
+          if (msToken) {
+            window.history.replaceState({}, document.title, window.location.pathname + window.location.search);
+            this.service.loginWithMicrosoft(msToken).then(res => {
+              if (!res.success) {
+                this.service.ssoErrorMessage.set(res.message || 'Falha ao autenticar com a Microsoft.');
+              }
+            });
+          }
+        } else if (hash.includes('error=') || search.includes('error=')) {
+          const raw = hash.includes('error=') ? hash.replace(/^#/, '') : search.replace(/^\?/, '');
+          const errorParams = new URLSearchParams(raw);
+          const errCode = errorParams.get('error') || 'erro_sso';
+          const errDesc = errorParams.get('error_description') || errCode;
+          window.history.replaceState({}, document.title, window.location.pathname);
+          const firstLine = decodeURIComponent(errDesc).split('\r')[0].split('\n')[0];
+          console.error('[Microsoft SSO Error]', errCode, firstLine);
+          this.service.ssoErrorMessage.set(`Microsoft SSO: ${firstLine}`);
         }
       }
 

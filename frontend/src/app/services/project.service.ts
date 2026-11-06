@@ -76,6 +76,7 @@ export class ProjectService {
     typeof window !== 'undefined' ? (localStorage.getItem('ilc_viewer_session') || null) : null
   );
   authConfig = signal<any | null>(null);
+  ssoErrorMessage = signal<string | null>(null);
   previewLoginOnLocalhost = signal<boolean>(false);
 
   isViewerAuthenticated = computed<boolean>(() => {

@@ -299,10 +299,14 @@ import { ProjectService } from '../../services/project.service';
 
             <!-- OPÇÃO SSO MICROSOFT (Office 365) - SEMPRE VISÍVEL -->
             <div class="mt-3 pt-2.5 border-t border-slate-700/60">
-              <button
-                type="button"
-                (click)="handleMicrosoftLogin()"
-                class="w-full py-2 px-3 bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition hover:border-slate-500 shadow-sm cursor-pointer">
+              <div *ngIf="service.ssoErrorMessage()" class="p-2 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-2 leading-relaxed">
+                <span class="font-bold">⚠️ Aviso SSO:</span> {{ service.ssoErrorMessage() }}
+              </div>
+
+              <a
+                [href]="microsoftAuthUrl"
+                (click)="trackMicrosoftClick()"
+                class="w-full py-2 px-3 bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition hover:border-slate-500 shadow-sm cursor-pointer no-underline text-center">
                 <svg class="w-4 h-4 shrink-0" viewBox="0 0 21 21" fill="none">
                   <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
                   <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
@@ -310,7 +314,7 @@ import { ProjectService } from '../../services/project.service';
                   <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
                 </svg>
                 <span>Entrar com Microsoft (Office 365)</span>
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -585,12 +589,18 @@ export class LoginCardComponent implements OnInit {
     }
   }
 
-  handleMicrosoftLogin() {
+  get microsoftAuthUrl(): string {
     const cfg = this.service.authConfig()?.microsoftSso;
     const clientId = (cfg?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim();
     const tenant = (cfg?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim();
-    const redirectUri = encodeURIComponent(window.location.origin);
-    const authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=User.Read%20openid%20profile%20email&response_mode=fragment`;
-    window.location.href = authUrl;
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://status-report-phi.vercel.app';
+    const redirectUri = encodeURIComponent(origin);
+    const nonce = Math.random().toString(36).substring(2);
+    return `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=User.Read%20openid%20profile%20email&response_mode=fragment&state=sso&nonce=${nonce}`;
+  }
+
+  trackMicrosoftClick() {
+    this.service.ssoErrorMessage.set(null);
+    console.log('[LoginCard] Redirecionando para Microsoft SSO:', this.microsoftAuthUrl);
   }
 }
