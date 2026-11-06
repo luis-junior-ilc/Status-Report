@@ -21,6 +21,18 @@
   ],
   "users": [
     {
+      "id": "usr-1793992850415",
+      "name": "Tiago Figueiredo",
+      "email": "tiago.figueiredo@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:20:50.415Z"
+    },
+    {
       "id": "usr-1793992325044",
       "name": "Lucas Maier",
       "email": "lucas.bruno@ilclog.com.br",
