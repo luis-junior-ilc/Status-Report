@@ -970,17 +970,17 @@ export class ProjectService {
     }
   }
 
-  async verifyEmailOtp(email: string, code: string, challengeToken: string): Promise<{ success: boolean; token?: string; sessionToken?: string; user?: any; message?: string }> {
+  async verifyEmailOtp(email: string, code: string, challengeToken: string, autoLogin: boolean = true): Promise<{ success: boolean; token?: string; sessionToken?: string; resetToken?: string; user?: any; message?: string }> {
     try {
       const res = await firstValueFrom(
-        this.http.post<{ success: boolean; token?: string; sessionToken?: string; user: any; message?: string }>('/api/auth/verify-otp', {
+        this.http.post<{ success: boolean; token?: string; sessionToken?: string; resetToken?: string; user: any; message?: string }>('/api/auth/verify-otp', {
           email,
           code,
           challengeToken
         })
       );
       const token = res?.sessionToken || res?.token;
-      if (res?.success && token && res.user) {
+      if (autoLogin && res?.success && token && res.user) {
         this.setViewerSession(token, res.user);
         await this.loadPublicData();
       }
@@ -1058,6 +1058,40 @@ export class ProjectService {
       return res;
     } catch (err: any) {
       return { success: false, message: err?.error?.message || err.message || 'Erro ao redefinir senha de primeiro acesso.' };
+    }
+  }
+
+  async resetForgottenPassword(email: string, newPassword: string, resetToken: string): Promise<{
+    success: boolean;
+    token?: string;
+    sessionToken?: string;
+    user?: any;
+    passwordProof?: string;
+    message?: string;
+  }> {
+    try {
+      const res = await firstValueFrom(
+        this.http.post<any>('/api/auth/reset-forgotten-password', {
+          email,
+          newPassword,
+          resetToken
+        })
+      );
+
+      if (res?.success) {
+        if (res.passwordProof && typeof window !== 'undefined') {
+          const proofKey = `ilc_pwd_proof_${email.toLowerCase().trim()}`;
+          localStorage.setItem(proofKey, res.passwordProof);
+        }
+        const token = res?.sessionToken || res?.token;
+        if (token && res.user) {
+          this.setViewerSession(token, res.user);
+          await this.loadPublicData();
+        }
+      }
+      return res;
+    } catch (err: any) {
+      return { success: false, message: err?.error?.message || err.message || 'Erro ao redefinir a nova senha.' };
     }
   }
 

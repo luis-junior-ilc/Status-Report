@@ -452,9 +452,70 @@ class AccessStore {
       throw new Error(check.reason);
     }
 
+    const resetExp = Date.now() + 15 * 60 * 1000;
+    const resetSig = this.signHmac(`pwdreset|${cleanEmail}|${resetExp}`);
+    const resetToken = Buffer.from(
+      JSON.stringify({ email: cleanEmail, exp: resetExp, sig: resetSig })
+    ).toString('base64url');
+
     return {
       sessionToken: this.createSessionToken(check.user),
+      resetToken,
       user: this.sanitizeUser(check.user)
+    };
+  }
+
+  resetForgottenPassword(email, newPassword, resetToken) {
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanNew = String(newPassword || '').trim();
+    if (cleanNew.length < 6) {
+      throw new Error('A nova senha deve ter pelo menos 6 caracteres.');
+    }
+    if (!resetToken) {
+      throw new Error('Token de redefinição ausente. Faça a validação do código recebido por e-mail.');
+    }
+
+    let decoded;
+    try {
+      decoded = JSON.parse(Buffer.from(resetToken, 'base64url').toString('utf8'));
+    } catch (_) {
+      throw new Error('Token de redefinição inválido.');
+    }
+
+    if (decoded.email !== cleanEmail || Date.now() > decoded.exp) {
+      throw new Error('Sessão de redefinição expirada. Solicite um novo código por e-mail.');
+    }
+    const expectedSig = this.signHmac(`pwdreset|${cleanEmail}|${decoded.exp}`);
+    if (decoded.sig !== expectedSig) {
+      throw new Error('Assinatura do token de redefinição inválida.');
+    }
+
+    const check = this.findAuthorizedUser(cleanEmail);
+    if (!check.authorized) {
+      throw new Error(check.reason);
+    }
+
+    let user = (this.data.users || []).find(u => u.email.toLowerCase() === cleanEmail);
+    if (!user) {
+      user = {
+        ...check.user,
+        id: check.user.id || ('usr_' + Date.now().toString(36)),
+        createdAt: new Date().toISOString()
+      };
+      if (!this.data.users) this.data.users = [];
+      this.data.users.push(user);
+    }
+
+    user.accessPasscode = cleanNew;
+    user.mustChangePassword = false;
+    this.save();
+
+    const passwordProof = this.createPasswordProof(cleanEmail, cleanNew);
+    return {
+      sessionToken: this.createSessionToken(user),
+      passwordProof,
+      user: this.sanitizeUser(user),
+      message: 'Senha atualizada com sucesso!'
     };
   }
 
@@ -558,7 +619,17 @@ class AccessStore {
       throw new Error(check.reason);
     }
 
-    const user = check.user;
+    let user = (this.data.users || []).find(u => u.email.toLowerCase() === cleanEmail);
+    if (!user) {
+      user = {
+        ...check.user,
+        id: check.user.id || ('usr_' + Date.now().toString(36)),
+        createdAt: new Date().toISOString()
+      };
+      if (!this.data.users) this.data.users = [];
+      this.data.users.push(user);
+    }
+
     if (user.accessPasscode && cleanNew === user.accessPasscode) {
       throw new Error('A nova senha deve ser diferente da senha provisória de primeiro acesso.');
     }

@@ -74,8 +74,131 @@ import { ProjectService } from '../../services/project.service';
             </div>
           </div>
 
-          <!-- FLUXO 2: LOGIN NORMAL (Abas: Senha ou Token OTP por E-mail) -->
-          <div *ngIf="!isChangingFirstPassword()">
+          <!-- FLUXO 2: ESQUECI MINHA SENHA / REDEFINIÇÃO VIA E-MAIL -->
+          <div *ngIf="!isChangingFirstPassword() && isResettingPassword()">
+            <div class="text-center mb-5">
+              <div class="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center mx-auto mb-2 text-xl font-black ring-1 ring-blue-500/30">
+                🔒
+              </div>
+              <h3 class="text-base font-extrabold text-white">Recuperar Senha de Acesso</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                {{ resetStep() === 'request' ? 'Informe seu e-mail corporativo para receber um código de validação.' : (resetStep() === 'verify' ? 'Digite o código de 6 dígitos enviado para seu e-mail.' : 'Crie sua nova senha pessoal definitiva.') }}
+              </p>
+            </div>
+
+            <!-- Etapa 1: Solicitar Código OTP -->
+            <div *ngIf="resetStep() === 'request'" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">E-mail Corporativo</label>
+                <input
+                  type="email"
+                  [ngModel]="loginEmail()"
+                  (ngModelChange)="loginEmail.set($event)"
+                  (keyup.enter)="submitForgotRequest()"
+                  placeholder="seu.nome@empresa.com"
+                  class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+              </div>
+
+              <div *ngIf="errorMessage()" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400">
+                {{ errorMessage() }}
+              </div>
+
+              <button
+                (click)="submitForgotRequest()"
+                [disabled]="isLoading()"
+                class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
+                {{ isLoading() ? 'Enviando código...' : '📧 Enviar Código de Recuperação' }}
+              </button>
+
+              <button
+                (click)="cancelForgotPassword()"
+                class="w-full text-center text-xs text-slate-400 hover:text-white pt-2 cursor-pointer">
+                ← Voltar para o Login
+              </button>
+            </div>
+
+            <!-- Etapa 2: Validar Código OTP -->
+            <div *ngIf="resetStep() === 'verify'" class="space-y-4">
+              <div class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-xs text-emerald-400">
+                {{ successFeedback() || ('Código de 6 dígitos enviado para ' + loginEmail() + '! Verifique sua caixa de entrada.') }}
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Código de 6 Dígitos</label>
+                <input
+                  type="text"
+                  maxlength="6"
+                  [(ngModel)]="resetOtpCode"
+                  (keyup.enter)="submitForgotVerify()"
+                  placeholder="Ex: 849201"
+                  class="w-full text-center tracking-widest text-lg font-black bg-slate-900 border border-slate-700 text-white rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-600" />
+              </div>
+
+              <div *ngIf="errorMessage()" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400">
+                {{ errorMessage() }}
+              </div>
+
+              <button
+                (click)="submitForgotVerify()"
+                [disabled]="isLoading()"
+                class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
+                {{ isLoading() ? 'Validando...' : 'Verificar Código' }}
+              </button>
+
+              <div class="flex items-center justify-between pt-1 text-xs">
+                <button (click)="submitForgotRequest()" class="text-blue-400 hover:text-blue-300 cursor-pointer">Reenviar código</button>
+                <button (click)="resetStep.set('request'); errorMessage.set(null)" class="text-slate-400 hover:text-white cursor-pointer">Trocar e-mail</button>
+              </div>
+
+              <button
+                (click)="cancelForgotPassword()"
+                class="w-full text-center text-xs text-slate-400 hover:text-white pt-2 cursor-pointer">
+                ← Voltar para o Login
+              </button>
+            </div>
+
+            <!-- Etapa 3: Criar Nova Senha -->
+            <div *ngIf="resetStep() === 'new-password'" class="space-y-4">
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Nova Senha Pessoal</label>
+                <input
+                  type="password"
+                  [(ngModel)]="forgotNewPassword"
+                  placeholder="Mínimo de 6 caracteres"
+                  class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+              </div>
+
+              <div>
+                <label class="block text-xs font-semibold text-slate-300 mb-1">Confirmação da Nova Senha</label>
+                <input
+                  type="password"
+                  [(ngModel)]="forgotConfirmPassword"
+                  (keyup.enter)="submitForgotNewPassword()"
+                  placeholder="Repita a nova senha"
+                  class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+              </div>
+
+              <div *ngIf="errorMessage()" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400">
+                {{ errorMessage() }}
+              </div>
+
+              <button
+                (click)="submitForgotNewPassword()"
+                [disabled]="isLoading()"
+                class="w-full py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-emerald-600/30 transition disabled:opacity-50 cursor-pointer">
+                {{ isLoading() ? 'Salvando...' : 'Salvar Nova Senha & Acessar Portfólio' }}
+              </button>
+
+              <button
+                (click)="cancelForgotPassword()"
+                class="w-full text-center text-xs text-slate-400 hover:text-white pt-2 cursor-pointer">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+          <!-- FLUXO 3: LOGIN NORMAL (Abas: Senha ou Token OTP por E-mail) -->
+          <div *ngIf="!isChangingFirstPassword() && !isResettingPassword()">
             <!-- Tab Selector -->
             <div class="flex rounded-xl bg-slate-900/80 p-1 mb-5 border border-slate-700/50">
               <button (click)="activeTab.set('password'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'password'" [class.text-white]="activeTab() === 'password'" [class.text-slate-400]="activeTab() !== 'password'" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition cursor-pointer">
@@ -106,9 +229,18 @@ import { ProjectService } from '../../services/project.service';
                 {{ isLoading() ? 'Autenticando...' : 'Acessar Portfólio' }}
               </button>
 
-              <div class="text-center pt-1">
-                <button (click)="activeTab.set('otp'); errorMessage.set(null)" class="text-xs text-blue-400 hover:text-blue-300 cursor-pointer">
-                  Esqueceu a senha? Receba um token de 6 dígitos no e-mail
+              <div class="flex items-center justify-between pt-1">
+                <button
+                  type="button"
+                  (click)="startForgotPassword()"
+                  class="text-xs text-blue-400 hover:text-blue-300 font-semibold cursor-pointer">
+                  Esqueci minha senha
+                </button>
+                <button
+                  type="button"
+                  (click)="activeTab.set('otp'); errorMessage.set(null)"
+                  class="text-xs text-slate-400 hover:text-slate-200 cursor-pointer">
+                  Entrar com código
                 </button>
               </div>
             </div>
@@ -200,6 +332,15 @@ export class LoginCardComponent implements OnInit {
   newPassword = '';
   confirmNewPassword = '';
 
+  // Forgotten password states
+  isResettingPassword = signal<boolean>(false);
+  resetStep = signal<'request' | 'verify' | 'new-password'>('request');
+  resetChallengeToken = signal<string>('');
+  resetToken = signal<string>('');
+  resetOtpCode = '';
+  forgotNewPassword = '';
+  forgotConfirmPassword = '';
+
   isLoading = signal<boolean>(false);
   errorMessage = signal<string | null>(null);
 
@@ -210,6 +351,106 @@ export class LoginCardComponent implements OnInit {
   onLogoError(event: Event) {
     (event.target as HTMLElement).style.display = 'none';
     this.logoFailed.set(true);
+  }
+
+  startForgotPassword() {
+    this.errorMessage.set(null);
+    this.successFeedback.set(null);
+    this.resetStep.set('request');
+    this.resetOtpCode = '';
+    this.forgotNewPassword = '';
+    this.forgotConfirmPassword = '';
+    this.isResettingPassword.set(true);
+  }
+
+  cancelForgotPassword() {
+    this.isResettingPassword.set(false);
+    this.resetStep.set('request');
+    this.errorMessage.set(null);
+    this.successFeedback.set(null);
+  }
+
+  async submitForgotRequest() {
+    this.errorMessage.set(null);
+    this.successFeedback.set(null);
+    const email = this.loginEmail().trim();
+    if (!email || !email.includes('@')) {
+      this.errorMessage.set('Informe um e-mail corporativo válido.');
+      return;
+    }
+
+    this.isLoading.set(true);
+    try {
+      const res = await this.service.requestEmailOtp(email);
+      if (res.success && res.challengeToken) {
+        this.resetChallengeToken.set(res.challengeToken);
+        this.resetStep.set('verify');
+        this.resetOtpCode = (res as any).devCode || '';
+        this.successFeedback.set(res.message || `Código de 6 dígitos enviado para ${email}.`);
+      } else {
+        this.errorMessage.set(res.message || 'E-mail não encontrado ou sem autorização.');
+      }
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
+
+  async submitForgotVerify() {
+    this.errorMessage.set(null);
+    const code = this.resetOtpCode.trim();
+    if (!code || code.length !== 6) {
+      this.errorMessage.set('Digite o código de 6 dígitos recebido por e-mail.');
+      return;
+    }
+
+    this.isLoading.set(true);
+    try {
+      const res = await this.service.verifyEmailOtp(
+        this.loginEmail().trim(),
+        code,
+        this.resetChallengeToken(),
+        false // Do not auto-login yet, proceed to new password creation
+      );
+      if (res.success && res.resetToken) {
+        this.resetToken.set(res.resetToken);
+        this.resetStep.set('new-password');
+      } else {
+        this.errorMessage.set(res.message || 'Código de verificação incorreto ou expirado.');
+      }
+    } finally {
+      this.isLoading.set(false);
+    }
+  }
+
+  async submitForgotNewPassword() {
+    this.errorMessage.set(null);
+    if (!this.forgotNewPassword || this.forgotNewPassword.length < 6) {
+      this.errorMessage.set('A nova senha deve possuir pelo menos 6 caracteres.');
+      return;
+    }
+    if (this.forgotNewPassword !== this.forgotConfirmPassword) {
+      this.errorMessage.set('A confirmação de senha não coincide com a nova senha.');
+      return;
+    }
+
+    this.isLoading.set(true);
+    try {
+      const res = await this.service.resetForgottenPassword(
+        this.loginEmail().trim(),
+        this.forgotNewPassword,
+        this.resetToken()
+      );
+      if (res.success) {
+        this.isResettingPassword.set(false);
+        if (this.service.isLocalEnvironment() && this.service.previewLoginOnLocalhost()) {
+          this.service.previewLoginOnLocalhost.set(false);
+        }
+      } else {
+        this.errorMessage.set(res.message || 'Falha ao redefinir a nova senha.');
+      }
+    } finally {
+      this.isLoading.set(false);
+    }
   }
 
   async submitPasswordLogin() {
@@ -232,7 +473,6 @@ export class LoginCardComponent implements OnInit {
         return;
       }
       if (res.success) {
-        // Explicitly exit preview if simulating on localhost
         if (this.service.isLocalEnvironment() && this.service.previewLoginOnLocalhost()) {
           this.service.previewLoginOnLocalhost.set(false);
         }
@@ -264,6 +504,9 @@ export class LoginCardComponent implements OnInit {
       );
       if (res.success) {
         this.isChangingFirstPassword.set(false);
+        if (this.service.isLocalEnvironment() && this.service.previewLoginOnLocalhost()) {
+          this.service.previewLoginOnLocalhost.set(false);
+        }
       } else {
         this.errorMessage.set(res.message || 'Falha ao redefinir senha.');
       }
@@ -334,7 +577,6 @@ export class LoginCardComponent implements OnInit {
   handleMicrosoftLogin() {
     const cfg = this.service.authConfig()?.microsoftSso;
     if (cfg?.clientId) {
-      // Azure AD / Entra ID OAuth2 Authorization Code / Implicit flow
       const tenant = cfg.tenantId || 'common';
       const redirectUri = encodeURIComponent(window.location.origin);
       const clientId = encodeURIComponent(cfg.clientId);

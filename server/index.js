@@ -79,6 +79,16 @@ app.post('/api/auth/change-first-password', (req, res) => {
   }
 });
 
+app.post('/api/auth/reset-forgotten-password', (req, res) => {
+  try {
+    const { email, newPassword, resetToken } = req.body;
+    const result = accessStore.resetForgottenPassword(email, newPassword, resetToken);
+    res.json({ success: true, ...result });
+  } catch (err) {
+    res.status(400).json({ success: false, message: err.message });
+  }
+});
+
 app.post('/api/auth/microsoft', async (req, res) => {
   try {
     const result = await accessStore.verifyMicrosoftToken(req.body.accessToken);

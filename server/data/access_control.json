@@ -28,6 +28,18 @@
       "accessPasscode": "Brasil2029",
       "createdAt": "2026-11-05T19:00:06.589Z",
       "mustChangePassword": false
+    },
+    {
+      "id": "dom-luis.junior@ilc.com.br",
+      "name": "luis junior",
+      "email": "luis.junior@ilc.com.br",
+      "organization": "ILC.COM.BR",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "createdAt": "2026-11-06T17:02:32.170Z",
+      "accessPasscode": "MinhaNovaSenha123!",
+      "mustChangePassword": false
     }
   ]
 }
