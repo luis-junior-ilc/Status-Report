@@ -13,17 +13,17 @@ import { ProjectService } from '../../services/project.service';
       <div class="absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
+      <div class="sm:mx-auto sm:w-full sm:max-w-lg relative z-10 px-4">
         <!-- Logo Header -->
         <div class="text-center mb-6">
-          <div class="inline-flex items-center justify-center mb-3">
+          <div class="inline-flex items-center justify-center mb-4">
             <img
               src="/assets/logo-login-branco.png"
               alt="ILC Logo"
-              class="h-24 sm:h-28 w-auto max-w-[340px] object-contain drop-shadow-xl"
+              class="h-32 sm:h-40 w-auto max-w-[420px] object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-300"
               (error)="onLogoError($event)" />
-            <div *ngIf="logoFailed()" class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
-              <span class="text-3xl font-black text-white tracking-wider">ILC</span>
+            <div *ngIf="logoFailed()" class="w-24 h-24 rounded-3xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
+              <span class="text-4xl font-black text-white tracking-wider">ILC</span>
             </div>
           </div>
           <h2 class="text-2xl font-black tracking-tight text-white">Portfólio Estratégico ILC</h2>
