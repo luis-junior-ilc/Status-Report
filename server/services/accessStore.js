@@ -665,10 +665,14 @@ class AccessStore {
         const parts = idToken.split('.');
         if (parts.length === 3) {
           const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
-          const targetClientId = (this.data.microsoftSso?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim();
-          const targetTenantId = (this.data.microsoftSso?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim();
-          if (payload.aud === targetClientId && (payload.tid === targetTenantId || (payload.iss && payload.iss.includes(targetTenantId)))) {
-            msEmail = (payload.email || payload.preferred_username || payload.upn || '').trim().toLowerCase();
+          const targetClientId = (this.data.microsoftSso?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim().toLowerCase();
+          const targetTenantId = (this.data.microsoftSso?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim().toLowerCase();
+          const aud = (payload.aud || '').toLowerCase();
+          const tid = (payload.tid || '').toLowerCase();
+          const iss = (payload.iss || '').toLowerCase();
+
+          if (aud === targetClientId && (tid === targetTenantId || iss.includes(targetTenantId))) {
+            msEmail = (payload.email || payload.preferred_username || payload.upn || payload.unique_name || '').trim().toLowerCase();
             msName = payload.name || '';
           }
         }

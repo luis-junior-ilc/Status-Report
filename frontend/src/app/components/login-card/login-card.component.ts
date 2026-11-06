@@ -596,7 +596,7 @@ export class LoginCardComponent implements OnInit {
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://status-report-phi.vercel.app';
     const redirectUri = encodeURIComponent(origin);
     const nonce = Math.random().toString(36).substring(2);
-    return `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token%20id_token&redirect_uri=${redirectUri}&scope=openid%20profile%20email%20User.Read&response_mode=fragment&state=sso&nonce=${nonce}`;
+    return `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=id_token&redirect_uri=${redirectUri}&scope=openid%20profile%20email&response_mode=fragment&state=sso&nonce=${nonce}&prompt=select_account`;
   }
 
   trackMicrosoftClick() {
