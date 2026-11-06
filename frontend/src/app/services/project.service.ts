@@ -1173,7 +1173,7 @@ export class ProjectService {
       const res = await firstValueFrom(
         this.http.post<{ success: boolean; message: string }>(
           `/api/admin/access-control/users/${userId}/invite`,
-          { dashboardUrl: dashboardUrl || window.location.origin },
+          { dashboardUrl: dashboardUrl || 'https://status-report-phi.vercel.app/' },
           { headers: { 'x-admin-pin': this.adminPin() } }
         )
       );

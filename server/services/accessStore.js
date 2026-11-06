@@ -411,9 +411,14 @@ class AccessStore {
                   ${code}
                 </span>
               </div>
-              <p style="font-size: 12px; color: #94a3b8; margin: 0;">
+              <p style="font-size: 12px; color: #94a3b8; margin: 0 0 16px 0;">
                 ⏳ Este código é válido por <strong>15 minutos</strong> e é de uso pessoal e intransferível.
               </p>
+              <div style="border-top: 1px solid #334155; padding-top: 16px; text-align: center;">
+                <a href="https://status-report-phi.vercel.app/" style="display: inline-block; background: #2563eb; color: #ffffff; text-decoration: none; font-weight: 700; font-size: 13px; padding: 10px 24px; border-radius: 8px;">
+                  Ir para a Tela de Login →
+                </a>
+              </div>
             </div>
           `
         });
@@ -710,7 +715,9 @@ class AccessStore {
     const transporter = this.getTransporter();
     const fromAddr = process.env.SMTP_USER || this.data.smtp?.user;
     const fromName = this.data.smtp?.fromName || 'PMO ILC • Painel Executivo';
-    const targetUrl = dashboardUrl || 'https://status-report.vercel.app';
+    const targetUrl = (dashboardUrl && !dashboardUrl.includes('localhost') && !dashboardUrl.includes('127.0.0.1'))
+      ? dashboardUrl
+      : 'https://status-report-phi.vercel.app/';
 
     await transporter.sendMail({
       from: `"${fromName}" <${fromAddr}>`,
