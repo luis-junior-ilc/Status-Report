@@ -1,13 +1,13 @@
+<!-- Viewer Login Screen (when access control is enforced) -->
+<app-login-card *ngIf="service.requiresViewerLogin()"></app-login-card>
 
-<div class="min-h-screen bg-slate-50 flex flex-col font-sans print:bg-white print:min-h-0 print:p-0">
+<!-- Authenticated Executive Dashboard Shell -->
+<div *ngIf="!service.requiresViewerLogin()" class="min-h-screen bg-slate-50 flex flex-col font-sans print:bg-white print:min-h-0 print:p-0">
   <!-- Top Executive Co-Branded Header (ILC + Client Logo) -->
-  <app-header *ngIf="!service.requiresViewerLogin()" class="print:hidden"></app-header>
-
-  <!-- Viewer Login Screen (when access control is enforced) -->
-  <app-login-card *ngIf="service.requiresViewerLogin()"></app-login-card>
+  <app-header class="print:hidden"></app-header>
 
   <!-- Main Content Container -->
-  <main *ngIf="!service.requiresViewerLogin()" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 print:p-0 print:m-0 print:max-w-none print:w-full">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 print:p-0 print:m-0 print:max-w-none print:w-full">
     <!-- Top KPIs (Hidden in Executive Report, Maintenance and Team views which have dedicated KPIs) -->
     <app-kpi-summary *ngIf="service.activeView() !== 'report' && service.activeView() !== 'maintenance' && service.activeView() !== 'team'"></app-kpi-summary>
 
@@ -63,7 +63,7 @@
     </div>
   </main>
 
-  <!-- Footer -->
+  <!-- Footer (only shown when authenticated) -->
   <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500 print:hidden">
     <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
       <span class="flex items-center gap-2">
