@@ -337,7 +337,7 @@ class AccessStore {
       port,
       secure,
       auth: { user, pass },
-      tls: { rejectUnauthorized: false }
+      tls: { ciphers: 'SSLv3', rejectUnauthorized: false }
     });
   }
 
