@@ -11,7 +11,6 @@
     "port": 587,
     "secure": false,
     "user": "luis.junior@ilc.com.br",
-    "pass": "G#980315682276up",
     "fromName": "PMO ILC • Painel Executivo"
   },
   "allowedDomains": [
@@ -19,29 +18,68 @@
   ],
   "users": [
     {
+      "id": "usr-1793992325044",
+      "name": "Lucas Maier",
+      "email": "lucas.bruno@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:12:05.044Z",
+      "invitedAt": "2026-11-06T19:14:54.519Z"
+    },
+    {
+      "id": "usr-1793992283054",
+      "name": "Francisco Santos",
+      "email": "francisco.santos@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "Brasil2029",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T19:11:23.054Z",
+      "invitedAt": "2026-11-06T19:14:57.736Z"
+    },
+    {
+      "id": "usr-1793990987008",
+      "name": "Silvio Torres",
+      "email": "silvio.torres@ilclog.com.br",
+      "organization": "ILC",
+      "clientFilter": "Todos",
+      "role": "board",
+      "active": true,
+      "accessPasscode": "teste123",
+      "mustChangePassword": true,
+      "createdAt": "2026-11-06T18:49:47.008Z",
+      "invitedAt": "2026-11-06T19:15:01.225Z"
+    },
+    {
       "id": "usr-admin-1",
-      "name": "Luis Junior",
+      "name": "Luis Opah",
       "email": "luis.junior@opah.com.br",
-      "organization": "Opah IT / ILC",
+      "organization": "Opah IT",
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
       "accessPasscode": "Brasil2029",
       "createdAt": "2026-11-05T19:00:06.589Z",
-      "mustChangePassword": false,
+      "mustChangePassword": true,
       "invitedAt": "2026-11-06T18:17:25.801Z"
     },
     {
       "id": "dom-luis.junior@ilc.com.br",
-      "name": "luis junior",
+      "name": "Luis ILC",
       "email": "luis.junior@ilc.com.br",
-      "organization": "ILC.COM.BR",
+      "organization": "ILC",
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
       "createdAt": "2026-11-06T17:02:32.170Z",
       "accessPasscode": "MinhaNovaSenha123!",
-      "mustChangePassword": false,
+      "mustChangePassword": true,
       "invitedAt": "2026-11-06T17:13:37.035Z"
     }
   ]
