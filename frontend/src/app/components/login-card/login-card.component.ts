@@ -18,9 +18,9 @@ import { ProjectService } from '../../services/project.service';
         <div class="text-center mb-6">
           <div class="inline-flex items-center justify-center mb-3">
             <img
-              src="/assets/ilc-logo.png"
+              src="/assets/logo-login-branco.png"
               alt="ILC Logo"
-              class="h-16 w-auto object-contain drop-shadow-md"
+              class="h-16 sm:h-20 w-auto max-w-[280px] object-contain drop-shadow-lg"
               (error)="onLogoError($event)" />
             <div *ngIf="logoFailed()" class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
               <span class="text-2xl font-black text-white tracking-wider">ILC</span>
