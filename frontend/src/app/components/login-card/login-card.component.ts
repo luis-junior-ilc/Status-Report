@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProjectService } from '../../services/project.service';
@@ -16,11 +16,17 @@ import { ProjectService } from '../../services/project.service';
       <div class="sm:mx-auto sm:w-full sm:max-w-md relative z-10 px-4">
         <!-- Logo Header -->
         <div class="text-center mb-6">
-          <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 mb-3 ring-1 ring-white/20">
-            <span class="text-2xl font-black text-white tracking-wider">ILC</span>
+          <div class="inline-flex items-center justify-center mb-3">
+            <img
+              src="/assets/ilc-logo.png"
+              alt="ILC Logo"
+              class="h-16 w-auto object-contain drop-shadow-md"
+              (error)="onLogoError($event)" />
+            <div *ngIf="logoFailed()" class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-500 shadow-xl shadow-blue-500/20 flex items-center justify-center ring-1 ring-white/20">
+              <span class="text-2xl font-black text-white tracking-wider">ILC</span>
+            </div>
           </div>
           <h2 class="text-2xl font-black tracking-tight text-white">Portfólio Estratégico ILC</h2>
-          <p class="text-xs text-slate-400 mt-1">Acesso Restrito & Painel de Governança Executiva</p>
         </div>
 
         <!-- Main Card -->
@@ -58,11 +64,11 @@ import { ProjectService } from '../../services/project.service';
                 {{ errorMessage() }}
               </div>
 
-              <button (click)="submitFirstPasswordChange()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50">
+              <button (click)="submitFirstPasswordChange()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
                 {{ isLoading() ? 'Atualizando senha...' : 'Salvar Senha & Acessar Portfólio' }}
               </button>
 
-              <button (click)="cancelFirstPasswordChange()" class="w-full text-center text-xs text-slate-400 hover:text-white pt-2">
+              <button (click)="cancelFirstPasswordChange()" class="w-full text-center text-xs text-slate-400 hover:text-white pt-2 cursor-pointer">
                 ← Voltar
               </button>
             </div>
@@ -72,10 +78,10 @@ import { ProjectService } from '../../services/project.service';
           <div *ngIf="!isChangingFirstPassword()">
             <!-- Tab Selector -->
             <div class="flex rounded-xl bg-slate-900/80 p-1 mb-5 border border-slate-700/50">
-              <button (click)="activeTab.set('password')" [class.bg-blue-600]="activeTab() === 'password'" [class.text-white]="activeTab() === 'password'" [class.text-slate-400]="activeTab() !== 'password'" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition">
+              <button (click)="activeTab.set('password'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'password'" [class.text-white]="activeTab() === 'password'" [class.text-slate-400]="activeTab() !== 'password'" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition cursor-pointer">
                 🔑 E-mail & Senha
               </button>
-              <button (click)="activeTab.set('otp')" [class.bg-blue-600]="activeTab() === 'otp'" [class.text-white]="activeTab() === 'otp'" [class.text-slate-400]="activeTab() !== 'otp'" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition">
+              <button (click)="activeTab.set('otp'); errorMessage.set(null)" [class.bg-blue-600]="activeTab() === 'otp'" [class.text-white]="activeTab() === 'otp'" [class.text-slate-400]="activeTab() !== 'otp'" class="flex-1 py-1.5 text-xs font-bold rounded-lg transition cursor-pointer">
                 ✉️ Token por E-mail
               </button>
             </div>
@@ -84,7 +90,7 @@ import { ProjectService } from '../../services/project.service';
             <div *ngIf="activeTab() === 'password'" class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-slate-300 mb-1">E-mail Corporativo</label>
-                <input type="email" [(ngModel)]="loginEmail" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
+                <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500" />
               </div>
 
               <div>
@@ -96,12 +102,12 @@ import { ProjectService } from '../../services/project.service';
                 {{ errorMessage() }}
               </div>
 
-              <button (click)="submitPasswordLogin()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50">
+              <button (click)="submitPasswordLogin()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
                 {{ isLoading() ? 'Autenticando...' : 'Acessar Portfólio' }}
               </button>
 
               <div class="text-center pt-1">
-                <button (click)="activeTab.set('otp')" class="text-xs text-blue-400 hover:text-blue-300">
+                <button (click)="activeTab.set('otp'); errorMessage.set(null)" class="text-xs text-blue-400 hover:text-blue-300 cursor-pointer">
                   Esqueceu a senha? Receba um token de 6 dígitos no e-mail
                 </button>
               </div>
@@ -114,20 +120,20 @@ import { ProjectService } from '../../services/project.service';
                   Informe seu e-mail corporativo para receber um código numérico de 6 dígitos instantâneo.
                 </p>
                 <label class="block text-xs font-semibold text-slate-300 mb-1">E-mail Corporativo</label>
-                <input type="email" [(ngModel)]="loginEmail" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500 mb-3" />
+                <input type="email" [ngModel]="loginEmail()" (ngModelChange)="loginEmail.set($event)" placeholder="seu.nome@empresa.com" class="w-full bg-slate-900 border border-slate-700 text-white text-xs rounded-xl px-3.5 py-2.5 focus:ring-2 focus:ring-blue-500 focus:outline-none placeholder-slate-500 mb-3" />
 
                 <div *ngIf="errorMessage()" class="p-3 bg-rose-500/10 border border-rose-500/30 rounded-xl text-xs text-rose-400 mb-3">
                   {{ errorMessage() }}
                 </div>
 
-                <button (click)="requestOtpCode()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50">
+                <button (click)="requestOtpCode()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
                   {{ isLoading() ? 'Enviando código...' : '📧 Enviar Código de Acesso' }}
                 </button>
               </div>
 
               <div *ngIf="otpSent()">
                 <div class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl text-xs text-emerald-400 mb-3">
-                  Código de 6 dígitos enviado para <strong>{{ loginEmail() }}</strong>! Verifique sua caixa de entrada e spam.
+                  {{ successFeedback() || ('Código de 6 dígitos enviado para ' + loginEmail() + '! Verifique sua caixa de entrada.') }}
                 </div>
 
                 <label class="block text-xs font-semibold text-slate-300 mb-1">Código de 6 Dígitos</label>
@@ -137,27 +143,30 @@ import { ProjectService } from '../../services/project.service';
                   {{ errorMessage() }}
                 </div>
 
-                <button (click)="verifyOtpCode()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50">
+                <button (click)="verifyOtpCode()" [disabled]="isLoading()" class="w-full py-2.5 px-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-600/30 transition disabled:opacity-50 cursor-pointer">
                   {{ isLoading() ? 'Validando...' : 'Confirmar e Entrar' }}
                 </button>
 
                 <div class="flex items-center justify-between pt-2 text-xs">
-                  <button (click)="requestOtpCode()" class="text-blue-400 hover:text-blue-300">Reenviar código</button>
-                  <button (click)="otpSent.set(false)" class="text-slate-400 hover:text-white">Trocar e-mail</button>
+                  <button (click)="requestOtpCode()" class="text-blue-400 hover:text-blue-300 cursor-pointer">Reenviar código</button>
+                  <button (click)="otpSent.set(false); errorMessage.set(null)" class="text-slate-400 hover:text-white cursor-pointer">Trocar e-mail</button>
                 </div>
               </div>
             </div>
 
-            <!-- OPÇÃO SSO MICROSOFT (Office 365) -->
-            <div *ngIf="service.authConfig()?.microsoftClientId" class="mt-6 pt-5 border-t border-slate-700/60">
-              <button (click)="handleMicrosoftLogin()" class="w-full py-2.5 px-4 bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition hover:border-slate-600">
-                <svg class="w-4 h-4" viewBox="0 0 21 21" fill="none">
+            <!-- OPÇÃO SSO MICROSOFT (Office 365) - SEMPRE VISÍVEL -->
+            <div class="mt-6 pt-5 border-t border-slate-700/60">
+              <button
+                type="button"
+                (click)="handleMicrosoftLogin()"
+                class="w-full py-2.5 px-4 bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold rounded-xl border border-slate-700 flex items-center justify-center gap-2.5 transition hover:border-slate-500 shadow-sm cursor-pointer">
+                <svg class="w-4 h-4 shrink-0" viewBox="0 0 21 21" fill="none">
                   <rect x="1" y="1" width="9" height="9" fill="#F25022"/>
                   <rect x="11" y="1" width="9" height="9" fill="#7FBA00"/>
                   <rect x="1" y="11" width="9" height="9" fill="#00A4EF"/>
                   <rect x="11" y="11" width="9" height="9" fill="#FFB900"/>
                 </svg>
-                Entrar com Microsoft (Office 365)
+                <span>Entrar com Microsoft (Office 365)</span>
               </button>
             </div>
           </div>
@@ -165,7 +174,7 @@ import { ProjectService } from '../../services/project.service';
 
         <!-- Localhost Test Button -->
         <div *ngIf="service.isLocalEnvironment() && service.previewLoginOnLocalhost()" class="text-center mt-4">
-          <button (click)="service.togglePreviewLogin()" class="text-xs text-slate-500 hover:text-slate-300 underline">
+          <button (click)="service.togglePreviewLogin()" class="text-xs text-slate-500 hover:text-slate-300 underline cursor-pointer">
             [Modo Teste Local] Fechar simulação de login
           </button>
         </div>
@@ -173,7 +182,7 @@ import { ProjectService } from '../../services/project.service';
     </div>
   `
 })
-export class LoginCardComponent {
+export class LoginCardComponent implements OnInit {
   service = inject(ProjectService);
 
   activeTab = signal<'password' | 'otp'>('password');
@@ -182,6 +191,8 @@ export class LoginCardComponent {
   otpCode = '';
   otpSent = signal<boolean>(false);
   challengeToken = signal<string>('');
+  successFeedback = signal<string | null>(null);
+  logoFailed = signal<boolean>(false);
 
   // First password change states
   isChangingFirstPassword = signal<boolean>(false);
@@ -192,16 +203,27 @@ export class LoginCardComponent {
   isLoading = signal<boolean>(false);
   errorMessage = signal<string | null>(null);
 
+  ngOnInit() {
+    this.service.loadAuthConfig();
+  }
+
+  onLogoError(event: Event) {
+    (event.target as HTMLElement).style.display = 'none';
+    this.logoFailed.set(true);
+  }
+
   async submitPasswordLogin() {
     this.errorMessage.set(null);
-    if (!this.loginEmail().trim() || !this.loginPassword.trim()) {
+    const email = this.loginEmail().trim();
+    const pass = this.loginPassword.trim();
+    if (!email || !pass) {
       this.errorMessage.set('Por favor, informe seu e-mail e senha.');
       return;
     }
 
     this.isLoading.set(true);
     try {
-      const res = await this.service.loginWithPassword(this.loginEmail().trim(), this.loginPassword);
+      const res = await this.service.loginWithPassword(email, pass);
       if (res.mustChangePassword) {
         this.isChangingFirstPassword.set(true);
         this.firstAccessToken.set(res.firstAccessToken || '');
@@ -254,20 +276,23 @@ export class LoginCardComponent {
 
   async requestOtpCode() {
     this.errorMessage.set(null);
-    if (!this.loginEmail().trim() || !this.loginEmail().includes('@')) {
+    this.successFeedback.set(null);
+    const email = this.loginEmail().trim();
+    if (!email || !email.includes('@')) {
       this.errorMessage.set('Informe um endereço de e-mail corporativo válido.');
       return;
     }
 
     this.isLoading.set(true);
     try {
-      const res = await this.service.requestEmailOtp(this.loginEmail().trim());
+      const res = await this.service.requestEmailOtp(email);
       if (res.success && res.challengeToken) {
         this.challengeToken.set(res.challengeToken);
         this.otpSent.set(true);
-        this.otpCode = '';
+        this.otpCode = (res as any).devCode || '';
+        this.successFeedback.set(res.message || `Código de 6 dígitos enviado para ${email}.`);
       } else {
-        this.errorMessage.set(res.message || 'Não foi possível enviar o código para este e-mail.');
+        this.errorMessage.set(res.message || 'Não foi possível gerar o código para este e-mail.');
       }
     } finally {
       this.isLoading.set(false);
@@ -276,7 +301,8 @@ export class LoginCardComponent {
 
   async verifyOtpCode() {
     this.errorMessage.set(null);
-    if (!this.otpCode || this.otpCode.trim().length !== 6) {
+    const code = this.otpCode.trim();
+    if (!code || code.length !== 6) {
       this.errorMessage.set('Digite o código de 6 dígitos recebido por e-mail.');
       return;
     }
@@ -285,7 +311,7 @@ export class LoginCardComponent {
     try {
       const res = await this.service.verifyEmailOtp(
         this.loginEmail().trim(),
-        this.otpCode.trim(),
+        code,
         this.challengeToken()
       );
       if (!res.success) {
@@ -297,6 +323,16 @@ export class LoginCardComponent {
   }
 
   handleMicrosoftLogin() {
-    alert('SSO Corporativo Microsoft: Para conectar com o Active Directory / Entra ID da sua empresa, certifique-se de configurar o Client ID no Controle de Acesso.');
+    const cfg = this.service.authConfig()?.microsoftSso;
+    if (cfg?.clientId) {
+      // Azure AD / Entra ID OAuth2 Authorization Code / Implicit flow
+      const tenant = cfg.tenantId || 'common';
+      const redirectUri = encodeURIComponent(window.location.origin);
+      const clientId = encodeURIComponent(cfg.clientId);
+      const authUrl = `https://login.microsoftonline.com/${tenant}/oauth2/v2.0/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=User.Read%20openid%20profile%20email&response_mode=fragment`;
+      window.location.href = authUrl;
+    } else {
+      alert('SSO Microsoft (Office 365): Para ativar a integração com seu Azure AD / Microsoft 365 corporativo, configure o Client ID na aba "Controle de Acesso" da Curadoria.');
+    }
   }
 }

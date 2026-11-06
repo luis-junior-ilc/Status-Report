@@ -23,8 +23,9 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "ILC@2026",
-      "createdAt": "2026-11-05T19:00:06.589Z"
+      "accessPasscode": "Brasil2029",
+      "createdAt": "2026-11-05T19:00:06.589Z",
+      "mustChangePassword": false
     }
   ]
 }

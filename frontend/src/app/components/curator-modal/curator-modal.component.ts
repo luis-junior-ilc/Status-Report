@@ -117,7 +117,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
             <button
               (click)="onOpenAccessTab()"
               [ngClass]="activeTab() === 'access' ? 'bg-white border-t border-x border-slate-200 text-purple-700 shadow-xs' : 'text-slate-500 hover:text-slate-800'"
-              class="px-4 py-2.5 rounded-t-xl transition flex items-center gap-1.5 font-bold">
+              class="px-4 py-2.5 rounded-t-xl transition flex items-center gap-1.5 font-bold cursor-pointer">
               <span>🔐 Controle de Acesso</span>
             </button>
           </div>
@@ -1088,226 +1088,6 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
 
           </div>
 
-          <!-- TAB 7: CONTROLE DE ACESSO & SEGURANÇA (100% Gratuito) -->
-          <div *ngIf="activeTab() === 'access'" class="flex-1 p-6 overflow-y-auto space-y-6">
-            <!-- Header Banner -->
-            <div class="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-3xl p-6 text-white shadow-lg">
-              <div class="flex items-center justify-between">
-                <div>
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-500/30 text-purple-200 border border-purple-400/30">
-                    Segurança & Governança Corporativa
-                  </span>
-                  <h3 class="text-lg font-black mt-2">Controle de Acesso ao Portfólio Executivo</h3>
-                  <p class="text-xs text-purple-200 mt-1 max-w-2xl">
-                    Modelo híbrido 100% gratuito. Permite login via senha individual com troca obrigatória no primeiro acesso, código OTP de 6 dígitos no e-mail ou SSO Microsoft Office 365.
-                  </p>
-                </div>
-                <button
-                  (click)="openNewAccessUserModal()"
-                  class="px-4 py-2.5 bg-white hover:bg-purple-50 text-purple-900 text-xs font-bold rounded-xl shadow transition flex items-center gap-2">
-                  <span>➕ Adicionar Usuário</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Global Security Settings -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-4">
-              <h4 class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">Políticas Gerais de Acesso</h4>
-              
-              <div *ngIf="accessData() as ad" class="space-y-4">
-                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-200">
-                  <div>
-                    <span class="text-xs font-bold text-slate-800 block">Exigir Autenticação na Versão Online</span>
-                    <span class="text-[11px] text-slate-500">Quando ativo, visitantes na nuvem (Vercel) devem obrigatoriamente se autenticar para ver dados.</span>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="ad.requireAuthOnline" class="w-5 h-5 text-purple-600 rounded cursor-pointer" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Domínios Corporativos Autorizados (separados por vírgula)</label>
-                  <input
-                    type="text"
-                    [ngModel]="allowedDomainsText()"
-                    (ngModelChange)="allowedDomainsText.set($event)"
-                    placeholder="Ex: opah.com.br, deere.com, ilclog.com.br"
-                    class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  <p class="text-[10px] text-slate-500 mt-1">Usuários com e-mail pertencente a esses domínios podem receber tokens ou cadastrar acessos.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Entra ID (Client ID) - Opcional</label>
-                    <input
-                      type="text"
-                      [(ngModel)]="ad.microsoftClientId"
-                      placeholder="Ex: a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                      class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Tenant ID - Opcional (common para multitenant)</label>
-                    <input
-                      type="text"
-                      [(ngModel)]="ad.microsoftTenantId"
-                      placeholder="common"
-                      class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-                </div>
-
-                <!-- SMTP Config -->
-                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="text-xs font-bold text-slate-800 block">Servidor de E-mail Gratuito (SMTP para Envio de Códigos & Convites)</span>
-                      <span class="text-[10px] text-slate-500">Pode usar Gmail SMTP gratuito, Brevo (300 emails/dia grátis) ou Outlook SMTP.</span>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Host SMTP</label>
-                      <input type="text" [(ngModel)]="ad.smtp.host" placeholder="smtp.gmail.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Porta</label>
-                      <input type="number" [(ngModel)]="ad.smtp.port" placeholder="587" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Usuário / Remetente</label>
-                      <input type="text" [(ngModel)]="ad.smtp.user" placeholder="notificacoes@seudominio.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                  </div>
-                  <div class="text-[11px] text-slate-500 italic">
-                    Nota de segurança: A senha do SMTP é configurada via variável de ambiente <code>SMTP_PASS</code> no arquivo <code>.env</code> ou na Vercel (nunca exposta em código).
-                  </div>
-                </div>
-
-                <div class="flex justify-end pt-2">
-                  <button
-                    (click)="saveAccessSettings()"
-                    class="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs transition">
-                    Salvar Políticas de Acesso
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Users List Table -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
-                  Usuários Autorizados ({{ accessData()?.users?.length || 0 }})
-                </h4>
-              </div>
-
-              <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr class="border-b border-slate-200 text-slate-400 font-bold uppercase text-[10px]">
-                      <th class="py-2.5 px-3">Usuário / E-mail</th>
-                      <th class="py-2.5 px-3">Organização</th>
-                      <th class="py-2.5 px-3">Escopo (Cliente)</th>
-                      <th class="py-2.5 px-3">1º Acesso</th>
-                      <th class="py-2.5 px-3 text-right">Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-slate-100">
-                    <tr *ngFor="let u of accessData()?.users" class="hover:bg-slate-50/80 transition">
-                      <td class="py-3 px-3">
-                        <div class="font-bold text-slate-900">{{ u.name || 'Sem nome' }}</div>
-                        <div class="text-[11px] text-slate-500 font-mono">{{ u.email }}</div>
-                      </td>
-                      <td class="py-3 px-3 text-slate-600">
-                        {{ u.organization || 'ILC / Geral' }}
-                      </td>
-                      <td class="py-3 px-3">
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" [ngClass]="u.clientFilter === 'Todos' ? 'bg-slate-100 text-slate-700' : 'bg-blue-100 text-blue-800'">
-                          {{ u.clientFilter || 'Todos' }}
-                        </span>
-                      </td>
-                      <td class="py-3 px-3">
-                        <span *ngIf="u.mustChangePassword" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
-                          ⚠️ Troca Pendente
-                        </span>
-                        <span *ngIf="!u.mustChangePassword" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                          ✓ Senha Definida
-                        </span>
-                      </td>
-                      <td class="py-3 px-3 text-right space-x-1">
-                        <button
-                          (click)="sendUserInvite(u)"
-                          [disabled]="sendingInviteUserId() === u.id"
-                          class="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-lg transition"
-                          title="Enviar convite e senha de primeiro acesso por e-mail">
-                          {{ sendingInviteUserId() === u.id ? 'Enviando...' : '📧 Enviar Convite' }}
-                        </button>
-                        <button
-                          (click)="openEditAccessUserModal(u)"
-                          class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg transition">
-                          ✏️ Editar
-                        </button>
-                        <button
-                          (click)="deleteAccessUser(u)"
-                          class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-lg transition">
-                          🗑️
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- USER EDIT/CREATE MODAL -->
-          <div *ngIf="accessUserModalOpen()" class="fixed inset-0 z-70 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-            <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                <h3 class="text-sm font-black text-slate-900">
-                  {{ editingAccessUser().id ? 'Editar Usuário de Acesso' : 'Novo Usuário de Acesso' }}
-                </h3>
-                <button (click)="closeAccessUserModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
-              </div>
-
-              <div class="space-y-3 text-xs">
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Nome Completo</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().name" placeholder="Ex: Rodrigo Silva" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">E-mail Corporativo</label>
-                  <input type="email" [(ngModel)]="editingAccessUser().email" placeholder="rodrigo@cliente.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Organização / Cargo</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().organization" placeholder="Ex: Diretoria John Deere" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Escopo de Visualização (Restringir Cliente)</label>
-                  <select [(ngModel)]="editingAccessUser().clientFilter" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl">
-                    <option value="Todos">Todos os Clientes (Visão Geral da Diretoria)</option>
-                    <option *ngFor="let c of service.clients()" [value]="c.name">{{ c.name }}</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Senha de 1º Acesso (ou nova senha)</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().accessPasscode" placeholder="Ex: ILC@2026" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl font-mono" />
-                </div>
-                <div class="flex items-center gap-2 pt-1">
-                  <input type="checkbox" [(ngModel)]="editingAccessUser().mustChangePassword" id="chkMustChange" class="w-4 h-4 text-purple-600 rounded" />
-                  <label for="chkMustChange" class="text-slate-700 font-semibold cursor-pointer">
-                    Obrigar troca de senha no primeiro login
-                  </label>
-                </div>
-              </div>
-
-              <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
-                <button (click)="closeAccessUserModal()" class="px-4 py-2 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl">Cancelar</button>
-                <button (click)="saveAccessUser()" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs">
-                  Salvar Usuário
-                </button>
-              </div>
-            </div>
-          </div>
-
           <!-- TAB 2: NOVO PROJETO MANUAL -->
           <div *ngIf="activeTab() === 'new-project'" class="flex-1 overflow-y-auto p-6 max-w-2xl mx-auto w-full">
             <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200">
@@ -2007,226 +1787,6 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
 
           </div>
 
-          <!-- TAB 7: CONTROLE DE ACESSO & SEGURANÇA (100% Gratuito) -->
-          <div *ngIf="activeTab() === 'access'" class="flex-1 p-6 overflow-y-auto space-y-6">
-            <!-- Header Banner -->
-            <div class="bg-gradient-to-r from-purple-900 to-indigo-900 rounded-3xl p-6 text-white shadow-lg">
-              <div class="flex items-center justify-between">
-                <div>
-                  <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-purple-500/30 text-purple-200 border border-purple-400/30">
-                    Segurança & Governança Corporativa
-                  </span>
-                  <h3 class="text-lg font-black mt-2">Controle de Acesso ao Portfólio Executivo</h3>
-                  <p class="text-xs text-purple-200 mt-1 max-w-2xl">
-                    Modelo híbrido 100% gratuito. Permite login via senha individual com troca obrigatória no primeiro acesso, código OTP de 6 dígitos no e-mail ou SSO Microsoft Office 365.
-                  </p>
-                </div>
-                <button
-                  (click)="openNewAccessUserModal()"
-                  class="px-4 py-2.5 bg-white hover:bg-purple-50 text-purple-900 text-xs font-bold rounded-xl shadow transition flex items-center gap-2">
-                  <span>➕ Adicionar Usuário</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Global Security Settings -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs space-y-4">
-              <h4 class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">Políticas Gerais de Acesso</h4>
-              
-              <div *ngIf="accessData() as ad" class="space-y-4">
-                <div class="flex items-center justify-between p-3 bg-slate-50 rounded-2xl border border-slate-200">
-                  <div>
-                    <span class="text-xs font-bold text-slate-800 block">Exigir Autenticação na Versão Online</span>
-                    <span class="text-[11px] text-slate-500">Quando ativo, visitantes na nuvem (Vercel) devem obrigatoriamente se autenticar para ver dados.</span>
-                  </div>
-                  <input type="checkbox" [(ngModel)]="ad.requireAuthOnline" class="w-5 h-5 text-purple-600 rounded cursor-pointer" />
-                </div>
-
-                <div>
-                  <label class="block text-xs font-bold text-slate-700 mb-1">Domínios Corporativos Autorizados (separados por vírgula)</label>
-                  <input
-                    type="text"
-                    [ngModel]="allowedDomainsText()"
-                    (ngModelChange)="allowedDomainsText.set($event)"
-                    placeholder="Ex: opah.com.br, deere.com, ilclog.com.br"
-                    class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  <p class="text-[10px] text-slate-500 mt-1">Usuários com e-mail pertencente a esses domínios podem receber tokens ou cadastrar acessos.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Entra ID (Client ID) - Opcional</label>
-                    <input
-                      type="text"
-                      [(ngModel)]="ad.microsoftClientId"
-                      placeholder="Ex: a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-                      class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Tenant ID - Opcional (common para multitenant)</label>
-                    <input
-                      type="text"
-                      [(ngModel)]="ad.microsoftTenantId"
-                      placeholder="common"
-                      class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
-                  </div>
-                </div>
-
-                <!-- SMTP Config -->
-                <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-3">
-                  <div class="flex items-center justify-between">
-                    <div>
-                      <span class="text-xs font-bold text-slate-800 block">Servidor de E-mail Gratuito (SMTP para Envio de Códigos & Convites)</span>
-                      <span class="text-[10px] text-slate-500">Pode usar Gmail SMTP gratuito, Brevo (300 emails/dia grátis) ou Outlook SMTP.</span>
-                    </div>
-                  </div>
-                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Host SMTP</label>
-                      <input type="text" [(ngModel)]="ad.smtp.host" placeholder="smtp.gmail.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Porta</label>
-                      <input type="number" [(ngModel)]="ad.smtp.port" placeholder="587" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                    <div>
-                      <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Usuário / Remetente</label>
-                      <input type="text" [(ngModel)]="ad.smtp.user" placeholder="notificacoes@seudominio.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
-                    </div>
-                  </div>
-                  <div class="text-[11px] text-slate-500 italic">
-                    Nota de segurança: A senha do SMTP é configurada via variável de ambiente <code>SMTP_PASS</code> no arquivo <code>.env</code> ou na Vercel (nunca exposta em código).
-                  </div>
-                </div>
-
-                <div class="flex justify-end pt-2">
-                  <button
-                    (click)="saveAccessSettings()"
-                    class="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs transition">
-                    Salvar Políticas de Acesso
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Users List Table -->
-            <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-xs">
-              <div class="flex items-center justify-between mb-4">
-                <h4 class="text-xs font-extrabold uppercase text-slate-500 tracking-wider">
-                  Usuários Autorizados ({{ accessData()?.users?.length || 0 }})
-                </h4>
-              </div>
-
-              <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs border-collapse">
-                  <thead>
-                    <tr class="border-b border-slate-200 text-slate-400 font-bold uppercase text-[10px]">
-                      <th class="py-2.5 px-3">Usuário / E-mail</th>
-                      <th class="py-2.5 px-3">Organização</th>
-                      <th class="py-2.5 px-3">Escopo (Cliente)</th>
-                      <th class="py-2.5 px-3">1º Acesso</th>
-                      <th class="py-2.5 px-3 text-right">Ações</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y divide-slate-100">
-                    <tr *ngFor="let u of accessData()?.users" class="hover:bg-slate-50/80 transition">
-                      <td class="py-3 px-3">
-                        <div class="font-bold text-slate-900">{{ u.name || 'Sem nome' }}</div>
-                        <div class="text-[11px] text-slate-500 font-mono">{{ u.email }}</div>
-                      </td>
-                      <td class="py-3 px-3 text-slate-600">
-                        {{ u.organization || 'ILC / Geral' }}
-                      </td>
-                      <td class="py-3 px-3">
-                        <span class="px-2 py-0.5 rounded-full text-[10px] font-bold" [ngClass]="u.clientFilter === 'Todos' ? 'bg-slate-100 text-slate-700' : 'bg-blue-100 text-blue-800'">
-                          {{ u.clientFilter || 'Todos' }}
-                        </span>
-                      </td>
-                      <td class="py-3 px-3">
-                        <span *ngIf="u.mustChangePassword" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-100 text-amber-800">
-                          ⚠️ Troca Pendente
-                        </span>
-                        <span *ngIf="!u.mustChangePassword" class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-800">
-                          ✓ Senha Definida
-                        </span>
-                      </td>
-                      <td class="py-3 px-3 text-right space-x-1">
-                        <button
-                          (click)="sendUserInvite(u)"
-                          [disabled]="sendingInviteUserId() === u.id"
-                          class="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-lg transition"
-                          title="Enviar convite e senha de primeiro acesso por e-mail">
-                          {{ sendingInviteUserId() === u.id ? 'Enviando...' : '📧 Enviar Convite' }}
-                        </button>
-                        <button
-                          (click)="openEditAccessUserModal(u)"
-                          class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg transition">
-                          ✏️ Editar
-                        </button>
-                        <button
-                          (click)="deleteAccessUser(u)"
-                          class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-lg transition">
-                          🗑️
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-
-          <!-- USER EDIT/CREATE MODAL -->
-          <div *ngIf="accessUserModalOpen()" class="fixed inset-0 z-70 bg-slate-950/60 backdrop-blur-xs flex items-center justify-center p-4">
-            <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 space-y-4">
-              <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-                <h3 class="text-sm font-black text-slate-900">
-                  {{ editingAccessUser().id ? 'Editar Usuário de Acesso' : 'Novo Usuário de Acesso' }}
-                </h3>
-                <button (click)="closeAccessUserModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
-              </div>
-
-              <div class="space-y-3 text-xs">
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Nome Completo</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().name" placeholder="Ex: Rodrigo Silva" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">E-mail Corporativo</label>
-                  <input type="email" [(ngModel)]="editingAccessUser().email" placeholder="rodrigo@cliente.com" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Organização / Cargo</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().organization" placeholder="Ex: Diretoria John Deere" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl" />
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Escopo de Visualização (Restringir Cliente)</label>
-                  <select [(ngModel)]="editingAccessUser().clientFilter" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl">
-                    <option value="Todos">Todos os Clientes (Visão Geral da Diretoria)</option>
-                    <option *ngFor="let c of service.clients()" [value]="c.name">{{ c.name }}</option>
-                  </select>
-                </div>
-                <div>
-                  <label class="block font-bold text-slate-700 mb-1">Senha de 1º Acesso (ou nova senha)</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().accessPasscode" placeholder="Ex: ILC@2026" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl font-mono" />
-                </div>
-                <div class="flex items-center gap-2 pt-1">
-                  <input type="checkbox" [(ngModel)]="editingAccessUser().mustChangePassword" id="chkMustChange" class="w-4 h-4 text-purple-600 rounded" />
-                  <label for="chkMustChange" class="text-slate-700 font-semibold cursor-pointer">
-                    Obrigar troca de senha no primeiro login
-                  </label>
-                </div>
-              </div>
-
-              <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
-                <button (click)="closeAccessUserModal()" class="px-4 py-2 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl">Cancelar</button>
-                <button (click)="saveAccessUser()" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs">
-                  Salvar Usuário
-                </button>
-              </div>
-            </div>
-          </div>
-
           <!-- TAB 3: CLIENTES & CO-BRANDING COM UPLOAD DE ARQUIVO DE LOGO -->
           <div *ngIf="activeTab() === 'clients'" class="flex-1 overflow-y-auto p-6 space-y-4">
             <div class="text-xs text-slate-500 mb-3">
@@ -2405,7 +1965,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                 </div>
                 <button
                   (click)="openNewAccessUserModal()"
-                  class="px-4 py-2.5 bg-white hover:bg-purple-50 text-purple-900 text-xs font-bold rounded-xl shadow transition flex items-center gap-2">
+                  class="px-4 py-2.5 bg-white hover:bg-purple-50 text-purple-900 text-xs font-bold rounded-xl shadow transition flex items-center gap-2 cursor-pointer">
                   <span>➕ Adicionar Usuário</span>
                 </button>
               </div>
@@ -2440,7 +2000,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                     <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Entra ID (Client ID) - Opcional</label>
                     <input
                       type="text"
-                      [(ngModel)]="ad.microsoftClientId"
+                      [(ngModel)]="ad.microsoftSso.clientId"
                       placeholder="Ex: a1b2c3d4-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
                       class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
                   </div>
@@ -2448,7 +2008,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                     <label class="block text-xs font-bold text-slate-700 mb-1">Microsoft Tenant ID - Opcional (common para multitenant)</label>
                     <input
                       type="text"
-                      [(ngModel)]="ad.microsoftTenantId"
+                      [(ngModel)]="ad.microsoftSso.tenantId"
                       placeholder="common"
                       class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-500" />
                   </div>
@@ -2465,7 +2025,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                   <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     <div>
                       <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Host SMTP</label>
-                      <input type="text" [(ngModel)]="ad.smtp.host" placeholder="smtp.gmail.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
+                      <input type="text" [(ngModel)]="ad.smtp.host" placeholder="smtp.office365.com" class="w-full px-3 py-1.5 bg-white border border-slate-300 rounded-lg text-xs" />
                     </div>
                     <div>
                       <label class="block text-[11px] font-semibold text-slate-600 mb-0.5">Porta</label>
@@ -2484,7 +2044,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                 <div class="flex justify-end pt-2">
                   <button
                     (click)="saveAccessSettings()"
-                    class="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs transition">
+                    class="px-5 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs transition cursor-pointer">
                     Salvar Políticas de Acesso
                   </button>
                 </div>
@@ -2536,18 +2096,18 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                         <button
                           (click)="sendUserInvite(u)"
                           [disabled]="sendingInviteUserId() === u.id"
-                          class="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-lg transition"
+                          class="px-2.5 py-1 bg-purple-50 hover:bg-purple-100 text-purple-700 font-bold rounded-lg transition cursor-pointer"
                           title="Enviar convite e senha de primeiro acesso por e-mail">
                           {{ sendingInviteUserId() === u.id ? 'Enviando...' : '📧 Enviar Convite' }}
                         </button>
                         <button
                           (click)="openEditAccessUserModal(u)"
-                          class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg transition">
+                          class="px-2.5 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-lg transition cursor-pointer">
                           ✏️ Editar
                         </button>
                         <button
                           (click)="deleteAccessUser(u)"
-                          class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-lg transition">
+                          class="px-2.5 py-1 bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold rounded-lg transition cursor-pointer">
                           🗑️
                         </button>
                       </td>
@@ -2565,7 +2125,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                 <h3 class="text-sm font-black text-slate-900">
                   {{ editingAccessUser().id ? 'Editar Usuário de Acesso' : 'Novo Usuário de Acesso' }}
                 </h3>
-                <button (click)="closeAccessUserModal()" class="text-slate-400 hover:text-slate-600 font-bold">✕</button>
+                <button (click)="closeAccessUserModal()" class="text-slate-400 hover:text-slate-600 font-bold cursor-pointer">✕</button>
               </div>
 
               <div class="space-y-3 text-xs">
@@ -2601,8 +2161,8 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
               </div>
 
               <div class="flex justify-end gap-2 pt-3 border-t border-slate-100">
-                <button (click)="closeAccessUserModal()" class="px-4 py-2 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl">Cancelar</button>
-                <button (click)="saveAccessUser()" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs">
+                <button (click)="closeAccessUserModal()" class="px-4 py-2 bg-slate-100 text-slate-700 font-bold text-xs rounded-xl cursor-pointer">Cancelar</button>
+                <button (click)="saveAccessUser()" class="px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white font-bold text-xs rounded-xl shadow-xs cursor-pointer">
                   Salvar Usuário
                 </button>
               </div>
@@ -3826,8 +3386,7 @@ export class CuratorModalComponent implements OnInit {
     const ok = await this.service.updateAdminAccessSettings({
       requireAuthOnline: data.requireAuthOnline,
       allowedDomains: domains,
-      microsoftClientId: data.microsoftClientId || '',
-      microsoftTenantId: data.microsoftTenantId || '',
+      microsoftSso: data.microsoftSso || {},
       smtp: data.smtp || {}
     });
 
@@ -3888,7 +3447,7 @@ export class CuratorModalComponent implements OnInit {
   }
 
   async deleteAccessUser(u: any) {
-    if (!confirm(`Deseja realmente remover o acesso de ${u.name || u.email}?`)) return;
+    if (!confirm('Deseja realmente remover o acesso de ' + (u.name || u.email) + '?')) return;
     const ok = await this.service.deleteAdminAccessUser(u.id);
     if (ok) {
       await this.loadAccessConfig();

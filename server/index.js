@@ -43,7 +43,7 @@ app.get('/api/auth/me', (req, res) => {
 app.post('/api/auth/request-otp', async (req, res) => {
   try {
     const result = await accessStore.requestEmailOtp(req.body.email);
-    res.json(result);
+    res.json({ success: true, ...result });
   } catch (err) {
     res.status(400).json({ success: false, message: err.message });
   }
