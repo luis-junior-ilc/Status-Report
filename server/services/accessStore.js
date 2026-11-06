@@ -154,10 +154,13 @@ class AccessStore {
         hasPassword: !!this.getLocalEnvSmtpPass()
       },
       allowedDomains: this.data.allowedDomains || [],
-      users: (this.data.users || []).map(u => ({
-        ...u,
-        hasPasscode: !!u.accessPasscode
-      }))
+      users: (this.data.users || []).map(u => {
+        const { accessPasscode, ...safeUser } = u;
+        return {
+          ...safeUser,
+          hasPasscode: !!accessPasscode
+        };
+      })
     };
   }
 
@@ -218,7 +221,8 @@ class AccessStore {
 
     if (existingIdx >= 0) {
       const prev = this.data.users[existingIdx];
-      const passChanged = userData.accessPasscode !== undefined && userData.accessPasscode.trim() !== (prev.accessPasscode || '');
+      const newPass = (userData.accessPasscode || '').trim();
+      const passChanged = newPass.length > 0;
       this.data.users[existingIdx] = {
         ...prev,
         name: (userData.name || prev.name || cleanEmail.split('@')[0]).trim(),
@@ -227,15 +231,17 @@ class AccessStore {
         clientFilter: userData.clientFilter || prev.clientFilter || 'Todos',
         role: userData.role || prev.role || 'board',
         active: userData.active !== undefined ? !!userData.active : prev.active !== false,
-        accessPasscode: userData.accessPasscode !== undefined ? userData.accessPasscode.trim() : prev.accessPasscode,
+        accessPasscode: passChanged ? newPass : prev.accessPasscode,
         mustChangePassword: userData.mustChangePassword !== undefined
           ? !!userData.mustChangePassword
           : (passChanged ? true : !!prev.mustChangePassword)
       };
       this.save();
-      return this.data.users[existingIdx];
+      const { accessPasscode, ...safeUser } = this.data.users[existingIdx];
+      return { ...safeUser, hasPasscode: !!accessPasscode };
     } else {
-      const generatedPass = (userData.accessPasscode || '').trim() || `ILC-${Math.floor(1000 + Math.random() * 9000)}`;
+      const newPass = (userData.accessPasscode || '').trim();
+      const generatedPass = newPass || `ILC-${Math.floor(1000 + Math.random() * 9000)}`;
       const newUser = {
         id: 'usr-' + Date.now(),
         name: (userData.name || cleanEmail.split('@')[0]).trim(),
@@ -251,7 +257,8 @@ class AccessStore {
       if (!this.data.users) this.data.users = [];
       this.data.users.unshift(newUser);
       this.save();
-      return newUser;
+      const { accessPasscode, ...safeUser } = newUser;
+      return { ...safeUser, hasPasscode: !!accessPasscode };
     }
   }
 

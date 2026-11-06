@@ -2149,8 +2149,17 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                   </select>
                 </div>
                 <div>
-                  <label class="block font-bold text-slate-700 mb-1">Senha de 1º Acesso (ou nova senha)</label>
-                  <input type="text" [(ngModel)]="editingAccessUser().accessPasscode" placeholder="Ex: ILC@2026" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl font-mono" />
+                  <label class="block font-bold text-slate-700 mb-1">
+                    {{ editingAccessUser().id ? 'Redefinir Senha de Acesso (opcional)' : 'Senha Provisória de 1º Acesso (opcional)' }}
+                  </label>
+                  <input
+                    type="password"
+                    [(ngModel)]="editingAccessUser().accessPasscode"
+                    [placeholder]="editingAccessUser().id ? '•••••••• (deixe em branco para manter a senha atual)' : 'Deixe em branco para gerar automaticamente'"
+                    class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl font-mono text-xs" />
+                  <p class="text-[10px] text-slate-500 mt-1">
+                    {{ editingAccessUser().id ? '🔒 Por segurança e privacidade, a senha pessoal do usuário não é exibida. Preencha apenas se desejar redefini-la.' : '🔒 Deixe em branco para gerar automaticamente um código temporário de 1º acesso.' }}
+                  </p>
                 </div>
                 <div class="flex items-center gap-2 pt-1">
                   <input type="checkbox" [(ngModel)]="editingAccessUser().mustChangePassword" id="chkMustChange" class="w-4 h-4 text-purple-600 rounded" />
@@ -3405,7 +3414,7 @@ export class CuratorModalComponent implements OnInit {
       email: '',
       organization: '',
       clientFilter: 'Todos',
-      accessPasscode: 'ILC@' + Math.floor(1000 + Math.random() * 9000),
+      accessPasscode: '',
       mustChangePassword: true,
       active: true
     });
@@ -3419,7 +3428,7 @@ export class CuratorModalComponent implements OnInit {
       email: u.email,
       organization: u.organization || '',
       clientFilter: u.clientFilter || 'Todos',
-      accessPasscode: u.accessPasscode || '',
+      accessPasscode: '',
       mustChangePassword: u.mustChangePassword !== false,
       active: u.active !== false
     });
