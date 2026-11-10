@@ -22,18 +22,18 @@
         "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 16,
+        "progress": 15,
         "ragStatus": "green",
         "agreedDelivery": "2026-12-01",
         "targetDelivery": "2026-12-01",
         "varianceDays": 0,
-        "statusReport": "Em fase de integração com o backend.",
+        "statusReport": "Está com o protótipo aprovado e em pleno desenvolvimento mobile sem impedimentos. Atualmente, o foco está na conexão das telas com o backend, reaproveitando inicialmente os endpoints e rotas já mapeados no painel web (como os de Gestão de Demandas) antes de demandar a criação ou ajuste de rotas específicas ao time de backend.",
         "statusReportDate": "2026-10-27",
         "previousStatusReport": "Em fase de integração com o backend.",
         "previousStatusReportDate": "2026-10-27",
         "attentionPoints": "",
         "hoursExecuted": 32,
-        "hoursPlanned": 364,
+        "hoursPlanned": 377,
         "hoursAgreed": 340,
         "priority": "P2",
         "category": "new_project",
@@ -67,7 +67,7 @@
         "agreedDelivery": "2026-11-30",
         "targetDelivery": "2026-11-30",
         "varianceDays": 0,
-        "statusReport": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
+        "statusReport": "A solução já viabiliza a inclusão antecipada de promessas de entrega vinculadas a Ordens de Compra no SAP e a gestão dimensional de embalagens. Nesta semana, foi alinhado o cronograma para a próxima rodada de treinamentos operacionais, enquanto a equipe técnica prepara a subida de melhorias de usabilidade na tela de promessas (mantendo o painel de sugestão de veículo sempre visível em tempo real) e atua na análise de linhas de promessa retroativas para o fechamento dos relatórios de performance e SLA junto ao faturamento.",
         "statusReportDate": "2026-10-06",
         "previousStatusReport": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
         "previousStatusReportDate": "2026-10-06",
@@ -105,11 +105,11 @@
         "agreedDelivery": "2027-01-16",
         "targetDelivery": "2027-01-16",
         "varianceDays": 0,
-        "statusReport": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
+        "statusReport": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
         "statusReportDate": "2026-10-06",
         "previousStatusReport": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
         "previousStatusReportDate": "2026-10-06",
-        "attentionPoints": "A etapa solicitação/cotação estão sendo testadas simultaneamente com módulo transportador. Elas serão encerradas simultâneamente, por isso soliictação consta como atrasado. ",
+        "attentionPoints": "",
         "hoursExecuted": 598,
         "hoursPlanned": 759,
         "hoursAgreed": 750,
@@ -144,7 +144,7 @@
         "agreedDelivery": "2026-11-17",
         "targetDelivery": "2026-11-17",
         "varianceDays": 0,
-        "statusReport": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
+        "statusReport": "Encontra-se em fase final de validação e operação assistida pós-treinamento, sem registro de desvios recentes de SLA. A entrega contempla a reprogramação sistêmica de coletas diretamente no Portal Integrator, aliada a travas contra duplicidade de pedidos e mitigação de impactos de frete morto na operação.",
         "statusReportDate": "2026-10-06",
         "previousStatusReport": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
         "previousStatusReportDate": "2026-10-06",
@@ -182,7 +182,7 @@
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
         "varianceDays": 0,
-        "statusReport": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
+        "statusReport": "A integração de assinatura eletrônica de contratos via ZapSign no onboarding de motoristas está na reta final de entrega. A estrutura de banco de dados, as configurações de produção, a rotina para salvar o PDF assinado diretamente no file server interno (garantindo link permanente para consulta sem risco de expiração) e a padronização do JSON de retorno já foram concluídas e subidas em produção no backend; no momento, o frontend mobile realiza a validação técnica final em produção — junto à correção de scroll para fontes ampliadas no Smart Tracking — para liberar os testes de QA e finalizar o alinhamento de consumo com a proc da Rodopar.",
         "statusReportDate": "2026-10-06",
         "previousStatusReport": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
         "previousStatusReportDate": "2026-10-06",
@@ -225,7 +225,7 @@
         "agreedDelivery": "2026-10-27",
         "targetDelivery": "2026-10-27",
         "varianceDays": 0,
-        "statusReport": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
+        "statusReport": "O projeto encontra-se com o escopo base concluído e em operação assistida na unidade de Cubatão, passando atualmente por melhorias evolutivas na captura e interpretação de e-mails. Nos últimos dias, foram desenvolvidos os tratamentos para data de programação de coleta, data de retorno de contêiner vazio e o filtro inteligente para distinguir e-mails que são demandas reais daqueles que não devem gerar demanda; após ajustes no modelo de IA (migrando de um modelo mini para um mais robusto para maior precisão) e a estruturação no backend para agrupar múltiplos itens dentro de um mesmo card via JSON da IA, a frente segue na bateria final de testes e ajustes para consolidação em produção.",
         "statusReportDate": "2026-10-06",
         "previousStatusReport": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
         "previousStatusReportDate": "2026-10-06",
@@ -264,11 +264,11 @@
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
         "varianceDays": 0,
-        "statusReport": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
+        "statusReport": "A iniciativa de digitalização da inspeção veicular pré e pós-viagem (utilizando formulários dinâmicos no Smart X distribuídos via app Smart Tracking) já conta com a documentação base pronta. Assim como o Projeto Safety, passou por reunião de alinhamento em 09/11 para organização do backlog e direcionamento das atividades na esteira de desenvolvimento da equipe.",
         "statusReportDate": "2026-11-03",
         "previousStatusReport": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
         "previousStatusReportDate": "2026-10-27",
-        "attentionPoints": "A previsão é que não será atendida a data firmada 03/11.",
+        "attentionPoints": "",
         "hoursExecuted": 0,
         "hoursPlanned": 0,
         "hoursAgreed": 0,
@@ -307,11 +307,11 @@
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
         "varianceDays": 0,
-        "statusReport": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
+        "statusReport": "Atualmente em fase inicial de planejamento e estruturação. Na segunda-feira (09/11), foi realizada a reunião de alinhamento entre produto e qualidade para destravar as definições pendentes e organizar a entrada efetiva das tarefas na esteira de desenvolvimento.",
         "statusReportDate": "2026-11-03",
         "previousStatusReport": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
         "previousStatusReportDate": "2026-10-06",
-        "attentionPoints": "Mauricio da Carga Online será contatado ASAP para reunião de alinhamento técnico.",
+        "attentionPoints": "",
         "hoursExecuted": 0,
         "hoursPlanned": 0,
         "hoursAgreed": 0,
@@ -347,7 +347,7 @@
         "agreedDelivery": "2026-11-13",
         "targetDelivery": "2026-11-13",
         "varianceDays": 2,
-        "statusReport": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
+        "statusReport": "O projeto segue em ritmo acelerado de desenvolvimento e homologação para disponibilizar visibilidade operacional 4PL, controle de SLAs e geocercas iniciando pela unidade de Cubatão. Recentemente, foram corrigidas e publicadas online as extrações das colunas de PV, OST, CTR e manifesto, além da implementação de filtros interativos por etapa do fluxo e de um novo componente visual para monitoramento de prazos (PCs vencidos e a vencer), que já foram apresentados e seguem abertos para eventuais ajustes finos pós-validação.",
         "statusReportDate": "2026-10-27",
         "previousStatusReport": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
         "previousStatusReportDate": "2026-10-27",
@@ -668,14 +668,23 @@
         "responsible": "ILC"
       }
     ],
-    "boardDecisions": [],
+    "boardDecisions": [
+      {
+        "id": "dec-1794329709439",
+        "title": "Auditoria de arquivos",
+        "client": "Geral",
+        "impact": "Incluir mecanismo de auditoria de arquivos enviados por meio do App Smart Tracking, para validar sua atenticidade. Pois foram identificadas fraudes no envio de arquivos adulterados por IA.",
+        "status": "Aprovado",
+        "deadline": "Em análise"
+      }
+    ],
     "maintenanceSection": {
       "totalProjects": 3,
-      "totalHours": 223,
+      "totalHours": 227,
       "newProjectHours": 358,
-      "totalPeriodHours": 581,
-      "maintenancePercent": 38,
-      "newProjectPercent": 62,
+      "totalPeriodHours": 585,
+      "maintenancePercent": 39,
+      "newProjectPercent": 61,
       "activeSystemsCount": 4,
       "teamMembersCount": 4,
       "teamMembers": [
@@ -700,11 +709,11 @@
           "lifetimeHoursExecuted": 760,
           "hoursPlanned": 484,
           "hoursAgreed": 720,
-          "statusReport": ".",
+          "statusReport": ".O aplicativo encontra-se estabilizado em produção na versão 53 (build 150, com mais de 1.600 instalações ativas no Android), que consolidou a adequação ao Android 16, o redesenho da tela inicial, a instrumentação de diagnóstico de rastreio em segundo plano e a correção no envio do evento de fim de operação. Nas atividades de sustentação desta semana, foi concluída a correção de acessibilidade e layout para aparelhos configurados com fonte ampliada — habilitando a rolagem (scroll) nas telas de onboarding e demais fluxos em que os botões ficavam inacessíveis —, e está em andamento no backend o ajuste para limpar o cache de respostas nos formulários integrados ao Smart X, preparando um pacote unificado de atualização para homologação de QA junto à entrega da assinatura digital (ZapSign).",
           "statusReportDate": "2026-10-27",
           "previousStatusReport": ".",
           "previousStatusReportDate": "2026-10-27",
-          "attentionPoints": ".",
+          "attentionPoints": "O principal ponto de atenção técnico é a retenção em cache de respostas anteriores nos formulários integrados ao Smart X, falha que já afetou motoristas no passado e está sendo corrigida preventivamente antes de ir à produção. Além disso, a entrega de Atualização de Documentos (97% concluída) segue com prazo original vencido aguardando homologação final para encerramento, e a definição de um Design System padronizado ainda depende de confirmação da liderança sobre a disponibilidade de agenda da designer responsável pelo portal institucional.",
           "teamLeader": "Mike Andrade",
           "teamMembers": [
             "Mike Andrade"
@@ -728,7 +737,7 @@
               "assignedTo": "Mike Andrade"
             }
           ],
-          "summary": "."
+          "summary": ".O aplicativo encontra-se estabilizado em produção na versão 53 (build 150, com mais de 1.600 instalações ativas no Android), que consolidou a adequação ao Android 16, o redesenho da tela inicial, a instrumentação de diagnóstico de rastreio em segundo plano e a correção no envio do evento de fim de operação. Nas atividades de sustentação desta semana, foi concluída a correção de acessibilidade e layout para aparelhos configurados com fonte ampliada — habilitando a rolagem (scroll) nas telas de onboarding e demais fluxos em que os botões ficavam inacessíveis —, e está em andamento no backend o ajuste para limpar o cache de respostas nos formulários integrados ao Smart X, preparando um pacote unificado de atualização para homologação de QA junto à entrega da assinatura digital (ZapSign)."
         },
         {
           "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
@@ -742,11 +751,11 @@
           "lifetimeHoursExecuted": 0,
           "hoursPlanned": 0,
           "hoursAgreed": 0,
-          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReport": "Foi criado um projeto dedicado ao BI no Azure DevOps para centralizar a governança e dar visibilidade às demandas da área nos status reports. Nas entregas técnicas, foram finalizadas as duas views que atendem a operação da Bosch (Transit Time e On Time) e foi iniciada a construção dos dashboards da Bunge a partir do painel de coleta (On-Time Pickup), logo após a publicação da view em produção e o isolamento dos dados por cliente. Paralelamente, a equipe está focada no fechamento do faturamento da John Deere (incluindo o tratamento dos pedidos cancelados de outubro e o treinamento operacional da Jéssica), na conclusão do estudo de volumetria para faturamentos futuros solicitados pela cliente e no saneamento dos indicadores de SLA operacional, com as ocorrências e justificativas de Frete Expresso já regularizadas.",
           "statusReportDate": "2026-11-03",
-          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
-          "previousStatusReportDate": "2026-10-06",
-          "attentionPoints": "",
+          "previousStatusReport": ".",
+          "previousStatusReportDate": "2026-11-03",
+          "attentionPoints": "Há necessidade de sincronia imediata entre banco de dados e BI a cada liberação de nova view (como na Bunge) para garantir o bloqueio de dados e evitar o risco de visibilidade cruzada entre embarcadores e transportadores. Também exige atenção a divergência de linhas de promessa com vencimento retroativo nos relatórios da John Deere — que precisa ser saneada com o backend antes do envio da performance junto ao faturamento —, além da dependência de insumos da Bunge sobre regras de prazo de entrega para avançar nos próximos painéis.",
           "teamLeader": "Lucas Maier Gomes Bruno",
           "teamMembers": [
             "Lucas Maier Gomes Bruno"
@@ -759,7 +768,7 @@
             ]
           },
           "recentActivities": [],
-          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+          "summary": "Foi criado um projeto dedicado ao BI no Azure DevOps para centralizar a governança e dar visibilidade às demandas da área nos status reports. Nas entregas técnicas, foram finalizadas as duas views que atendem a operação da Bosch (Transit Time e On Time) e foi iniciada a construção dos dashboards da Bunge a partir do painel de coleta (On-Time Pickup), logo após a publicação da view em produção e o isolamento dos dados por cliente. Paralelamente, a equipe está focada no fechamento do faturamento da John Deere (incluindo o tratamento dos pedidos cancelados de outubro e o treinamento operacional da Jéssica), na conclusão do estudo de volumetria para faturamentos futuros solicitados pela cliente e no saneamento dos indicadores de SLA operacional, com as ocorrências e justificativas de Frete Expresso já regularizadas."
         },
         {
           "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
@@ -773,11 +782,11 @@
           "lifetimeHoursExecuted": 20,
           "hoursPlanned": 27,
           "hoursAgreed": 0,
-          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReport": "A gestão de sustentação do Portal Integrator Web passou a contar com um projeto próprio no Azure DevOps, estruturado em ciclos mensais e organizado com Area Paths por módulo para migração das tarefas em aberto. Nas entregas da semana, destacam-se a subida em produção da funcionalidade do Revalida (com builds, tabelas de banco de dados e comunicado oficial prontos para disparo), o desenvolvimento do serviço para transmissão de ROC de Gestão Embarcada (com remoção gradual da visão irrestrita de usuários específicos), o atendimento prioritário à solicitação da John Deere para inclusão da coluna de número de pedido de coleta no relatório INT 0080, o levantamento do novo relatório consolidado de Cross-Docking e a configuração dos novos domínios e DNS na migração das URLs do portal Angular para o padrão ilc.com.br.",
           "statusReportDate": "2026-11-03",
-          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
-          "previousStatusReportDate": "2026-10-06",
-          "attentionPoints": "",
+          "previousStatusReport": ".",
+          "previousStatusReportDate": "2026-11-03",
+          "attentionPoints": "A entrada do Revalida em produção requer ativação escalonada e monitoramento próximo para evitar que uma revalidação em massa bloqueie usuários simultaneamente na operação, somada à necessidade de acompanhamento constante de logs devido a falhas recorrentes no envio de arquivos EDI/Gestão MD pelos parceiros. No médio prazo, permanecem no radar o atraso na homologação da migração Angular (V0) e a falta de vazão para concluir iniciativas internas importantes — como o sistema de chamados Zammad, o portal de documentação HobbyDocs e o alinhamento de acessos e banco SQL com a CCM.",
           "teamLeader": "Luis Carlos Oliveira Santos Junior",
           "teamMembers": [
             "Luis Carlos Oliveira Santos Junior"
@@ -802,7 +811,7 @@
               "assignedTo": "Silvio Torres"
             }
           ],
-          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+          "summary": "A gestão de sustentação do Portal Integrator Web passou a contar com um projeto próprio no Azure DevOps, estruturado em ciclos mensais e organizado com Area Paths por módulo para migração das tarefas em aberto. Nas entregas da semana, destacam-se a subida em produção da funcionalidade do Revalida (com builds, tabelas de banco de dados e comunicado oficial prontos para disparo), o desenvolvimento do serviço para transmissão de ROC de Gestão Embarcada (com remoção gradual da visão irrestrita de usuários específicos), o atendimento prioritário à solicitação da John Deere para inclusão da coluna de número de pedido de coleta no relatório INT 0080, o levantamento do novo relatório consolidado de Cross-Docking e a configuração dos novos domínios e DNS na migração das URLs do portal Angular para o padrão ilc.com.br."
         }
       ]
     }
