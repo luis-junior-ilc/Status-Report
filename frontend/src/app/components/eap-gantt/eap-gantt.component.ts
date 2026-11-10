@@ -198,150 +198,160 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
 
         </div>
 
-        <!-- OBJETIVO DO PROJETO (ESTRATÉGICO: FATURAMENTO, CUSTO E QUALITATIVO) -->
-        <div class="p-3.5 bg-gradient-to-r from-emerald-50/80 via-teal-50/40 to-white rounded-2xl border border-emerald-200/90 text-xs shadow-2xs">
-          <div class="flex items-center justify-between gap-2 mb-1.5">
-            <div class="text-[10px] font-black text-emerald-950 uppercase tracking-wider flex items-center gap-1.5 flex-wrap">
-              <span class="text-sm">🎯</span>
-              <span>Objetivo do Projeto</span>
-              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-full border border-emerald-200">
-                Faturamento • Custo • Qualitativo
-              </span>
-              <span *ngIf="objectiveSavedToast()" class="text-emerald-700 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-300 animate-pulse">
-                ✓ Objetivo atualizado!
-              </span>
-            </div>
+        <!-- GRID 2 COLUNAS: OBJETIVO DO PROJETO & STATUS REPORT DA SEMANA -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          
+          <!-- COLUNA 1: OBJETIVO DO PROJETO (ESTRATÉGICO: FATURAMENTO, CUSTO E QUALITATIVO) -->
+          <div class="p-3.5 bg-slate-50/90 rounded-2xl border border-slate-200/90 text-xs shadow-2xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <div class="text-[10px] font-black text-slate-700 uppercase tracking-wider flex items-center gap-1.5 flex-wrap">
+                  <span class="text-sm">🎯</span>
+                  <span>Objetivo do Projeto</span>
+                  <span class="text-[9px] font-bold text-slate-600 bg-white px-2 py-0.5 rounded-full border border-slate-200 shadow-2xs">
+                    Faturamento • Custo • Qualitativo
+                  </span>
+                  <span *ngIf="objectiveSavedToast()" class="text-emerald-700 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 animate-pulse">
+                    ✓ Salvo com sucesso!
+                  </span>
+                </div>
 
-            <!-- Edit Button / Toggle -->
-            <button
-              *ngIf="!isEditingObjective()"
-              (click)="startEditingObjective(project.objective || '')"
-              type="button"
-              class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-emerald-800 bg-white hover:bg-emerald-100/70 rounded-lg border border-emerald-300 shadow-2xs transition cursor-pointer"
-              title="Editar objetivo do projeto e sincronizar com a Curadoria">
-              <svg class="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-              </svg>
-              <span>Editar Objetivo</span>
-            </button>
-          </div>
-
-          <!-- Read-only View -->
-          <div *ngIf="!isEditingObjective()">
-            <div *ngIf="project.objective" class="text-xs text-slate-800 leading-relaxed font-normal whitespace-pre-line bg-white/70 p-3 rounded-xl border border-emerald-100">
-              {{ project.objective }}
-            </div>
-            <div *ngIf="!project.objective" class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 italic bg-white/70 p-3 rounded-xl border border-dashed border-emerald-300">
-              <span>Nenhum objetivo cadastrado para este projeto. Defina as metas de Faturamento, Custo e Qualitativo.</span>
-              <button
-                type="button"
-                (click)="startEditingObjective('')"
-                class="text-[11px] font-extrabold text-emerald-700 hover:text-emerald-800 underline cursor-pointer shrink-0">
-                + Cadastrar Objetivo
-              </button>
-            </div>
-          </div>
-
-          <!-- Interactive Inline Editor -->
-          <div *ngIf="isEditingObjective()" class="mt-2 space-y-2">
-            <textarea
-              [ngModel]="editedObjective()"
-              (ngModelChange)="editedObjective.set($event)"
-              rows="4"
-              placeholder="Descreva o objetivo do projeto de forma resumida e direta:&#10;• Objetivo: Finalidade central do projeto;&#10;• Faturamento: Estimativa de receita, novos negócios ou expansão para o cliente;&#10;• Custo: Estimativa de redução de despesas, horas operacionais ou retrabalho;&#10;• Qualitativo: Ganhos de qualidade, satisfação de usuários (NPS), conformidade ou SLA."
-              class="w-full text-xs text-slate-800 bg-white border border-emerald-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner resize-y font-normal leading-relaxed">
-            </textarea>
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 text-xs">
-              <span class="text-[10px] text-emerald-800 font-medium">
-                💡 Este objetivo também fica salvo na Curadoria para consultas executivas.
-              </span>
-              <div class="flex items-center gap-2">
+                <!-- Edit Button -->
                 <button
+                  *ngIf="!isEditingObjective()"
+                  (click)="startEditingObjective(project.objective || '')"
                   type="button"
-                  (click)="cancelEditingObjective()"
-                  [disabled]="isSavingObjective()"
-                  class="px-3 py-1 text-xs font-semibold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition cursor-pointer">
-                  Cancelar
+                  class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-slate-700 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 shadow-2xs transition cursor-pointer"
+                  title="Editar objetivo do projeto e sincronizar com a Curadoria">
+                  <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                  </svg>
+                  <span>Editar</span>
                 </button>
-                <button
-                  type="button"
-                  (click)="saveObjective(project.id)"
-                  [disabled]="isSavingObjective()"
-                  class="px-3.5 py-1 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-xs transition cursor-pointer flex items-center gap-1.5 disabled:opacity-50">
-                  <span *ngIf="isSavingObjective()" class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  <span>{{ isSavingObjective() ? 'Salvando...' : '💾 Salvar Objetivo' }}</span>
-                </button>
+              </div>
+
+              <!-- Read-only View -->
+              <div *ngIf="!isEditingObjective()">
+                <div *ngIf="project.objective" class="text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-line bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs min-h-[64px]">
+                  {{ project.objective }}
+                </div>
+                <div *ngIf="!project.objective" class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 italic bg-white p-3 rounded-xl border border-dashed border-slate-300 min-h-[64px]">
+                  <span>Nenhum objetivo cadastrado. Defina as metas de Faturamento, Custo e Qualitativo.</span>
+                  <button
+                    type="button"
+                    (click)="startEditingObjective('')"
+                    class="text-[11px] font-extrabold text-blue-600 hover:text-blue-700 underline cursor-pointer shrink-0">
+                    + Cadastrar Objetivo
+                  </button>
+                </div>
+              </div>
+
+              <!-- Interactive Inline Editor -->
+              <div *ngIf="isEditingObjective()" class="mt-1 space-y-2">
+                <textarea
+                  [ngModel]="editedObjective()"
+                  (ngModelChange)="editedObjective.set($event)"
+                  rows="4"
+                  placeholder="Descreva o objetivo do projeto de forma resumida e direta:&#10;• Objetivo: Finalidade central do projeto;&#10;• Faturamento: Estimativa de receita, novos negócios ou expansão para o cliente;&#10;• Custo: Estimativa de redução de despesas, horas operacionais ou retrabalho;&#10;• Qualitativo: Ganhos de qualidade, satisfação de usuários (NPS), conformidade ou SLA."
+                  class="w-full text-xs text-slate-800 bg-white border border-slate-300 rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-blue-500 shadow-inner resize-y font-normal leading-relaxed">
+                </textarea>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 text-xs">
+                  <span class="text-[10px] text-slate-500 font-medium">
+                    💡 Salvo na Curadoria e visível no cronograma.
+                  </span>
+                  <div class="flex items-center gap-2">
+                    <button
+                      type="button"
+                      (click)="cancelEditingObjective()"
+                      [disabled]="isSavingObjective()"
+                      class="px-3 py-1 text-xs font-semibold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition cursor-pointer">
+                      Cancelar
+                    </button>
+                    <button
+                      type="button"
+                      (click)="saveObjective(project.id)"
+                      [disabled]="isSavingObjective()"
+                      class="px-3.5 py-1 text-xs font-bold text-white bg-slate-800 hover:bg-slate-900 rounded-lg shadow-xs transition cursor-pointer flex items-center gap-1.5 disabled:opacity-50">
+                      <span *ngIf="isSavingObjective()" class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      <span>{{ isSavingObjective() ? 'Salvando...' : '💾 Salvar' }}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- STATUS REPORT DA SEMANA BANNER -->
-        <div class="p-3.5 bg-blue-50/70 rounded-2xl border border-blue-200/80 text-xs">
-          <div class="flex items-center justify-between gap-2 mb-1.5">
-            <div class="text-[10px] font-extrabold text-blue-900 uppercase tracking-wider flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-blue-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-              </svg>
-              <span>Status Report da Semana</span>
-              <span *ngIf="statusReportSavedToast()" class="ml-2 text-emerald-600 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 animate-pulse">
-                ✓ Atualizado com sucesso!
-              </span>
-            </div>
+          <!-- COLUNA 2: STATUS REPORT DA SEMANA -->
+          <div class="p-3.5 bg-slate-50/90 rounded-2xl border border-slate-200/90 text-xs shadow-2xs flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-1.5">
+                <div class="text-[10px] font-black text-slate-700 uppercase tracking-wider flex items-center gap-1.5 flex-wrap">
+                  <span class="text-sm">📋</span>
+                  <span>Status Report da Semana</span>
+                  <span class="text-[9px] font-bold text-slate-600 bg-white px-2 py-0.5 rounded-full border border-slate-200 shadow-2xs">
+                    Relato Executivo
+                  </span>
+                  <span *ngIf="statusReportSavedToast()" class="text-emerald-700 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 animate-pulse">
+                    ✓ Relato atualizado!
+                  </span>
+                </div>
 
-            <!-- Edit Button (visible when not editing) -->
-            <button
-              *ngIf="!isEditingStatusReport()"
-              (click)="startEditingStatusReport(service.getProjectCurrentStatusReport(project))"
-              type="button"
-              class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-blue-700 bg-white hover:bg-blue-100 rounded-lg border border-blue-200 shadow-2xs transition cursor-pointer"
-              title="Editar relato e sincronizar com o Status Report semanal">
-              <svg class="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-              </svg>
-              <span>Editar Relato</span>
-            </button>
-          </div>
-
-          <!-- Read-only View -->
-          <div *ngIf="!isEditingStatusReport()">
-            <p class="text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-line">
-              {{ service.getProjectCurrentStatusReport(project) }}
-            </p>
-          </div>
-
-          <!-- Interactive Inline Editor -->
-          <div *ngIf="isEditingStatusReport()" class="mt-2 space-y-2">
-            <textarea
-              [ngModel]="editedStatusReport()"
-              (ngModelChange)="editedStatusReport.set($event)"
-              rows="3"
-              placeholder="Digite o relato executivo da semana deste projeto..."
-              class="w-full text-xs text-slate-800 bg-white border border-blue-300 rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-blue-500 shadow-inner resize-y">
-            </textarea>
-            <div class="flex items-center justify-between gap-2 pt-1">
-              <span class="text-[10px] text-blue-600 font-medium">
-                💡 O relato salvo aqui atualiza automaticamente o "Status report atual" no Status Report semanal.
-              </span>
-              <div class="flex items-center gap-2">
+                <!-- Edit Button -->
                 <button
+                  *ngIf="!isEditingStatusReport()"
+                  (click)="startEditingStatusReport(service.getProjectCurrentStatusReport(project))"
                   type="button"
-                  (click)="cancelEditingStatusReport()"
-                  [disabled]="isSavingStatusReport()"
-                  class="px-3 py-1 text-xs font-semibold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition cursor-pointer">
-                  Cancelar
+                  class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-slate-700 bg-white hover:bg-slate-100 rounded-lg border border-slate-200 shadow-2xs transition cursor-pointer"
+                  title="Editar relato e sincronizar com o Status Report semanal">
+                  <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                  </svg>
+                  <span>Editar</span>
                 </button>
-                <button
-                  type="button"
-                  (click)="saveStatusReport(project.id)"
-                  [disabled]="isSavingStatusReport()"
-                  class="px-3.5 py-1 text-xs font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-lg shadow-xs transition cursor-pointer flex items-center gap-1.5 disabled:opacity-50">
-                  <span *ngIf="isSavingStatusReport()" class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
-                  <span>{{ isSavingStatusReport() ? 'Salvando...' : '💾 Salvar Relato' }}</span>
-                </button>
+              </div>
+
+              <!-- Read-only View -->
+              <div *ngIf="!isEditingStatusReport()">
+                <div class="text-xs text-slate-700 leading-relaxed font-normal whitespace-pre-line bg-white p-3 rounded-xl border border-slate-200/80 shadow-2xs min-h-[64px]">
+                  {{ service.getProjectCurrentStatusReport(project) }}
+                </div>
+              </div>
+
+              <!-- Interactive Inline Editor -->
+              <div *ngIf="isEditingStatusReport()" class="mt-1 space-y-2">
+                <textarea
+                  [ngModel]="editedStatusReport()"
+                  (ngModelChange)="editedStatusReport.set($event)"
+                  rows="4"
+                  placeholder="Digite o relato executivo da semana deste projeto..."
+                  class="w-full text-xs text-slate-800 bg-white border border-slate-300 rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-blue-500 shadow-inner resize-y font-normal leading-relaxed">
+                </textarea>
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 text-xs">
+                  <span class="text-[10px] text-slate-500 font-medium">
+                    💡 Atualiza automaticamente o Status Report semanal.
+                  </span>
+                  <div class="flex items-center gap-2">
+                    <button
+                      type="button"
+                      (click)="cancelEditingStatusReport()"
+                      [disabled]="isSavingStatusReport()"
+                      class="px-3 py-1 text-xs font-semibold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition cursor-pointer">
+                      Cancelar
+                    </button>
+                    <button
+                      type="button"
+                      (click)="saveStatusReport(project.id)"
+                      [disabled]="isSavingStatusReport()"
+                      class="px-3.5 py-1 text-xs font-bold text-white bg-slate-800 hover:bg-slate-900 rounded-lg shadow-xs transition cursor-pointer flex items-center gap-1.5 disabled:opacity-50">
+                      <span *ngIf="isSavingStatusReport()" class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                      <span>{{ isSavingStatusReport() ? 'Salvando...' : '💾 Salvar' }}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 
         <!-- EXECUTIVE KPI STRIP -->

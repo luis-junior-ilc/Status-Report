@@ -7868,8 +7868,7 @@
       },
       "agreedHours": 698,
       "category": "maintenance",
-      "hasManualAgreedDates": false,
-      "objective": ""
+      "hasManualAgreedDates": false
     },
     {
       "id": "eb438ca6-f25e-4c5c-ab4b-a45e1b243ba1",
@@ -8153,7 +8152,9 @@
         ]
       },
       "agreedHours": 0,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [],
+      "objective": "Tem como objetivo integrar os sistemas Rodopar e Senior RH a uma plataforma LXP para disparar treinamentos automáticos aos motoristas com base em multas, sinistros, telemetria e avarias. Em faturamento, habilita rapidamente motoristas para operações dedicadas de clientes e treina via celular sem parar o caminhão; em custo, reduz gastos com acidentes, multas, avarias, combustível/manutenção e passivos trabalhistas (arquivando certificados no RH); e no qualitativo, fortalece a segurança viária preventiva e a conformidade em auditorias."
     },
     {
       "id": "9725bb95-eea2-4d9f-b0f8-bc83bc8b1aa6",
@@ -11277,7 +11278,39 @@
         ]
       },
       "agreedHours": 646,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 84,
+          "percent": 12.9
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 172,
+          "percent": 26.4
+        },
+        {
+          "monthKey": "2026-08",
+          "label": "Ago/26",
+          "hours": 184,
+          "percent": 28.3
+        },
+        {
+          "monthKey": "2026-07",
+          "label": "Jul/26",
+          "hours": 97,
+          "percent": 14.9
+        },
+        {
+          "monthKey": "2026-06",
+          "label": "Jun/26",
+          "hours": 114,
+          "percent": 17.5
+        }
+      ]
     },
     {
       "id": "4d1d445e-584d-4bdb-a176-afce663b0300",
@@ -11617,7 +11650,28 @@
         ]
       },
       "agreedHours": 120,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 6,
+          "percent": 6.3
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 63,
+          "percent": 65.6
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 27,
+          "percent": 28.1
+        }
+      ],
+      "objective": "Tem como objetivo digitalizar os 40% a 50% de pedidos hoje manuais da John Deere, exigindo validação de Ordem de Compra ativa no SAP, importação de NFe/XML (24h–48h antes), cubagem real e trava na expedição. Em faturamento, evita paradas de fábrica e viabiliza chargeback logístico contra fornecedores infratores; em custo, elimina carretas subutilizadas (3/4 de ocupação), fretes extras de emergência, embarques sem orçamento e centenas de horas semanais de digitação; e no qualitativo, substitui estimativas informais por compromisso firme baseado em Nota Fiscal."
     },
     {
       "id": "c99e39c8-2702-4961-8624-117ce09beac7",
@@ -11957,7 +12011,28 @@
         ]
       },
       "agreedHours": 116,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 6,
+          "percent": 6.7
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 67,
+          "percent": 74.4
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 17,
+          "percent": 18.9
+        }
+      ],
+      "objective": "Tem como objetivo substituir a duplicação ou alteração de pedidos por um fluxo de \"Pedido Único + Tentativas Sequenciais\" para coletas falhas. Em faturamento, evita distorções de pedidos duplicados e aponta o Ofensor exato da falha para embasar ressarcimentos (frete morto) e multas pelo cliente (John Deere); em custo, evita gastos de alteração em APIs/EDI, coletas duplicadas acidentais e viagens improdutivas recorrentes; e no qualitativo, preserva a transparência do histórico original e viabiliza a medição dupla de SLA no BI (Original vs. Reprogramado)."
     },
     {
       "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
@@ -13221,7 +13296,33 @@
       },
       "agreedHours": 720,
       "category": "maintenance",
-      "hasManualAgreedDates": false
+      "hasManualAgreedDates": false,
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 196,
+          "percent": 25.8
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 144,
+          "percent": 18.9
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 380,
+          "percent": 50
+        },
+        {
+          "monthKey": "2026-04",
+          "label": "Abr/26",
+          "hours": 40,
+          "percent": 5.3
+        }
+      ]
     },
     {
       "id": "c064a093-ea7c-45e6-8ec6-5bf10a5794a9",
@@ -14479,7 +14580,28 @@
         ]
       },
       "agreedHours": 173.59999999999997,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 343,
+          "percent": 72.8
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 77,
+          "percent": 16.3
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 51,
+          "percent": 10.8
+        }
+      ],
+      "objective": "Tem como objetivo automatizar a assinatura eletrônica do contrato de transporte diretamente no app Smart Tracking via WebView e API da ZapSign. Em faturamento, reduz a desistência de motoristas e libera imediatamente a ativação no TMS Rodopar para gerar viagens faturáveis; em custo, economiza centenas de horas de desenvolvimento próprio (Build vs. Buy) com licença de apenas R$ 140 a R$ 200/mês, além de reduzir passivos jurídicos; e no qualitativo, garante validade jurídica imediata (ICP-Brasil, 2FA, geolocalização e SHA256) e suporte nativo para biometria facial futura."
     },
     {
       "id": "7a1136ad-134c-41fe-a684-79e8b2ab5c93",
@@ -15236,7 +15358,34 @@
         ]
       },
       "agreedHours": 750,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 97,
+          "percent": 16.2
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 410,
+          "percent": 68.6
+        },
+        {
+          "monthKey": "2026-09",
+          "label": "Set/26",
+          "hours": 1,
+          "percent": 0.2
+        },
+        {
+          "monthKey": "2026-08",
+          "label": "Ago/26",
+          "hours": 90,
+          "percent": 15.1
+        }
+      ],
+      "objective": "Tem como objetivo automatizar a solicitação, cotação em leilão (Bid) e aprovação em alçadas de fretes expressos, extinguindo e-mails e PFRs manuais. Em faturamento, acelera a conversão de fretes urgentes (SLAs de 30–40 min) e garante a cobrança de taxas extras pós-pedido (diárias/horas paradas); em custo, reduz o valor do frete via aglutinação de cargas em raio de 150 km, leilão simultâneo (60% Preço / 40% Tempo) e trava contra desvios > 10% da média histórica; e no qualitativo, centraliza auditoria (\"Pasta Digital\"), segurança Anti-IDOR e parametrização sem hardcode."
     },
     {
       "id": "631642d0-4957-40cf-ae78-b62dd47af334",
@@ -30523,7 +30672,15 @@
       },
       "hasManualAgreedDates": false,
       "agreedHours": 340,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 32,
+          "percent": 100
+        }
+      ]
     },
     {
       "id": "caaaa6c3-0dd9-49bb-81c4-a7b757102304",
@@ -31600,7 +31757,34 @@
       "hasManualProgress": false,
       "hasManualAgreedDates": false,
       "agreedHours": 264,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 15,
+          "percent": 13.4
+        },
+        {
+          "monthKey": "2026-10",
+          "label": "Out/26",
+          "hours": 86,
+          "percent": 76.8
+        },
+        {
+          "monthKey": "2026-07",
+          "label": "Jul/26",
+          "hours": 2,
+          "percent": 1.8
+        },
+        {
+          "monthKey": "2026-03",
+          "label": "Mar/26",
+          "hours": 9,
+          "percent": 8
+        }
+      ],
+      "objective": "Tem como objetivo unificar o rastreamento de frota em mapa em tempo real à gestão visual de pedidos em Kanban. Em faturamento, acelera o giro de entregas e a conversão de receitas com visibilidade financeira de cada pedido; em custo, reduz o monitoramento manual da Torre de Controle, perdas por ociosidade/sinistros (via alertas de rota/veículo) e gastos de deploy (CI/CD); e no qualitativo, entrega KPIs em tempo real, alta performance (500+ veículos simultâneos) e UX padronizada."
     },
     {
       "id": "75c1273d-4e9b-4b34-a534-15b868dccf3c",
@@ -32299,7 +32483,8 @@
       "hasManualProgress": false,
       "agreedHours": 0,
       "hasManualAgreedDates": false,
-      "category": "new_project"
+      "category": "new_project",
+      "monthlyHours": []
     },
     {
       "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
@@ -32489,7 +32674,8 @@
       ],
       "hasManualIlcHours": true,
       "hasManualProgress": false,
-      "category": "maintenance"
+      "category": "maintenance",
+      "monthlyHours": []
     },
     {
       "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
@@ -32814,7 +33000,15 @@
       ],
       "hasManualIlcHours": true,
       "hasManualProgress": false,
-      "category": "maintenance"
+      "category": "maintenance",
+      "monthlyHours": [
+        {
+          "monthKey": "2026-11",
+          "label": "Nov/26",
+          "hours": 20,
+          "percent": 100
+        }
+      ]
     }
   ]
 }
