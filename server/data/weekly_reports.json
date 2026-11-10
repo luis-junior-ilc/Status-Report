@@ -1,5 +1,813 @@
 [
   {
+    "id": "2026-W46",
+    "weekNumber": 46,
+    "year": 2026,
+    "title": "Semana 46/ 2026",
+    "period": "04/11/2026 a 11/11/2026",
+    "meetingDate": "2026-11-03",
+    "executiveSummary": "Nesta semana, a equipe consolidou importantes entregas em produção e avançou na governança operacional, destacando-se a liberação escalonada do Revalida (com melhorias na tela de promessas), a subida para produção da integração de assinatura de contratos via ZapSign (preparada para integração com a Rodopar) e a evolução da Torre de Controle 4.0 e dos relatórios de SLA para o fechamento de faturamento da John Deere, além do avanço nos testes e apresentação do Frete Expresso 2.0. Paralelamente, iniciamos a construção dos novos dashboards de BI para a Boge (com isolamento de dados assegurado), otimizamos a triagem por IA no Gestão de Demandas, avançamos no desenvolvimento do App ILC e melhorias de estabilidade no Smart Tracking, e fortalecemos nossa gestão com a criação dos boards dedicados de Sustentação e BI no Azure DevOps, o avanço do Assessment técnico e o alinhamento de iniciativas estruturantes (Design System, Zammad, HubDocs e projetos Safety/Checklist por Viagem).",
+    "statusPulse": {
+      "totalActive": 9,
+      "onTrack": 6,
+      "attention": 1,
+      "critical": 2,
+      "averageProgress": 51
+    },
+    "activeProjects": [
+      {
+        "projectId": "8bcd36f6-678a-4d3c-a0a6-40a92b5ea91a",
+        "name": "App ILC 2026",
+        "client": "ILC (Interno)",
+        "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 15,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-12-01",
+        "targetDelivery": "2026-12-01",
+        "varianceDays": 0,
+        "statusReport": "Em fase de integração com o backend.",
+        "statusReportDate": "2026-10-27",
+        "previousStatusReport": "Em fase de integração com o backend.",
+        "previousStatusReportDate": "2026-10-27",
+        "attentionPoints": "",
+        "hoursExecuted": 32,
+        "hoursPlanned": 356,
+        "hoursAgreed": 340,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App ILC"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Mike Andrade",
+          "Francisco Molaia"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Mike Andrade",
+            "Francisco Molaia"
+          ]
+        }
+      },
+      {
+        "projectId": "4d1d445e-584d-4bdb-a176-afce663b0300",
+        "name": "John Deere - Adição de Item na Promessa",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Operação Assistida",
+        "progress": 80,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-11-30",
+        "targetDelivery": "2026-11-30",
+        "varianceDays": 0,
+        "statusReport": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
+        "statusReportDate": "2026-10-06",
+        "previousStatusReport": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 96,
+        "hoursPlanned": 120,
+        "hoursAgreed": 120,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "7a1136ad-134c-41fe-a684-79e8b2ab5c93",
+        "name": "John Deere - Frete Expresso 2.0",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 63,
+        "ragStatus": "red",
+        "agreedDelivery": "2027-01-16",
+        "targetDelivery": "2027-01-16",
+        "varianceDays": 7,
+        "statusReport": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
+        "statusReportDate": "2026-10-06",
+        "previousStatusReport": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "A etapa solicitação/cotação estão sendo testadas simultaneamente com módulo transportador. Elas serão encerradas simultâneamente, por isso soliictação consta como atrasado. ",
+        "hoursExecuted": 453,
+        "hoursPlanned": 759,
+        "hoursAgreed": 750,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App ILC"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "c99e39c8-2702-4961-8624-117ce09beac7",
+        "name": "John Deere - Reprogramação Sistêmica - Duplicação de Pedidos",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Operação Assistida",
+        "progress": 78,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-11-17",
+        "targetDelivery": "2026-11-17",
+        "varianceDays": 0,
+        "statusReport": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
+        "statusReportDate": "2026-10-06",
+        "previousStatusReport": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": " ",
+        "hoursExecuted": 90,
+        "hoursPlanned": 116,
+        "hoursAgreed": 116,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "c064a093-ea7c-45e6-8ec6-5bf10a5794a9",
+        "name": "Mirassol - Assinatura Digital de Documentos",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 74,
+        "ragStatus": "amber",
+        "agreedDelivery": "2026-12-05",
+        "targetDelivery": "2026-12-05",
+        "varianceDays": 0,
+        "statusReport": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
+        "statusReportDate": "2026-10-06",
+        "previousStatusReport": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "Contratos não estão sendo gerados com a assinatura automática do subcontrante, que aguarda definição.",
+        "hoursExecuted": 471,
+        "hoursPlanned": 512,
+        "hoursAgreed": 173.6,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Smart X"
+        ],
+        "teamLeader": "Vito Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Thiago Rodrigues",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vito Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Thiago Rodrigues",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "a5fcfbb4-ab62-4aff-b0fa-3f623219a49c",
+        "name": "Mirassol - Input Gestão de demandas",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Operação Assistida",
+        "progress": 100,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-10-27",
+        "targetDelivery": "2026-10-27",
+        "varianceDays": 0,
+        "statusReport": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
+        "statusReportDate": "2026-10-06",
+        "previousStatusReport": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 651,
+        "hoursPlanned": 666,
+        "hoursAgreed": 646,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App ILC"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "53f7da8a-e2d4-4a4a-bdcf-5a8d4a8bfad6",
+        "name": "Mirassol - Projeto Check List por Viagem",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 0,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
+        "statusReportDate": "2026-11-03",
+        "previousStatusReport": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
+        "previousStatusReportDate": "2026-10-27",
+        "attentionPoints": "A previsão é que não será atendida a data firmada 03/11.",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Smart X"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Thiago Rodrigues",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Thiago Rodrigues",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "eb438ca6-f25e-4c5c-ab4b-a45e1b243ba1",
+        "name": "Mirassol - Projeto Safety",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Planejamento",
+        "progress": 0,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
+        "statusReportDate": "2026-11-03",
+        "previousStatusReport": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "Mauricio da Carga Online será contatado ASAP para reunião de alinhamento técnico.",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P3",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "caaaa6c3-0dd9-49bb-81c4-a7b757102304",
+        "name": "Mirassol - Torre de Controle 4.0",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 45,
+        "ragStatus": "red",
+        "agreedDelivery": "2026-11-13",
+        "targetDelivery": "2026-11-13",
+        "varianceDays": 2,
+        "statusReport": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
+        "statusReportDate": "2026-10-27",
+        "previousStatusReport": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
+        "previousStatusReportDate": "2026-10-27",
+        "attentionPoints": "Divergênica do tipo de operação recebidos pelo Rodopar (Ex: importação -> Transferência).\nAguardando recebimento dos marcos do processo de demanda do Rodopar (Ex: PC, PV, OST).",
+        "hoursExecuted": 112,
+        "hoursPlanned": 299,
+        "hoursAgreed": 264,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Silvio Torres",
+          "Luis Santos"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Silvio Torres",
+            "Luis Santos"
+          ]
+        }
+      }
+    ],
+    "roadmapProjects": [
+      {
+        "id": "road-1",
+        "name": "ILC Pay (Rodobank)",
+        "client": "Mirassol",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Muito Alto",
+        "description": "Aplicativo bancário destinado aos motoristas contratados pela Mirassol",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-2",
+        "name": "Televida",
+        "client": "Mirassol",
+        "estimatedStart": "A definir",
+        "stage": "Discovery",
+        "strategicValue": "Médio",
+        "description": "Funcionalidade de telemedicina no App Smart Tracking",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-3",
+        "name": "Modernização do ROC",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Aprimorar o relatório de ocupação de carga de forma que ele fique mais acertivo e com redução de ação humana.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-4",
+        "name": "Forms Tipo Quiz",
+        "client": "Mirassol",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Baixo",
+        "description": "Criador de formulários interativos com pontuação customizada e validação automática de respostas.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1792612651664",
+        "name": "Auditoria de Comprovantes",
+        "client": "Mirassol",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Médio",
+        "description": "Criar solução para auditar automaticamente comprovantes por meio de IA.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1792692974138",
+        "name": "Justificativa na cancelamento do pedido",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Implementação do campo justificativa no cancelamento de um pedido, incluindo evidência quando aplicável.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1792693126164",
+        "name": "Consulta de Informações",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Estratégico",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793113036162",
+        "name": "Reprogramação de itens na promessas",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Discovery",
+        "strategicValue": "Muito Alto",
+        "description": "Com a mudança no promessa de entrega foi percebida a necessidade de um mecanismo que force o fornecedor dizer a data de itens não prometidos, pois a falta dessa informação interfere diretamente no SLA da operação.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728314479",
+        "name": "Programa de Milhagens",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728315781",
+        "name": "Extrato financeiro",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728316205",
+        "name": "Pátios e Docas",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Green Truck",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728316596",
+        "name": "Promessas de embalagens",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728316997",
+        "name": "Cockpit de crossdocking",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728317391",
+        "name": "Gestão de Fretes Mortos",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728317797",
+        "name": "Controle de CO²",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Simple Carbon",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728318202",
+        "name": "Gestão à Vista",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Descrição preliminar da oportunidade no radar.",
+        "responsible": "Comercial & PMO"
+      },
+      {
+        "id": "road-1793728318587",
+        "name": "Frete Expresso no App ILC",
+        "client": "John Deere",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Inclusão das etapas solicitação, cotação e aprovação do Frete Expresso no App ILC",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728318931",
+        "name": "Smart Tracking no App ILC",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728319315",
+        "name": "Tracking de Notas no App ILC",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728319667",
+        "name": "Melhorias e Reduções de custo",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728818018",
+        "name": "Oportunidades e reduções – Evidência",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728818573",
+        "name": "App Smart Tracking – Auditoria de comprovantes",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728819113",
+        "name": "Rota Críticas (Gestão integrada de itens críticos)",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728819757",
+        "name": "Estoque de embalagens",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728820314",
+        "name": "Migração para SQL Server",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Viabilidade",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793728820953",
+        "name": "Xforms – Melhorias operacionais",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Viabilidade",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1793738889271",
+        "name": "Gestão a vista",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Visão inicial no protal integrator que traz os principais indicadores da operação para o cliente.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1794322426987",
+        "name": "Zammad",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Implementação da plataforma de gestão de chamados.",
+        "responsible": "ILC"
+      },
+      {
+        "id": "road-1794322429895",
+        "name": "Padronização do frontend portal web e apps",
+        "client": "ILC",
+        "estimatedStart": "A definir",
+        "stage": "Discovery",
+        "strategicValue": "Alto",
+        "description": "Descrição preliminar da oportunidade no radar.",
+        "responsible": "ILC"
+      }
+    ],
+    "boardDecisions": [],
+    "maintenanceSection": {
+      "totalProjects": 3,
+      "totalHours": 223,
+      "newProjectHours": 358,
+      "totalPeriodHours": 581,
+      "maintenancePercent": 38,
+      "newProjectPercent": 62,
+      "activeSystemsCount": 4,
+      "teamMembersCount": 4,
+      "teamMembers": [
+        "Mike Andrade",
+        "Francisco Molaia Santos",
+        "Silvio Torres",
+        "Thiago Rodrigues Do Nascimento Silva"
+      ],
+      "startDate": "2026-11-04",
+      "endDate": "2026-11-11",
+      "periodLabel": "04/11/2026 a 11/11/2026",
+      "projects": [
+        {
+          "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
+          "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
+          "name": "APP - SMART TRACKING",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 196,
+          "hoursExecutedInPeriod": 196,
+          "lifetimeHoursExecuted": 760,
+          "hoursPlanned": 476,
+          "hoursAgreed": 720,
+          "statusReport": ".",
+          "statusReportDate": "2026-10-27",
+          "previousStatusReport": ".",
+          "previousStatusReportDate": "2026-10-27",
+          "attentionPoints": ".",
+          "teamLeader": "Mike Andrade",
+          "teamMembers": [
+            "Mike Andrade"
+          ],
+          "periodTeamMembers": [
+            "Mike Andrade"
+          ],
+          "team": {
+            "leader": "Mike Andrade",
+            "members": [
+              "Mike Andrade"
+            ]
+          },
+          "recentActivities": [
+            {
+              "id": "7119",
+              "title": "Versão 54",
+              "targetDate": "2026-11-05",
+              "hours": 340,
+              "status": "in-progress",
+              "assignedTo": "Mike Andrade"
+            }
+          ],
+          "summary": "."
+        },
+        {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 0,
+          "hoursPlanned": 0,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-11-03",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 20,
+          "hoursExecutedInPeriod": 20,
+          "lifetimeHoursExecuted": 20,
+          "hoursPlanned": 27,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-11-03",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [
+            "Francisco Molaia Santos",
+            "Silvio Torres"
+          ],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [
+            {
+              "id": "7543",
+              "title": "Revalidar periodicamente o acesso ao Portal Integrator",
+              "targetDate": "2026-11-05",
+              "hours": 16,
+              "status": "planned",
+              "assignedTo": "Silvio Torres"
+            }
+          ],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        }
+      ]
+    }
+  },
+  {
     "id": "2026-W45",
     "weekNumber": 45,
     "year": 2026,
@@ -667,7 +1475,7 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 6,
+      "totalProjects": 3,
       "totalHours": 15,
       "newProjectHours": 151,
       "totalPeriodHours": 166,
@@ -775,141 +1583,6 @@
           },
           "recentActivities": [],
           "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
-        },
-        {
-          "id": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "projectId": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "name": "INTEGRATOR",
-          "client": "ILC (Interno)",
-          "status": "Congelado",
-          "ragStatus": "amber",
-          "hoursExecuted": 8,
-          "hoursExecutedInPeriod": 8,
-          "lifetimeHoursExecuted": 2085.5,
-          "hoursPlanned": 3403.4,
-          "hoursAgreed": 1215.5,
-          "statusReport": ".",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": ".",
-          "previousStatusReportDate": "2026-10-27",
-          "attentionPoints": ".",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza"
-          ],
-          "periodTeamMembers": [
-            "Francisco Molaia Santos"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza"
-            ]
-          },
-          "recentActivities": [
-            {
-              "id": "4505",
-              "title": "SmartX – Implementar e testar comportamento do campo \"Outros\" com entrada de texto",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "4507",
-              "title": "SmartX – Implementar botão de exclusão nos campos de lista de seleção",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "7485",
-              "title": "Controle de permissão para lançamento manual no Smart Tracking",
-              "targetDate": "2026-10-29",
-              "hours": 8,
-              "status": "in-progress",
-              "assignedTo": "Francisco Molaia Santos"
-            }
-          ],
-          "summary": "."
-        },
-        {
-          "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "projectId": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "name": "SMART X",
-          "client": "ILC (Interno)",
-          "status": "Congelado",
-          "ragStatus": "amber",
-          "hoursExecuted": 7,
-          "hoursExecutedInPeriod": 7,
-          "lifetimeHoursExecuted": 781.3,
-          "hoursPlanned": 1819.5,
-          "hoursAgreed": 698,
-          "statusReport": ".",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": ".",
-          "previousStatusReportDate": "2026-10-27",
-          "attentionPoints": ".",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza",
-            "Saddam José Viera Flores",
-            "Denis Ivan Lenz",
-            "Clécio Ciriaco da Silva",
-            "Tatiane Godinho Dutra"
-          ],
-          "periodTeamMembers": [
-            "Francisco Molaia Santos",
-            "Thiago Rodrigues Do Nascimento Silva"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza",
-              "Saddam José Viera Flores",
-              "Denis Ivan Lenz",
-              "Clécio Ciriaco da Silva",
-              "Tatiane Godinho Dutra"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "."
-        },
-        {
-          "id": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "projectId": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "name": "GE - GESTÃO EMBARCADA",
-          "client": "John Deere",
-          "status": "Congelado",
-          "ragStatus": "amber",
-          "hoursExecuted": 0,
-          "hoursExecutedInPeriod": 0,
-          "lifetimeHoursExecuted": 470.3,
-          "hoursPlanned": 1066.5,
-          "hoursAgreed": 327,
-          "statusReport": ".",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": ".",
-          "previousStatusReportDate": "2026-10-27",
-          "attentionPoints": ".",
-          "teamLeader": "Filipe Andrade",
-          "teamMembers": [
-            "Filipe Andrade"
-          ],
-          "periodTeamMembers": [],
-          "team": {
-            "leader": "Filipe Andrade",
-            "members": [
-              "Filipe Andrade"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "."
         }
       ]
     }
@@ -1372,7 +2045,7 @@
     ],
     "boardDecisions": [],
     "maintenanceSection": {
-      "totalProjects": 6,
+      "totalProjects": 3,
       "totalHours": 117.5,
       "newProjectHours": 344,
       "totalPeriodHours": 461.5,
@@ -1481,149 +2154,6 @@
           },
           "recentActivities": [],
           "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
-        },
-        {
-          "id": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "projectId": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "name": "INTEGRATOR",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 113.5,
-          "hoursExecutedInPeriod": 113.5,
-          "lifetimeHoursExecuted": 2074.5,
-          "hoursPlanned": 3392.4,
-          "hoursAgreed": 1215.5,
-          "statusReport": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação.",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação.",
-          "previousStatusReportDate": "2026-10-22",
-          "attentionPoints": "Revisão da alocação de desenvolvedores sênior para aceleração das rotas críticas.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza"
-          ],
-          "periodTeamMembers": [
-            "Francisco Molaia Santos",
-            "Silvio Torres"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza"
-            ]
-          },
-          "recentActivities": [
-            {
-              "id": "4505",
-              "title": "SmartX – Implementar e testar comportamento do campo \"Outros\" com entrada de texto",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "4507",
-              "title": "SmartX – Implementar botão de exclusão nos campos de lista de seleção",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "6980",
-              "title": "Migração de Data Center ADDIT to CCM Matrix",
-              "targetDate": "2026-10-26",
-              "hours": 236,
-              "status": "in-progress",
-              "assignedTo": "Francisco Molaia Santos"
-            },
-            {
-              "id": "7463",
-              "title": "Modernizar o acesso ao Portal Integrator ILC",
-              "targetDate": "2026-10-27",
-              "hours": 61,
-              "status": "in-progress",
-              "assignedTo": "Francisco Molaia Santos"
-            }
-          ],
-          "summary": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação."
-        },
-        {
-          "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "projectId": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "name": "SMART X",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "amber",
-          "hoursExecuted": 4,
-          "hoursExecutedInPeriod": 4,
-          "lifetimeHoursExecuted": 770.3,
-          "hoursPlanned": 1791.5,
-          "hoursAgreed": 698,
-          "statusReport": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços.",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços.",
-          "previousStatusReportDate": "2026-10-22",
-          "attentionPoints": "Atenção à cadência de entregas técnicas para garantir marco de entrega intermediário.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza",
-            "Saddam José Viera Flores",
-            "Denis Ivan Lenz",
-            "Clécio Ciriaco da Silva",
-            "Tatiane Godinho Dutra"
-          ],
-          "periodTeamMembers": [
-            "Thiago Rodrigues do Nascimento Silva"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza",
-              "Saddam José Viera Flores",
-              "Denis Ivan Lenz",
-              "Clécio Ciriaco da Silva",
-              "Tatiane Godinho Dutra"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços."
-        },
-        {
-          "id": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "projectId": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "name": "GE - GESTÃO EMBARCADA",
-          "client": "John Deere",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 0,
-          "hoursExecutedInPeriod": 0,
-          "lifetimeHoursExecuted": 470.3,
-          "hoursPlanned": 1066.5,
-          "hoursAgreed": 327,
-          "statusReport": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%).",
-          "statusReportDate": "2026-10-27",
-          "previousStatusReport": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%).",
-          "previousStatusReportDate": "2026-10-22",
-          "attentionPoints": "Priorização de alinhamento com a engenharia de produto John Deere sobre protocolos de comunicação.",
-          "teamLeader": "Filipe Andrade",
-          "teamMembers": [
-            "Filipe Andrade"
-          ],
-          "periodTeamMembers": [],
-          "team": {
-            "leader": "Filipe Andrade",
-            "members": [
-              "Filipe Andrade"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%)."
         }
       ]
     }
@@ -2101,7 +2631,7 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 6,
+      "totalProjects": 3,
       "totalHours": 46,
       "newProjectHours": 553,
       "totalPeriodHours": 599,
@@ -2210,133 +2740,6 @@
           },
           "recentActivities": [],
           "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
-        },
-        {
-          "id": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "projectId": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "name": "INTEGRATOR",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 42,
-          "hoursExecutedInPeriod": 42,
-          "lifetimeHoursExecuted": 2074.5,
-          "hoursPlanned": 3392.4,
-          "hoursAgreed": 1215.5,
-          "statusReport": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação.",
-          "statusReportDate": "2026-10-22",
-          "previousStatusReport": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação.",
-          "previousStatusReportDate": "2026-10-16",
-          "attentionPoints": "Revisão da alocação de desenvolvedores sênior para aceleração das rotas críticas.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza"
-          ],
-          "periodTeamMembers": [
-            "Francisco Molaia Santos",
-            "Silvio Torres"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza"
-            ]
-          },
-          "recentActivities": [
-            {
-              "id": "4505",
-              "title": "SmartX – Implementar e testar comportamento do campo \"Outros\" com entrada de texto",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "4507",
-              "title": "SmartX – Implementar botão de exclusão nos campos de lista de seleção",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            }
-          ],
-          "summary": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação."
-        },
-        {
-          "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "projectId": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "name": "SMART X",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "amber",
-          "hoursExecuted": 4,
-          "hoursExecutedInPeriod": 4,
-          "lifetimeHoursExecuted": 770.3,
-          "hoursPlanned": 1791.5,
-          "hoursAgreed": 698,
-          "statusReport": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços.",
-          "statusReportDate": "2026-10-22",
-          "previousStatusReport": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços.",
-          "previousStatusReportDate": "2026-10-16",
-          "attentionPoints": "Atenção à cadência de entregas técnicas para garantir marco de entrega intermediário.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza",
-            "Saddam José Viera Flores",
-            "Denis Ivan Lenz",
-            "Clécio Ciriaco da Silva",
-            "Tatiane Godinho Dutra"
-          ],
-          "periodTeamMembers": [
-            "Thiago Rodrigues do Nascimento Silva"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza",
-              "Saddam José Viera Flores",
-              "Denis Ivan Lenz",
-              "Clécio Ciriaco da Silva",
-              "Tatiane Godinho Dutra"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços."
-        },
-        {
-          "id": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "projectId": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "name": "GE - GESTÃO EMBARCADA",
-          "client": "John Deere",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 0,
-          "hoursExecutedInPeriod": 0,
-          "lifetimeHoursExecuted": 470.3,
-          "hoursPlanned": 1066.5,
-          "hoursAgreed": 327,
-          "statusReport": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%).",
-          "statusReportDate": "2026-10-22",
-          "previousStatusReport": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%).",
-          "previousStatusReportDate": "2026-10-16",
-          "attentionPoints": "Priorização de alinhamento com a engenharia de produto John Deere sobre protocolos de comunicação.",
-          "teamLeader": "Filipe Andrade",
-          "teamMembers": [
-            "Filipe Andrade"
-          ],
-          "periodTeamMembers": [],
-          "team": {
-            "leader": "Filipe Andrade",
-            "members": [
-              "Filipe Andrade"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%)."
         }
       ]
     }
@@ -2765,7 +3168,7 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 6,
+      "totalProjects": 3,
       "totalHours": 49,
       "newProjectHours": 479,
       "totalPeriodHours": 528,
@@ -2873,131 +3276,6 @@
           },
           "recentActivities": [],
           "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
-        },
-        {
-          "id": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "projectId": "631642d0-4957-40cf-ae78-b62dd47af334",
-          "name": "INTEGRATOR",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 49,
-          "hoursExecutedInPeriod": 49,
-          "lifetimeHoursExecuted": 2074.5,
-          "hoursPlanned": 3392.4,
-          "hoursAgreed": 1215.5,
-          "statusReport": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação.",
-          "statusReportDate": "2026-10-16",
-          "previousStatusReport": "Definição das rotas de integração e protocolo de mensageria assíncrona.",
-          "previousStatusReportDate": "2026-10-06",
-          "attentionPoints": "Revisão da alocação de desenvolvedores sênior para aceleração das rotas críticas.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza"
-          ],
-          "periodTeamMembers": [
-            "Francisco Molaia Santos",
-            "Silvio Torres"
-          ],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza"
-            ]
-          },
-          "recentActivities": [
-            {
-              "id": "4505",
-              "title": "SmartX – Implementar e testar comportamento do campo \"Outros\" com entrada de texto",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            },
-            {
-              "id": "4507",
-              "title": "SmartX – Implementar botão de exclusão nos campos de lista de seleção",
-              "targetDate": null,
-              "hours": 0,
-              "status": "completed",
-              "assignedTo": "Anderson Rodrigo de Jesus Souza"
-            }
-          ],
-          "summary": "Camada de mensageria e barramento de integração em construção (62%). Integrações com APIs legadas em validação."
-        },
-        {
-          "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "projectId": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
-          "name": "SMART X",
-          "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "amber",
-          "hoursExecuted": 0,
-          "hoursExecutedInPeriod": 0,
-          "lifetimeHoursExecuted": 770.3,
-          "hoursPlanned": 1791.5,
-          "hoursAgreed": 698,
-          "statusReport": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços.",
-          "statusReportDate": "2026-10-16",
-          "previousStatusReport": "Arquitetura de dados para telemetria em tempo real e especificação de barramentos.",
-          "previousStatusReportDate": "2026-10-06",
-          "attentionPoints": "Atenção à cadência de entregas técnicas para garantir marco de entrega intermediário.",
-          "teamLeader": "Renata Dias de Avila Reis",
-          "teamMembers": [
-            "Renata Dias de Avila Reis",
-            "Anderson Rodrigo de Jesus Souza",
-            "Saddam José Viera Flores",
-            "Denis Ivan Lenz",
-            "Clécio Ciriaco da Silva",
-            "Tatiane Godinho Dutra"
-          ],
-          "periodTeamMembers": [],
-          "team": {
-            "leader": "Renata Dias de Avila Reis",
-            "members": [
-              "Renata Dias de Avila Reis",
-              "Anderson Rodrigo de Jesus Souza",
-              "Saddam José Viera Flores",
-              "Denis Ivan Lenz",
-              "Clécio Ciriaco da Silva",
-              "Tatiane Godinho Dutra"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Evolução dos módulos de telemetria inteligente e conectividade veicular (46%). Sprint atual focado em microserviços."
-        },
-        {
-          "id": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "projectId": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
-          "name": "GE - GESTÃO EMBARCADA",
-          "client": "John Deere",
-          "status": "Ativo",
-          "ragStatus": "red",
-          "hoursExecuted": 0,
-          "hoursExecutedInPeriod": 0,
-          "lifetimeHoursExecuted": 470.3,
-          "hoursPlanned": 1066.5,
-          "hoursAgreed": 327,
-          "statusReport": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%).",
-          "statusReportDate": "2026-10-16",
-          "previousStatusReport": "Análise de telemetria embarcada e requisitos de comunicação de campo.",
-          "previousStatusReportDate": "2026-10-06",
-          "attentionPoints": "Priorização de alinhamento com a engenharia de produto John Deere sobre protocolos de comunicação.",
-          "teamLeader": "Filipe Andrade",
-          "teamMembers": [
-            "Filipe Andrade"
-          ],
-          "periodTeamMembers": [],
-          "team": {
-            "leader": "Filipe Andrade",
-            "members": [
-              "Filipe Andrade"
-            ]
-          },
-          "recentActivities": [],
-          "summary": "Revisão das regras de negócio e barramento dos módulos embarcados John Deere (44%)."
         }
       ]
     }

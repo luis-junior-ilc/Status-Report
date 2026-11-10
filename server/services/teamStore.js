@@ -188,7 +188,7 @@ class TeamStore {
   // Comprehensive Team Allocation & Capacity Report
   getTeamAllocationReport(clientFilter = 'Todos', period = 'year_2026', visibleOnly = true) {
     this.syncWithProjects();
-    let projs = projectStore.getAllProjects() || [];
+    let projs = (projectStore.getAllProjects() || []).filter(p => p.isVisible !== false && p.status !== 'Congelado');
     if (clientFilter && clientFilter !== 'Todos') {
       projs = projs.filter(p => p.client === clientFilter);
     }

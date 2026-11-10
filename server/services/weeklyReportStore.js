@@ -685,8 +685,8 @@ class WeeklyReportStore {
       report.statusPulse = this.computeStatusPulseFromActiveProjects(mappedProjects);
     }
 
-    // Sessão dedicada a Sustentação no Status Report
-    const allMaintenanceProjects = allProjects.filter(p => p.category === 'maintenance');
+    // Sessão dedicada a Sustentação no Status Report (apenas projetos visíveis e ativos)
+    const allMaintenanceProjects = allProjects.filter(p => p.category === 'maintenance' && p.isVisible !== false && p.status !== 'Congelado');
     const { startDate, endDate } = this.extractReportPeriodDates(report);
     const periodMetrics = this.computePeriodMaintenanceMetrics(startDate, endDate, allProjects);
 

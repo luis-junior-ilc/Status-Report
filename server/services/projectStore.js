@@ -970,7 +970,7 @@ class ProjectStore {
   }
 
   getMaintenanceMetrics(clientFilter = 'Todos', period = 'year_2026') {
-    let projs = this.projects || [];
+    let projs = (this.projects || []).filter(p => p.isVisible !== false && p.status !== 'Congelado');
     if (clientFilter && clientFilter !== 'Todos') {
       projs = projs.filter(p => p.client === clientFilter);
     }

@@ -550,17 +550,17 @@ import { Project } from '../../models/project.model';
                 Projetos de Sustentação
               </h3>
               <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 border border-purple-200">
-                {{ metrics()?.activeMaintenanceProjects?.length || 0 }} cadastrados
+                {{ visibleMaintenanceProjects().length }} cadastrados
               </span>
             </div>
           </div>
 
           <!-- Project Cards Grid -->
-          <div *ngIf="metrics()?.activeMaintenanceProjects && metrics()!.activeMaintenanceProjects.length > 0; else noMaintenanceProjects"
+          <div *ngIf="visibleMaintenanceProjects().length > 0; else noMaintenanceProjects"
             class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             
             <div
-              *ngFor="let p of metrics()!.activeMaintenanceProjects"
+              *ngFor="let p of visibleMaintenanceProjects()"
               class="p-4 rounded-2xl border border-purple-200 bg-purple-50/20 hover:bg-purple-50/40 hover:border-purple-300 transition flex flex-col justify-between shadow-2xs">
               
               <div>
@@ -646,6 +646,12 @@ export class MaintenanceDashboardComponent implements OnInit {
   hoveredMonth = signal<MonthlyEffort | null>(null);
 
   metrics = computed(() => this.service.maintenanceMetrics());
+
+  visibleMaintenanceProjects = computed<Project[]>(() => {
+    return (this.metrics()?.activeMaintenanceProjects || []).filter(
+      p => p.isVisible !== false && p.status !== 'Congelado'
+    );
+  });
 
   ngOnInit() {
     this.refreshData();
