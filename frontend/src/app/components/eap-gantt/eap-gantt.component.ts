@@ -198,6 +198,84 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
 
         </div>
 
+        <!-- OBJETIVO DO PROJETO (ESTRATÉGICO: FATURAMENTO, CUSTO E QUALITATIVO) -->
+        <div class="p-3.5 bg-gradient-to-r from-emerald-50/80 via-teal-50/40 to-white rounded-2xl border border-emerald-200/90 text-xs shadow-2xs">
+          <div class="flex items-center justify-between gap-2 mb-1.5">
+            <div class="text-[10px] font-black text-emerald-950 uppercase tracking-wider flex items-center gap-1.5 flex-wrap">
+              <span class="text-sm">🎯</span>
+              <span>Objetivo do Projeto</span>
+              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100/90 px-2 py-0.5 rounded-full border border-emerald-200">
+                Faturamento • Custo • Qualitativo
+              </span>
+              <span *ngIf="objectiveSavedToast()" class="text-emerald-700 font-bold text-[10px] bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-300 animate-pulse">
+                ✓ Objetivo atualizado!
+              </span>
+            </div>
+
+            <!-- Edit Button / Toggle -->
+            <button
+              *ngIf="!isEditingObjective()"
+              (click)="startEditingObjective(project.objective || '')"
+              type="button"
+              class="inline-flex items-center gap-1 px-2.5 py-1 text-[11px] font-bold text-emerald-800 bg-white hover:bg-emerald-100/70 rounded-lg border border-emerald-300 shadow-2xs transition cursor-pointer"
+              title="Editar objetivo do projeto e sincronizar com a Curadoria">
+              <svg class="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+              </svg>
+              <span>Editar Objetivo</span>
+            </button>
+          </div>
+
+          <!-- Read-only View -->
+          <div *ngIf="!isEditingObjective()">
+            <div *ngIf="project.objective" class="text-xs text-slate-800 leading-relaxed font-normal whitespace-pre-line bg-white/70 p-3 rounded-xl border border-emerald-100">
+              {{ project.objective }}
+            </div>
+            <div *ngIf="!project.objective" class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs text-slate-500 italic bg-white/70 p-3 rounded-xl border border-dashed border-emerald-300">
+              <span>Nenhum objetivo cadastrado para este projeto. Defina as metas de Faturamento, Custo e Qualitativo.</span>
+              <button
+                type="button"
+                (click)="startEditingObjective('')"
+                class="text-[11px] font-extrabold text-emerald-700 hover:text-emerald-800 underline cursor-pointer shrink-0">
+                + Cadastrar Objetivo
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Inline Editor -->
+          <div *ngIf="isEditingObjective()" class="mt-2 space-y-2">
+            <textarea
+              [ngModel]="editedObjective()"
+              (ngModelChange)="editedObjective.set($event)"
+              rows="4"
+              placeholder="Descreva o objetivo do projeto de forma resumida e direta:&#10;• Objetivo: Finalidade central do projeto;&#10;• Faturamento: Estimativa de receita, novos negócios ou expansão para o cliente;&#10;• Custo: Estimativa de redução de despesas, horas operacionais ou retrabalho;&#10;• Qualitativo: Ganhos de qualidade, satisfação de usuários (NPS), conformidade ou SLA."
+              class="w-full text-xs text-slate-800 bg-white border border-emerald-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner resize-y font-normal leading-relaxed">
+            </textarea>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-1 text-xs">
+              <span class="text-[10px] text-emerald-800 font-medium">
+                💡 Este objetivo também fica salvo na Curadoria para consultas executivas.
+              </span>
+              <div class="flex items-center gap-2">
+                <button
+                  type="button"
+                  (click)="cancelEditingObjective()"
+                  [disabled]="isSavingObjective()"
+                  class="px-3 py-1 text-xs font-semibold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-lg transition cursor-pointer">
+                  Cancelar
+                </button>
+                <button
+                  type="button"
+                  (click)="saveObjective(project.id)"
+                  [disabled]="isSavingObjective()"
+                  class="px-3.5 py-1 text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg shadow-xs transition cursor-pointer flex items-center gap-1.5 disabled:opacity-50">
+                  <span *ngIf="isSavingObjective()" class="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                  <span>{{ isSavingObjective() ? 'Salvando...' : '💾 Salvar Objetivo' }}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- STATUS REPORT DA SEMANA BANNER -->
         <div class="p-3.5 bg-blue-50/70 rounded-2xl border border-blue-200/80 text-xs">
           <div class="flex items-center justify-between gap-2 mb-1.5">
@@ -1070,6 +1148,12 @@ export class EapGanttComponent {
   isSavingStatusReport = signal<boolean>(false);
   statusReportSavedToast = signal<boolean>(false);
 
+  // Objetivo do Projeto inline editing
+  isEditingObjective = signal<boolean>(false);
+  editedObjective = signal<string>('');
+  isSavingObjective = signal<boolean>(false);
+  objectiveSavedToast = signal<boolean>(false);
+
   officialPhases: { name: EapPhase; subtitle: string }[] = [
     { name: 'Planejamento', subtitle: 'Requisitos e Base' },
     { name: 'Desenvolvimento', subtitle: 'Módulos e Backend' },
@@ -1086,6 +1170,7 @@ export class EapGanttComponent {
       const proj = this.service.activeEapProject();
       if (!proj) return;
       this.isEditingStatusReport.set(false);
+      this.isEditingObjective.set(false);
       const { earliest, latest } = this.projectDateBounds();
       const totalDays = Math.ceil((latest.getTime() - earliest.getTime()) / (24 * 3600 * 1000));
       if (totalDays <= 35) {
@@ -1121,6 +1206,32 @@ export class EapGanttComponent {
       alert('Erro ao salvar relato: ' + (err?.message || err));
     } finally {
       this.isSavingStatusReport.set(false);
+    }
+  }
+
+  startEditingObjective(currentText: string | undefined) {
+    this.editedObjective.set(currentText || '');
+    this.isEditingObjective.set(true);
+  }
+
+  cancelEditingObjective() {
+    this.isEditingObjective.set(false);
+  }
+
+  async saveObjective(projectId: string) {
+    if (!projectId) return;
+    this.isSavingObjective.set(true);
+    try {
+      await this.service.updateProject(projectId, {
+        objective: this.editedObjective()
+      });
+      this.isEditingObjective.set(false);
+      this.objectiveSavedToast.set(true);
+      setTimeout(() => this.objectiveSavedToast.set(false), 3000);
+    } catch (err: any) {
+      alert('Erro ao salvar objetivo: ' + (err?.message || err));
+    } finally {
+      this.isSavingObjective.set(false);
     }
   }
 

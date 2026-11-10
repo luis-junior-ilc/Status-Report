@@ -694,7 +694,7 @@
           "name": "APP - SMART TRACKING",
           "client": "ILC (Interno)",
           "status": "Ativo",
-          "ragStatus": "red",
+          "ragStatus": "amber",
           "hoursExecuted": 196,
           "hoursExecutedInPeriod": 196,
           "lifetimeHoursExecuted": 760,
@@ -722,7 +722,7 @@
             {
               "id": "7119",
               "title": "Versão 54",
-              "targetDate": "2026-11-05",
+              "targetDate": "2026-11-09",
               "hours": 340,
               "status": "in-progress",
               "assignedTo": "Mike Andrade"

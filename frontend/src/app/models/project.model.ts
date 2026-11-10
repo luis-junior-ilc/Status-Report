@@ -140,6 +140,7 @@ export interface Project {
   isManual?: boolean;
   name: string;
   description: string;
+  objective?: string;
   client: string;
   category?: 'new_project' | 'maintenance';
   status: ProjectStatus;

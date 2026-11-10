@@ -684,6 +684,66 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                   </div>
                 </div>
 
+                <!-- SECTION: OBJETIVO DO PROJETO -->
+                <div class="bg-gradient-to-r from-emerald-50/70 to-teal-50/40 p-4 rounded-2xl border border-emerald-200/90 space-y-3">
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h4 class="text-xs font-extrabold text-emerald-950 uppercase tracking-wider flex items-center gap-2">
+                        <span>🎯 Objetivo do Projeto</span>
+                        <span class="text-[10px] font-bold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full border border-emerald-200">
+                          Visível na EAP
+                        </span>
+                      </h4>
+                      <p class="text-[11px] text-emerald-800/80 mt-0.5">
+                        Resumo executivo do projeto estruturado em três frentes de valor para o cliente: <strong>Faturamento</strong>, <strong>Custo</strong> e <strong>Qualitativo</strong>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <!-- 3 Fronts Help Pills -->
+                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[10px]">
+                    <div class="p-2 rounded-xl bg-white/90 border border-emerald-200/80 flex flex-col gap-0.5">
+                      <span class="font-extrabold text-emerald-900 flex items-center gap-1">
+                        <span>📈</span>
+                        <span>1. Faturamento / Receita</span>
+                      </span>
+                      <span class="text-slate-500">Estimativa de novas receitas, vendas ou expansão comercial gerada.</span>
+                    </div>
+
+                    <div class="p-2 rounded-xl bg-white/90 border border-emerald-200/80 flex flex-col gap-0.5">
+                      <span class="font-extrabold text-emerald-900 flex items-center gap-1">
+                        <span>💰</span>
+                        <span>2. Redução de Custos</span>
+                      </span>
+                      <span class="text-slate-500">Estimativa de economia, automação de processos e eficiência de horas.</span>
+                    </div>
+
+                    <div class="p-2 rounded-xl bg-white/90 border border-emerald-200/80 flex flex-col gap-0.5">
+                      <span class="font-extrabold text-emerald-900 flex items-center gap-1">
+                        <span>⭐</span>
+                        <span>3. Qualitativo</span>
+                      </span>
+                      <span class="text-slate-500">Satisfação de usuários (NPS), compliance, agilidade e mitigação de risco.</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label class="block text-[11px] font-bold text-emerald-900 mb-1">
+                      Texto do Objetivo (Resumo Executivo):
+                    </label>
+                    <textarea
+                      [(ngModel)]="p.objective"
+                      rows="4"
+                      placeholder="Descreva o objetivo do projeto de forma concisa e direta, contemplando:&#10;• Objetivo central do projeto;&#10;• Faturamento (estimativa de receita/novos negócios);&#10;• Custo (estimativa de redução de despesas/retrabalho);&#10;• Qualitativo (ganhos de qualidade, NPS, SLA ou compliance)."
+                      class="w-full text-xs text-slate-800 bg-white border border-emerald-300 rounded-xl p-3 outline-none focus:ring-2 focus:ring-emerald-500 shadow-inner resize-y font-normal leading-relaxed">
+                    </textarea>
+                    <div class="flex items-center justify-between text-[10px] text-emerald-700 mt-1">
+                      <span>💡 Preencha um texto objetivo e resumido para orientar os executivos e o cliente na EAP.</span>
+                      <span *ngIf="p.objective" class="font-bold">{{ p.objective.length }} caracteres</span>
+                    </div>
+                  </div>
+                </div>
+
                 <!-- SECTION: PRIORIDADE DO PROJETO COM LEGENDA EXPLICATIVA INLINE -->
                 <div class="bg-slate-50/80 p-4 rounded-2xl border border-slate-200 space-y-3">
                   <div class="flex items-center justify-between">
@@ -1192,6 +1252,15 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                     rows="2"
                     placeholder="Status report inicial do projeto..."
                     class="w-full border border-slate-300 rounded-xl px-3 py-2 text-xs outline-none bg-white"></textarea>
+                </div>
+
+                <div>
+                  <label class="block font-bold text-emerald-900 mb-1">🎯 Objetivo do Projeto (Faturamento, Custo e Qualitativo):</label>
+                  <textarea
+                    [(ngModel)]="newProjData.objective"
+                    rows="3"
+                    placeholder="Resumo executivo do objetivo do projeto, estimativa de redução de custos e receita para o cliente..."
+                    class="w-full border border-emerald-300 rounded-xl px-3 py-2 text-xs outline-none bg-white font-normal"></textarea>
                 </div>
 
                 <button
@@ -2588,6 +2657,7 @@ export class CuratorModalComponent implements OnInit {
     ilcPlanned: 200,
     clientPlanned: 0,
     executiveSummary: '',
+    objective: '',
     priority: 'P2' as ProjectPriority,
     systems: [] as string[],
     teamLeader: '',
@@ -3004,6 +3074,7 @@ export class CuratorModalComponent implements OnInit {
         activities: p.activities,
         lockedFields: p.lockedFields,
         priority: p.priority || 'P2',
+        objective: p.objective || '',
         systems: p.systems || [],
         team: p.team || { leader: '', members: [] }
       });
@@ -3075,6 +3146,7 @@ export class CuratorModalComponent implements OnInit {
       client: this.newProjData.client,
       category: 'new_project',
       executiveSummary: this.newProjData.executiveSummary || 'Projeto cadastrado manualmente.',
+      objective: this.newProjData.objective || '',
       agreedDates: {
         start: this.newProjData.startDate,
         end: this.newProjData.endDate
@@ -3099,6 +3171,7 @@ export class CuratorModalComponent implements OnInit {
     });
     this.newProjData.name = '';
     this.newProjData.executiveSummary = '';
+    this.newProjData.objective = '';
     this.newProjData.teamLeader = '';
     this.newProjData.teamMembers = '';
     this.newProjData.systems = [];

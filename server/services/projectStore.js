@@ -605,6 +605,7 @@ class ProjectStore {
       isManual: true,
       name: data.name,
       description: data.description || 'Projeto cadastrado manualmente.',
+      objective: data.objective || '',
       client,
       category: data.category || 'new_project',
       status: data.status || 'Ativo',
@@ -889,6 +890,7 @@ class ProjectStore {
 
     if (updates.name !== undefined && updates.name.trim()) proj.name = updates.name.trim();
     if (updates.description !== undefined) proj.description = updates.description;
+    if (updates.objective !== undefined) proj.objective = updates.objective;
     if (updates.client !== undefined) proj.client = this.mapClientName(updates.client);
     if (updates.category !== undefined) proj.category = updates.category;
     if (updates.status !== undefined) proj.status = updates.status;
