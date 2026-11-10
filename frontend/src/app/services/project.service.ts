@@ -277,6 +277,27 @@ export class ProjectService {
     return `Integrantes da equipe: ${allMembers.join(', ')}`;
   }
 
+  formatDate(dateStr?: string | null): string {
+    if (!dateStr) return '-';
+    try {
+      const clean = dateStr.includes('T') ? dateStr.split('T')[0] : dateStr;
+      const parts = clean.split('-');
+      if (parts.length === 3) {
+        const [y, m, d] = parts;
+        return `${d}/${m}/${y}`;
+      }
+      return dateStr;
+    } catch {
+      return dateStr;
+    }
+  }
+
+  getDeliveryDate(project?: Project | null): string {
+    if (!project) return '-';
+    const raw = project.agreedDates?.end || project.plannedDates?.end || project.executedDates?.end;
+    return this.formatDate(raw);
+  }
+
   formatEditionTitle(rep: any): string {
     if (!rep) return '';
     const match = (rep.title || '').match(/Semana\s+(\d+)\s*\/\s*(\d+)/i);

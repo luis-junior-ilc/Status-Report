@@ -154,11 +154,17 @@ import { Project, EapPhase } from '../../models/project.model';
         <div class="p-3.5 bg-slate-50/70 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 gap-2">
           <div class="min-w-0">
             <div
-              *ngIf="p.team?.leader"
-              class="flex items-center gap-1 font-semibold text-slate-700 truncate text-[11px] cursor-help"
+              *ngIf="p.team?.leader || service.getDeliveryDate(p) !== '-'"
+              class="flex items-center gap-1.5 font-semibold text-slate-700 truncate text-[11px] cursor-help flex-wrap"
               [title]="service.getTeamTooltip(p)">
-              <span>👤</span>
-              <span class="truncate">{{ p.team!.leader }}</span>
+              <span *ngIf="p.team?.leader" class="flex items-center gap-1 truncate">
+                <span>👤</span>
+                <span class="truncate">{{ p.team!.leader }}</span>
+              </span>
+              <span *ngIf="service.getDeliveryDate(p) !== '-'" class="text-[10px] text-slate-600 font-medium flex items-center gap-0.5">
+                <span class="text-blue-600">🏁</span>
+                <span>Entrega: <strong class="text-slate-800">{{ service.getDeliveryDate(p) }}</strong></span>
+              </span>
               <span *ngIf="p.team?.members && p.team!.members!.length > 0" class="text-[10px] text-slate-400 font-normal">
                 (+{{ p.team!.members!.length }})
               </span>

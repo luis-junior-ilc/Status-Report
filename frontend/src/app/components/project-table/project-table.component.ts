@@ -25,7 +25,7 @@ import { ProjectService } from '../../services/project.service';
               <th class="py-3 px-4">Cliente</th>
               <th class="py-3 px-4">Projeto</th>
               <th class="py-3 px-4">Sistemas</th>
-              <th class="py-3 px-4">Equipe</th>
+              <th class="py-3 px-4">Líder / Entrega</th>
               <th class="py-3 px-4">Status</th>
               <th class="py-3 px-4">Saúde</th>
               <th class="py-3 px-4">Marco Atual</th>
@@ -78,16 +78,21 @@ import { ProjectService } from '../../services/project.service';
                   <span *ngIf="!p.systems || p.systems.length === 0" class="text-slate-300 text-[11px]">-</span>
                 </div>
               </td>
-              <!-- Equipe -->
+              <!-- Líder & Entrega -->
               <td class="py-3 px-4 whitespace-nowrap text-[11px]">
-                <div *ngIf="p.team?.leader" class="font-bold text-slate-700 flex items-center gap-1 cursor-help" [title]="service.getTeamTooltip(p)">
+                <div *ngIf="p.team?.leader" class="font-bold text-slate-800 flex items-center gap-1 cursor-help" [title]="service.getTeamTooltip(p)">
                   <span>👤</span>
-                  <span class="truncate max-w-[110px]">{{ p.team!.leader }}</span>
+                  <span class="truncate max-w-[120px]">{{ p.team!.leader }}</span>
                 </div>
-                <div *ngIf="p.team?.members && p.team!.members!.length > 0" class="text-[10px] text-slate-400 truncate max-w-[120px] cursor-help" [title]="service.getTeamTooltip(p)">
+                <!-- Data de Entrega / Finalização -->
+                <div *ngIf="getDeliveryDate(p) !== '-'" class="text-[10px] text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+                  <span class="text-blue-600 font-bold">🏁</span>
+                  <span>Entrega: <strong class="text-slate-800 font-bold">{{ getDeliveryDate(p) }}</strong></span>
+                </div>
+                <div *ngIf="p.team?.members && p.team!.members!.length > 0" class="text-[10px] text-slate-400 truncate max-w-[120px] cursor-help mt-0.5" [title]="service.getTeamTooltip(p)">
                   {{ p.team!.members!.length }} membro(s)
                 </div>
-                <span *ngIf="!p.team?.leader && (!p.team?.members || p.team!.members!.length === 0)" class="text-slate-300">-</span>
+                <span *ngIf="!p.team?.leader && getDeliveryDate(p) === '-' && (!p.team?.members || p.team!.members!.length === 0)" class="text-slate-300">-</span>
               </td>
               <td class="py-3 px-4 whitespace-nowrap">
                 <span
@@ -153,6 +158,10 @@ import { ProjectService } from '../../services/project.service';
 })
 export class ProjectTableComponent {
   service = inject(ProjectService);
+
+  getDeliveryDate(p: any): string {
+    return this.service.getDeliveryDate(p);
+  }
 
   formatHours(val?: number | null): string {
     return this.service.formatHours(val);

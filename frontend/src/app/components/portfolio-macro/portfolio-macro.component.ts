@@ -129,14 +129,23 @@ import { Project } from '../../models/project.model';
                     {{ sys }}
                   </span>
 
-                  <!-- Team Leader -->
-                  <span
-                    *ngIf="p.team?.leader"
-                    class="h-5 inline-flex items-center gap-1 text-[10px] text-slate-500 font-medium ml-auto cursor-help leading-none"
-                    [title]="service.getTeamTooltip(p)">
-                    <span>👤</span>
-                    <span class="truncate max-w-[120px]">{{ p.team!.leader }}</span>
-                  </span>
+                  <!-- Team Leader & Data de Entrega -->
+                  <div class="h-5 inline-flex items-center gap-2 ml-auto shrink-0">
+                    <span
+                      *ngIf="p.team?.leader"
+                      class="inline-flex items-center gap-1 text-[10px] text-slate-600 font-medium cursor-help leading-none"
+                      [title]="service.getTeamTooltip(p)">
+                      <span>👤</span>
+                      <span class="truncate max-w-[110px]">{{ p.team!.leader }}</span>
+                    </span>
+                    <span
+                      *ngIf="service.getDeliveryDate(p) !== '-'"
+                      class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium text-[10px] border border-slate-200 leading-none shadow-2xs"
+                      title="Data de Entrega / Finalização">
+                      <span class="text-blue-600 font-bold">🏁</span>
+                      <span>Entrega: <strong class="text-slate-900 font-bold">{{ service.getDeliveryDate(p) }}</strong></span>
+                    </span>
+                  </div>
                 </div>
               </div>
 

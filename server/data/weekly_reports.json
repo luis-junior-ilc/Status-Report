@@ -22,7 +22,7 @@
         "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 16,
+        "progress": 15,
         "ragStatus": "green",
         "agreedDelivery": "2026-12-01",
         "targetDelivery": "2026-12-01",
@@ -33,7 +33,7 @@
         "previousStatusReportDate": "2026-10-27",
         "attentionPoints": "",
         "hoursExecuted": 32,
-        "hoursPlanned": 340,
+        "hoursPlanned": 356,
         "hoursAgreed": 340,
         "priority": "P2",
         "category": "new_project",
@@ -177,7 +177,7 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 71,
+        "progress": 74,
         "ragStatus": "amber",
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
@@ -187,8 +187,8 @@
         "previousStatusReport": "Desenvolvimento backend em andamento, integração com ZapSign, e envio de notificações. Agora será iniciado o desenvolvimento frontend no Smart Tracking.",
         "previousStatusReportDate": "2026-10-06",
         "attentionPoints": "Contratos não estão sendo gerados com a assinatura automática do subcontrante, que aguarda definição.",
-        "hoursExecuted": 429,
-        "hoursPlanned": 480,
+        "hoursExecuted": 471,
+        "hoursPlanned": 512,
         "hoursAgreed": 173.6,
         "priority": "P1",
         "category": "new_project",
@@ -259,7 +259,7 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 5,
+        "progress": 0,
         "ragStatus": "green",
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
@@ -302,10 +302,10 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Planejamento",
-        "progress": 5,
+        "progress": 0,
         "ragStatus": "green",
-        "agreedDelivery": "2027-01-17",
-        "targetDelivery": "2027-01-17",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
         "varianceDays": 0,
         "statusReport": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
         "statusReportDate": "2026-11-03",
@@ -667,10 +667,10 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 4,
+      "totalProjects": 6,
       "totalHours": 15,
-      "newProjectHours": 148,
-      "totalPeriodHours": 163,
+      "newProjectHours": 151,
+      "totalPeriodHours": 166,
       "maintenancePercent": 9,
       "newProjectPercent": 91,
       "activeSystemsCount": 2,
@@ -689,7 +689,7 @@
           "name": "APP - SMART TRACKING",
           "client": "ILC (Interno)",
           "status": "Ativo",
-          "ragStatus": "amber",
+          "ragStatus": "red",
           "hoursExecuted": 0,
           "hoursExecutedInPeriod": 0,
           "lifetimeHoursExecuted": 760,
@@ -715,16 +715,78 @@
           "summary": "."
         },
         {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 0,
+          "hoursPlanned": 0,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-11-03",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 20,
+          "hoursPlanned": 27,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-11-03",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
           "id": "631642d0-4957-40cf-ae78-b62dd47af334",
           "projectId": "631642d0-4957-40cf-ae78-b62dd47af334",
           "name": "INTEGRATOR",
           "client": "ILC (Interno)",
-          "status": "Ativo",
-          "ragStatus": "red",
+          "status": "Congelado",
+          "ragStatus": "amber",
           "hoursExecuted": 8,
           "hoursExecutedInPeriod": 8,
-          "lifetimeHoursExecuted": 2082.5,
-          "hoursPlanned": 3400.4,
+          "lifetimeHoursExecuted": 2085.5,
+          "hoursPlanned": 3403.4,
           "hoursAgreed": 1215.5,
           "statusReport": ".",
           "statusReportDate": "2026-10-27",
@@ -770,14 +832,6 @@
               "hours": 8,
               "status": "in-progress",
               "assignedTo": "Francisco Molaia Santos"
-            },
-            {
-              "id": "integrator-operacional",
-              "title": "Atividades Operacionais & Suporte",
-              "targetDate": "2026-10-31",
-              "hours": 315.3,
-              "status": "in_progress",
-              "assignedTo": "Equipe de Sustentação"
             }
           ],
           "summary": "."
@@ -787,12 +841,12 @@
           "projectId": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
           "name": "SMART X",
           "client": "ILC (Interno)",
-          "status": "Ativo",
+          "status": "Congelado",
           "ragStatus": "amber",
           "hoursExecuted": 7,
           "hoursExecutedInPeriod": 7,
           "lifetimeHoursExecuted": 781.3,
-          "hoursPlanned": 1815.5,
+          "hoursPlanned": 1819.5,
           "hoursAgreed": 698,
           "statusReport": ".",
           "statusReportDate": "2026-10-27",
@@ -831,8 +885,8 @@
           "projectId": "09fbe35d-364d-4e90-b950-7aa9a5186dda",
           "name": "GE - GESTÃO EMBARCADA",
           "client": "John Deere",
-          "status": "Ativo",
-          "ragStatus": "red",
+          "status": "Congelado",
+          "ragStatus": "amber",
           "hoursExecuted": 0,
           "hoursExecutedInPeriod": 0,
           "lifetimeHoursExecuted": 470.3,
@@ -1318,7 +1372,7 @@
     ],
     "boardDecisions": [],
     "maintenanceSection": {
-      "totalProjects": 4,
+      "totalProjects": 6,
       "totalHours": 117.5,
       "newProjectHours": 344,
       "totalPeriodHours": 461.5,
@@ -1365,6 +1419,68 @@
           },
           "recentActivities": [],
           "summary": "Módulo de tracking e telemetria veicular 100% desenvolvido. Validação de homologação em campo com frotas parceiras."
+        },
+        {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 0,
+          "hoursPlanned": 0,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-27",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 20,
+          "hoursPlanned": 27,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-27",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
         },
         {
           "id": "631642d0-4957-40cf-ae78-b62dd47af334",
@@ -1985,7 +2101,7 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 4,
+      "totalProjects": 6,
       "totalHours": 46,
       "newProjectHours": 553,
       "totalPeriodHours": 599,
@@ -2032,6 +2148,68 @@
           },
           "recentActivities": [],
           "summary": "Módulo de tracking e telemetria veicular 100% desenvolvido. Validação de homologação em campo com frotas parceiras."
+        },
+        {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 0,
+          "hoursPlanned": 0,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-22",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 20,
+          "hoursPlanned": 27,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-22",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
         },
         {
           "id": "631642d0-4957-40cf-ae78-b62dd47af334",
@@ -2587,7 +2765,7 @@
       }
     ],
     "maintenanceSection": {
-      "totalProjects": 4,
+      "totalProjects": 6,
       "totalHours": 49,
       "newProjectHours": 479,
       "totalPeriodHours": 528,
@@ -2633,6 +2811,68 @@
           },
           "recentActivities": [],
           "summary": "Módulo de tracking e telemetria veicular 100% desenvolvido. Validação de homologação em campo com frotas parceiras."
+        },
+        {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 0,
+          "hoursPlanned": 0,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-16",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "green",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 20,
+          "hoursPlanned": 27,
+          "hoursAgreed": 0,
+          "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+          "statusReportDate": "2026-10-16",
+          "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+          "previousStatusReportDate": "2026-10-06",
+          "attentionPoints": "",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento."
         },
         {
           "id": "631642d0-4957-40cf-ae78-b62dd47af334",
