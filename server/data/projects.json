@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-10T16:18:16.285Z",
+  "lastSync": "2026-11-10T16:49:29.873Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T16:18:00.679Z",
+      "azureLastUpdated": "2026-11-10T16:49:17.021Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7894,7 +7894,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
-      "azureLastUpdated": "2026-11-10T16:18:01.112Z",
+      "azureLastUpdated": "2026-11-10T16:49:17.333Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8180,7 +8180,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:01.968Z",
+      "azureLastUpdated": "2026-11-10T16:49:17.825Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8573,7 +8573,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:02.526Z",
+      "azureLastUpdated": "2026-11-10T16:49:18.421Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8917,7 +8917,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:03.497Z",
+      "azureLastUpdated": "2026-11-10T16:49:19.464Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9039,7 +9039,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-10T16:18:04.049Z",
+      "azureLastUpdated": "2026-11-10T16:49:19.933Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9855,7 +9855,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
-      "azureLastUpdated": "2026-11-10T16:18:05.568Z",
+      "azureLastUpdated": "2026-11-10T16:49:20.974Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11333,10 +11333,10 @@
         "start": "2026-08-10",
         "end": null
       },
-      "progress": 80,
+      "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
-      "azureLastUpdated": "2026-11-10T16:18:06.087Z",
+      "azureLastUpdated": "2026-11-10T16:49:21.388Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11357,7 +11357,7 @@
           "startDate": "2026-10-26",
           "targetDate": "2026-11-30",
           "dateStr": "30/11/2026",
-          "ilcHours": 6,
+          "ilcHours": 9,
           "ilcHoursTotal": 30,
           "clientHours": 0,
           "status": "in-progress",
@@ -11371,7 +11371,7 @@
               "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 30,
-              "completedWork": 6,
+              "completedWork": 9,
               "startDate": "2026-10-26",
               "targetDate": "2026-11-30"
             }
@@ -11562,13 +11562,13 @@
         "agreed": 120,
         "agreedHours": 120,
         "planned": 120,
-        "executed": 96,
+        "executed": 99,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 120,
-        "ilcExecuted": 96,
+        "ilcExecuted": 99,
         "totalPlanned": 120,
-        "totalExecuted": 96,
+        "totalExecuted": 99,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -11609,8 +11609,8 @@
           {
             "phase": "Operação Assistida",
             "planned": 30,
-            "executed": 6,
-            "percentage": 20,
+            "executed": 9,
+            "percentage": 30,
             "completed": false,
             "deliverablesTotal": 1,
             "deliverablesCompleted": 0
@@ -11619,8 +11619,8 @@
       },
       "azureOriginal": {
         "ilcPlanned": 120,
-        "ilcExecuted": 96,
-        "progress": 80,
+        "ilcExecuted": 99,
+        "progress": 83,
         "agreedDates": {
           "start": "2026-09-01",
           "end": "2026-11-30"
@@ -11694,10 +11694,10 @@
         "start": "2026-10-06",
         "end": null
       },
-      "progress": 78,
+      "progress": 90,
       "manualRagStatus": "auto",
       "executiveSummary": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
-      "azureLastUpdated": "2026-11-10T16:18:06.693Z",
+      "azureLastUpdated": "2026-11-10T16:49:21.811Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11718,7 +11718,7 @@
           "startDate": "2026-10-30",
           "targetDate": "2026-11-17",
           "dateStr": "17/11/2026",
-          "ilcHours": 6,
+          "ilcHours": 20,
           "ilcHoursTotal": 32,
           "clientHours": 0,
           "status": "in-progress",
@@ -11732,7 +11732,7 @@
               "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 32,
-              "completedWork": 6,
+              "completedWork": 20,
               "startDate": "2026-10-30",
               "targetDate": "2026-11-17"
             }
@@ -11923,13 +11923,13 @@
         "agreed": 116,
         "agreedHours": 116,
         "planned": 116,
-        "executed": 90,
+        "executed": 104,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 116,
-        "ilcExecuted": 90,
+        "ilcExecuted": 104,
         "totalPlanned": 116,
-        "totalExecuted": 90,
+        "totalExecuted": 104,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -11970,8 +11970,8 @@
           {
             "phase": "Operação Assistida",
             "planned": 32,
-            "executed": 6,
-            "percentage": 19,
+            "executed": 20,
+            "percentage": 63,
             "completed": false,
             "deliverablesTotal": 1,
             "deliverablesCompleted": 0
@@ -11980,8 +11980,8 @@
       },
       "azureOriginal": {
         "ilcPlanned": 116,
-        "ilcExecuted": 90,
-        "progress": 78,
+        "ilcExecuted": 104,
+        "progress": 90,
         "agreedDates": {
           "start": "2026-09-01",
           "end": "2026-11-17"
@@ -12058,7 +12058,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T16:18:07.375Z",
+      "azureLastUpdated": "2026-11-10T16:49:22.386Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 1,
@@ -13348,7 +13348,7 @@
       "progress": 74,
       "manualRagStatus": "auto",
       "executiveSummary": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
-      "azureLastUpdated": "2026-11-10T16:18:08.727Z",
+      "azureLastUpdated": "2026-11-10T16:49:22.884Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "amber",
       "varianceDays": 1,
@@ -14627,7 +14627,7 @@
       "progress": 81,
       "manualRagStatus": "auto",
       "executiveSummary": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
-      "azureLastUpdated": "2026-11-10T16:18:09.991Z",
+      "azureLastUpdated": "2026-11-10T16:49:23.931Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15411,7 +15411,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T16:18:11.951Z",
+      "azureLastUpdated": "2026-11-10T16:49:25.157Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21493,7 +21493,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T16:18:13.908Z",
+      "azureLastUpdated": "2026-11-10T16:49:27.415Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23755,7 +23755,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:14.546Z",
+      "azureLastUpdated": "2026-11-10T16:49:28.079Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24616,7 +24616,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-10T16:18:15.638Z",
+      "azureLastUpdated": "2026-11-10T16:49:29.247Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 242,
@@ -29476,7 +29476,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-10T16:18:16.285Z",
+      "azureLastUpdated": "2026-11-10T16:49:29.873Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30190,7 +30190,7 @@
       "progress": 16,
       "manualRagStatus": "auto",
       "executiveSummary": "Em fase de integração com o backend.",
-      "azureLastUpdated": "2026-11-10T16:18:13.073Z",
+      "azureLastUpdated": "2026-11-10T16:49:26.592Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30707,7 +30707,7 @@
       "progress": 45,
       "manualRagStatus": "auto",
       "executiveSummary": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
-      "azureLastUpdated": "2026-11-10T16:18:04.805Z",
+      "azureLastUpdated": "2026-11-10T16:49:20.421Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31811,7 +31811,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-10T16:18:09.459Z",
+      "azureLastUpdated": "2026-11-10T16:49:23.436Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32379,7 +32379,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
-      "azureLastUpdated": "2026-11-10T16:18:02.811Z",
+      "azureLastUpdated": "2026-11-10T16:49:18.706Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32511,7 +32511,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:03.214Z",
+      "azureLastUpdated": "2026-11-10T16:49:19.143Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -32702,7 +32702,7 @@
       "progress": 25,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
-      "azureLastUpdated": "2026-11-10T16:18:12.566Z",
+      "azureLastUpdated": "2026-11-10T16:49:25.952Z",
       "currentIterationName": "Novembro",
       "activities": [
         {

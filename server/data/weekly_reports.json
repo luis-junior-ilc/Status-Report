@@ -12,7 +12,7 @@
       "onTrack": 7,
       "attention": 1,
       "critical": 1,
-      "averageProgress": 53
+      "averageProgress": 54
     },
     "activeProjects": [
       {
@@ -62,7 +62,7 @@
         "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
         "status": "Ativo",
         "currentMilestone": "Operação Assistida",
-        "progress": 80,
+        "progress": 83,
         "ragStatus": "green",
         "agreedDelivery": "2026-11-30",
         "targetDelivery": "2026-11-30",
@@ -72,7 +72,7 @@
         "previousStatusReport": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
         "previousStatusReportDate": "2026-10-06",
         "attentionPoints": "",
-        "hoursExecuted": 96,
+        "hoursExecuted": 99,
         "hoursPlanned": 120,
         "hoursAgreed": 120,
         "priority": "P2",
@@ -139,7 +139,7 @@
         "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
         "status": "Ativo",
         "currentMilestone": "Operação Assistida",
-        "progress": 78,
+        "progress": 90,
         "ragStatus": "green",
         "agreedDelivery": "2026-11-17",
         "targetDelivery": "2026-11-17",
@@ -149,7 +149,7 @@
         "previousStatusReport": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
         "previousStatusReportDate": "2026-10-06",
         "attentionPoints": " ",
-        "hoursExecuted": 90,
+        "hoursExecuted": 104,
         "hoursPlanned": 116,
         "hoursAgreed": 116,
         "priority": "P2",

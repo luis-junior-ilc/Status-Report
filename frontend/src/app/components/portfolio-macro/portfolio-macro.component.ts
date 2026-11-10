@@ -44,7 +44,7 @@ import { Project } from '../../models/project.model';
           <div class="flex border-b border-slate-200 bg-slate-900 text-white text-xs font-bold py-2.5 px-4 sticky top-0 z-10">
             <!-- Project metadata column -->
             <div class="w-[420px] shrink-0 uppercase tracking-wider text-slate-400 text-[11px]">
-              Projeto • Criticidade • Marco • Sistemas
+              Projeto • Criticidade • Sistemas • Líder / Entrega
             </div>
 
             <!-- Percentage Axis (0% to 100%) -->
@@ -105,6 +105,7 @@ import { Project } from '../../models/project.model';
                   </span>
                 </div>
 
+                <!-- Line 2: Criticidade, Marco da EAP e Sistemas -->
                 <div class="flex flex-wrap items-center gap-1.5 mt-1.5">
                   <!-- Criticidade (Priority Pill) - Same height h-5 -->
                   <span
@@ -128,24 +129,27 @@ import { Project } from '../../models/project.model';
                     class="h-5 px-2 inline-flex items-center rounded text-[10px] font-bold border shadow-2xs shrink-0 leading-none">
                     {{ sys }}
                   </span>
+                </div>
 
-                  <!-- Team Leader & Data de Entrega -->
-                  <div class="h-5 inline-flex items-center gap-2 ml-auto shrink-0">
-                    <span
-                      *ngIf="p.team?.leader"
-                      class="inline-flex items-center gap-1 text-[10px] text-slate-600 font-medium cursor-help leading-none"
-                      [title]="service.getTeamTooltip(p)">
-                      <span>👤</span>
-                      <span class="truncate max-w-[110px]">{{ p.team!.leader }}</span>
-                    </span>
-                    <span
-                      *ngIf="service.getDeliveryDate(p) !== '-'"
-                      class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium text-[10px] border border-slate-200 leading-none shadow-2xs"
-                      title="Data de Entrega / Finalização">
-                      <span class="text-blue-600 font-bold">🏁</span>
-                      <span>Entrega: <strong class="text-slate-900 font-bold">{{ service.getDeliveryDate(p) }}</strong></span>
-                    </span>
-                  </div>
+                <!-- Line 3: Líder do Projeto e Data de Entrega (alinhados à esquerda, logo abaixo de criticidade e sistemas) -->
+                <div
+                  *ngIf="p.team?.leader || service.getDeliveryDate(p) !== '-'"
+                  class="flex flex-wrap items-center gap-2 mt-1.5 text-left text-[10px]">
+                  <span
+                    *ngIf="p.team?.leader"
+                    class="inline-flex items-center gap-1 text-slate-700 font-semibold cursor-help leading-none"
+                    [title]="service.getTeamTooltip(p)">
+                    <span>👤</span>
+                    <span class="truncate max-w-[140px]">{{ p.team!.leader }}</span>
+                  </span>
+                  <span *ngIf="p.team?.leader && service.getDeliveryDate(p) !== '-'" class="text-slate-300">•</span>
+                  <span
+                    *ngIf="service.getDeliveryDate(p) !== '-'"
+                    class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-medium text-[10px] border border-slate-200 leading-none shadow-2xs"
+                    title="Data de Entrega / Finalização">
+                    <span class="text-blue-600 font-bold">🏁</span>
+                    <span>Entrega: <strong class="text-slate-900 font-bold">{{ service.getDeliveryDate(p) }}</strong></span>
+                  </span>
                 </div>
               </div>
 
