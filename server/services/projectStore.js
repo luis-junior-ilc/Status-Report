@@ -1039,9 +1039,24 @@ class ProjectStore {
       return memberMap[cleanName];
     };
 
+    const formatMonthLabel = (monthKey) => {
+      const parts = (monthKey || '').split('-');
+      const year = parts[0];
+      const month = parts[1];
+      const monthNames = {
+        '01': 'Jan', '02': 'Fev', '03': 'Mar', '04': 'Abr',
+        '05': 'Mai', '06': 'Jun', '07': 'Jul', '08': 'Ago',
+        '09': 'Set', '10': 'Out', '11': 'Nov', '12': 'Dez'
+      };
+      const shortYear = year ? year.slice(-2) : '26';
+      const name = monthNames[month] || month;
+      return `${name}/${shortYear}`;
+    };
+
     for (const p of projs) {
       const isMaint = p.category === 'maintenance';
       const acts = p.activities || [];
+      const pMonthMap = {};
 
       // Fallback para projetos sem tarefas detalhadas
       if (acts.length === 0 && p.hours && (p.hours.totalExecuted || 0) > 0) {
@@ -1068,6 +1083,10 @@ class ProjectStore {
 
             const tDate = t.targetDate || t.startDate || a.targetDate || a.startDate;
             const tMonth = tDate ? tDate.slice(0, 7) : null;
+
+            if (tMonth) {
+              pMonthMap[tMonth] = this.roundHours((pMonthMap[tMonth] || 0) + tHours);
+            }
 
             if (tMonth && monthlyMap[tMonth]) {
               if (isMaint) {
@@ -1114,6 +1133,10 @@ class ProjectStore {
           const aDate = a.targetDate || a.startDate;
           const aMonth = aDate ? aDate.slice(0, 7) : null;
 
+          if (aMonth) {
+            pMonthMap[aMonth] = this.roundHours((pMonthMap[aMonth] || 0) + aHours);
+          }
+
           if (aMonth && monthlyMap[aMonth]) {
             if (isMaint) {
               monthlyMap[aMonth].maintenanceHours = this.roundHours(monthlyMap[aMonth].maintenanceHours + aHours);
@@ -1148,6 +1171,24 @@ class ProjectStore {
           }
         }
       }
+
+      const projectTotalHours = this.roundHours(
+        Object.values(pMonthMap).reduce((sum, h) => sum + h, 0)
+      ) || (p.hours?.totalExecuted || 0);
+
+      p.monthlyHours = Object.keys(pMonthMap)
+        .filter(key => pMonthMap[key] > 0)
+        .sort((a, b) => b.localeCompare(a))
+        .map(key => {
+          const hours = pMonthMap[key];
+          const percent = projectTotalHours > 0 ? Math.round((hours / projectTotalHours) * 1000) / 10 : 0;
+          return {
+            monthKey: key,
+            label: formatMonthLabel(key),
+            hours,
+            percent
+          };
+        });
     }
 
     const monthlyHistory = monthDefs.map(m => {

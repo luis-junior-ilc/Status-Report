@@ -600,6 +600,62 @@ import { Project } from '../../models/project.model';
                     <span class="text-xs font-black text-purple-700">{{ (p.activities?.length || 0) }} registradas</span>
                   </div>
                 </div>
+
+                <!-- Dropdown Volume de Horas por Mês -->
+                <div class="mb-3">
+                  <div class="flex items-center justify-between gap-1 mb-1.5">
+                    <label class="text-[10px] font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+                      <svg class="w-3 h-3 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      Horas por Mês
+                    </label>
+                    <span *ngIf="p.monthlyHours && p.monthlyHours.length > 0" class="text-[9px] font-extrabold text-purple-700 bg-purple-100 px-1.5 py-0.5 rounded-md">
+                      {{ p.monthlyHours.length }} {{ p.monthlyHours.length === 1 ? 'mês ativo' : 'meses ativos' }}
+                    </span>
+                  </div>
+
+                  <div class="relative">
+                    <select
+                      [ngModel]="getSelectedMonthKey(p)"
+                      (ngModelChange)="onProjectMonthChange(p.id, $event)"
+                      [disabled]="!p.monthlyHours || p.monthlyHours.length === 0"
+                      class="w-full bg-white hover:bg-slate-50/90 disabled:bg-slate-50 disabled:text-slate-400 border border-purple-200 hover:border-purple-300 text-slate-800 text-xs font-semibold rounded-xl px-2.5 py-1.5 focus:ring-2 focus:ring-purple-400 focus:border-purple-400 outline-none transition cursor-pointer appearance-none pr-7 shadow-2xs">
+                      
+                      <ng-container *ngIf="p.monthlyHours && p.monthlyHours.length > 0; else noMonths">
+                        <option value="all">
+                          📊 Todos os Meses ({{ formatHours(p.hours?.totalExecuted) }}h total)
+                        </option>
+                        <option *ngFor="let m of p.monthlyHours" [value]="m.monthKey">
+                          📅 {{ m.label }}: {{ formatHours(m.hours) }}h ({{ m.percent }}%)
+                        </option>
+                      </ng-container>
+
+                      <ng-template #noMonths>
+                        <option value="" disabled selected>
+                          Nenhuma hora registrada por mês
+                        </option>
+                      </ng-template>
+                    </select>
+
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-purple-600">
+                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Detalhe visual quando um mês específico está selecionado -->
+                  <div *ngIf="getSelectedMonthInfo(p) as selInfo" class="mt-1.5 px-2.5 py-1.5 rounded-lg bg-purple-100/70 border border-purple-200 flex items-center justify-between text-[11px]">
+                    <span class="font-extrabold text-purple-900 flex items-center gap-1">
+                      <span>🗓️ {{ selInfo.label }}:</span>
+                      <span class="text-purple-700">{{ formatHours(selInfo.hours) }}h</span>
+                    </span>
+                    <span class="text-[10px] font-bold text-purple-700 bg-white/80 px-1.5 py-0.5 rounded shadow-2xs">
+                      {{ selInfo.percent }}% do projeto
+                    </span>
+                  </div>
+                </div>
               </div>
 
               <!-- Card Bottom: Team -->
@@ -644,6 +700,7 @@ export class MaintenanceDashboardComponent implements OnInit {
   service = inject(ProjectService);
 
   hoveredMonth = signal<MonthlyEffort | null>(null);
+  selectedProjectMonth = signal<Record<string, string>>({});
 
   metrics = computed(() => this.service.maintenanceMetrics());
 
@@ -652,6 +709,31 @@ export class MaintenanceDashboardComponent implements OnInit {
       p => p.isVisible !== false && p.status !== 'Congelado'
     );
   });
+
+  onProjectMonthChange(projectId: string, monthKey: string) {
+    this.selectedProjectMonth.update(prev => ({
+      ...prev,
+      [projectId]: monthKey
+    }));
+  }
+
+  getSelectedMonthKey(p: Project): string {
+    const selected = this.selectedProjectMonth()[p.id];
+    if (selected) return selected;
+    return 'all';
+  }
+
+  getSelectedMonthInfo(p: Project): { label: string; hours: number; percent: number } | null {
+    const selectedKey = this.selectedProjectMonth()[p.id];
+    if (!selectedKey || selectedKey === 'all') return null;
+    const m = (p.monthlyHours || []).find(item => item.monthKey === selectedKey);
+    if (!m) return null;
+    return {
+      label: m.label,
+      hours: m.hours,
+      percent: m.percent
+    };
+  }
 
   ngOnInit() {
     this.refreshData();

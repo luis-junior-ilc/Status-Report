@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-10T15:12:05.867Z",
+  "lastSync": "2026-11-10T15:57:10.539Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T15:11:51.253Z",
+      "azureLastUpdated": "2026-11-10T15:56:52.697Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7894,7 +7894,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Antes da reunião com o Mauricio será realizado um levantamento, para elabaoração de um questionario sobre requisitos e alinhamento técnico.",
-      "azureLastUpdated": "2026-11-10T15:11:51.524Z",
+      "azureLastUpdated": "2026-11-10T15:56:53.323Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8178,7 +8178,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:11:51.999Z",
+      "azureLastUpdated": "2026-11-10T15:56:54.076Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8571,7 +8571,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:11:52.455Z",
+      "azureLastUpdated": "2026-11-10T15:56:54.892Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8915,7 +8915,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:11:53.513Z",
+      "azureLastUpdated": "2026-11-10T15:56:56.353Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9037,7 +9037,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-10T15:11:54.116Z",
+      "azureLastUpdated": "2026-11-10T15:56:56.927Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9853,7 +9853,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Unidade Cubatão finalizada, processo Komatsu em operação assistida.",
-      "azureLastUpdated": "2026-11-10T15:11:55.527Z",
+      "azureLastUpdated": "2026-11-10T15:56:58.634Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11302,7 +11302,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto aos cuidados do time Operacional ILC. Está em operação assistida, até o momento sem ocorrências.",
-      "azureLastUpdated": "2026-11-10T15:11:55.929Z",
+      "azureLastUpdated": "2026-11-10T15:56:59.155Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11642,7 +11642,7 @@
       "progress": 78,
       "manualRagStatus": "auto",
       "executiveSummary": "Treinamento realizado com isso, o projeto está aos cuidados do time operacional.",
-      "azureLastUpdated": "2026-11-10T15:11:56.406Z",
+      "azureLastUpdated": "2026-11-10T15:56:59.643Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11982,7 +11982,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T15:11:57.156Z",
+      "azureLastUpdated": "2026-11-10T15:57:00.956Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 3,
@@ -13118,18 +13118,52 @@
               "targetDate": null
             }
           ]
+        },
+        {
+          "id": "app---smart-tracking-operacional",
+          "azureId": null,
+          "title": "Atividades Operacionais & Suporte",
+          "fullTitle": "Atividades Operacionais & Suporte",
+          "rawTitle": "Atividades Operacionais & Suporte",
+          "type": "TaskGroup",
+          "state": "Active",
+          "assignedTo": "Equipe de Sustentação",
+          "eapPhase": "Operação Assistida",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "OUT / 26",
+          "ilcHours": 0,
+          "ilcHoursTotal": 8,
+          "clientHours": 0,
+          "status": "in_progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7552,
+              "title": "[FE] Travar o tamanho da fonte do app, ignorando a escala do sistema",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": null,
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": null,
+              "targetDate": null
+            }
+          ]
         }
       ],
       "hours": {
         "agreed": 720,
         "agreedHours": 720,
-        "planned": 476,
+        "planned": 484,
         "executed": 760,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 476,
+        "ilcPlanned": 484,
         "ilcExecuted": 760,
-        "totalPlanned": 476,
+        "totalPlanned": 484,
         "totalExecuted": 760,
         "distribution": [
           {
@@ -13170,17 +13204,17 @@
           },
           {
             "phase": "Operação Assistida",
-            "planned": 0,
+            "planned": 8,
             "executed": 0,
             "percentage": 0,
             "completed": false,
-            "deliverablesTotal": 0,
+            "deliverablesTotal": 1,
             "deliverablesCompleted": 0
           }
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 96,
+        "ilcPlanned": 104,
         "ilcExecuted": 760,
         "progress": 53,
         "agreedDates": {
@@ -13237,7 +13271,7 @@
       "progress": 74,
       "manualRagStatus": "auto",
       "executiveSummary": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
-      "azureLastUpdated": "2026-11-10T15:11:57.717Z",
+      "azureLastUpdated": "2026-11-10T15:57:01.559Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "amber",
       "varianceDays": 1,
@@ -14492,13 +14526,13 @@
         "start": "2026-06-01",
         "end": null
       },
-      "progress": 63,
+      "progress": 81,
       "manualRagStatus": "auto",
       "executiveSummary": "Fase final de ajustes e homologação das etapas solicitações, cotações, painel transportador e respostas cotações e inicio da etapa aprovação e custo extra.",
-      "azureLastUpdated": "2026-11-10T15:11:58.775Z",
+      "azureLastUpdated": "2026-11-10T15:57:03.200Z",
       "currentIterationName": "Iteration 1",
-      "ragStatus": "red",
-      "varianceDays": 12,
+      "ragStatus": "green",
+      "varianceDays": 0,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -14516,7 +14550,7 @@
           "startDate": "2026-11-01",
           "targetDate": "2026-11-15",
           "dateStr": "15/11/2026",
-          "ilcHours": 4,
+          "ilcHours": 39,
           "ilcHoursTotal": 51,
           "clientHours": 0,
           "status": "in-progress",
@@ -14528,9 +14562,9 @@
               "title": "Aprovação e custos extras",
               "type": "Task",
               "state": "Active",
-              "assignedTo": "Silvio Torres",
+              "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 43,
-              "completedWork": 0,
+              "completedWork": 33,
               "startDate": "2026-11-01",
               "targetDate": "2026-10-15"
             },
@@ -14552,9 +14586,155 @@
               "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 4,
-              "completedWork": 0,
+              "completedWork": 2,
               "startDate": "2026-11-01",
               "targetDate": "2026-11-15"
+            }
+          ]
+        },
+        {
+          "id": "7227",
+          "azureId": 7227,
+          "title": "QA Módulo Transportador",
+          "fullTitle": "#7227 QA Módulo Transportador",
+          "rawTitle": "QA Módulo Transportador",
+          "type": "Feature",
+          "state": "Closed",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Homologação",
+          "month": "OUT / 26",
+          "startDate": "2026-10-25",
+          "targetDate": "2026-11-01",
+          "dateStr": "01/11/2026",
+          "ilcHours": 95,
+          "ilcHoursTotal": 95,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7262,
+              "title": "Modulo transportador",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 86,
+              "completedWork": 86,
+              "startDate": "2026-10-25",
+              "targetDate": "2026-11-01"
+            },
+            {
+              "id": 7263,
+              "title": "QA Modulo transportador",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Luis Carlos Oliveira Santos Junior",
+              "originalEstimate": 9,
+              "completedWork": 9,
+              "startDate": "2026-10-25",
+              "targetDate": "2026-11-01"
+            }
+          ]
+        },
+        {
+          "id": "7226",
+          "azureId": 7226,
+          "title": "Módulo Transportador",
+          "fullTitle": "#7226 Módulo Transportador",
+          "rawTitle": "Módulo Transportador",
+          "type": "Feature",
+          "state": "Closed",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "OUT / 26",
+          "startDate": "2026-10-25",
+          "targetDate": "2026-11-01",
+          "dateStr": "01/11/2026",
+          "ilcHours": 0,
+          "ilcHoursTotal": 0,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": []
+        },
+        {
+          "id": "7225",
+          "azureId": 7225,
+          "title": "QA Solicitação e cotação",
+          "fullTitle": "#7225 QA Solicitação e cotação",
+          "rawTitle": "QA Solicitação e cotação",
+          "type": "Feature",
+          "state": "Closed",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Homologação",
+          "month": "OUT / 26",
+          "startDate": "2026-10-16",
+          "targetDate": "2026-10-25",
+          "dateStr": "25/10/2026",
+          "ilcHours": 11,
+          "ilcHoursTotal": 11,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7259,
+              "title": "QA Solicitação e cotação",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Luis Carlos Oliveira Santos Junior",
+              "originalEstimate": 11,
+              "completedWork": 11,
+              "startDate": "2026-10-16",
+              "targetDate": "2026-10-25"
+            }
+          ]
+        },
+        {
+          "id": "7224",
+          "azureId": 7224,
+          "title": "Solicitação e cotação",
+          "fullTitle": "#7224 Solicitação e cotação",
+          "rawTitle": "Solicitação e cotação",
+          "type": "Feature",
+          "state": "Closed",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "OUT / 26",
+          "startDate": "2026-10-16",
+          "targetDate": "2026-10-25",
+          "dateStr": "25/10/2026",
+          "ilcHours": 114,
+          "ilcHoursTotal": 111,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7258,
+              "title": "Solicitação e cotação",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 106,
+              "completedWork": 109,
+              "startDate": "2026-10-16",
+              "targetDate": "2026-10-25"
+            },
+            {
+              "id": 7495,
+              "title": "Corrigir remanescentes de cotação, agrupamento, alçadas e interface",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 5,
+              "completedWork": 5,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-28"
             }
           ]
         },
@@ -14577,73 +14757,6 @@
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": []
-        },
-        {
-          "id": "7227",
-          "azureId": 7227,
-          "title": "QA Módulo Transportador",
-          "fullTitle": "#7227 QA Módulo Transportador",
-          "rawTitle": "QA Módulo Transportador",
-          "type": "Feature",
-          "state": "Active",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Homologação",
-          "month": "OUT / 26",
-          "startDate": "2026-10-25",
-          "targetDate": "2026-11-01",
-          "dateStr": "01/11/2026",
-          "ilcHours": 19,
-          "ilcHoursTotal": 95,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7262,
-              "title": "Modulo transportador",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Silvio Torres",
-              "originalEstimate": 86,
-              "completedWork": 16,
-              "startDate": "2026-10-25",
-              "targetDate": "2026-11-01"
-            },
-            {
-              "id": 7263,
-              "title": "QA Modulo transportador",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 9,
-              "completedWork": 3,
-              "startDate": "2026-10-25",
-              "targetDate": "2026-11-01"
-            }
-          ]
-        },
-        {
-          "id": "7226",
-          "azureId": 7226,
-          "title": "Módulo Transportador",
-          "fullTitle": "#7226 Módulo Transportador",
-          "rawTitle": "Módulo Transportador",
-          "type": "Feature",
-          "state": "Active",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "OUT / 26",
-          "startDate": "2026-10-25",
-          "targetDate": "2026-11-01",
-          "dateStr": "01/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 0,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
           "isTightMargin": false,
           "linkedTasks": []
         },
@@ -14713,85 +14826,6 @@
           "isDelayed": false,
           "isTightMargin": false,
           "linkedTasks": []
-        },
-        {
-          "id": "7225",
-          "azureId": 7225,
-          "title": "QA Solicitação e cotação",
-          "fullTitle": "#7225 QA Solicitação e cotação",
-          "rawTitle": "QA Solicitação e cotação",
-          "type": "Feature",
-          "state": "Active",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Homologação",
-          "month": "OUT / 26",
-          "startDate": "2026-10-16",
-          "targetDate": "2026-10-25",
-          "dateStr": "25/10/2026",
-          "ilcHours": 8,
-          "ilcHoursTotal": 11,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7259,
-              "title": "QA Solicitação e cotação",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 11,
-              "completedWork": 8,
-              "startDate": "2026-10-16",
-              "targetDate": "2026-10-25"
-            }
-          ]
-        },
-        {
-          "id": "7224",
-          "azureId": 7224,
-          "title": "Solicitação e cotação",
-          "fullTitle": "#7224 Solicitação e cotação",
-          "rawTitle": "Solicitação e cotação",
-          "type": "Feature",
-          "state": "Active",
-          "assignedTo": "Luis Carlos Oliveira Santos Junior",
-          "eapPhase": "Desenvolvimento",
-          "month": "OUT / 26",
-          "startDate": "2026-10-16",
-          "targetDate": "2026-10-25",
-          "dateStr": "25/10/2026",
-          "ilcHours": 83,
-          "ilcHoursTotal": 111,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7258,
-              "title": "Solicitação e cotação",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Silvio Torres",
-              "originalEstimate": 106,
-              "completedWork": 78,
-              "startDate": "2026-10-16",
-              "targetDate": "2026-10-25"
-            },
-            {
-              "id": 7495,
-              "title": "Corrigir remanescentes de cotação, agrupamento, alçadas e interface",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Silvio Torres",
-              "originalEstimate": 5,
-              "completedWork": 5,
-              "startDate": "2026-10-28",
-              "targetDate": "2026-10-28"
-            }
-          ]
         },
         {
           "id": "7231",
@@ -15089,7 +15123,7 @@
               "id": 7264,
               "title": "Validação operacional",
               "type": "Task",
-              "state": "New",
+              "state": "Active",
               "assignedTo": "Silvio Torres",
               "originalEstimate": 39,
               "completedWork": 0,
@@ -15100,7 +15134,7 @@
               "id": 7265,
               "title": "QA Validação operacional",
               "type": "Task",
-              "state": "New",
+              "state": "Active",
               "assignedTo": "Luis Carlos Oliveira Santos Junior",
               "originalEstimate": 4,
               "completedWork": 0,
@@ -15136,13 +15170,13 @@
         "agreed": 750,
         "agreedHours": 750,
         "planned": 759,
-        "executed": 453,
+        "executed": 598,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 759,
-        "ilcExecuted": 453,
+        "ilcExecuted": 598,
         "totalPlanned": 759,
-        "totalExecuted": 453,
+        "totalExecuted": 598,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -15156,20 +15190,20 @@
           {
             "phase": "Desenvolvimento",
             "planned": 410,
-            "executed": 335,
-            "percentage": 82,
+            "executed": 401,
+            "percentage": 98,
             "completed": false,
             "deliverablesTotal": 5,
-            "deliverablesCompleted": 1
+            "deliverablesCompleted": 3
           },
           {
             "phase": "Homologação",
             "planned": 212,
-            "executed": 27,
-            "percentage": 13,
+            "executed": 106,
+            "percentage": 50,
             "completed": false,
             "deliverablesTotal": 9,
-            "deliverablesCompleted": 1
+            "deliverablesCompleted": 3
           },
           {
             "phase": "Treinamento",
@@ -15193,8 +15227,8 @@
       },
       "azureOriginal": {
         "ilcPlanned": 759,
-        "ilcExecuted": 453,
-        "progress": 63,
+        "ilcExecuted": 598,
+        "progress": 81,
         "agreedDates": {
           "start": "2026-08-03",
           "end": "2027-01-16"
@@ -15209,9 +15243,7 @@
         "progress": true,
         "dates": true
       },
-      "inconsistencies": [
-        "DELAYED_ITEMS"
-      ],
+      "inconsistencies": [],
       "hasManualIlcHours": false,
       "hasManualAgreedDates": false,
       "priority": "P1",
@@ -15253,7 +15285,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T15:12:00.499Z",
+      "azureLastUpdated": "2026-11-10T15:57:05.337Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21335,7 +21367,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-10T15:12:02.675Z",
+      "azureLastUpdated": "2026-11-10T15:57:07.814Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23597,7 +23629,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:12:03.598Z",
+      "azureLastUpdated": "2026-11-10T15:57:08.700Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24458,7 +24490,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-10T15:12:05.220Z",
+      "azureLastUpdated": "2026-11-10T15:57:09.937Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 242,
@@ -29318,7 +29350,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-10T15:12:05.866Z",
+      "azureLastUpdated": "2026-11-10T15:57:10.537Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30029,10 +30061,10 @@
         "start": "2026-10-05",
         "end": null
       },
-      "progress": 15,
+      "progress": 16,
       "manualRagStatus": "auto",
       "executiveSummary": "Em fase de integração com o backend.",
-      "azureLastUpdated": "2026-11-10T15:12:01.714Z",
+      "azureLastUpdated": "2026-11-10T15:57:06.955Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30050,7 +30082,7 @@
           "targetDate": "2026-11-14",
           "dateStr": "14/11/2026",
           "ilcHours": 0,
-          "ilcHoursTotal": 70,
+          "ilcHoursTotal": 78,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -30080,7 +30112,7 @@
             },
             {
               "id": 7475,
-              "title": "[BE] Integrações (frontend + backend)",
+              "title": "[FE] Integrações (frontend + backend)",
               "type": "Task",
               "state": "Active",
               "assignedTo": "Mike Andrade",
@@ -30096,6 +30128,17 @@
               "state": "New",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 16,
+              "completedWork": 0,
+              "startDate": "2026-11-10",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7553,
+              "title": "[FE] Busca (posicoes/busca)",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 8,
               "completedWork": 0,
               "startDate": "2026-11-10",
               "targetDate": "2026-11-13"
@@ -30413,9 +30456,9 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 356,
+        "ilcPlanned": 364,
         "ilcExecuted": 32,
-        "progress": 15,
+        "progress": 16,
         "agreedDates": {
           "start": "2026-10-05",
           "end": "2026-12-01"
@@ -30428,13 +30471,13 @@
       "hours": {
         "agreed": 340,
         "agreedHours": 340,
-        "planned": 356,
+        "planned": 364,
         "executed": 32,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 356,
+        "ilcPlanned": 364,
         "ilcExecuted": 32,
-        "totalPlanned": 356,
+        "totalPlanned": 364,
         "totalExecuted": 32,
         "distribution": [
           {
@@ -30448,7 +30491,7 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 248,
+            "planned": 256,
             "executed": 0,
             "percentage": 0,
             "completed": false,
@@ -30530,7 +30573,7 @@
       "progress": 45,
       "manualRagStatus": "auto",
       "executiveSummary": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
-      "azureLastUpdated": "2026-11-10T15:11:54.809Z",
+      "azureLastUpdated": "2026-11-10T15:56:57.970Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31607,7 +31650,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-10T15:11:58.349Z",
+      "azureLastUpdated": "2026-11-10T15:57:02.534Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32175,7 +32218,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Documentação inicial desenvolvida, será incluso na esteira de desenvolvimento do time técnico.",
-      "azureLastUpdated": "2026-11-10T15:11:52.807Z",
+      "azureLastUpdated": "2026-11-10T15:56:55.225Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32306,7 +32349,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:11:53.211Z",
+      "azureLastUpdated": "2026-11-10T15:56:56.076Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -32496,7 +32539,7 @@
       "progress": 25,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
-      "azureLastUpdated": "2026-11-10T15:12:01.099Z",
+      "azureLastUpdated": "2026-11-10T15:57:06.344Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -32507,7 +32550,7 @@
           "rawTitle": "Integrator - Relatórios: Segmentação de dados por cliente",
           "type": "User Story",
           "state": "New",
-          "assignedTo": null,
+          "assignedTo": "Silvio Torres",
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
           "startDate": "2026-11-01",

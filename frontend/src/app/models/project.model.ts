@@ -20,6 +20,13 @@ export interface DateRange {
   end: string | null;
 }
 
+export interface ProjectMonthlyHours {
+  monthKey: string;
+  label: string;
+  hours: number;
+  percent: number;
+}
+
 export interface LinkedTask {
   id: number;
   title: string;
@@ -160,6 +167,7 @@ export interface Project {
   systems?: string[];
   team?: ProjectTeam;
   activities?: ProjectActivity[];
+  monthlyHours?: ProjectMonthlyHours[];
   inconsistencies?: string[];
   lockedFields?: {
     ilcHours: boolean;
