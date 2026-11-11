@@ -792,6 +792,22 @@
           },
           "recentActivities": [
             {
+              "id": "7540",
+              "title": "DevOps - Publicação",
+              "targetDate": "2026-11-10",
+              "hours": 0,
+              "status": "in-progress",
+              "assignedTo": "Francisco Molaia Santos"
+            },
+            {
+              "id": "7530",
+              "title": "Integrator - Painel Relatório",
+              "targetDate": "2026-11-10",
+              "hours": 4,
+              "status": "in-progress",
+              "assignedTo": "Francisco Molaia Santos"
+            },
+            {
               "id": "7543",
               "title": "Revalidar periodicamente o acesso ao Portal Integrator",
               "targetDate": "2026-11-05",

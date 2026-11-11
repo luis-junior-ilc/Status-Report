@@ -365,6 +365,14 @@
     ]
   },
   {
+    "name": "Tiago Figueiredo",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "John Deere - Rotas Dinâmicas"
+    ]
+  },
+  {
     "name": "Vito Neves",
     "isVisible": true,
     "role": "Especialista de Sistemas",
