@@ -8,11 +8,11 @@
     "meetingDate": "2026-11-03",
     "executiveSummary": "Nesta semana, a equipe consolidou importantes entregas em produção e avançou na governança operacional, destacando-se a liberação escalonada do Revalida (com melhorias na tela de promessas), a subida para produção da integração de assinatura de contratos via ZapSign (preparada para integração com a Rodopar) e a evolução da Torre de Controle 4.0 e dos relatórios de SLA para o fechamento de faturamento da John Deere, além do avanço nos testes e apresentação do Frete Expresso 2.0. Paralelamente, iniciamos a construção dos novos dashboards de BI para a Boge (com isolamento de dados assegurado), otimizamos a triagem por IA no Gestão de Demandas, avançamos no desenvolvimento do App ILC e melhorias de estabilidade no Smart Tracking, e fortalecemos nossa gestão com a criação dos boards dedicados de Sustentação e BI no Azure DevOps, o avanço do Assessment técnico e o alinhamento de iniciativas estruturantes (Design System, Zammad, HubDocs e projetos Safety/Checklist por Viagem).",
     "statusPulse": {
-      "totalActive": 9,
-      "onTrack": 8,
+      "totalActive": 10,
+      "onTrack": 9,
       "attention": 1,
       "critical": 0,
-      "averageProgress": 58
+      "averageProgress": 61
     },
     "activeProjects": [
       {
@@ -171,13 +171,50 @@
         }
       },
       {
+        "projectId": "manual-1794403000991",
+        "name": "John Deere - Rotas Dinâmicas",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 88,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-11-30",
+        "targetDelivery": "2026-11-16",
+        "varianceDays": 0,
+        "statusReport": "Atividades em planejamento e acompanhamento técnico preliminar.",
+        "statusReportDate": "2026-11-03",
+        "previousStatusReport": "Atividades em planejamento e acompanhamento técnico preliminar.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "Atividades transcorrendo dentro dos parâmetros planejados.",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Jetta",
+          "Portal Integrator"
+        ],
+        "teamLeader": "Tiago Figueiredo",
+        "teamMembers": [
+          "Tiago Figueiredo"
+        ],
+        "team": {
+          "leader": "Tiago Figueiredo",
+          "members": [
+            "Tiago Figueiredo"
+          ]
+        }
+      },
+      {
         "projectId": "c064a093-ea7c-45e6-8ec6-5bf10a5794a9",
         "name": "Mirassol - Assinatura Digital de Documentos",
         "client": "Mirassol",
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 90,
+        "progress": 84,
         "ragStatus": "amber",
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
@@ -187,8 +224,8 @@
         "previousStatusReport": "Desenvolvimento backend em fase final, integração com ZapSign, e envio de notificações. Realizado alinhamento com a equipe para inicio do desenvolvimento frontend.",
         "previousStatusReportDate": "2026-10-06",
         "attentionPoints": "Contratos não estão sendo gerados com a assinatura automática do subcontrante, que aguarda definição.",
-        "hoursExecuted": 471,
-        "hoursPlanned": 512,
+        "hoursExecuted": 279,
+        "hoursPlanned": 320,
         "hoursAgreed": 173.6,
         "priority": "P1",
         "category": "new_project",
@@ -633,10 +670,10 @@
     "maintenanceSection": {
       "totalProjects": 3,
       "totalHours": 237,
-      "newProjectHours": 376,
-      "totalPeriodHours": 613,
-      "maintenancePercent": 39,
-      "newProjectPercent": 61,
+      "newProjectHours": 184,
+      "totalPeriodHours": 421,
+      "maintenancePercent": 56,
+      "newProjectPercent": 44,
       "activeSystemsCount": 4,
       "teamMembersCount": 4,
       "teamMembers": [
