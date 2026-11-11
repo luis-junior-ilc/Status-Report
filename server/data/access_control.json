@@ -11,8 +11,7 @@
     "port": 587,
     "secure": false,
     "user": "luis.junior@ilc.com.br",
-    "fromName": "PMO ILC • Painel Executivo",
-    "pass": "G#980315682276up"
+    "fromName": "PMO ILC • Painel Executivo"
   },
   "allowedDomains": [
     "ilc.com.br",
@@ -57,7 +56,7 @@
       "accessPasscode": "Brasil2029",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:27:55.391Z",
-      "invitedAt": "2026-11-06T19:30:14.886Z"
+      "invitedAt": "2026-11-10T19:09:19.203Z"
     },
     {
       "id": "usr-1793993150730",
@@ -174,7 +173,7 @@
       "accessPasscode": "Brasil2029",
       "createdAt": "2026-11-05T19:00:06.589Z",
       "mustChangePassword": true,
-      "invitedAt": "2026-11-06T18:17:25.801Z"
+      "invitedAt": "2026-11-10T19:18:28.742Z"
     },
     {
       "id": "dom-luis.junior@ilc.com.br",

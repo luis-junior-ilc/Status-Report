@@ -10,14 +10,14 @@
     "statusPulse": {
       "totalActive": 9,
       "onTrack": 7,
-      "attention": 1,
-      "critical": 1,
-      "averageProgress": 54
+      "attention": 0,
+      "critical": 2,
+      "averageProgress": 57
     },
     "activeProjects": [
       {
         "projectId": "8bcd36f6-678a-4d3c-a0a6-40a92b5ea91a",
-        "name": "App ILC 2026",
+        "name": "ILC - App Integrator 2026",
         "client": "ILC (Interno)",
         "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
         "status": "Ativo",
@@ -177,8 +177,8 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 74,
-        "ragStatus": "amber",
+        "progress": 90,
+        "ragStatus": "red",
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
         "varianceDays": 0,
@@ -342,17 +342,17 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 45,
+        "progress": 54,
         "ragStatus": "red",
         "agreedDelivery": "2026-11-13",
         "targetDelivery": "2026-11-13",
-        "varianceDays": 2,
+        "varianceDays": 0,
         "statusReport": "O projeto segue em ritmo acelerado de desenvolvimento e homologação para disponibilizar visibilidade operacional 4PL, controle de SLAs e geocercas iniciando pela unidade de Cubatão. Recentemente, foram corrigidas e publicadas online as extrações das colunas de PV, OST, CTR e manifesto, além da implementação de filtros interativos por etapa do fluxo e de um novo componente visual para monitoramento de prazos (PCs vencidos e a vencer), que já foram apresentados e seguem abertos para eventuais ajustes finos pós-validação.",
         "statusReportDate": "2026-10-27",
         "previousStatusReport": "Configuração do PoD das viagens de Cubatão, adição do estágio de aguarda execução para demandas enviadas com viagens não iniciadas, esse é um recurso de acompanhamento do SLA.",
         "previousStatusReportDate": "2026-10-27",
         "attentionPoints": "Divergênica do tipo de operação recebidos pelo Rodopar (Ex: importação -> Transferência).\nAguardando recebimento dos marcos do processo de demanda do Rodopar (Ex: PC, PV, OST).",
-        "hoursExecuted": 112,
+        "hoursExecuted": 149,
         "hoursPlanned": 299,
         "hoursAgreed": 264,
         "priority": "P1",
@@ -381,231 +381,199 @@
         "id": "road-1",
         "name": "ILC Pay (Rodobank)",
         "client": "Mirassol",
-        "estimatedStart": "A definir",
-        "stage": "Espera",
+        "estimatedStart": "dezembro/26",
+        "stage": "Escopo",
         "strategicValue": "Muito Alto",
-        "description": "Aplicativo bancário destinado aos motoristas contratados pela Mirassol",
-        "responsible": "ILC"
+        "description": "Aplicativo bancário destinado aos motoristas contratados pela Mirassol e Extrato financeiro",
+        "responsible": "ILC",
+        "estimatedHours": "300"
       },
       {
         "id": "road-2",
         "name": "Televida",
         "client": "Mirassol",
-        "estimatedStart": "A definir",
-        "stage": "Discovery",
+        "estimatedStart": "dezembro/2026",
+        "stage": "Arquitetura",
         "strategicValue": "Médio",
         "description": "Funcionalidade de telemedicina no App Smart Tracking",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "100"
       },
       {
         "id": "road-3",
         "name": "Modernização do ROC",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "janeiro/2027",
         "stage": "Ideação",
-        "strategicValue": "Alto",
+        "strategicValue": "Muito Alto",
         "description": "Aprimorar o relatório de ocupação de carga de forma que ele fique mais acertivo e com redução de ação humana.",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-4",
-        "name": "Forms Tipo Quiz",
-        "client": "Mirassol",
-        "estimatedStart": "A definir",
-        "stage": "Ideação",
-        "strategicValue": "Baixo",
-        "description": "Criador de formulários interativos com pontuação customizada e validação automática de respostas.",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "200"
       },
       {
         "id": "road-1792612651664",
         "name": "Auditoria de Comprovantes",
         "client": "Mirassol",
-        "estimatedStart": "A definir",
-        "stage": "Ideação",
-        "strategicValue": "Médio",
+        "estimatedStart": "novembro/2026",
+        "stage": "Priorização",
+        "strategicValue": "Alto",
         "description": "Criar solução para auditar automaticamente comprovantes por meio de IA.",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "150"
       },
       {
         "id": "road-1792692974138",
         "name": "Justificativa na cancelamento do pedido",
         "client": "John Deere",
-        "estimatedStart": "A definir",
+        "estimatedStart": "março/2026",
         "stage": "Espera",
         "strategicValue": "Alto",
         "description": "Implementação do campo justificativa no cancelamento de um pedido, incluindo evidência quando aplicável.",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1792693126164",
-        "name": "Consulta de Informações",
-        "client": "John Deere",
-        "estimatedStart": "A definir",
-        "stage": "Espera",
-        "strategicValue": "Estratégico",
-        "description": "",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "40"
       },
       {
         "id": "road-1793113036162",
         "name": "Reprogramação de itens na promessas",
         "client": "John Deere",
-        "estimatedStart": "A definir",
+        "estimatedStart": "janeiro/2026",
         "stage": "Discovery",
-        "strategicValue": "Muito Alto",
+        "strategicValue": "Alto",
         "description": "Com a mudança no promessa de entrega foi percebida a necessidade de um mecanismo que force o fornecedor dizer a data de itens não prometidos, pois a falta dessa informação interfere diretamente no SLA da operação.",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "40"
       },
       {
         "id": "road-1793728314479",
         "name": "Programa de Milhagens",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "abril/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1793728315781",
-        "name": "Extrato financeiro",
-        "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Ideação",
-        "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Clube de beneficios para motoristas por meio do app Smart Tracking",
+        "responsible": "ILC",
+        "estimatedHours": "500"
       },
       {
         "id": "road-1793728316205",
         "name": "Pátios e Docas",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "março/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "Green Truck",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "200"
       },
       {
         "id": "road-1793728316596",
         "name": "Promessas de embalagens",
         "client": "John Deere",
-        "estimatedStart": "A definir",
+        "estimatedStart": "abril/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Promessa de entrega para solicitar embalagens",
+        "responsible": "ILC",
+        "estimatedHours": "300"
       },
       {
         "id": "road-1793728316997",
         "name": "Cockpit de crossdocking",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "maio/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Qual o melhor modelo de retirar a carga do transportador para enviar ao cliente.",
+        "responsible": "ILC",
+        "estimatedHours": "350"
       },
       {
         "id": "road-1793728317391",
         "name": "Gestão de Fretes Mortos",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "junho/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Automatização processo de gestão do frete morto",
+        "responsible": "ILC",
+        "estimatedHours": "40"
       },
       {
         "id": "road-1793728317797",
         "name": "Controle de CO²",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "junho/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "Simple Carbon",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "80"
       },
       {
         "id": "road-1793728318202",
         "name": "Gestão à Vista",
         "client": "John Deere",
-        "estimatedStart": "A definir",
+        "estimatedStart": "fevereiro/2027",
         "stage": "Espera",
         "strategicValue": "Alto",
         "description": "Descrição preliminar da oportunidade no radar.",
-        "responsible": "Comercial & PMO"
+        "responsible": "Comercial & PMO",
+        "estimatedHours": "150"
       },
       {
         "id": "road-1793728318587",
         "name": "Frete Expresso no App ILC",
         "client": "John Deere",
-        "estimatedStart": "A definir",
+        "estimatedStart": "fevereiro/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "Inclusão das etapas solicitação, cotação e aprovação do Frete Expresso no App ILC",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "40"
       },
       {
         "id": "road-1793728318931",
         "name": "Smart Tracking no App ILC",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "março/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "48"
       },
       {
         "id": "road-1793728319315",
         "name": "Tracking de Notas no App ILC",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "abril/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "48"
       },
       {
         "id": "road-1793728319667",
         "name": "Melhorias e Reduções de custo",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "julho/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1793728818018",
-        "name": "Oportunidades e reduções – Evidência",
-        "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Ideação",
-        "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1793728818573",
-        "name": "App Smart Tracking – Auditoria de comprovantes",
-        "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Ideação",
-        "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Lançar no sistema e atrelar a iniciativa/módulo para avaliação do cliente",
+        "responsible": "ILC",
+        "estimatedHours": "120"
       },
       {
         "id": "road-1793728819113",
         "name": "Rota Críticas (Gestão integrada de itens críticos)",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "agosto/2027",
         "stage": "Ideação",
         "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
+        "description": "Realizar engenharia reversa para identificar o item crítico com antecipação.",
+        "responsible": "ILC",
+        "estimatedHours": "80"
       },
       {
         "id": "road-1793728819757",
@@ -615,57 +583,41 @@
         "stage": "Ideação",
         "strategicValue": "Alto",
         "description": "",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "70"
       },
       {
         "id": "road-1793728820314",
         "name": "Migração para SQL Server",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "dezembro/2026",
         "stage": "Viabilidade",
         "strategicValue": "Alto",
         "description": "",
-        "responsible": "ILC"
+        "responsible": "ILC",
+        "estimatedHours": "240"
       },
       {
         "id": "road-1793728820953",
         "name": "Xforms – Melhorias operacionais",
         "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Viabilidade",
-        "strategicValue": "Alto",
-        "description": "",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1793738889271",
-        "name": "Gestão a vista",
-        "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Espera",
-        "strategicValue": "Alto",
-        "description": "Visão inicial no protal integrator que traz os principais indicadores da operação para o cliente.",
-        "responsible": "ILC"
-      },
-      {
-        "id": "road-1794322426987",
-        "name": "Zammad",
-        "client": "ILC",
-        "estimatedStart": "A definir",
-        "stage": "Espera",
-        "strategicValue": "Alto",
-        "description": "Implementação da plataforma de gestão de chamados.",
-        "responsible": "ILC"
+        "estimatedStart": "março/2027",
+        "stage": "Ideação",
+        "strategicValue": "Médio",
+        "description": "Forms Tipo Quiz",
+        "responsible": "ILC",
+        "estimatedHours": "80"
       },
       {
         "id": "road-1794322429895",
         "name": "Padronização do frontend portal web e apps",
         "client": "ILC",
-        "estimatedStart": "A definir",
+        "estimatedStart": "dezembro/2026",
         "stage": "Discovery",
         "strategicValue": "Alto",
-        "description": "Descrição preliminar da oportunidade no radar.",
-        "responsible": "ILC"
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "200"
       }
     ],
     "boardDecisions": [
@@ -680,9 +632,9 @@
     ],
     "maintenanceSection": {
       "totalProjects": 3,
-      "totalHours": 227,
-      "newProjectHours": 358,
-      "totalPeriodHours": 585,
+      "totalHours": 237,
+      "newProjectHours": 376,
+      "totalPeriodHours": 613,
       "maintenancePercent": 39,
       "newProjectPercent": 61,
       "activeSystemsCount": 4,
@@ -700,14 +652,14 @@
         {
           "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
           "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
-          "name": "APP - SMART TRACKING",
+          "name": "ILC - App Smart Tracking",
           "client": "ILC (Interno)",
           "status": "Ativo",
-          "ragStatus": "amber",
+          "ragStatus": "red",
           "hoursExecuted": 196,
           "hoursExecutedInPeriod": 196,
           "lifetimeHoursExecuted": 760,
-          "hoursPlanned": 484,
+          "hoursPlanned": 490,
           "hoursAgreed": 720,
           "statusReport": ".O aplicativo encontra-se estabilizado em produção na versão 53 (build 150, com mais de 1.600 instalações ativas no Android), que consolidou a adequação ao Android 16, o redesenho da tela inicial, a instrumentação de diagnóstico de rastreio em segundo plano e a correção no envio do evento de fim de operação. Nas atividades de sustentação desta semana, foi concluída a correção de acessibilidade e layout para aparelhos configurados com fonte ampliada — habilitando a rolagem (scroll) nas telas de onboarding e demais fluxos em que os botões ficavam inacessíveis —, e está em andamento no backend o ajuste para limpar o cache de respostas nos formulários integrados ao Smart X, preparando um pacote unificado de atualização para homologação de QA junto à entrega da assinatura digital (ZapSign).",
           "statusReportDate": "2026-10-27",
@@ -1486,8 +1438,8 @@
     "maintenanceSection": {
       "totalProjects": 3,
       "totalHours": 15,
-      "newProjectHours": 227,
-      "totalPeriodHours": 242,
+      "newProjectHours": 238,
+      "totalPeriodHours": 253,
       "maintenancePercent": 6,
       "newProjectPercent": 94,
       "activeSystemsCount": 2,
@@ -1503,7 +1455,7 @@
         {
           "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
           "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
-          "name": "APP - SMART TRACKING",
+          "name": "ILC - App Smart Tracking",
           "client": "ILC (Interno)",
           "status": "Ativo",
           "ragStatus": "red",
@@ -2074,7 +2026,7 @@
         {
           "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
           "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
-          "name": "APP - SMART TRACKING",
+          "name": "ILC - App Smart Tracking",
           "client": "ILC (Interno)",
           "status": "Ativo",
           "ragStatus": "green",
@@ -2660,7 +2612,7 @@
         {
           "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
           "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
-          "name": "APP - SMART TRACKING",
+          "name": "ILC - App Smart Tracking",
           "client": "ILC (Interno)",
           "status": "Ativo",
           "ragStatus": "green",
@@ -3196,7 +3148,7 @@
         {
           "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
           "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
-          "name": "APP - SMART TRACKING",
+          "name": "ILC - App Smart Tracking",
           "client": "ILC (Interno)",
           "status": "Ativo",
           "ragStatus": "green",
