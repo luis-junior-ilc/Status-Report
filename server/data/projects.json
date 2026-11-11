@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-11T12:45:21.283Z",
+  "lastSync": "2026-11-11T12:52:30.993Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-11T12:44:57.385Z",
+      "azureLastUpdated": "2026-11-11T12:52:11.885Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7894,7 +7894,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Atualmente em fase inicial de planejamento e estruturação. Na segunda-feira (09/11), foi realizada a reunião de alinhamento entre produto e qualidade para destravar as definições pendentes e organizar a entrada efetiva das tarefas na esteira de desenvolvimento.",
-      "azureLastUpdated": "2026-11-11T12:44:58.192Z",
+      "azureLastUpdated": "2026-11-11T12:52:12.369Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8180,7 +8180,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-11T12:44:59.352Z",
+      "azureLastUpdated": "2026-11-11T12:52:13.239Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8573,7 +8573,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-11T12:45:00.602Z",
+      "azureLastUpdated": "2026-11-11T12:52:13.801Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8917,7 +8917,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-11T12:45:03.095Z",
+      "azureLastUpdated": "2026-11-11T12:52:15.686Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9039,7 +9039,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-11T12:45:04.133Z",
+      "azureLastUpdated": "2026-11-11T12:52:16.384Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9855,7 +9855,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "O projeto encontra-se com o escopo base concluído e em operação assistida na unidade de Cubatão, passando atualmente por melhorias evolutivas na captura e interpretação de e-mails. Nos últimos dias, foram desenvolvidos os tratamentos para data de programação de coleta, data de retorno de contêiner vazio e o filtro inteligente para distinguir e-mails que são demandas reais daqueles que não devem gerar demanda; após ajustes no modelo de IA (migrando de um modelo mini para um mais robusto para maior precisão) e a estruturação no backend para agrupar múltiplos itens dentro de um mesmo card via JSON da IA, a frente segue na bateria final de testes e ajustes para consolidação em produção.",
-      "azureLastUpdated": "2026-11-11T12:45:06.022Z",
+      "azureLastUpdated": "2026-11-11T12:52:18.431Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11336,7 +11336,7 @@
       "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "A solução já viabiliza a inclusão antecipada de promessas de entrega vinculadas a Ordens de Compra no SAP e a gestão dimensional de embalagens. Nesta semana, foi alinhado o cronograma para a próxima rodada de treinamentos operacionais, enquanto a equipe técnica prepara a subida de melhorias de usabilidade na tela de promessas (mantendo o painel de sugestão de veículo sempre visível em tempo real) e atua na análise de linhas de promessa retroativas para o fechamento dos relatórios de performance e SLA junto ao faturamento.",
-      "azureLastUpdated": "2026-11-11T12:45:07.054Z",
+      "azureLastUpdated": "2026-11-11T12:52:19.257Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11697,7 +11697,7 @@
       "progress": 90,
       "manualRagStatus": "auto",
       "executiveSummary": "Encontra-se em fase final de validação e operação assistida pós-treinamento, sem registro de desvios recentes de SLA. A entrega contempla a reprogramação sistêmica de coletas diretamente no Portal Integrator, aliada a travas contra duplicidade de pedidos e mitigação de impactos de frete morto na operação.",
-      "azureLastUpdated": "2026-11-11T12:45:07.731Z",
+      "azureLastUpdated": "2026-11-11T12:52:20.018Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12058,7 +12058,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": ".O aplicativo encontra-se estabilizado em produção na versão 53 (build 150, com mais de 1.600 instalações ativas no Android), que consolidou a adequação ao Android 16, o redesenho da tela inicial, a instrumentação de diagnóstico de rastreio em segundo plano e a correção no envio do evento de fim de operação. Nas atividades de sustentação desta semana, foi concluída a correção de acessibilidade e layout para aparelhos configurados com fonte ampliada — habilitando a rolagem (scroll) nas telas de onboarding e demais fluxos em que os botões ficavam inacessíveis —, e está em andamento no backend o ajuste para limpar o cache de respostas nos formulários integrados ao Smart X, preparando um pacote unificado de atualização para homologação de QA junto à entrega da assinatura digital (ZapSign).",
-      "azureLastUpdated": "2026-11-11T12:45:08.680Z",
+      "azureLastUpdated": "2026-11-11T12:52:20.966Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 2,
@@ -13384,7 +13384,7 @@
       "progress": 90,
       "manualRagStatus": "auto",
       "executiveSummary": "A integração de assinatura eletrônica de contratos via ZapSign no onboarding de motoristas está na reta final de entrega. A estrutura de banco de dados, as configurações de produção, a rotina para salvar o PDF assinado diretamente no file server interno (garantindo link permanente para consulta sem risco de expiração) e a padronização do JSON de retorno já foram concluídas e subidas em produção no backend; no momento, o frontend mobile realiza a validação técnica final em produção — junto à correção de scroll para fontes ampliadas no Smart Tracking — para liberar os testes de QA e finalizar o alinhamento de consumo com a proc da Rodopar.",
-      "azureLastUpdated": "2026-11-11T12:45:09.623Z",
+      "azureLastUpdated": "2026-11-11T12:52:21.741Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "red",
       "varianceDays": 2,
@@ -14665,7 +14665,7 @@
       "progress": 81,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-11T12:45:11.732Z",
+      "azureLastUpdated": "2026-11-11T12:52:23.638Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15449,7 +15449,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-11T12:45:14.607Z",
+      "azureLastUpdated": "2026-11-11T12:52:25.268Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21531,7 +21531,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-11T12:45:17.672Z",
+      "azureLastUpdated": "2026-11-11T12:52:27.790Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23793,7 +23793,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-11T12:45:18.614Z",
+      "azureLastUpdated": "2026-11-11T12:52:28.871Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24654,7 +24654,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-11T12:45:20.562Z",
+      "azureLastUpdated": "2026-11-11T12:52:30.223Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 243,
@@ -29514,7 +29514,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-11T12:45:21.282Z",
+      "azureLastUpdated": "2026-11-11T12:52:30.993Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30228,7 +30228,7 @@
       "progress": 15,
       "manualRagStatus": "auto",
       "executiveSummary": "Está com o protótipo aprovado e em pleno desenvolvimento mobile sem impedimentos. Atualmente, o foco está na conexão das telas com o backend, reaproveitando inicialmente os endpoints e rotas já mapeados no painel web (como os de Gestão de Demandas) antes de demandar a criação ou ajuste de rotas específicas ao time de backend.",
-      "azureLastUpdated": "2026-11-11T12:45:16.387Z",
+      "azureLastUpdated": "2026-11-11T12:52:26.859Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30767,9 +30767,142 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "O projeto segue em ritmo acelerado de desenvolvimento e homologação para disponibilizar visibilidade operacional 4PL, controle de SLAs e geocercas iniciando pela unidade de Cubatão. Recentemente, foram corrigidas e publicadas online as extrações das colunas de PV, OST, CTR e manifesto, além da implementação de filtros interativos por etapa do fluxo e de um novo componente visual para monitoramento de prazos (PCs vencidos e a vencer), que já foram apresentados e seguem abertos para eventuais ajustes finos pós-validação.",
-      "azureLastUpdated": "2026-11-11T12:45:05.100Z",
+      "azureLastUpdated": "2026-11-11T12:52:17.239Z",
       "currentIterationName": "Iteration 1",
       "activities": [
+        {
+          "id": "7435",
+          "azureId": 7435,
+          "title": "Desenvolvimento do BI operacional de Cubatão",
+          "fullTitle": "#7435 Desenvolvimento do BI operacional de Cubatão",
+          "rawTitle": "Desenvolvimento do BI operacional de Cubatão",
+          "type": "User Story",
+          "state": "Closed",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-13",
+          "targetDate": "2026-11-06",
+          "dateStr": "06/11/2026",
+          "ilcHours": 35,
+          "ilcHoursTotal": 35,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7436,
+              "title": "Levantar os requisitos e indicadores do BI",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-16"
+            },
+            {
+              "id": 7437,
+              "title": "Desenvolver painel inicial de Cubatão",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 12,
+              "completedWork": 12,
+              "startDate": "2026-10-14",
+              "targetDate": "2026-10-23"
+            },
+            {
+              "id": 7438,
+              "title": "Revisar informações e apresentação visual",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7439,
+              "title": "Disponibilizar acesso ao BI para a Mirassol",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7489,
+              "title": "[BI] - Ajustar cálculo de SLA de coleta e entrega para viagens pendentes",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-10-27"
+            },
+            {
+              "id": 7498,
+              "title": "Investigar divergência nos tempos médios de coleta e viagem",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-28",
+              "targetDate": "2026-10-29"
+            },
+            {
+              "id": 7499,
+              "title": "Implementar interatividade nos botões e indicadores do Power BI",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-05"
+            },
+            {
+              "id": 7503,
+              "title": "Correção da hora atual para considerar horário de Brasília",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-10-30",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7504,
+              "title": "Ajuste na janela do prazo de coleta e entrega",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-10-30",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7515,
+              "title": "BI – Substituir indicadores de tempo médio por indicadores de vencimento de entrega (72h)",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Lucas Maier Gomes Bruno",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-05"
+            }
+          ]
+        },
         {
           "id": "7457",
           "azureId": 7457,
@@ -31396,139 +31529,6 @@
           ]
         },
         {
-          "id": "7435",
-          "azureId": 7435,
-          "title": "Desenvolvimento do BI operacional de Cubatão",
-          "fullTitle": "#7435 Desenvolvimento do BI operacional de Cubatão",
-          "rawTitle": "Desenvolvimento do BI operacional de Cubatão",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-13",
-          "targetDate": "2026-11-06",
-          "dateStr": "06/11/2026",
-          "ilcHours": 35,
-          "ilcHoursTotal": 35,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7436,
-              "title": "Levantar os requisitos e indicadores do BI",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-16"
-            },
-            {
-              "id": 7437,
-              "title": "Desenvolver painel inicial de Cubatão",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 12,
-              "completedWork": 12,
-              "startDate": "2026-10-14",
-              "targetDate": "2026-10-23"
-            },
-            {
-              "id": 7438,
-              "title": "Revisar informações e apresentação visual",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 6,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7439,
-              "title": "Disponibilizar acesso ao BI para a Mirassol",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 2,
-              "completedWork": 2,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7489,
-              "title": "[BI] - Ajustar cálculo de SLA de coleta e entrega para viagens pendentes",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 2,
-              "completedWork": 2,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-10-27"
-            },
-            {
-              "id": 7498,
-              "title": "Investigar divergência nos tempos médios de coleta e viagem",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-28",
-              "targetDate": "2026-10-29"
-            },
-            {
-              "id": 7499,
-              "title": "Implementar interatividade nos botões e indicadores do Power BI",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 2,
-              "completedWork": 2,
-              "startDate": "2026-11-05",
-              "targetDate": "2026-11-05"
-            },
-            {
-              "id": 7503,
-              "title": "Correção da hora atual para considerar horário de Brasília",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 1,
-              "completedWork": 1,
-              "startDate": "2026-10-30",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7504,
-              "title": "Ajuste na janela do prazo de coleta e entrega",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 1,
-              "completedWork": 1,
-              "startDate": "2026-10-30",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7515,
-              "title": "BI – Substituir indicadores de tempo médio por indicadores de vencimento de entrega (72h)",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Lucas Maier Gomes Bruno",
-              "originalEstimate": 1,
-              "completedWork": 1,
-              "startDate": "2026-11-05",
-              "targetDate": "2026-11-05"
-            }
-          ]
-        },
-        {
           "id": "7421",
           "azureId": 7421,
           "title": "Monitoramento da utilização do Smart Tracking",
@@ -31777,7 +31777,7 @@
             "percentage": 40,
             "completed": false,
             "deliverablesTotal": 5,
-            "deliverablesCompleted": 1
+            "deliverablesCompleted": 2
           },
           {
             "phase": "Homologação",
@@ -31808,11 +31808,9 @@
           }
         ]
       },
-      "ragStatus": "red",
-      "varianceDays": 3,
-      "inconsistencies": [
-        "DELAYED_ITEMS"
-      ],
+      "ragStatus": "green",
+      "varianceDays": 0,
+      "inconsistencies": [],
       "hasManualIlcHours": false,
       "hasManualProgress": false,
       "hasManualAgreedDates": false,
@@ -31822,26 +31820,26 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 15,
-          "percent": 13.4
+          "hours": 45,
+          "percent": 30.2
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
-          "hours": 86,
-          "percent": 76.8
+          "hours": 93,
+          "percent": 62.4
         },
         {
           "monthKey": "2026-07",
           "label": "Jul/26",
           "hours": 2,
-          "percent": 1.8
+          "percent": 1.3
         },
         {
           "monthKey": "2026-03",
           "label": "Mar/26",
           "hours": 9,
-          "percent": 8
+          "percent": 6
         }
       ],
       "objective": "Tem como objetivo unificar o rastreamento de frota em mapa em tempo real à gestão visual de pedidos em Kanban. Em faturamento, acelera o giro de entregas e a conversão de receitas com visibilidade financeira de cada pedido; em custo, reduz o monitoramento manual da Torre de Controle, perdas por ociosidade/sinistros (via alertas de rota/veículo) e gastos de deploy (CI/CD); e no qualitativo, entrega KPIs em tempo real, alta performance (500+ veículos simultâneos) e UX padronizada."
@@ -31871,7 +31869,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-11T12:45:10.883Z",
+      "azureLastUpdated": "2026-11-11T12:52:22.766Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32439,7 +32437,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "A iniciativa de digitalização da inspeção veicular pré e pós-viagem (utilizando formulários dinâmicos no Smart X distribuídos via app Smart Tracking) já conta com a documentação base pronta. Assim como o Projeto Safety, passou por reunião de alinhamento em 09/11 para organização do backlog e direcionamento das atividades na esteira de desenvolvimento da equipe.",
-      "azureLastUpdated": "2026-11-11T12:45:01.406Z",
+      "azureLastUpdated": "2026-11-11T12:52:14.334Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32571,7 +32569,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Foi criado um projeto dedicado ao BI no Azure DevOps para centralizar a governança e dar visibilidade às demandas da área nos status reports. Nas entregas técnicas, foram finalizadas as duas views que atendem a operação da Bosch (Transit Time e On Time) e foi iniciada a construção dos dashboards da Bunge a partir do painel de coleta (On-Time Pickup), logo após a publicação da view em produção e o isolamento dos dados por cliente. Paralelamente, a equipe está focada no fechamento do faturamento da John Deere (incluindo o tratamento dos pedidos cancelados de outubro e o treinamento operacional da Jéssica), na conclusão do estudo de volumetria para faturamentos futuros solicitados pela cliente e no saneamento dos indicadores de SLA operacional, com as ocorrências e justificativas de Frete Expresso já regularizadas.",
-      "azureLastUpdated": "2026-11-11T12:45:02.370Z",
+      "azureLastUpdated": "2026-11-11T12:52:15.108Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -32762,7 +32760,7 @@
       "progress": 25,
       "manualRagStatus": "auto",
       "executiveSummary": "A gestão de sustentação do Portal Integrator Web passou a contar com um projeto próprio no Azure DevOps, estruturado em ciclos mensais e organizado com Area Paths por módulo para migração das tarefas em aberto. Nas entregas da semana, destacam-se a subida em produção da funcionalidade do Revalida (com builds, tabelas de banco de dados e comunicado oficial prontos para disparo), o desenvolvimento do serviço para transmissão de ROC de Gestão Embarcada (com remoção gradual da visão irrestrita de usuários específicos), o atendimento prioritário à solicitação da John Deere para inclusão da coluna de número de pedido de coleta no relatório INT 0080, o levantamento do novo relatório consolidado de Cross-Docking e a configuração dos novos domínios e DNS na migração das URLs do portal Angular para o padrão ilc.com.br.",
-      "azureLastUpdated": "2026-11-11T12:45:15.517Z",
+      "azureLastUpdated": "2026-11-11T12:52:26.050Z",
       "currentIterationName": "Novembro",
       "activities": [
         {

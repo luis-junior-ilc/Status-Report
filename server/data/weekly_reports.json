@@ -9,9 +9,9 @@
     "executiveSummary": "Nesta semana, a equipe consolidou importantes entregas em produção e avançou na governança operacional, destacando-se a liberação escalonada do Revalida (com melhorias na tela de promessas), a subida para produção da integração de assinatura de contratos via ZapSign (preparada para integração com a Rodopar) e a evolução da Torre de Controle 4.0 e dos relatórios de SLA para o fechamento de faturamento da John Deere, além do avanço nos testes e apresentação do Frete Expresso 2.0. Paralelamente, iniciamos a construção dos novos dashboards de BI para a Boge (com isolamento de dados assegurado), otimizamos a triagem por IA no Gestão de Demandas, avançamos no desenvolvimento do App ILC e melhorias de estabilidade no Smart Tracking, e fortalecemos nossa gestão com a criação dos boards dedicados de Sustentação e BI no Azure DevOps, o avanço do Assessment técnico e o alinhamento de iniciativas estruturantes (Design System, Zammad, HubDocs e projetos Safety/Checklist por Viagem).",
     "statusPulse": {
       "totalActive": 9,
-      "onTrack": 7,
+      "onTrack": 8,
       "attention": 0,
-      "critical": 2,
+      "critical": 1,
       "averageProgress": 57
     },
     "activeProjects": [
@@ -343,7 +343,7 @@
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
         "progress": 54,
-        "ragStatus": "red",
+        "ragStatus": "green",
         "agreedDelivery": "2026-11-13",
         "targetDelivery": "2026-11-13",
         "varianceDays": 0,
