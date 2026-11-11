@@ -10,9 +10,9 @@
     "statusPulse": {
       "totalActive": 9,
       "onTrack": 8,
-      "attention": 0,
-      "critical": 1,
-      "averageProgress": 57
+      "attention": 1,
+      "critical": 0,
+      "averageProgress": 58
     },
     "activeProjects": [
       {
@@ -178,7 +178,7 @@
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
         "progress": 90,
-        "ragStatus": "red",
+        "ragStatus": "amber",
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
         "varianceDays": 0,
@@ -259,7 +259,7 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 0,
+        "progress": 6,
         "ragStatus": "green",
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
@@ -302,7 +302,7 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Planejamento",
-        "progress": 0,
+        "progress": 6,
         "ragStatus": "green",
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
