@@ -176,17 +176,17 @@ class ProjectStore {
     startOfToday.setHours(0, 0, 0, 0);
     const diffDays = Math.round((t.getTime() - startOfToday.getTime()) / (1000 * 3600 * 24));
 
-    // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -1 e 1 dia de atraso
+    // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -3d (3 dias antes) e +1d (1 dia de atraso)
     if (diffDays <= -2) {
       // Atraso crítico a partir de 2 dias
       activity.isDelayed = true;
       activity.isTightMargin = false;
-    } else if (diffDays >= -1 && diffDays <= 1) {
-      // Atenção: entrega iminente hoje/amanhã ou atraso tolerado de 1 dia
+    } else if (diffDays >= -1 && diffDays <= 3) {
+      // Atenção: entrega em até 3 dias ou atraso tolerado de 1 dia (-3d a +1d)
       activity.isDelayed = false;
       activity.isTightMargin = true;
     } else {
-      // No prazo com folga confortável (> 1 dia)
+      // No prazo com folga confortável (> 3 dias)
       activity.isDelayed = false;
       activity.isTightMargin = false;
     }
@@ -265,7 +265,7 @@ class ProjectStore {
 
     // Desvio crítico a partir de 2 dias de atraso ou variância >= 2 dias
     if (variance >= 2 || hasDelayedActivity) return 'red';
-    // Atenção: margem curta (-1 a +1 dia) ou variância de 1 dia
+    // Atenção: margem curta (-3d a +1d) ou variância de 1 dia
     if (variance === 1 || hasTightMarginActivity) return 'amber';
     return 'green';
   }

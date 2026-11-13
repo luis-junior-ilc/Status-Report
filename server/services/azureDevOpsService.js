@@ -206,7 +206,7 @@ class AzureDevOpsService {
       if (diffDays <= -2) {
         // Atraso crítico a partir de 2 dias (atraso >= 2d)
         isDelayed = true;
-      } else if (diffDays >= -1 && diffDays <= 1) {
+      } else if (diffDays >= -1 && diffDays <= 3) {
         // Atenção entre -1 e 1 dia de atraso (entrega iminente hoje/amanhã ou atraso tolerado de 1d)
         isTightMargin = true;
       }

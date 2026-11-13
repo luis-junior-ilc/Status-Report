@@ -231,9 +231,9 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               <!-- Floating Tooltip -->
               <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex flex-col items-start w-56 p-2.5 bg-slate-950/95 text-white text-[10px] leading-snug rounded-xl shadow-2xl z-50 text-left border border-slate-700 backdrop-blur-xs">
                 <span class="font-extrabold text-amber-300 mb-0.5 block">🟡 Projetos em Atenção</span>
-                <span class="text-slate-300 font-normal block">Projetos com riscos moderados, margem curta de entrega (-1d a +1d) ou atraso operacional leve de 1 dia.</span>
+                <span class="text-slate-300 font-normal block">Projetos com riscos moderados, margem curta de entrega (-3d a +1d) ou atraso operacional leve de 1 dia.</span>
                 <span class="text-[9px] text-emerald-300 mt-1.5 pt-1 border-t border-slate-800 font-medium block">
-                  <strong>Cálculo:</strong> Projetos ativos com farol Amarelo (atividades na EAP com entrega iminente -1d/+1d ou variância de 1 dia).
+                  <strong>Cálculo:</strong> Projetos ativos com farol Amarelo (atividades na EAP com entrega iminente -3d/+1d ou variância de 1 dia).
                 </span>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-950/95"></div>
               </div>
