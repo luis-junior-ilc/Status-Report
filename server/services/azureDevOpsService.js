@@ -203,10 +203,10 @@ class AzureDevOpsService {
       tDate.setHours(0, 0, 0, 0);
       const diffDays = Math.round((tDate.getTime() - today.getTime()) / (1000 * 3600 * 24));
       // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -1 e 1 dia de atraso
-      if (diffDays <= -2) {
+      if (diffDays <= -4) {
         // Atraso crítico a partir de 2 dias (atraso >= 2d)
         isDelayed = true;
-      } else if (diffDays >= -1 && diffDays <= 3) {
+      } else if (diffDays >= -3 && diffDays <= 1) {
         // Atenção entre -1 e 1 dia de atraso (entrega iminente hoje/amanhã ou atraso tolerado de 1d)
         isTightMargin = true;
       }

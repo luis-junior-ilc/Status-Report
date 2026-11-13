@@ -231,9 +231,9 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               <!-- Floating Tooltip -->
               <div class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex flex-col items-start w-56 p-2.5 bg-slate-950/95 text-white text-[10px] leading-snug rounded-xl shadow-2xl z-50 text-left border border-slate-700 backdrop-blur-xs">
                 <span class="font-extrabold text-amber-300 mb-0.5 block">🟡 Projetos em Atenção</span>
-                <span class="text-slate-300 font-normal block">Projetos com riscos moderados, margem curta de entrega (-3d a +1d) ou atraso operacional leve de 1 dia.</span>
+                <span class="text-slate-300 font-normal block">Projetos com riscos moderados, margem curta de entrega (-3d a +1d: até 3 dias de atraso ou vencendo em até 1 dia).</span>
                 <span class="text-[9px] text-emerald-300 mt-1.5 pt-1 border-t border-slate-800 font-medium block">
-                  <strong>Cálculo:</strong> Projetos ativos com farol Amarelo (atividades na EAP com entrega iminente -3d/+1d ou variância de 1 dia).
+                  <strong>Cálculo:</strong> Projetos ativos com farol Amarelo (atividades na EAP com margem curta -3d a +1d ou variância de 1 a 3 dias).
                 </span>
                 <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-slate-950/95"></div>
               </div>
@@ -241,7 +241,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
 
             <!-- 7. Com Desvio -->
             <div class="group relative px-2 py-2 sm:py-2.5 bg-rose-50 hover:bg-rose-100/70 rounded-xl border border-rose-300 text-center shadow-2xs transition cursor-help"
-              title="Com Desvio: Projetos com desvio crítico (atraso ≥ 2 dias na EAP ou variância de prazo ≥ 2 dias).">
+              title="Com Desvio: Projetos com desvio crítico (atraso ≥ 4 dias na EAP ou variância de prazo ≥ 4 dias).">
               <div class="flex items-center justify-center gap-1">
                 <span class="text-[9px] sm:text-[10px] font-bold text-rose-900 uppercase tracking-tight block truncate">🔴 Desvio</span>
                 <span class="text-[9px] text-rose-600">ⓘ</span>

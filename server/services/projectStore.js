@@ -176,17 +176,17 @@ class ProjectStore {
     startOfToday.setHours(0, 0, 0, 0);
     const diffDays = Math.round((t.getTime() - startOfToday.getTime()) / (1000 * 3600 * 24));
 
-    // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -3d (3 dias antes) e +1d (1 dia de atraso)
-    if (diffDays <= -2) {
-      // Atraso crítico a partir de 2 dias
+    // Regra calibrada: desvio crítico a partir de 4 dias de atraso; margem curta entre 3 dias de atraso e 1 dia antes (-3d a +1d)
+    if (diffDays <= -4) {
+      // Atraso crítico a partir de 4 dias
       activity.isDelayed = true;
       activity.isTightMargin = false;
-    } else if (diffDays >= -1 && diffDays <= 3) {
-      // Atenção: entrega em até 3 dias ou atraso tolerado de 1 dia (-3d a +1d)
+    } else if (diffDays >= -3 && diffDays <= 1) {
+      // Atenção: até 3 dias de atraso ou entrega hoje/amanhã (-3d a +1d)
       activity.isDelayed = false;
       activity.isTightMargin = true;
     } else {
-      // No prazo com folga confortável (> 3 dias)
+      // No prazo com folga (> 1 dia para vencer)
       activity.isDelayed = false;
       activity.isTightMargin = false;
     }
@@ -263,10 +263,10 @@ class ProjectStore {
       project
     );
 
-    // Desvio crítico a partir de 2 dias de atraso ou variância >= 2 dias
-    if (variance >= 2 || hasDelayedActivity) return 'red';
-    // Atenção: margem curta (-3d a +1d) ou variância de 1 dia
-    if (variance === 1 || hasTightMarginActivity) return 'amber';
+    // Desvio crítico a partir de 4 dias de atraso ou variância >= 4 dias
+    if (variance >= 4 || hasDelayedActivity) return 'red';
+    // Atenção: margem curta (-3d a +1d) ou variância de 1 a 3 dias
+    if ((variance >= 1 && variance <= 3) || hasTightMarginActivity) return 'amber';
     return 'green';
   }
 
