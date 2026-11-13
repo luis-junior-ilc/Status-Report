@@ -669,12 +669,60 @@ class AccessStore {
     };
   }
 
-  async verifyMicrosoftToken(accessToken, _idToken) {
+  async verifyMicrosoftIdTokenSignature(idToken, targetClientId, targetTenantId) {
+    const parts = String(idToken || '').split('.');
+    if (parts.length !== 3) return null;
+    const header = JSON.parse(Buffer.from(parts[0], 'base64url').toString('utf8'));
+    const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
+    if (!header.kid || header.alg !== 'RS256') return null;
+
+    const aud = (payload.aud || '').toLowerCase();
+    const tid = (payload.tid || '').toLowerCase();
+    const iss = (payload.iss || '').toLowerCase();
+    if (aud !== targetClientId || (tid !== targetTenantId && !iss.includes(targetTenantId))) {
+      return null;
+    }
+    if (payload.exp && Date.now() >= payload.exp * 1000) {
+      return null;
+    }
+
+    const jwksUrl = `https://login.microsoftonline.com/${targetTenantId}/discovery/v2.0/keys`;
+    const resp = await fetch(jwksUrl);
+    if (!resp.ok) return null;
+    const { keys } = await resp.json();
+    const jwk = (keys || []).find(k => k.kid === header.kid);
+    if (!jwk) return null;
+
+    const publicKey = crypto.createPublicKey({ key: jwk, format: 'jwk' });
+    const signingInput = `${parts[0]}.${parts[1]}`;
+    const signature = Buffer.from(parts[2], 'base64url');
+    const isValid = crypto.verify('RSA-SHA256', Buffer.from(signingInput), publicKey, signature);
+    return isValid ? payload : null;
+  }
+
+  async verifyMicrosoftToken(accessToken, idToken) {
     let msEmail = '';
     let msName = '';
 
-    // Sempre validar via Microsoft Graph /me com o access_token autenticado (nunca confiar em JWT id_token sem verificação criptográfica)
-    if (accessToken) {
+    // Estratégia 1: Verificar assinatura RS256 do id_token contra as chaves públicas (JWKS) do Microsoft Entra
+    if (idToken) {
+      try {
+        const targetClientId = (process.env.MS_CLIENT_ID || this.data.microsoftSso?.clientId || '').trim().toLowerCase();
+        const targetTenantId = (process.env.MS_TENANT_ID || this.data.microsoftSso?.tenantId || '').trim().toLowerCase();
+        if (targetClientId && targetTenantId) {
+          const payload = await this.verifyMicrosoftIdTokenSignature(idToken, targetClientId, targetTenantId);
+          if (payload) {
+            msEmail = (payload.email || payload.preferred_username || payload.upn || payload.unique_name || '').trim().toLowerCase();
+            msName = payload.name || '';
+          }
+        }
+      } catch (e) {
+        console.warn('[AccessStore] Falha ao validar assinatura do id_token:', e.message);
+      }
+    }
+
+    // Estratégia 2: Consultar Microsoft Graph /me com o access_token autenticado
+    if (!msEmail && accessToken) {
       try {
         const resp = await fetch('https://graph.microsoft.com/v1.0/me', {
           headers: { Authorization: `Bearer ${accessToken}` }
@@ -682,7 +730,7 @@ class AccessStore {
         if (resp.ok) {
           const profile = await resp.json();
           msEmail = (profile.mail || profile.userPrincipalName || '').trim().toLowerCase();
-          msName = profile.displayName || '';
+          msName = msName || profile.displayName || '';
         }
       } catch (e) {
         console.warn('[AccessStore] Falha ao consultar Graph API:', e.message);
