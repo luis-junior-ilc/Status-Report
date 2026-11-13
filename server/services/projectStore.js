@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const config = require('../config');
 
 const STORE_PATH = path.join(__dirname, '../data/projects.json');
@@ -18,35 +19,30 @@ const DEFAULT_CLIENTS = [
     name: 'ILC (Interno)',
     slug: 'ilc',
     logoUrl: '/assets/ilc-logo.png',
-    token: 'ilc-interno-2026',
     description: 'Projetos corporativos ILC'
   },
   {
     name: 'Mirassol',
     slug: 'mirassol',
     logoUrl: 'https://mirassol.ind.br/wp-content/themes/mirassol/assets/images/logo.png',
-    token: 'mirassol-acesso-2026',
     description: 'Demandas e tecnologia Mirassol'
   },
   {
     name: 'John Deere',
     slug: 'john-deere',
     logoUrl: 'https://www.deere.com.br/assets/images/common/logo-john-deere-black.svg',
-    token: 'jd-acesso-2026',
     description: 'Projetos integrados John Deere'
   },
   {
     name: 'Petrobras',
     slug: 'petrobras',
     logoUrl: 'https://petrobras.com.br/themes/custom/petrobras_theme/logo.svg',
-    token: 'petrobras-acesso-2026',
     description: 'Iniciativas logísticas Petrobras'
   },
   {
     name: 'Boge Ruber',
     slug: 'boge-ruber',
     logoUrl: 'https://www.boge-rubber-plastics.com/fileadmin/templates/images/logo.svg',
-    token: 'boge-acesso-2026',
     description: 'Projetos e integrações Boge Rubber & Plastics'
   }
 ];
@@ -693,8 +689,29 @@ class ProjectStore {
       .sort((a, b) => this.compareProjects(a, b));
   }
 
+  hashClientToken(token) {
+    return crypto.createHash('sha256').update(String(token || '').trim()).digest('hex');
+  }
+
+  verifyClientToken(client, providedToken) {
+    const clean = String(providedToken || '').trim();
+    if (!client || !clean) return false;
+    if (client.tokenHash) {
+      const providedHash = this.hashClientToken(clean);
+      const a = Buffer.from(client.tokenHash, 'utf8');
+      const b = Buffer.from(providedHash, 'utf8');
+      return a.length === b.length && crypto.timingSafeEqual(a, b);
+    }
+    if (client.token) {
+      const a = Buffer.from(String(client.token), 'utf8');
+      const b = Buffer.from(clean, 'utf8');
+      return a.length === b.length && crypto.timingSafeEqual(a, b);
+    }
+    return false;
+  }
+
   getClients() {
-    return this.clients;
+    return this.clients.map(({ token, tokenHash, ...safeClient }) => safeClient);
   }
 
   getClientBySlug(slug) {
@@ -710,9 +727,15 @@ class ProjectStore {
   updateClient(slug, updates) {
     const idx = this.clients.findIndex(c => c.slug.toLowerCase() === slug.toLowerCase());
     if (idx === -1) return null;
-    this.clients[idx] = { ...this.clients[idx], ...updates };
+    const next = { ...this.clients[idx], ...updates };
+    if (updates && updates.token) {
+      next.tokenHash = this.hashClientToken(updates.token);
+      delete next.token;
+    }
+    this.clients[idx] = next;
     this.saveClients();
-    return this.clients[idx];
+    const { token, tokenHash, ...safeClient } = this.clients[idx];
+    return safeClient;
   }
 
   // Save client logo from image base64

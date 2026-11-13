@@ -1,6 +1,5 @@
 {
   "requireAuthOnline": true,
-  "jwtSecret": "ilc-exec-dashboard-secret-2026-9f8e7d6c5b4a3f2e1d0c",
   "microsoftSso": {
     "enabled": true,
     "clientId": "a30ef563-d535-4789-95c3-3143ad734eea",
@@ -27,7 +26,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$06e9b4663e444d327ec52f68e2315e32$0720c0621f13d5e0420ba227259bf271a4991507717e865b1940ad38bcf8fad38ad2552e3e63acfef03810d6b9fd0c01ce8492194c514a7a9327637d58fadfb8",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:29:15.539Z",
       "invitedAt": "2026-11-06T19:30:07.734Z"
@@ -40,7 +39,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$2d70d0a90a5dc2ebcab1d9e139148272$f015358ec1d7e574fd09ea2c7d4553943895dae8a5efe619a115b83f7423cc78bbb1a19ff829a75a4ea08f65f27430a75959ea870546a8871dff16f57df20288",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:28:38.407Z",
       "invitedAt": "2026-11-06T19:30:10.978Z"
@@ -53,7 +52,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$adea41d5880fbd9997d0e00c33cd6ce5$d0fed10572ccd1a57dd8c75e0852351d54b8789c0b0d7fa0efb2eb4b11c0ba3669b94798b07d1c03aa09f057760e9b9025b7ac1f6d5c2d7579468610fa0c1a8e",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:27:55.391Z",
       "invitedAt": "2026-11-10T19:09:19.203Z"
@@ -66,7 +65,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$728cb58f390ad49bd53f6e391403c724$59f115d082ff6c6ae29d535600e51661e282446f307cbbf720b7154db77493116e07921ccdfa5359d0f16cef63fce988b0c5249b9f0364222cd6d68b6d1024a8",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:25:50.730Z",
       "invitedAt": "2026-11-06T19:30:19.399Z"
@@ -79,7 +78,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$1b551d207831b55843db09cf27fc628a$e829ab9894eb82fbb2eefd782d56f5a379ee4229115fc030aa46bdc8e7024f36c6d3fa27dd89d0dc43abb9e09963496b41441e9f2b2a122f384fc46ba8e56932",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:24:59.096Z",
       "invitedAt": "2026-11-06T19:30:23.863Z"
@@ -92,7 +91,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$96767cdfa13014ddbcd5120d29ae4ac4$84e47667b7991a8b0fa89e92dca8d574687ead2a5690becdfffb3f588ca56459d7bc04524a720680c965326b2ca3d327f505c56e300fdd7cf31f75c04a802aa8",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:24:25.227Z",
       "invitedAt": "2026-11-06T19:30:27.704Z"
@@ -105,7 +104,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$0431e9dc79f6a1306df6f4ef04dd4bc7$a3e49ddb6d6567d93857b4f5b3097b7ff2b7b4711e922a72d5fa9316077543f85a97e6b76a41d65f793d899def69af08406780d1cec888e67ca2aa04bfb7e9e5",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:23:08.223Z",
       "invitedAt": "2026-11-06T19:30:32.036Z"
@@ -118,7 +117,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$8ac02cf21ffbfac917be4dbe4221625b$2217716de7e0bca5108c7218ff2d25102f63ff717634777d6bbde10be03b44576f87dbddfdda06a745f5ce6143afc86c614b3f4403da054a46852b68d50bc9f1",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:20:50.415Z",
       "invitedAt": "2026-11-06T19:30:36.118Z"
@@ -131,7 +130,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$3e1718ee129c4230c953097322e45b36$da9ffeb2d001dff33906bc3910cd34b4ae74c88801eb07b155dbe6fa3f2583c3af75755ea28974e8d1f6b0303c1e43eac39997fe47cad68ab40c37cab1435fd4",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:12:05.044Z",
       "invitedAt": "2026-11-06T19:14:54.519Z"
@@ -144,7 +143,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$654d1cdd1807752cda64f16c13b76c8e$8e9b989b2489a529bc6aef15dfd06ef528e83a20a23579abaf1f33988245116473677ea07dfd035b18cced617509d31a745754ba252cb2a04eb97dacae0f4930",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T19:11:23.054Z",
       "invitedAt": "2026-11-06T19:14:57.736Z"
@@ -157,7 +156,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "teste123",
+      "accessPasscode": "scrypt$2b276538ae105960f419845016318987$5cfea4d297cc75de0aaef3473512a304efc7334298697a9b2e67eabcbc4905ebbde59da6f986a6bbab5cb002ed6f8bdcd1968a73cead80852b2a3b71f16f0158",
       "mustChangePassword": true,
       "createdAt": "2026-11-06T18:49:47.008Z",
       "invitedAt": "2026-11-06T19:15:01.225Z"
@@ -170,7 +169,7 @@
       "clientFilter": "Todos",
       "role": "board",
       "active": true,
-      "accessPasscode": "Brasil2029",
+      "accessPasscode": "scrypt$bcb97cc296f4ab8d5f5d22339d5c7480$5a4dfda4e48191bad2efbc650268d3f3078e91b13bf7c925dc3f2cf334f038a3c6d13472eabb1699354be3937363062fdc6e8b580a875c40cef5b58566b24f05",
       "createdAt": "2026-11-05T19:00:06.589Z",
       "mustChangePassword": true,
       "invitedAt": "2026-11-10T19:18:28.742Z"
@@ -184,7 +183,7 @@
       "role": "board",
       "active": true,
       "createdAt": "2026-11-06T17:02:32.170Z",
-      "accessPasscode": "MinhaNovaSenha123!",
+      "accessPasscode": "scrypt$738887c5253019df06e291e9e8a01748$ab0fc67b0b8e2cbd8a47be4bf3c2da43628afb6c0e40f632f4a9cc62219862d1df85a57922e8bdb70366b8846848a27d15f2954f62d2c6d7d03df0c43a1ba96d",
       "mustChangePassword": true,
       "invitedAt": "2026-11-06T17:13:37.035Z"
     }

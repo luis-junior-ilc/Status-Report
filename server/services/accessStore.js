@@ -6,9 +6,9 @@ const ACCESS_FILE = path.join(__dirname, '../data/access_control.json');
 
 class AccessStore {
   constructor() {
+    this._ephemeralSecret = null;
     this.data = {
       requireAuthOnline: true,
-      jwtSecret: 'ilc-exec-dashboard-secret-2026-9f8e7d6c5b4a3f2e1d0c',
       microsoftSso: {
         enabled: true,
         clientId: process.env.MS_CLIENT_ID || '',
@@ -22,19 +22,7 @@ class AccessStore {
         fromName: 'PMO ILC • Painel Executivo'
       },
       allowedDomains: [],
-      users: [
-        {
-          id: 'usr-admin-1',
-          name: 'Luis Junior',
-          email: 'luis.junior@opah.com.br',
-          organization: 'Opah IT / ILC',
-          clientFilter: 'Todos',
-          role: 'board',
-          active: true,
-          accessPasscode: 'ILC@2026',
-          createdAt: new Date().toISOString()
-        }
-      ]
+      users: []
     };
     this.load();
   }
@@ -73,11 +61,13 @@ class AccessStore {
     try {
       const dir = path.dirname(ACCESS_FILE);
       if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-      // Preserve persistent SMTP password in access_control.json for Vercel deployment
+      // Never persist SMTP password or JWT secret in access_control.json (use .env or Vercel Environment Variables)
       const toSave = JSON.parse(JSON.stringify(this.data));
-      if (!toSave.smtp?.pass && (this.data.smtp?.pass || process.env.SMTP_PASS)) {
-        toSave.smtp = toSave.smtp || {};
-        toSave.smtp.pass = this.data.smtp?.pass || process.env.SMTP_PASS;
+      if (toSave.smtp && 'pass' in toSave.smtp) {
+        delete toSave.smtp.pass;
+      }
+      if ('jwtSecret' in toSave) {
+        delete toSave.jwtSecret;
       }
       fs.writeFileSync(ACCESS_FILE, JSON.stringify(toSave, null, 2), 'utf8');
     } catch (err) {
@@ -86,7 +76,40 @@ class AccessStore {
   }
 
   getSecret() {
-    return process.env.AUTH_SECRET || this.data.jwtSecret || 'ilc-exec-dashboard-secret-2026';
+    if (process.env.AUTH_SECRET) return process.env.AUTH_SECRET;
+    if (this.data.jwtSecret) return this.data.jwtSecret;
+    if (!this._ephemeralSecret) {
+      this._ephemeralSecret = crypto.randomBytes(32).toString('hex');
+      console.warn('[AccessStore] AUTH_SECRET não definido no .env. Usando chave efêmera em memória.');
+    }
+    return this._ephemeralSecret;
+  }
+
+  safeEqualStrings(a, b) {
+    if (typeof a !== 'string' || typeof b !== 'string') return false;
+    const bufA = Buffer.from(a, 'utf8');
+    const bufB = Buffer.from(b, 'utf8');
+    if (bufA.length !== bufB.length) return false;
+    return crypto.timingSafeEqual(bufA, bufB);
+  }
+
+  hashPasscode(password) {
+    const salt = crypto.randomBytes(16).toString('hex');
+    const derived = crypto.scryptSync(String(password || '').trim(), salt, 64).toString('hex');
+    return `scrypt$${salt}$${derived}`;
+  }
+
+  verifyStoredPasscode(stored, candidate) {
+    const cleanCandidate = String(candidate || '').trim();
+    if (!stored || !cleanCandidate) return false;
+    if (String(stored).startsWith('scrypt$')) {
+      const parts = String(stored).split('$');
+      if (parts.length !== 3) return false;
+      const [, salt, hashHex] = parts;
+      const derivedHex = crypto.scryptSync(cleanCandidate, salt, 64).toString('hex');
+      return this.safeEqualStrings(hashHex, derivedHex);
+    }
+    return this.safeEqualStrings(String(stored), cleanCandidate);
   }
 
   signHmac(payloadStr) {
@@ -234,7 +257,7 @@ class AccessStore {
         clientFilter: userData.clientFilter || prev.clientFilter || 'Todos',
         role: userData.role || prev.role || 'board',
         active: userData.active !== undefined ? !!userData.active : prev.active !== false,
-        accessPasscode: passChanged ? newPass : prev.accessPasscode,
+        accessPasscode: passChanged ? this.hashPasscode(newPass) : prev.accessPasscode,
         mustChangePassword: userData.mustChangePassword !== undefined
           ? !!userData.mustChangePassword
           : (passChanged ? true : !!prev.mustChangePassword)
@@ -244,7 +267,7 @@ class AccessStore {
       return { ...safeUser, hasPasscode: !!accessPasscode };
     } else {
       const newPass = (userData.accessPasscode || '').trim();
-      const generatedPass = newPass || `ILC-${Math.floor(1000 + Math.random() * 9000)}`;
+      const generatedPass = newPass || `ILC-${crypto.randomInt(100000, 999999)}`;
       const newUser = {
         id: 'usr-' + Date.now(),
         name: (userData.name || cleanEmail.split('@')[0]).trim(),
@@ -253,7 +276,7 @@ class AccessStore {
         clientFilter: userData.clientFilter || 'Todos',
         role: userData.role || 'board',
         active: userData.active !== false,
-        accessPasscode: generatedPass,
+        accessPasscode: this.hashPasscode(generatedPass),
         mustChangePassword: userData.mustChangePassword !== undefined ? !!userData.mustChangePassword : true,
         createdAt: new Date().toISOString()
       };
@@ -315,7 +338,7 @@ class AccessStore {
     try {
       const [payloadB64, sig] = token.split('.');
       const expectedSig = this.signHmac(payloadB64);
-      if (sig !== expectedSig) return null;
+      if (!this.safeEqualStrings(sig, expectedSig)) return null;
       const payload = JSON.parse(Buffer.from(payloadB64, 'base64url').toString('utf8'));
       if (!payload.exp || Date.now() > payload.exp) return null;
       // Re-check if user is still authorized in current access_control.json
@@ -347,7 +370,7 @@ class AccessStore {
       secure,
       name: domain,
       auth: { user, pass },
-      tls: { ciphers: 'SSLv3', rejectUnauthorized: false }
+      tls: { rejectUnauthorized: true }
     });
   }
 
@@ -358,7 +381,7 @@ class AccessStore {
     }
 
     const user = check.user;
-    const code = String(Math.floor(100000 + Math.random() * 900000));
+    const code = String(crypto.randomInt(100000, 1000000));
     const expiresAt = Date.now() + 15 * 60 * 1000; // 15 min
     const rawStr = `${user.email.toLowerCase()}|${code}|${expiresAt}`;
     const signature = this.signHmac(rawStr);
@@ -437,7 +460,7 @@ class AccessStore {
     }
 
     const expectedSig = this.signHmac(`${cleanEmail}|${cleanCode}|${decoded.expiresAt}`);
-    if (decoded.signature !== expectedSig) {
+    if (!this.safeEqualStrings(decoded.signature, expectedSig)) {
       throw new Error('Código de verificação incorreto. Confira os 6 dígitos enviados para seu e-mail.');
     }
 
@@ -480,7 +503,7 @@ class AccessStore {
       throw new Error('Sessão de redefinição expirada. Solicite um novo código por e-mail.');
     }
     const expectedSig = this.signHmac(`pwdreset|${cleanEmail}|${decoded.exp}`);
-    if (decoded.sig !== expectedSig) {
+    if (!this.safeEqualStrings(decoded.sig, expectedSig)) {
       throw new Error('Assinatura do token de redefinição inválida.');
     }
 
@@ -500,7 +523,7 @@ class AccessStore {
       this.data.users.push(user);
     }
 
-    user.accessPasscode = cleanNew;
+    user.accessPasscode = this.hashPasscode(cleanNew);
     user.mustChangePassword = false;
     this.save();
 
@@ -514,7 +537,7 @@ class AccessStore {
   }
 
   hashPassword(password) {
-    return crypto.createHash('sha256').update(String(password || '').trim()).digest('hex');
+    return crypto.createHmac('sha256', this.getSecret()).update(String(password || '').trim()).digest('hex');
   }
 
   createPasswordProof(email, newPassword) {
@@ -529,9 +552,9 @@ class AccessStore {
     const cleanEmail = (email || '').trim().toLowerCase();
     const pwdHash = this.hashPassword(password);
     const [storedHash, sig] = passwordProof.split('.');
-    if (storedHash !== pwdHash) return false;
+    if (!this.safeEqualStrings(storedHash, pwdHash)) return false;
     const expectedSig = this.signHmac(`pwdproof|${cleanEmail}|${pwdHash}`);
-    return sig === expectedSig;
+    return this.safeEqualStrings(sig, expectedSig);
   }
 
   verifyPasscode(email, passcode, passwordProof = null) {
@@ -554,9 +577,14 @@ class AccessStore {
       };
     }
 
-    // 2. Check user's stored password in access_control.json
-    if (!user.accessPasscode || user.accessPasscode !== cleanPass) {
+    // 2. Check user's stored password in access_control.json (supports scrypt$ hashes and legacy plaintext with auto-upgrade)
+    if (!this.verifyStoredPasscode(user.accessPasscode, cleanPass)) {
       throw new Error('Senha de acesso incorreta. Caso tenha esquecido, utilize a opção "Receber Token por E-mail".');
+    }
+
+    if (!String(user.accessPasscode).startsWith('scrypt$')) {
+      user.accessPasscode = this.hashPasscode(cleanPass);
+      this.save();
     }
 
     if (user.mustChangePassword) {
@@ -604,7 +632,7 @@ class AccessStore {
       throw new Error('Sessão de primeiro acesso expirada. Faça login novamente.');
     }
     const expectedSig = this.signHmac(`firstlogin|${cleanEmail}|${decoded.exp}`);
-    if (decoded.sig !== expectedSig) {
+    if (!this.safeEqualStrings(decoded.sig, expectedSig)) {
       throw new Error('Assinatura de primeiro acesso inválida.');
     }
 
@@ -624,12 +652,12 @@ class AccessStore {
       this.data.users.push(user);
     }
 
-    if (user.accessPasscode && cleanNew === user.accessPasscode) {
+    if (user.accessPasscode && this.verifyStoredPasscode(user.accessPasscode, cleanNew)) {
       throw new Error('A nova senha deve ser diferente da senha provisória de primeiro acesso.');
     }
 
     // Update in-memory and local JSON if writable
-    user.accessPasscode = cleanNew;
+    user.accessPasscode = this.hashPasscode(cleanNew);
     user.mustChangePassword = false;
     this.save();
 
@@ -641,34 +669,12 @@ class AccessStore {
     };
   }
 
-  async verifyMicrosoftToken(accessToken, idToken) {
+  async verifyMicrosoftToken(accessToken, _idToken) {
     let msEmail = '';
     let msName = '';
 
-    // Estratégia 1: Decodificar e validar o id_token (JWT assinado emitido diretamente pelo Microsoft Entra)
-    if (idToken) {
-      try {
-        const parts = idToken.split('.');
-        if (parts.length === 3) {
-          const payload = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8'));
-          const targetClientId = (this.data.microsoftSso?.clientId || 'a30ef563-d535-4789-95c3-3143ad734eea').trim().toLowerCase();
-          const targetTenantId = (this.data.microsoftSso?.tenantId || 'ab58c0ce-3b63-429b-a519-b1b2d29023ce').trim().toLowerCase();
-          const aud = (payload.aud || '').toLowerCase();
-          const tid = (payload.tid || '').toLowerCase();
-          const iss = (payload.iss || '').toLowerCase();
-
-          if (aud === targetClientId && (tid === targetTenantId || iss.includes(targetTenantId))) {
-            msEmail = (payload.email || payload.preferred_username || payload.upn || payload.unique_name || '').trim().toLowerCase();
-            msName = payload.name || '';
-          }
-        }
-      } catch (e) {
-        console.warn('[AccessStore] Falha ao ler id_token:', e.message);
-      }
-    }
-
-    // Estratégia 2: Consultar Microsoft Graph /me se e-mail ainda não resolvido
-    if (!msEmail && accessToken) {
+    // Sempre validar via Microsoft Graph /me com o access_token autenticado (nunca confiar em JWT id_token sem verificação criptográfica)
+    if (accessToken) {
       try {
         const resp = await fetch('https://graph.microsoft.com/v1.0/me', {
           headers: { Authorization: `Bearer ${accessToken}` }
@@ -676,7 +682,7 @@ class AccessStore {
         if (resp.ok) {
           const profile = await resp.json();
           msEmail = (profile.mail || profile.userPrincipalName || '').trim().toLowerCase();
-          msName = msName || profile.displayName || '';
+          msName = profile.displayName || '';
         }
       } catch (e) {
         console.warn('[AccessStore] Falha ao consultar Graph API:', e.message);
@@ -736,11 +742,9 @@ class AccessStore {
             <p style="margin: 0 0 8px 0; font-size: 13px; color: #94a3b8;">
               <strong>Escopo de visualização:</strong> <span style="color: #38bdf8;">${user.clientFilter === 'Todos' ? 'Portfólio Completo (Diretoria)' : user.clientFilter}</span>
             </p>
-            ${user.accessPasscode ? `
             <p style="margin: 0; font-size: 13px; color: #94a3b8;">
-              <strong>Senha de 1º Acesso:</strong> <span style="color: #fbbf24; font-family: monospace; font-size: 15px; font-weight: 700;">${user.accessPasscode}</span>
-              ${user.mustChangePassword ? '<br><span style="font-size: 11px; color: #94a3b8;">(No primeiro acesso será solicitada a criação de uma nova senha pessoal)</span>' : ''}
-            </p>` : ''}
+              <strong>Primeiro Acesso:</strong> Utilize a opção <span style="color: #fbbf24; font-weight: 700;">Receber Token por E-mail</span> ou entre com sua conta Microsoft (Office 365) para definir sua senha pessoal.
+            </p>
           </div>
           <p style="font-size: 13px; color: #cbd5e1; line-height: 1.5; margin-bottom: 24px;">
             Você pode acessar utilizando seu <strong>E-mail + Senha</strong>, solicitando um <strong>Token Numérico por E-mail</strong> na tela de login, ou entrando com sua conta <strong>Microsoft (Office 365)</strong>.

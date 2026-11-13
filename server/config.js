@@ -19,5 +19,5 @@ module.exports = {
     pat: process.env.AZURE_DEVOPS_PAT || ''
   },
   syncIntervalMinutes: parseInt(process.env.SYNC_INTERVAL_MINUTES || '30', 10),
-  adminPin: process.env.ADMIN_PIN || 'admin'
+  adminPin: process.env.ADMIN_PIN || (process.env.NODE_ENV === 'production' ? '' : 'admin')
 };

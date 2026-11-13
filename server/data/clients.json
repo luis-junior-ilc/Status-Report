@@ -3,35 +3,35 @@
     "name": "ILC (Interno)",
     "slug": "ilc",
     "logoUrl": "/assets/logos/ilc.png?t=1791579200206",
-    "token": "ilc-interno-2026",
-    "description": "Projetos e demandas corporativas ILC"
+    "description": "Projetos e demandas corporativas ILC",
+    "tokenHash": "418650c2ba278d6749f4c7f0443361642937058226f5f6efa147fcd3e7b12b04"
   },
   {
     "name": "Mirassol",
     "slug": "mirassol",
     "logoUrl": "/assets/logos/mirassol.png?t=1791579205262",
-    "token": "mirassol-acesso-2026",
-    "description": "Demandas e tecnologia Mirassol"
+    "description": "Demandas e tecnologia Mirassol",
+    "tokenHash": "ff96419b808fa2ddcaf0010c33c934daf010973c101d1c7dc2ae8cdddd504af0"
   },
   {
     "name": "John Deere",
     "slug": "john-deere",
     "logoUrl": "/assets/logos/john-deere.png?t=1791579235167",
-    "token": "jd-acesso-2026",
-    "description": "Projetos integrados John Deere"
+    "description": "Projetos integrados John Deere",
+    "tokenHash": "e04d232061ce5d7d962943001c223ee41499f44e4df443d5cfd68cea587ae884"
   },
   {
     "name": "Petrobras",
     "slug": "petrobras",
     "logoUrl": "/assets/logos/petrobras.png?t=1791579243358",
-    "token": "petrobras-acesso-2026",
-    "description": "Iniciativas logísticas Petrobras"
+    "description": "Iniciativas logísticas Petrobras",
+    "tokenHash": "af42e1c3b0010db7fbf0d3181d88f24418fa9937dca52e85796e0b318b5301be"
   },
   {
     "name": "Boge Ruber",
     "slug": "boge-ruber",
     "logoUrl": "/assets/logos/boge-ruber.png?t=1791579251016",
-    "token": "boge-acesso-2026",
-    "description": "Projetos e integrações Boge Rubber & Plastics"
+    "description": "Projetos e integrações Boge Rubber & Plastics",
+    "tokenHash": "006e7a72e4ca3cfe5f44c9095ca76d8c1efd5beedd45a110616bca9ae09f1ee2"
   }
 ]

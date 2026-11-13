@@ -53,6 +53,7 @@ export interface RoadmapProject {
   name: string;
   client: string;
   estimatedStart: string;
+  estimatedHours?: string | number;
   stage: string;
   strategicValue: string;
   description: string;

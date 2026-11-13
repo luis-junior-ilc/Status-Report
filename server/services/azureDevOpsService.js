@@ -137,13 +137,12 @@ class AzureDevOpsService {
     return count;
   }
 
-  // Extract dates from all standard and custom Azure DevOps fields
-  extractWorkItemDates(fields = {}, iterMap = {}, iterName = '') {
+  // Extract only explicit planned/target dates (without ActivatedDate or iteration fallback)
+  extractExplicitDates(fields = {}) {
     const rawStart = fields['Custom.PlannedStartDate']
       || fields['Custom.PlannedStartDateUS']
       || fields['Custom.USPlannedStartDate']
       || fields['Microsoft.VSTS.Scheduling.StartDate']
-      || fields['Microsoft.VSTS.Common.ActivatedDate']
       || null;
 
     const rawTarget = fields['Microsoft.VSTS.Scheduling.TargetDate']
@@ -152,8 +151,21 @@ class AzureDevOpsService {
       || fields['Microsoft.VSTS.CMMI.TargetResolveDate']
       || null;
 
-    let startDate = rawStart ? String(rawStart).split('T')[0] : null;
-    let targetDate = rawTarget ? String(rawTarget).split('T')[0] : null;
+    return {
+      startDate: rawStart ? String(rawStart).split('T')[0] : null,
+      targetDate: rawTarget ? String(rawTarget).split('T')[0] : null
+    };
+  }
+
+  // Extract dates from all standard and custom Azure DevOps fields
+  extractWorkItemDates(fields = {}, iterMap = {}, iterName = '') {
+    const explicit = this.extractExplicitDates(fields);
+    const activatedDate = fields['Microsoft.VSTS.Common.ActivatedDate']
+      ? String(fields['Microsoft.VSTS.Common.ActivatedDate']).split('T')[0]
+      : null;
+
+    let startDate = explicit.startDate || activatedDate || null;
+    let targetDate = explicit.targetDate || null;
 
     // Iteration fallback if dates still missing
     const iterKey = (iterName || fields['System.IterationPath'] || '').toLowerCase();
@@ -166,6 +178,41 @@ class AzureDevOpsService {
     }
 
     return { startDate, targetDate };
+  }
+
+  // Resolve dates with priority: item explicit dates -> child tasks rollup -> item fallback (ActivatedDate/Iteration)
+  resolveDatesWithChildren(fields = {}, childTasks = [], iterMap = {}, iterName = '') {
+    const explicit = this.extractExplicitDates(fields);
+    const fallback = this.extractWorkItemDates(fields, iterMap, iterName);
+    const validStarts = childTasks.map(t => t.startDate).filter(Boolean).sort();
+    const validEnds = childTasks.map(t => t.targetDate).filter(Boolean).sort();
+
+    return {
+      startDate: explicit.startDate || validStarts[0] || fallback.startDate || null,
+      targetDate: explicit.targetDate || validEnds[validEnds.length - 1] || fallback.targetDate || null
+    };
+  }
+
+  // Compute delay and tight-margin flags from targetDate and activity status
+  computeScheduleFlags(targetDate, cardStatus, today) {
+    let isDelayed = false;
+    let isTightMargin = false;
+
+    if (targetDate && cardStatus !== 'completed') {
+      const tDate = new Date(targetDate + 'T12:00:00');
+      tDate.setHours(0, 0, 0, 0);
+      const diffDays = Math.round((tDate.getTime() - today.getTime()) / (1000 * 3600 * 24));
+      // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -1 e 1 dia de atraso
+      if (diffDays <= -2) {
+        // Atraso crítico a partir de 2 dias (atraso >= 2d)
+        isDelayed = true;
+      } else if (diffDays >= -1 && diffDays <= 1) {
+        // Atenção entre -1 e 1 dia de atraso (entrega iminente hoje/amanhã ou atraso tolerado de 1d)
+        isTightMargin = true;
+      }
+    }
+
+    return { isDelayed, isTightMargin };
   }
 
   // Extract parent ID from item (from System.Parent field or relations)
@@ -305,11 +352,15 @@ class AzureDevOpsService {
           const chunkRes = await this.fetchApi(`_apis/wit/workitems?ids=${chunkIds}&$expand=relations&api-version=7.0`);
           for (const item of (chunkRes.value || [])) {
             const parentId = this.extractParentId(item);
+            const fields = item.fields || {};
             storiesMap[item.id] = {
               id: item.id,
-              title: item.fields?.['System.Title'] || '',
-              state: item.fields?.['System.State'] || 'Active',
-              assignedTo: item.fields?.['System.AssignedTo']?.displayName || null,
+              title: fields['System.Title'] || '',
+              state: fields['System.State'] || 'Active',
+              assignedTo: fields['System.AssignedTo']?.displayName || null,
+              iterationName: fields['System.IterationPath'] || '',
+              tags: fields['System.Tags'] || '',
+              fields,
               parentId: parentId
             };
             if (parentId) {
@@ -422,21 +473,11 @@ class AzureDevOpsService {
         const iterationName = iterationPath.split('\\').pop() || '';
         const tags = item.fields?.['System.Tags'] || '';
 
-        // Extract dates from item fields (custom or standard)
-        let { startDate, targetDate } = this.extractWorkItemDates(item.fields, iterMap, iterationName);
-
         // Collect all descendant tasks
         const childTasks = getTasksForItem(id);
 
-        // If parent item has no explicit dates, rollup dates from child tasks!
-        if (!startDate && childTasks.length > 0) {
-          const validStarts = childTasks.map(t => t.startDate).filter(Boolean).sort();
-          if (validStarts.length > 0) startDate = validStarts[0];
-        }
-        if (!targetDate && childTasks.length > 0) {
-          const validEnds = childTasks.map(t => t.targetDate).filter(Boolean).sort();
-          if (validEnds.length > 0) targetDate = validEnds[validEnds.length - 1];
-        }
+        // Extract explicit item dates first, falling back to child tasks rollup, then ActivatedDate/Iteration
+        const { startDate, targetDate } = this.resolveDatesWithChildren(item.fields, childTasks, iterMap, iterationName);
 
         const eapPhase = this.classifyWorkItemToEap(title, tags, iterationName);
         const monthSlot = this.getMonthSlot(startDate, targetDate, iterationName);
@@ -455,22 +496,7 @@ class AzureDevOpsService {
           ilcHoursTotal = ilcHours;
         }
 
-        let isDelayed = false;
-        let isTightMargin = false;
-
-        if (targetDate && cardStatus !== 'completed') {
-          const tDate = new Date(targetDate + 'T12:00:00');
-          tDate.setHours(0, 0, 0, 0);
-          const diffDays = Math.round((tDate.getTime() - today.getTime()) / (1000 * 3600 * 24));
-          // Regra calibrada: desvio a partir de 2 dias de atraso; atenção entre -1 e 1 dia de atraso
-          if (diffDays <= -2) {
-            // Atraso crítico a partir de 2 dias (atraso >= 2d)
-            isDelayed = true;
-          } else if (diffDays >= -1 && diffDays <= 1) {
-            // Atenção entre -1 e 1 dia de atraso (entrega iminente hoje/amanhã ou atraso tolerado de 1d)
-            isTightMargin = true;
-          }
-        }
+        const { isDelayed, isTightMargin } = this.computeScheduleFlags(targetDate, cardStatus, today);
 
         const assignedTo = item.fields?.['System.AssignedTo']?.displayName || null;
 
@@ -522,14 +548,13 @@ class AzureDevOpsService {
         byStory.forEach((tasks, sId) => {
           const s = storiesMap[sId];
           const sTitle = s?.title || `Demanda #${sId}`;
-          const validStarts = tasks.map(t => t.startDate).filter(Boolean).sort();
-          const validEnds = tasks.map(t => t.targetDate).filter(Boolean).sort();
-          const startDate = validStarts[0] || null;
-          const targetDate = validEnds[validEnds.length - 1] || null;
-          const eapPhase = this.classifyWorkItemToEap(sTitle, '', '');
-          const monthSlot = this.getMonthSlot(startDate, targetDate, '');
+          const { startDate, targetDate } = this.resolveDatesWithChildren(s?.fields || {}, tasks, iterMap, s?.iterationName || '');
+          const eapPhase = this.classifyWorkItemToEap(sTitle, s?.tags || '', s?.iterationName || '');
+          const monthSlot = this.getMonthSlot(startDate, targetDate, s?.iterationName || '');
           const ilcHours = this.roundHours(tasks.reduce((sum, t) => sum + (t.completedWork || 0), 0));
           const ilcHoursTotal = this.roundHours(tasks.reduce((sum, t) => sum + (t.originalEstimate || 0), 0));
+          const cardStatus = this.mapStatus(s?.state || 'Active');
+          const { isDelayed, isTightMargin } = this.computeScheduleFlags(targetDate, cardStatus, today);
 
           activities.push({
             id: String(sId),
@@ -548,9 +573,9 @@ class AzureDevOpsService {
             ilcHours,
             ilcHoursTotal: ilcHoursTotal || ilcHours,
             clientHours: 0,
-            status: this.mapStatus(s?.state || 'Active'),
-            isDelayed: false,
-            isTightMargin: false,
+            status: cardStatus,
+            isDelayed,
+            isTightMargin,
             linkedTasks: tasks
           });
         });

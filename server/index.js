@@ -9,9 +9,70 @@ const teamStore = require('./services/teamStore');
 const accessStore = require('./services/accessStore');
 
 const app = express();
+app.disable('x-powered-by');
 
-app.use(cors());
+// Security headers
+app.use((req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  next();
+});
+
+// Restricted CORS
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
+  .split(',')
+  .map(s => s.trim())
+  .filter(Boolean);
+
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true);
+    if (
+      /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(origin) ||
+      /^https:\/\/[a-z0-9-]+\.vercel\.app$/i.test(origin) ||
+      allowedOrigins.includes(origin)
+    ) {
+      return callback(null, true);
+    }
+    return callback(new Error('Origem não permitida pelo CORS.'));
+  }
+}));
+
 app.use(express.json({ limit: '10mb' }));
+
+// Simple in-memory rate limiter for auth & admin endpoints
+const authRateMap = new Map();
+function rateLimitAuth(maxAttempts = 25, windowMs = 15 * 60 * 1000) {
+  return (req, res, next) => {
+    const ip = req.ip || req.socket?.remoteAddress || 'unknown';
+    const key = `${ip}:${req.path}`;
+    const now = Date.now();
+    const entry = authRateMap.get(key);
+    if (!entry || now > entry.resetAt) {
+      authRateMap.set(key, { count: 1, resetAt: now + windowMs });
+      return next();
+    }
+    entry.count += 1;
+    if (entry.count > maxAttempts) {
+      return res.status(429).json({
+        success: false,
+        message: 'Muitas tentativas em sequência. Aguarde alguns minutos e tente novamente.'
+      });
+    }
+    next();
+  };
+}
+
+function isLocalRequest(req) {
+  if (process.env.VERCEL || process.env.READ_ONLY_MODE === 'true') return false;
+  if (req.headers['x-forwarded-for']) return false;
+  const remote = (req.socket?.remoteAddress || req.ip || '').replace(/^::ffff:/, '');
+  const isLocalIp = remote === '127.0.0.1' || remote === '::1';
+  const host = (req.hostname || req.headers.host || '').split(':')[0].toLowerCase();
+  const isLocalHost = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  return isLocalIp && isLocalHost;
+}
 
 // Serve static logos if uploaded
 const publicLogos = path.join(__dirname, 'public/assets/logos');
@@ -40,7 +101,7 @@ app.get('/api/auth/me', (req, res) => {
   res.json({ success: true, user });
 });
 
-app.post('/api/auth/request-otp', async (req, res) => {
+app.post('/api/auth/request-otp', rateLimitAuth(10), async (req, res) => {
   try {
     const result = await accessStore.requestEmailOtp(req.body.email);
     res.json({ success: true, ...result });
@@ -49,7 +110,7 @@ app.post('/api/auth/request-otp', async (req, res) => {
   }
 });
 
-app.post('/api/auth/verify-otp', (req, res) => {
+app.post('/api/auth/verify-otp', rateLimitAuth(15), (req, res) => {
   try {
     const { email, code, challengeToken } = req.body;
     const result = accessStore.verifyEmailOtp(email, code, challengeToken);
@@ -59,7 +120,7 @@ app.post('/api/auth/verify-otp', (req, res) => {
   }
 });
 
-app.post('/api/auth/login-password', (req, res) => {
+app.post('/api/auth/login-password', rateLimitAuth(20), (req, res) => {
   try {
     const { email, password, passwordProof } = req.body;
     const result = accessStore.verifyPasscode(email, password, passwordProof);
@@ -107,8 +168,7 @@ function checkViewerAuth(req, res, next) {
     req.viewerUser = viewerUser;
   }
 
-  const host = (req.hostname || req.headers.host || '').split(':')[0].toLowerCase();
-  const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1';
+  const isLocal = isLocalRequest(req);
   const forceAuth = req.headers['x-force-auth'] === 'true';
 
   const authCfg = accessStore.getPublicAuthConfig();
@@ -186,7 +246,7 @@ app.get('/api/public/client-portal/:slug', (req, res) => {
   }
 
   // Token validation
-  if (!token || token !== client.token) {
+  if (!projectStore.verifyClientToken(client, token)) {
     return res.status(401).json({ success: false, message: 'Token de acesso inválido ou expirado para este cliente.' });
   }
 
@@ -227,9 +287,7 @@ app.get('/api/public/weekly-reports/:id', checkViewerAuth, (req, res) => {
 
 // Admin / Curator Authentication (Strictly restricted to Localhost)
 function checkAdminAuth(req, res, next) {
-  const host = (req.hostname || req.headers.host || '').split(':')[0].toLowerCase();
-  const isLocal = host === 'localhost' || host === '127.0.0.1' || host === '::1';
-  if (process.env.VERCEL || process.env.READ_ONLY_MODE === 'true' || !isLocal) {
+  if (!isLocalRequest(req)) {
     return res.status(403).json({
       success: false,
       message: 'Modo somente visualização: a Curadoria e as atualizações são restritas à máquina local do administrador.'
@@ -473,15 +531,21 @@ app.get('/api/internal/pdf-render/:token', (req, res) => {
   res.send(htmlDoc);
 });
 
-app.post('/api/public/export-pdf', async (req, res) => {
+app.post('/api/public/export-pdf', checkViewerAuth, async (req, res) => {
   const fs = require('fs');
   const os = require('os');
+  const crypto = require('crypto');
   const { execFile } = require('child_process');
   const { html, styles, filename } = req.body || {};
 
-  if (!html) {
+  if (!html || typeof html !== 'string') {
     return res.status(400).json({ success: false, message: 'HTML do relatório ausente.' });
   }
+
+  // Strip any <script> tags or inline event handlers from client-supplied HTML before headless rendering
+  const sanitizedHtml = html
+    .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+    .replace(/\son\w+\s*=\s*(['"]).*?\1/gi, '');
 
   const browserCandidates = [
     'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',
@@ -498,7 +562,7 @@ app.post('/api/public/export-pdf', async (req, res) => {
     return res.status(500).json({ success: false, message: 'Navegador headless não encontrado no servidor.' });
   }
 
-  const token = `${Date.now()}_${Math.random().toString(36).slice(2)}`;
+  const token = `${Date.now()}_${crypto.randomBytes(12).toString('hex')}`;
   const fullHtml = `<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -562,26 +626,45 @@ app.post('/api/public/export-pdf', async (req, res) => {
       border: 1px solid #94a3b8 !important;
       color: #0f172a !important;
     }
+    .ppt-slide .line-clamp-1,
+    .ppt-slide .line-clamp-2,
+    .ppt-slide .line-clamp-3,
+    .ppt-slide .line-clamp-4,
+    .ppt-slide .line-clamp-5,
+    .ppt-slide .line-clamp-6 {
+      display: block !important;
+      -webkit-line-clamp: unset !important;
+      -webkit-box-orient: unset !important;
+      overflow: visible !important;
+    }
   </style>
 </head>
 <body>
-  ${html}
+  ${sanitizedHtml}
 </body>
 </html>`;
 
   pdfRenderCache.set(token, fullHtml);
+  setTimeout(() => pdfRenderCache.delete(token), 60000);
   const tmpPdfPath = path.join(os.tmpdir(), `status_report_${token}.pdf`);
-  const renderUrl = `http://localhost:${config.port}/api/internal/pdf-render/${token}`;
+  const isFreshHtml = html.includes('data-pdf-v4="true"');
+  const detectedTheme = html.includes('theme-light') ? 'light' : 'dark';
+  const renderUrl = isFreshHtml
+    ? `http://localhost:${config.port}/api/internal/pdf-render/${token}`
+    : `http://localhost:${config.port}/?view=report&theme=${detectedTheme}`;
+
+  const browserArgs = [
+    '--headless=new',
+    '--disable-gpu',
+    '--no-pdf-header-footer',
+    ...(isFreshHtml ? [] : ['--virtual-time-budget=4500']),
+    `--print-to-pdf=${tmpPdfPath}`,
+    renderUrl
+  ];
 
   execFile(
     browserExe,
-    [
-      '--headless=new',
-      '--disable-gpu',
-      '--no-pdf-header-footer',
-      `--print-to-pdf=${tmpPdfPath}`,
-      renderUrl
-    ],
+    browserArgs,
     { timeout: 30000 },
     (err) => {
       pdfRenderCache.delete(token);
@@ -604,11 +687,18 @@ app.post('/api/public/export-pdf', async (req, res) => {
   );
 });
 
-// Serve frontend build
+// Serve frontend build (with no-cache on index.html and JS bundles so updates take effect immediately)
 const frontendDist = path.join(__dirname, '../frontend/dist/frontend/browser');
 if (require('fs').existsSync(frontendDist)) {
-  app.use(express.static(frontendDist));
+  app.use(express.static(frontendDist, {
+    etag: false,
+    lastModified: false,
+    setHeaders: (res) => {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    }
+  }));
   app.get('*', (req, res) => {
+    res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
     res.sendFile(path.join(frontendDist, 'index.html'));
   });
 }

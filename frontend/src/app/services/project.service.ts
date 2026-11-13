@@ -55,7 +55,7 @@ export class ProjectService {
 
   // Curator / Admin signals
   isAdminOpen = signal<boolean>(false);
-  adminPin = signal<string>('admin');
+  adminPin = signal<string>('');
   isAuthenticated = signal<boolean>(false);
   isPublishingOnline = signal<boolean>(false);
 

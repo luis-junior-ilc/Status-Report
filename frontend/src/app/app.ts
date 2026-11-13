@@ -94,6 +94,10 @@ export class App implements OnInit {
       }
 
       // Normal Dashboard mode
+      const viewParam = params.get('view');
+      if (viewParam === 'report' || viewParam === 'maintenance' || viewParam === 'macro' || viewParam === 'cards' || viewParam === 'table' || viewParam === 'eap-gantt' || viewParam === 'team') {
+        this.service.activeView.set(viewParam as any);
+      }
       const clientParam = params.get('cliente');
       if (clientParam && !customParam) {
         this.service.selectedClient.set(clientParam);
