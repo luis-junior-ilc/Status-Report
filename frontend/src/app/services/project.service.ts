@@ -648,6 +648,17 @@ export class ProjectService {
   }
 
   async triggerSync() {
+    if (!this.adminPin()) {
+      const enteredPin = typeof window !== 'undefined'
+        ? window.prompt('Informe o PIN administrativo para sincronizar com o Azure DevOps:')
+        : null;
+      if (!enteredPin || !enteredPin.trim()) {
+        this.isAdminOpen.set(true);
+        return null;
+      }
+      this.adminPin.set(enteredPin.trim());
+    }
+
     this.isSyncing.set(true);
     try {
       const res = await firstValueFrom(
@@ -660,6 +671,15 @@ export class ProjectService {
         await this.loadAdminData();
       }
       return res;
+    } catch (err: any) {
+      if (err?.status === 401) {
+        this.adminPin.set('');
+        this.isAuthenticated.set(false);
+        alert('PIN administrativo incorreto. Informe o PIN configurado no server/.env.');
+      } else {
+        alert('Erro ao sincronizar com o Azure DevOps: ' + (err?.error?.message || err?.message || 'Erro desconhecido'));
+      }
+      return null;
     } finally {
       this.isSyncing.set(false);
     }
