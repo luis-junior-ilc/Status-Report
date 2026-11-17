@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-17T15:41:03.401Z",
+  "lastSync": "2026-11-17T17:41:45.005Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T15:40:44.251Z",
+      "azureLastUpdated": "2026-11-17T17:40:46.801Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7927,7 +7927,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
-      "azureLastUpdated": "2026-11-17T15:40:45.436Z",
+      "azureLastUpdated": "2026-11-17T17:40:48.126Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8230,7 +8230,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T15:40:47.008Z",
+      "azureLastUpdated": "2026-11-17T17:40:51.246Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8623,7 +8623,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T15:40:47.952Z",
+      "azureLastUpdated": "2026-11-17T17:40:52.945Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8967,7 +8967,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T15:40:49.981Z",
+      "azureLastUpdated": "2026-11-17T17:40:57.099Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9089,7 +9089,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-17T15:40:50.561Z",
+      "azureLastUpdated": "2026-11-17T17:40:58.198Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9920,7 +9920,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
-      "azureLastUpdated": "2026-11-17T15:40:51.845Z",
+      "azureLastUpdated": "2026-11-17T17:41:02.434Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11417,7 +11417,7 @@
       "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-17T15:40:52.393Z",
+      "azureLastUpdated": "2026-11-17T17:41:03.698Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11758,15 +11758,15 @@
         "classification": "auto",
         "hourlyRate": 150,
         "investmentCost": 0,
-        "monthlyCostSaving": 0,
-        "monthlyRevenueGain": 0,
+        "monthlyCostSaving": 15500,
+        "monthlyRevenueGain": 15508,
         "qualitativeTags": [
           "SLA & Experiência do Cliente",
           "Produtividade & Menos Retrabalho",
           "Escalabilidade Operacional"
         ],
         "qualitativeScore": 4,
-        "notes": ""
+        "notes": "Ganhos qualitativos: maior confiabilidade das informações de carga; dimensionamento mais preciso dos veículos; redução de pedidos manuais; melhor ocupação dos veículos; menos retrabalho entre fornecedores e planejamento.\nGanhos quantitativos:\nR$ 186,1 mil de potencial anual projetado para FY27.\nRedução estimada de 7,46% no custo das viagens simuladas.\nR$ 46,5 mil de potencial técnico identificado em simulação em 3 meses"
       }
     },
     {
@@ -11793,7 +11793,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "O Frete Expresso 2.0 avançou principalmente na estruturação e execução do ciclo de testes, com o cadastro dos test cases no Azure para automatizar a validação a cada novo pacote de correções disponibilizado pelo Silvio (além do tratamento prévio das justificativas de SLA). Após um breve atraso pontual por troca de máquina e uma sessão de alinhamento no dia 13/11, as baterias de testes automatizados foram rodadas com sucesso, restando agora apenas a revisão final com testes manuais para confirmar que tudo está funcionando corretamente.",
-      "azureLastUpdated": "2026-11-17T15:40:53.039Z",
+      "azureLastUpdated": "2026-11-17T17:41:05.692Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12142,7 +12142,7 @@
           "Escalabilidade Operacional"
         ],
         "qualitativeScore": 4,
-        "notes": ""
+        "notes": "Ganhos qualitativos: padronização das reprogramações; histórico e responsabilização das ocorrências; maior transparência para John Deere e transportadores; redução de tratativas informais; identificação de causas recorrentes, redução de coletas frustradas, fretes mortos, tempo administrativo e custos de nova programação."
       }
     },
     {
@@ -12169,7 +12169,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
-      "azureLastUpdated": "2026-11-17T15:40:54.095Z",
+      "azureLastUpdated": "2026-11-17T17:41:08.391Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 4,
@@ -13506,7 +13506,7 @@
       "progress": 84,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
-      "azureLastUpdated": "2026-11-17T15:40:54.769Z",
+      "azureLastUpdated": "2026-11-17T17:41:09.973Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -14813,7 +14813,7 @@
       "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-17T15:40:56.195Z",
+      "azureLastUpdated": "2026-11-17T17:41:14.049Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15613,7 +15613,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T15:40:58.521Z",
+      "azureLastUpdated": "2026-11-17T17:41:35.615Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21717,7 +21717,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T15:41:00.691Z",
+      "azureLastUpdated": "2026-11-17T17:41:40.050Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23979,7 +23979,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T15:41:01.629Z",
+      "azureLastUpdated": "2026-11-17T17:41:41.118Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24840,7 +24840,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-17T15:41:02.842Z",
+      "azureLastUpdated": "2026-11-17T17:41:43.968Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 240,
@@ -29700,7 +29700,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-17T15:41:03.401Z",
+      "azureLastUpdated": "2026-11-17T17:41:45.005Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30414,7 +30414,7 @@
       "progress": 43,
       "manualRagStatus": "auto",
       "executiveSummary": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
-      "azureLastUpdated": "2026-11-17T15:40:59.785Z",
+      "azureLastUpdated": "2026-11-17T17:41:38.380Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30432,7 +30432,7 @@
           "targetDate": "2026-11-14",
           "dateStr": "14/11/2026",
           "ilcHours": 97,
-          "ilcHoursTotal": 103,
+          "ilcHoursTotal": 111,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -30547,6 +30547,17 @@
               "completedWork": 6,
               "startDate": "2026-11-17",
               "targetDate": "2026-11-18"
+            },
+            {
+              "id": 7766,
+              "title": "[FE] Gestão de Demandas: seguir a versão nova da Gestão do portal (homologação)",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": "2026-11-17",
+              "targetDate": "2026-11-19"
             }
           ]
         },
@@ -30861,7 +30872,7 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 389,
+        "ilcPlanned": 397,
         "ilcExecuted": 193,
         "progress": 43,
         "agreedDates": {
@@ -30876,13 +30887,13 @@
       "hours": {
         "agreed": 340,
         "agreedHours": 340,
-        "planned": 389,
+        "planned": 397,
         "executed": 193,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 389,
+        "ilcPlanned": 397,
         "ilcExecuted": 193,
-        "totalPlanned": 389,
+        "totalPlanned": 397,
         "totalExecuted": 193,
         "distribution": [
           {
@@ -30896,9 +30907,9 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 281,
+            "planned": 289,
             "executed": 161,
-            "percentage": 57,
+            "percentage": 56,
             "completed": false,
             "deliverablesTotal": 3,
             "deliverablesCompleted": 0
@@ -30994,22 +31005,625 @@
       "currentMilestone": "Desenvolvimento",
       "agreedDates": {
         "start": "2026-10-01",
-        "end": "2026-11-13"
+        "end": "2026-11-30"
       },
       "plannedDates": {
         "start": "2026-10-01",
-        "end": "2026-11-13"
+        "end": "2026-11-30"
       },
       "executedDates": {
         "start": "2026-08-01",
         "end": null
       },
-      "progress": 54,
+      "progress": 57,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
-      "azureLastUpdated": "2026-11-17T15:40:51.256Z",
+      "azureLastUpdated": "2026-11-17T17:41:00.660Z",
       "currentIterationName": "Iteration 1",
       "activities": [
+        {
+          "id": "7400",
+          "azureId": 7400,
+          "title": "Gestão da operação assistida da Torre 4.0 em Cubatão",
+          "fullTitle": "#7400 Gestão da operação assistida da Torre 4.0 em Cubatão",
+          "rawTitle": "Gestão da operação assistida da Torre 4.0 em Cubatão",
+          "type": "User Story",
+          "state": "Closed",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Operação Assistida",
+          "month": "NOV / 26",
+          "startDate": "2026-10-13",
+          "targetDate": "2026-11-13",
+          "dateStr": "13/11/2026",
+          "ilcHours": 12,
+          "ilcHoursTotal": 12,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7401,
+              "title": "Formalizar início da operação assistida",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 2,
+              "completedWork": 2,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-13"
+            },
+            {
+              "id": 7402,
+              "title": "Estruturar rotina de acompanhamento",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-16"
+            },
+            {
+              "id": 7403,
+              "title": "Preparar relatório de encerramento da operação assistida",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-11-09",
+              "targetDate": "2026-11-13"
+            }
+          ]
+        },
+        {
+          "id": "7457",
+          "azureId": 7457,
+          "title": "Capacitação do backoffice Mirassol no Portal ILC",
+          "fullTitle": "#7457 Capacitação do backoffice Mirassol no Portal ILC",
+          "rawTitle": "Capacitação do backoffice Mirassol no Portal ILC",
+          "type": "User Story",
+          "state": "New",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Treinamento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-26",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 2,
+          "ilcHoursTotal": 10,
+          "clientHours": 0,
+          "status": "planned",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7458,
+              "title": "Preparar roteiro de treinamento do Portal ILC",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 3,
+              "completedWork": 0,
+              "startDate": "2026-10-26",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7459,
+              "title": "Realizar treinamento do backoffice Mirassol",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 2,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-05"
+            },
+            {
+              "id": 7460,
+              "title": "Disponibilizar material de apoio",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 3,
+              "completedWork": 0,
+              "startDate": "2026-11-05",
+              "targetDate": "2026-11-06"
+            }
+          ]
+        },
+        {
+          "id": "7451",
+          "azureId": 7451,
+          "title": "Integração de marcos do Rodopar e atualização de status no Portal ILC",
+          "fullTitle": "#7451 Integração de marcos do Rodopar e atualização de status no Portal ILC",
+          "rawTitle": "Integração de marcos do Rodopar e atualização de status no Portal ILC",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-20",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 8,
+          "ilcHoursTotal": 36,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7452,
+              "title": "Definir estrutura das mensagens de integração",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-20",
+              "targetDate": "2026-10-20"
+            },
+            {
+              "id": 7453,
+              "title": "Alinhar desenvolvimento da integração com Datapar",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-20",
+              "targetDate": "2026-10-30"
+            },
+            {
+              "id": 7454,
+              "title": "Desenvolver recebimento dos eventos pela ILC",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 12,
+              "completedWork": 0,
+              "startDate": "2026-10-30",
+              "targetDate": "2026-11-10"
+            },
+            {
+              "id": 7455,
+              "title": "Atualizar automaticamente os estados das demandas no Portal",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 10,
+              "completedWork": 0,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7456,
+              "title": "Homologar integração ponta a ponta",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 0,
+              "startDate": "2026-11-10",
+              "targetDate": "2026-11-13"
+            }
+          ]
+        },
+        {
+          "id": "7446",
+          "azureId": 7446,
+          "title": "Visualização antecipada das demandas no Portal ILC",
+          "fullTitle": "#7446 Visualização antecipada das demandas no Portal ILC",
+          "rawTitle": "Visualização antecipada das demandas no Portal ILC",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-13",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 6,
+          "ilcHoursTotal": 54,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7447,
+              "title": "Definir layout e fluxo de Previsões",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-20"
+            },
+            {
+              "id": 7448,
+              "title": "Desenvolver visualização de Previsões no Portal ILC",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 12,
+              "completedWork": 0,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-11-06"
+            },
+            {
+              "id": 7449,
+              "title": "Implementar visualização de estados das demandas",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": "2026-10-30",
+              "targetDate": "2026-11-10"
+            },
+            {
+              "id": 7450,
+              "title": "Homologar a navegação com a operação",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-10",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7490,
+              "title": "[AR/IA] - Ajustar filtragem de e-mails para identificar mensagens com ação operacional",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 24,
+              "completedWork": 0,
+              "startDate": "2026-10-29",
+              "targetDate": "2026-11-03"
+            }
+          ]
+        },
+        {
+          "id": "7441",
+          "azureId": 7441,
+          "title": "Homologação dos indicadores e regras de SLA",
+          "fullTitle": "#7441 Homologação dos indicadores e regras de SLA",
+          "rawTitle": "Homologação dos indicadores e regras de SLA",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Homologação",
+          "month": "NOV / 26",
+          "startDate": "2026-10-23",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 0,
+          "ilcHoursTotal": 11,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7442,
+              "title": "Validar regra de coleta dentro ou fora do prazo",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7443,
+              "title": "Validar fontes dos horários realizados",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7444,
+              "title": "Definir tratamento de viagens sem apontamento",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 3,
+              "completedWork": 0,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-11-03"
+            }
+          ]
+        },
+        {
+          "id": "7430",
+          "azureId": 7430,
+          "title": "Parametrização de eventos operacionais e geocercas",
+          "fullTitle": "#7430 Parametrização de eventos operacionais e geocercas",
+          "rawTitle": "Parametrização de eventos operacionais e geocercas",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Homologação",
+          "month": "NOV / 26",
+          "startDate": "2026-10-21",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 0,
+          "ilcHoursTotal": 16,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7431,
+              "title": "Identificar divergências nos tipos de operação recebidos do Rodopar",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-21",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7432,
+              "title": "Adequar sequência de eventos de importação",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-11-03"
+            },
+            {
+              "id": 7433,
+              "title": "Revisar regras de geocercas",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-27",
+              "targetDate": "2026-11-03"
+            },
+            {
+              "id": 7434,
+              "title": "Homologar eventos e parametrizações ajustadas",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-06"
+            }
+          ]
+        },
+        {
+          "id": "7421",
+          "azureId": 7421,
+          "title": "Monitoramento da utilização do Smart Tracking",
+          "fullTitle": "#7421 Monitoramento da utilização do Smart Tracking",
+          "rawTitle": "Monitoramento da utilização do Smart Tracking",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Operação Assistida",
+          "month": "NOV / 26",
+          "startDate": "2026-10-13",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 10,
+          "ilcHoursTotal": 20,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7422,
+              "title": "Diagnosticar a utilização inicial do aplicativo",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-21"
+            },
+            {
+              "id": 7423,
+              "title": "Estruturar acompanhamento de viagens sem eventos",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 6,
+              "startDate": "2026-10-19",
+              "targetDate": "2026-11-06"
+            },
+            {
+              "id": 7424,
+              "title": "Acompanhar aderência após início da obrigatoriedade",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 6,
+              "completedWork": 0,
+              "startDate": "2026-10-26",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7425,
+              "title": "Consolidar melhorias necessárias no fluxo do aplicativo",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-13"
+            }
+          ]
+        },
+        {
+          "id": "7416",
+          "azureId": 7416,
+          "title": "Treinamento dos motoristas e operação no Smart Tracking",
+          "fullTitle": "#7416 Treinamento dos motoristas e operação no Smart Tracking",
+          "rawTitle": "Treinamento dos motoristas e operação no Smart Tracking",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Treinamento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-13",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 11,
+          "ilcHoursTotal": 11,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7417,
+              "title": "Realizar treinamento da operação Mirassol no Smart Tracking",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-13",
+              "targetDate": "2026-10-20"
+            },
+            {
+              "id": 7418,
+              "title": "Ajustar vídeo de orientação aos motoristas",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 3,
+              "completedWork": 3,
+              "startDate": "2026-10-19",
+              "targetDate": "2026-10-23"
+            },
+            {
+              "id": 7419,
+              "title": "Disponibilizar material nos grupos dos motoristas",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-10-23"
+            },
+            {
+              "id": 7420,
+              "title": "Reforçar procedimento de utilização obrigatória do aplicativo",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 3,
+              "completedWork": 3,
+              "startDate": "2026-10-26",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7505,
+              "title": "Mapear os cenários de cadastro e elaborar procedimento de acesso ao Smart Tracking",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Gustavo Roberto Santos de Oliveira",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-10-01",
+              "targetDate": "2026-11-13"
+            }
+          ]
+        },
+        {
+          "id": "7411",
+          "azureId": 7411,
+          "title": "Geração antecipada e atualização de PCs - Sertrading",
+          "fullTitle": "#7411 Geração antecipada e atualização de PCs - Sertrading",
+          "rawTitle": "Geração antecipada e atualização de PCs - Sertrading",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-10-20",
+          "targetDate": "2026-11-30",
+          "dateStr": "30/11/2026",
+          "ilcHours": 4,
+          "ilcHoursTotal": 20,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7412,
+              "title": "Avaliar possibilidade de atualização de PC pela API Rodopar",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-10-20",
+              "targetDate": "2026-11-30"
+            },
+            {
+              "id": 7413,
+              "title": "Definir solução para programação antecipada",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-10-23",
+              "targetDate": "2026-11-13"
+            },
+            {
+              "id": 7414,
+              "title": "Implementar solução aprovada para atualização de PCs",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 8,
+              "completedWork": 0,
+              "startDate": "2026-11-03",
+              "targetDate": "2026-11-30"
+            },
+            {
+              "id": 7415,
+              "title": "Validar fluxo de PC antecipada e atualização posterior",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 0,
+              "startDate": "2026-11-10",
+              "targetDate": "2026-11-30"
+            }
+          ]
+        },
         {
           "id": "7435",
           "azureId": 7435,
@@ -31144,185 +31758,6 @@
           ]
         },
         {
-          "id": "7457",
-          "azureId": 7457,
-          "title": "Capacitação do backoffice Mirassol no Portal ILC",
-          "fullTitle": "#7457 Capacitação do backoffice Mirassol no Portal ILC",
-          "rawTitle": "Capacitação do backoffice Mirassol no Portal ILC",
-          "type": "User Story",
-          "state": "New",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Treinamento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-26",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 2,
-          "ilcHoursTotal": 10,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7458,
-              "title": "Preparar roteiro de treinamento do Portal ILC",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 3,
-              "completedWork": 0,
-              "startDate": "2026-10-26",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7459,
-              "title": "Realizar treinamento do backoffice Mirassol",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 2,
-              "startDate": "2026-11-03",
-              "targetDate": "2026-11-05"
-            },
-            {
-              "id": 7460,
-              "title": "Disponibilizar material de apoio",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 3,
-              "completedWork": 0,
-              "startDate": "2026-11-05",
-              "targetDate": "2026-11-06"
-            }
-          ]
-        },
-        {
-          "id": "7441",
-          "azureId": 7441,
-          "title": "Homologação dos indicadores e regras de SLA",
-          "fullTitle": "#7441 Homologação dos indicadores e regras de SLA",
-          "rawTitle": "Homologação dos indicadores e regras de SLA",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Homologação",
-          "month": "NOV / 26",
-          "startDate": "2026-10-23",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 11,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7442,
-              "title": "Validar regra de coleta dentro ou fora do prazo",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7443,
-              "title": "Validar fontes dos horários realizados",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7444,
-              "title": "Definir tratamento de viagens sem apontamento",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 3,
-              "completedWork": 0,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-11-03"
-            }
-          ]
-        },
-        {
-          "id": "7430",
-          "azureId": 7430,
-          "title": "Parametrização de eventos operacionais e geocercas",
-          "fullTitle": "#7430 Parametrização de eventos operacionais e geocercas",
-          "rawTitle": "Parametrização de eventos operacionais e geocercas",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Homologação",
-          "month": "NOV / 26",
-          "startDate": "2026-10-21",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 16,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7431,
-              "title": "Identificar divergências nos tipos de operação recebidos do Rodopar",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-21",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7432,
-              "title": "Adequar sequência de eventos de importação",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-11-03"
-            },
-            {
-              "id": 7433,
-              "title": "Revisar regras de geocercas",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-11-03"
-            },
-            {
-              "id": 7434,
-              "title": "Homologar eventos e parametrizações ajustadas",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-03",
-              "targetDate": "2026-11-06"
-            }
-          ]
-        },
-        {
           "id": "7426",
           "azureId": 7426,
           "title": "Contingência operacional pelo Portal ILC",
@@ -31374,84 +31809,6 @@
               "originalEstimate": 4,
               "completedWork": 4,
               "startDate": "2026-11-10",
-              "targetDate": "2026-11-13"
-            }
-          ]
-        },
-        {
-          "id": "7416",
-          "azureId": 7416,
-          "title": "Treinamento dos motoristas e operação no Smart Tracking",
-          "fullTitle": "#7416 Treinamento dos motoristas e operação no Smart Tracking",
-          "rawTitle": "Treinamento dos motoristas e operação no Smart Tracking",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Treinamento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-13",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 8,
-          "ilcHoursTotal": 11,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7417,
-              "title": "Realizar treinamento da operação Mirassol no Smart Tracking",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-20"
-            },
-            {
-              "id": 7418,
-              "title": "Ajustar vídeo de orientação aos motoristas",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 3,
-              "completedWork": 3,
-              "startDate": "2026-10-19",
-              "targetDate": "2026-10-23"
-            },
-            {
-              "id": 7419,
-              "title": "Disponibilizar material nos grupos dos motoristas",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 1,
-              "completedWork": 1,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-10-23"
-            },
-            {
-              "id": 7420,
-              "title": "Reforçar procedimento de utilização obrigatória do aplicativo",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 3,
-              "completedWork": 0,
-              "startDate": "2026-10-26",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7505,
-              "title": "Mapear os cenários de cadastro e elaborar procedimento de acesso ao Smart Tracking",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Gustavo Roberto Santos de Oliveira",
-              "originalEstimate": 0,
-              "completedWork": 0,
-              "startDate": "2026-10-01",
               "targetDate": "2026-11-13"
             }
           ]
@@ -31611,352 +31968,6 @@
               "targetDate": "2026-03-18"
             }
           ]
-        },
-        {
-          "id": "7451",
-          "azureId": 7451,
-          "title": "Integração de marcos do Rodopar e atualização de status no Portal ILC",
-          "fullTitle": "#7451 Integração de marcos do Rodopar e atualização de status no Portal ILC",
-          "rawTitle": "Integração de marcos do Rodopar e atualização de status no Portal ILC",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-20",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 8,
-          "ilcHoursTotal": 36,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7452,
-              "title": "Definir estrutura das mensagens de integração",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-20",
-              "targetDate": "2026-10-20"
-            },
-            {
-              "id": 7453,
-              "title": "Alinhar desenvolvimento da integração com Datapar",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-20",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7454,
-              "title": "Desenvolver recebimento dos eventos pela ILC",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 0,
-              "startDate": "2026-10-30",
-              "targetDate": "2026-11-10"
-            },
-            {
-              "id": 7455,
-              "title": "Atualizar automaticamente os estados das demandas no Portal",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 10,
-              "completedWork": 0,
-              "startDate": "2026-11-03",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7456,
-              "title": "Homologar integração ponta a ponta",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 0,
-              "startDate": "2026-11-10",
-              "targetDate": "2026-11-13"
-            }
-          ]
-        },
-        {
-          "id": "7446",
-          "azureId": 7446,
-          "title": "Visualização antecipada das demandas no Portal ILC",
-          "fullTitle": "#7446 Visualização antecipada das demandas no Portal ILC",
-          "rawTitle": "Visualização antecipada das demandas no Portal ILC",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-13",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 6,
-          "ilcHoursTotal": 54,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7447,
-              "title": "Definir layout e fluxo de Previsões",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 6,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-20"
-            },
-            {
-              "id": 7448,
-              "title": "Desenvolver visualização de Previsões no Portal ILC",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 12,
-              "completedWork": 0,
-              "startDate": "2026-10-27",
-              "targetDate": "2026-11-06"
-            },
-            {
-              "id": 7449,
-              "title": "Implementar visualização de estados das demandas",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 0,
-              "startDate": "2026-10-30",
-              "targetDate": "2026-11-10"
-            },
-            {
-              "id": 7450,
-              "title": "Homologar a navegação com a operação",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-10",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7490,
-              "title": "[AR/IA] - Ajustar filtragem de e-mails para identificar mensagens com ação operacional",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 24,
-              "completedWork": 0,
-              "startDate": "2026-10-29",
-              "targetDate": "2026-11-03"
-            }
-          ]
-        },
-        {
-          "id": "7421",
-          "azureId": 7421,
-          "title": "Monitoramento da utilização do Smart Tracking",
-          "fullTitle": "#7421 Monitoramento da utilização do Smart Tracking",
-          "rawTitle": "Monitoramento da utilização do Smart Tracking",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Operação Assistida",
-          "month": "NOV / 26",
-          "startDate": "2026-10-13",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 10,
-          "ilcHoursTotal": 20,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7422,
-              "title": "Diagnosticar a utilização inicial do aplicativo",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-21"
-            },
-            {
-              "id": 7423,
-              "title": "Estruturar acompanhamento de viagens sem eventos",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 6,
-              "startDate": "2026-10-19",
-              "targetDate": "2026-11-06"
-            },
-            {
-              "id": 7424,
-              "title": "Acompanhar aderência após início da obrigatoriedade",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 0,
-              "startDate": "2026-10-26",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7425,
-              "title": "Consolidar melhorias necessárias no fluxo do aplicativo",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-03",
-              "targetDate": "2026-11-13"
-            }
-          ]
-        },
-        {
-          "id": "7411",
-          "azureId": 7411,
-          "title": "Geração antecipada e atualização de PCs - Sertrading",
-          "fullTitle": "#7411 Geração antecipada e atualização de PCs - Sertrading",
-          "rawTitle": "Geração antecipada e atualização de PCs - Sertrading",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Desenvolvimento",
-          "month": "NOV / 26",
-          "startDate": "2026-10-20",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 20,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7412,
-              "title": "Avaliar possibilidade de atualização de PC pela API Rodopar",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-20",
-              "targetDate": "2026-10-30"
-            },
-            {
-              "id": 7413,
-              "title": "Definir solução para programação antecipada",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-10-23",
-              "targetDate": "2026-11-13"
-            },
-            {
-              "id": 7414,
-              "title": "Implementar solução aprovada para atualização de PCs",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 8,
-              "completedWork": 0,
-              "startDate": "2026-11-03",
-              "targetDate": "2026-11-10"
-            },
-            {
-              "id": 7415,
-              "title": "Validar fluxo de PC antecipada e atualização posterior",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-10",
-              "targetDate": "2026-11-13"
-            }
-          ]
-        },
-        {
-          "id": "7400",
-          "azureId": 7400,
-          "title": "Gestão da operação assistida da Torre 4.0 em Cubatão",
-          "fullTitle": "#7400 Gestão da operação assistida da Torre 4.0 em Cubatão",
-          "rawTitle": "Gestão da operação assistida da Torre 4.0 em Cubatão",
-          "type": "User Story",
-          "state": "Active",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Operação Assistida",
-          "month": "NOV / 26",
-          "startDate": "2026-10-13",
-          "targetDate": "2026-11-13",
-          "dateStr": "13/11/2026",
-          "ilcHours": 6,
-          "ilcHoursTotal": 12,
-          "clientHours": 0,
-          "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7401,
-              "title": "Formalizar início da operação assistida",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 2,
-              "completedWork": 2,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-13"
-            },
-            {
-              "id": 7402,
-              "title": "Estruturar rotina de acompanhamento",
-              "type": "Task",
-              "state": "Closed",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 4,
-              "startDate": "2026-10-13",
-              "targetDate": "2026-10-16"
-            },
-            {
-              "id": 7403,
-              "title": "Preparar relatório de encerramento da operação assistida",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 6,
-              "completedWork": 0,
-              "startDate": "2026-11-09",
-              "targetDate": "2026-11-13"
-            }
-          ]
         }
       ],
       "priority": "P1",
@@ -31978,28 +31989,28 @@
       },
       "azureOriginal": {
         "ilcPlanned": 299,
-        "ilcExecuted": 149,
-        "progress": 54,
+        "ilcExecuted": 162,
+        "progress": 57,
         "agreedDates": {
           "start": "2026-10-01",
-          "end": "2026-11-13"
+          "end": "2026-11-30"
         },
         "plannedDates": {
           "start": "2026-10-01",
-          "end": "2026-11-13"
+          "end": "2026-11-30"
         }
       },
       "hours": {
         "agreed": 264,
         "agreedHours": 264,
         "planned": 299,
-        "executed": 149,
+        "executed": 162,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 299,
-        "ilcExecuted": 149,
+        "ilcExecuted": 162,
         "totalPlanned": 299,
-        "totalExecuted": 149,
+        "totalExecuted": 162,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -32013,8 +32024,8 @@
           {
             "phase": "Desenvolvimento",
             "planned": 161,
-            "executed": 65,
-            "percentage": 40,
+            "executed": 69,
+            "percentage": 43,
             "completed": false,
             "deliverablesTotal": 5,
             "deliverablesCompleted": 2
@@ -32031,8 +32042,8 @@
           {
             "phase": "Treinamento",
             "planned": 21,
-            "executed": 10,
-            "percentage": 48,
+            "executed": 13,
+            "percentage": 62,
             "completed": false,
             "deliverablesTotal": 2,
             "deliverablesCompleted": 0
@@ -32040,19 +32051,17 @@
           {
             "phase": "Operação Assistida",
             "planned": 32,
-            "executed": 16,
-            "percentage": 50,
+            "executed": 22,
+            "percentage": 69,
             "completed": false,
             "deliverablesTotal": 2,
-            "deliverablesCompleted": 0
+            "deliverablesCompleted": 1
           }
         ]
       },
-      "ragStatus": "red",
-      "varianceDays": 2,
-      "inconsistencies": [
-        "DELAYED_ITEMS"
-      ],
+      "ragStatus": "green",
+      "varianceDays": 0,
+      "inconsistencies": [],
       "hasManualIlcHours": true,
       "hasManualProgress": false,
       "hasManualAgreedDates": false,
@@ -32062,26 +32071,26 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 45,
-          "percent": 30.2
+          "hours": 58,
+          "percent": 35.8
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
           "hours": 93,
-          "percent": 62.4
+          "percent": 57.4
         },
         {
           "monthKey": "2026-07",
           "label": "Jul/26",
           "hours": 2,
-          "percent": 1.3
+          "percent": 1.2
         },
         {
           "monthKey": "2026-03",
           "label": "Mar/26",
           "hours": 9,
-          "percent": 6
+          "percent": 5.6
         }
       ],
       "objective": "Tem como objetivo unificar o rastreamento de frota em mapa em tempo real à gestão visual de pedidos em Kanban. Em faturamento, acelera o giro de entregas e a conversão de receitas com visibilidade financeira de cada pedido; em custo, reduz o monitoramento manual da Torre de Controle, perdas por ociosidade/sinistros (via alertas de rota/veículo) e gastos de deploy (CI/CD); e no qualitativo, entrega KPIs em tempo real, alta performance (500+ veículos simultâneos) e UX padronizada.",
@@ -32128,7 +32137,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-17T15:40:55.635Z",
+      "azureLastUpdated": "2026-11-17T17:41:11.695Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32696,7 +32705,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
-      "azureLastUpdated": "2026-11-17T15:40:48.903Z",
+      "azureLastUpdated": "2026-11-17T17:40:53.945Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32846,7 +32855,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
-      "azureLastUpdated": "2026-11-17T15:40:49.473Z",
+      "azureLastUpdated": "2026-11-17T17:40:55.961Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33076,7 +33085,7 @@
       "progress": 42,
       "manualRagStatus": "auto",
       "executiveSummary": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
-      "azureLastUpdated": "2026-11-17T15:40:59.281Z",
+      "azureLastUpdated": "2026-11-17T17:41:37.024Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33147,9 +33156,9 @@
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
           "startDate": "2026-11-10",
-          "targetDate": "2026-11-11",
-          "dateStr": "11/11/2026",
-          "ilcHours": 6,
+          "targetDate": "2026-11-12",
+          "dateStr": "12/11/2026",
+          "ilcHours": 8,
           "ilcHoursTotal": 3,
           "clientHours": 0,
           "status": "in-progress",
@@ -33163,9 +33172,9 @@
               "state": "QA",
               "assignedTo": "Francisco Molaia Santos",
               "originalEstimate": 3,
-              "completedWork": 6,
+              "completedWork": 8,
               "startDate": "2026-11-10",
-              "targetDate": "2026-11-11"
+              "targetDate": "2026-11-12"
             }
           ]
         },
@@ -33330,7 +33339,7 @@
       },
       "azureOriginal": {
         "ilcPlanned": 34,
-        "ilcExecuted": 42,
+        "ilcExecuted": 44,
         "progress": 42,
         "agreedDates": {
           "start": "2026-10-26",
@@ -33346,13 +33355,13 @@
         "agreed": 0,
         "agreedHours": 0,
         "planned": 34,
-        "executed": 42,
+        "executed": 44,
         "clientPlanned": 0,
         "clientExecuted": 0,
         "ilcPlanned": 34,
-        "ilcExecuted": 42,
+        "ilcExecuted": 44,
         "totalPlanned": 34,
-        "totalExecuted": 42,
+        "totalExecuted": 44,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -33366,8 +33375,8 @@
           {
             "phase": "Desenvolvimento",
             "planned": 34,
-            "executed": 42,
-            "percentage": 124,
+            "executed": 44,
+            "percentage": 129,
             "completed": false,
             "deliverablesTotal": 5,
             "deliverablesCompleted": 0
@@ -33413,7 +33422,7 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 42,
+          "hours": 44,
           "percent": 100
         }
       ]
