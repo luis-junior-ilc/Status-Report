@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-17T17:58:39.366Z",
+  "lastSync": "2026-11-17T20:28:51.093Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T17:58:22.349Z",
+      "azureLastUpdated": "2026-11-17T20:28:26.461Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7927,7 +7927,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
-      "azureLastUpdated": "2026-11-17T17:58:22.651Z",
+      "azureLastUpdated": "2026-11-17T20:28:27.311Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8190,20 +8190,17 @@
       "objective": "Tem como objetivo integrar os sistemas Rodopar e Senior RH a uma plataforma LXP para disparar treinamentos automáticos aos motoristas com base em multas, sinistros, telemetria e avarias. Em faturamento, habilita rapidamente motoristas para operações dedicadas de clientes e treina via celular sem parar o caminhão; em custo, reduz gastos com acidentes, multas, avarias, combustível/manutenção e passivos trabalhistas (arquivando certificados no RH); e no qualitativo, fortalece a segurança viária preventiva e a conformidade em auditorias.",
       "roi": {
         "stage": "projected",
-        "classification": "auto",
+        "classification": "strategic",
         "hourlyRate": 150,
         "investmentCost": 0,
         "monthlyCostSaving": 0,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
-          "SLA & Experiência do Cliente",
-          "Produtividade & Menos Retrabalho",
-          "Escalabilidade Operacional",
           "Redução de Risco / Multas",
           "Compliance & Fiscal"
         ],
-        "qualitativeScore": 4,
-        "notes": ""
+        "qualitativeScore": 5,
+        "notes": "Escopo e riscos críticos em definição antes da mensuração financeira. Foco em prevenção de acidentes, conformidade legal, redução de ocorrências/reincidências e tempo de resposta."
       }
     },
     {
@@ -8230,7 +8227,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T17:58:23.557Z",
+      "azureLastUpdated": "2026-11-17T20:28:28.921Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8623,7 +8620,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T17:58:24.383Z",
+      "azureLastUpdated": "2026-11-17T20:28:30.530Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8967,7 +8964,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T17:58:25.952Z",
+      "azureLastUpdated": "2026-11-17T20:28:33.794Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9089,7 +9086,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-17T17:58:26.571Z",
+      "azureLastUpdated": "2026-11-17T20:28:34.958Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9920,7 +9917,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
-      "azureLastUpdated": "2026-11-17T17:58:28.216Z",
+      "azureLastUpdated": "2026-11-17T20:28:37.131Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11379,7 +11376,7 @@
       "objective": "",
       "roi": {
         "stage": "projected",
-        "classification": "auto",
+        "classification": "strategic",
         "hourlyRate": 150,
         "investmentCost": 0,
         "monthlyCostSaving": 0,
@@ -11390,7 +11387,7 @@
           "Produtividade & Menos Retrabalho"
         ],
         "qualitativeScore": 5,
-        "notes": ""
+        "notes": "Em operação assistida: redução de 100% dos lançamentos manuais na criação de demandas nos clientes implantados, fim da dependência de e-mails e maior rastreabilidade. Economia em horas/mês a isolar."
       }
     },
     {
@@ -11417,7 +11414,7 @@
       "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-17T17:58:28.966Z",
+      "azureLastUpdated": "2026-11-17T20:28:37.915Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11765,8 +11762,8 @@
           "Produtividade & Menos Retrabalho",
           "Escalabilidade Operacional"
         ],
-        "qualitativeScore": 4,
-        "notes": "Potencial anual de R$ 186,1 mil (FY27) com redução estimada de 7,46% no custo das viagens (simulação de 3 meses: R$ 46,5 mil). Ganhos: maior confiabilidade das informações de carga, dimensionamento preciso e melhor ocupação dos veículos, redução de pedidos manuais e menos retrabalho entre fornecedores e planejamento."
+        "qualitativeScore": 5,
+        "notes": "Simulação de roteirização (297 pedidos): potencial anual FY27 de R$ 186,1 mil (R$ 46,5 mil em 3 meses), redução de 169 para 161 veículos (-4,7%) e -7,46% no custo das viagens simuladas. Valor ainda não realizado."
       }
     },
     {
@@ -11793,7 +11790,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-17T17:58:29.486Z",
+      "azureLastUpdated": "2026-11-17T20:28:38.755Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12131,18 +12128,18 @@
       "objective": "Tem como objetivo substituir a duplicação ou alteração de pedidos por um fluxo de \"Pedido Único + Tentativas Sequenciais\" para coletas falhas. Em faturamento, evita distorções de pedidos duplicados e aponta o Ofensor exato da falha para embasar ressarcimentos (frete morto) e multas pelo cliente (John Deere); em custo, evita gastos de alteração em APIs/EDI, coletas duplicadas acidentais e viagens improdutivas recorrentes; e no qualitativo, preserva a transparência do histórico original e viabiliza a medição dupla de SLA no BI (Original vs. Reprogramado).",
       "roi": {
         "stage": "projected",
-        "classification": "auto",
+        "classification": "strategic",
         "hourlyRate": 150,
         "investmentCost": 0,
         "monthlyCostSaving": 0,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
-          "SLA & Experiência do Cliente",
           "Produtividade & Menos Retrabalho",
-          "Escalabilidade Operacional"
+          "Compliance & Fiscal",
+          "Redução de Risco / Multas"
         ],
         "qualitativeScore": 4,
-        "notes": "Ganhos qualitativos: padronização das reprogramações; histórico e responsabilização das ocorrências; maior transparência para John Deere e transportadores; redução de tratativas informais; identificação de causas recorrentes, redução de coletas frustradas, fretes mortos, tempo administrativo e custos de nova programação."
+        "notes": "Sem economia comprovada ainda. Baseline Set: 239 ofensores em 5.805 pedidos (4,12% — 103 tardios, 136 sem chegada); Nov: 26 pedidos com reprogramações. Potencial futuro em redução de coletas frustradas e fretes mortos."
       }
     },
     {
@@ -12169,7 +12166,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
-      "azureLastUpdated": "2026-11-17T17:58:30.165Z",
+      "azureLastUpdated": "2026-11-17T20:28:39.540Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 4,
@@ -13506,7 +13503,7 @@
       "progress": 84,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
-      "azureLastUpdated": "2026-11-17T17:58:30.779Z",
+      "azureLastUpdated": "2026-11-17T20:28:40.429Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -14779,14 +14776,12 @@
         "monthlyCostSaving": 0,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
-          "Escalabilidade Operacional",
-          "SLA & Experiência do Cliente",
           "Produtividade & Menos Retrabalho",
           "Compliance & Fiscal",
           "Redução de Risco / Multas"
         ],
         "qualitativeScore": 4,
-        "notes": ""
+        "notes": "Sem baseline financeiro. Escopo documental e validade jurídica dos aceites em homologação. KPIs alvo: % de documentos assinados digitalmente, redução de contestações e horas de conferência liberadas."
       }
     },
     {
@@ -14813,7 +14808,7 @@
       "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-17T17:58:31.963Z",
+      "azureLastUpdated": "2026-11-17T20:28:42.425Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15577,16 +15572,15 @@
         "classification": "auto",
         "hourlyRate": 150,
         "investmentCost": 0,
-        "monthlyCostSaving": 0,
+        "monthlyCostSaving": 9742,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
-          "Escalabilidade Operacional",
-          "SLA & Experiência do Cliente",
           "Produtividade & Menos Retrabalho",
-          "Compliance & Fiscal"
+          "Redução de Risco / Multas",
+          "SLA & Experiência do Cliente"
         ],
         "qualitativeScore": 5,
-        "notes": ""
+        "notes": "Ganho incremental projetado FY27: R$ 116,9 mil/ano (R$ 39,3 mil adicionais em consolidação + R$ 77,6 mil por escolha econômica de transportadores). Base histórica pré-2.0: R$ 181,9 mil em 127 consolidações (Jan–Out/26, -31,23% no custo)."
       }
     },
     {
@@ -15613,7 +15607,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T17:58:33.583Z",
+      "azureLastUpdated": "2026-11-17T20:28:44.741Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21717,7 +21711,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T17:58:36.280Z",
+      "azureLastUpdated": "2026-11-17T20:28:47.454Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23979,7 +23973,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T17:58:37.107Z",
+      "azureLastUpdated": "2026-11-17T20:28:48.477Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24840,7 +24834,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-17T17:58:38.556Z",
+      "azureLastUpdated": "2026-11-17T20:28:50.011Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 240,
@@ -29700,7 +29694,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-17T17:58:39.366Z",
+      "azureLastUpdated": "2026-11-17T20:28:51.093Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30414,7 +30408,7 @@
       "progress": 43,
       "manualRagStatus": "auto",
       "executiveSummary": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
-      "azureLastUpdated": "2026-11-17T17:58:35.402Z",
+      "azureLastUpdated": "2026-11-17T20:28:46.351Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31026,17 +31020,18 @@
       "objective": "",
       "roi": {
         "stage": "projected",
-        "classification": "auto",
+        "classification": "strategic",
         "hourlyRate": 150,
         "investmentCost": 0,
         "monthlyCostSaving": 0,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
           "SLA & Experiência do Cliente",
-          "Produtividade & Menos Retrabalho"
+          "Produtividade & Menos Retrabalho",
+          "Escalabilidade Operacional"
         ],
         "qualitativeScore": 3,
-        "notes": ""
+        "notes": "Sem benefício financeiro isolado atribuído (ganhos de Frete Expresso 2.0 contabilizados uma única vez no projeto principal). KPIs alvo: tempo de aprovação móvel, % de aprovações no app e tempestividade de tracking."
       }
     },
     {
@@ -31064,7 +31059,7 @@
       "progress": 57,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
-      "azureLastUpdated": "2026-11-17T17:58:27.422Z",
+      "azureLastUpdated": "2026-11-17T20:28:36.121Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32145,17 +32140,15 @@
         "classification": "auto",
         "hourlyRate": 150,
         "investmentCost": 0,
-        "monthlyCostSaving": 0,
-        "monthlyRevenueGain": 0,
+        "monthlyCostSaving": 20000,
+        "monthlyRevenueGain": 20000,
         "qualitativeTags": [
           "SLA & Experiência do Cliente",
-          "Produtividade & Menos Retrabalho",
           "Compliance & Fiscal",
-          "Redução de Risco / Multas",
-          "Escalabilidade Operacional"
+          "Redução de Risco / Multas"
         ],
         "qualitativeScore": 5,
-        "notes": ""
+        "notes": "Cenário preliminar ilustrativo de R$ 40 mil/mês (receita protegida + multas evitáveis), ainda sem validação da Controladoria. POC: 93,6% de conclusão (204/218); coletas no prazo evoluíram de 50,0% (Set) para 63,3% (Nov parcial)."
       }
     },
     {
@@ -32183,7 +32176,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-17T17:58:31.459Z",
+      "azureLastUpdated": "2026-11-17T20:28:41.673Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32751,7 +32744,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
-      "azureLastUpdated": "2026-11-17T17:58:24.732Z",
+      "azureLastUpdated": "2026-11-17T20:28:31.159Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32860,20 +32853,17 @@
       "objective": "",
       "roi": {
         "stage": "projected",
-        "classification": "auto",
+        "classification": "neutral",
         "hourlyRate": 150,
         "investmentCost": 0,
         "monthlyCostSaving": 0,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
-          "SLA & Experiência do Cliente",
-          "Produtividade & Menos Retrabalho",
           "Compliance & Fiscal",
-          "Redução de Risco / Multas",
-          "Escalabilidade Operacional"
+          "Redução de Risco / Multas"
         ],
-        "qualitativeScore": 3,
-        "notes": ""
+        "qualitativeScore": 4,
+        "notes": "Sem baseline e meta aprovados. Foco em padronização de inspeções, evidências e prevenção de não conformidades. KPIs alvo: % checklists conformes e redução de falhas/custos por 100 viagens."
       }
     },
     {
@@ -32901,7 +32891,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
-      "azureLastUpdated": "2026-11-17T17:58:25.361Z",
+      "azureLastUpdated": "2026-11-17T20:28:32.472Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33131,7 +33121,7 @@
       "progress": 42,
       "manualRagStatus": "auto",
       "executiveSummary": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
-      "azureLastUpdated": "2026-11-17T17:58:34.803Z",
+      "azureLastUpdated": "2026-11-17T20:28:45.586Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33874,14 +33864,29 @@
         ]
       },
       "ragStatus": "red",
-      "varianceDays": 0,
+      "varianceDays": 2,
       "inconsistencies": [
-        "NO_HOURS"
+        "NO_HOURS",
+        "DELAYED_ITEMS"
       ],
       "monthlyHours": [],
       "hasManualProgress": true,
       "hasManualAgreedDates": true,
-      "hasManualIlcHours": true
+      "hasManualIlcHours": true,
+      "roi": {
+        "stage": "projected",
+        "classification": "auto",
+        "hourlyRate": 150,
+        "investmentCost": 0,
+        "monthlyCostSaving": 1333,
+        "monthlyRevenueGain": 0,
+        "qualitativeTags": [
+          "Escalabilidade Operacional",
+          "Produtividade & Menos Retrabalho"
+        ],
+        "qualitativeScore": 4,
+        "notes": "1ª bateria identificou R$ 16 mil de economia e 34 oportunidades de consolidação (8 em Catalão). Mantido conservador até apuração recorrente de veículos eliminados e custo antes/depois."
+      }
     }
   ]
 }
