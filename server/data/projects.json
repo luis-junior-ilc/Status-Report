@@ -11758,15 +11758,15 @@
         "classification": "auto",
         "hourlyRate": 150,
         "investmentCost": 0,
-        "monthlyCostSaving": 15500,
-        "monthlyRevenueGain": 15508,
+        "monthlyCostSaving": 15508,
+        "monthlyRevenueGain": 0,
         "qualitativeTags": [
           "SLA & Experiência do Cliente",
           "Produtividade & Menos Retrabalho",
           "Escalabilidade Operacional"
         ],
         "qualitativeScore": 4,
-        "notes": "Ganhos qualitativos: maior confiabilidade das informações de carga; dimensionamento mais preciso dos veículos; redução de pedidos manuais; melhor ocupação dos veículos; menos retrabalho entre fornecedores e planejamento.\nGanhos quantitativos:\nR$ 186,1 mil de potencial anual projetado para FY27.\nRedução estimada de 7,46% no custo das viagens simuladas.\nR$ 46,5 mil de potencial técnico identificado em simulação em 3 meses"
+        "notes": "Potencial anual de R$ 186,1 mil (FY27) com redução estimada de 7,46% no custo das viagens (simulação de 3 meses: R$ 46,5 mil). Ganhos: maior confiabilidade das informações de carga, dimensionamento preciso e melhor ocupação dos veículos, redução de pedidos manuais e menos retrabalho entre fornecedores e planejamento."
       }
     },
     {
