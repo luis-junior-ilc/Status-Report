@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-18T15:58:40.090Z",
+  "lastSync": "2026-11-18T16:28:46.115Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-18T15:58:24.193Z",
+      "azureLastUpdated": "2026-11-18T16:28:26.040Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7927,7 +7927,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
-      "azureLastUpdated": "2026-11-18T15:58:24.848Z",
+      "azureLastUpdated": "2026-11-18T16:28:26.601Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8227,7 +8227,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-18T15:58:25.526Z",
+      "azureLastUpdated": "2026-11-18T16:28:28.182Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8620,7 +8620,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-18T15:58:26.144Z",
+      "azureLastUpdated": "2026-11-18T16:28:29.250Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8964,7 +8964,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-18T15:58:27.809Z",
+      "azureLastUpdated": "2026-11-18T16:28:32.204Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9086,7 +9086,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-18T15:58:28.883Z",
+      "azureLastUpdated": "2026-11-18T16:28:33.086Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9917,7 +9917,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
-      "azureLastUpdated": "2026-11-18T15:58:30.084Z",
+      "azureLastUpdated": "2026-11-18T16:28:34.443Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11414,7 +11414,7 @@
       "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-18T15:58:30.659Z",
+      "azureLastUpdated": "2026-11-18T16:28:35.273Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11790,7 +11790,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-18T15:58:31.101Z",
+      "azureLastUpdated": "2026-11-18T16:28:35.816Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12166,7 +12166,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
-      "azureLastUpdated": "2026-11-18T15:58:31.974Z",
+      "azureLastUpdated": "2026-11-18T16:28:36.547Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 5,
@@ -13525,7 +13525,7 @@
       "progress": 84,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
-      "azureLastUpdated": "2026-11-18T15:58:32.481Z",
+      "azureLastUpdated": "2026-11-18T16:28:37.304Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -14830,7 +14830,7 @@
       "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-18T15:58:33.833Z",
+      "azureLastUpdated": "2026-11-18T16:28:39.031Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15629,7 +15629,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-18T15:58:35.520Z",
+      "azureLastUpdated": "2026-11-18T16:28:41.254Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21733,7 +21733,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-18T15:58:37.242Z",
+      "azureLastUpdated": "2026-11-18T16:28:43.524Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23995,7 +23995,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-18T15:58:37.867Z",
+      "azureLastUpdated": "2026-11-18T16:28:44.133Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24856,7 +24856,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-18T15:58:39.196Z",
+      "azureLastUpdated": "2026-11-18T16:28:45.466Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 241,
@@ -29716,7 +29716,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-18T15:58:40.090Z",
+      "azureLastUpdated": "2026-11-18T16:28:46.115Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30430,7 +30430,7 @@
       "progress": 43,
       "manualRagStatus": "auto",
       "executiveSummary": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
-      "azureLastUpdated": "2026-11-18T15:58:36.562Z",
+      "azureLastUpdated": "2026-11-18T16:28:42.636Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -31092,7 +31092,7 @@
       "progress": 57,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
-      "azureLastUpdated": "2026-11-18T15:58:29.460Z",
+      "azureLastUpdated": "2026-11-18T16:28:33.855Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32276,7 +32276,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-18T15:58:33.136Z",
+      "azureLastUpdated": "2026-11-18T16:28:38.201Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32844,7 +32844,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
-      "azureLastUpdated": "2026-11-18T15:58:26.592Z",
+      "azureLastUpdated": "2026-11-18T16:28:30.127Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32991,7 +32991,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
-      "azureLastUpdated": "2026-11-18T15:58:27.342Z",
+      "azureLastUpdated": "2026-11-18T16:28:31.537Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33221,7 +33221,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
-      "azureLastUpdated": "2026-11-18T15:58:36.096Z",
+      "azureLastUpdated": "2026-11-18T16:28:41.986Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33637,7 +33637,7 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 45,
+          "hours": 47,
           "percent": 100
         }
       ]
@@ -33742,14 +33742,14 @@
           "eapPhase": "Desenvolvimento",
           "month": "OUT / 26",
           "startDate": "2026-11-09",
-          "targetDate": "2026-11-13",
+          "targetDate": "2026-11-18",
           "dateStr": "11/11/2026",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false
+          "isDelayed": false,
+          "isTightMargin": true
         },
         {
           "id": "manual-act-1794403280802",
@@ -33822,8 +33822,8 @@
           "type": "Feature",
           "eapPhase": "Homologação",
           "month": "OUT / 26",
-          "startDate": "2026-11-16",
-          "targetDate": "2026-11-16",
+          "startDate": "2026-11-19",
+          "targetDate": "2026-11-19",
           "dateStr": "11/11/2026",
           "ilcHours": 0,
           "ilcHoursTotal": 0,
@@ -34042,11 +34042,10 @@
           }
         ]
       },
-      "ragStatus": "red",
-      "varianceDays": 3,
+      "ragStatus": "amber",
+      "varianceDays": 0,
       "inconsistencies": [
-        "NO_HOURS",
-        "DELAYED_ITEMS"
+        "NO_HOURS"
       ],
       "monthlyHours": [],
       "hasManualProgress": true,

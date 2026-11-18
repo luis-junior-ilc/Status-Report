@@ -10,8 +10,8 @@
     "statusPulse": {
       "totalActive": 9,
       "onTrack": 6,
-      "attention": 1,
-      "critical": 2,
+      "attention": 2,
+      "critical": 1,
       "averageProgress": 62
     },
     "activeProjects": [
@@ -178,10 +178,10 @@
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
         "progress": 88,
-        "ragStatus": "red",
+        "ragStatus": "amber",
         "agreedDelivery": "2026-11-30",
         "targetDelivery": "2026-11-16",
-        "varianceDays": 2,
+        "varianceDays": 0,
         "statusReport": ".",
         "statusReportDate": "2026-11-03",
         "previousStatusReport": ".",
