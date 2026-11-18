@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-17T20:28:51.093Z",
+  "lastSync": "2026-11-18T15:28:39.934Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T20:28:26.461Z",
+      "azureLastUpdated": "2026-11-18T15:28:23.321Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7927,7 +7927,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
-      "azureLastUpdated": "2026-11-17T20:28:27.311Z",
+      "azureLastUpdated": "2026-11-18T15:28:23.815Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8227,7 +8227,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T20:28:28.921Z",
+      "azureLastUpdated": "2026-11-18T15:28:24.468Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8620,7 +8620,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T20:28:30.530Z",
+      "azureLastUpdated": "2026-11-18T15:28:24.960Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8964,7 +8964,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T20:28:33.794Z",
+      "azureLastUpdated": "2026-11-18T15:28:26.180Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9086,7 +9086,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-17T20:28:34.958Z",
+      "azureLastUpdated": "2026-11-18T15:28:26.659Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9917,7 +9917,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
-      "azureLastUpdated": "2026-11-17T20:28:37.131Z",
+      "azureLastUpdated": "2026-11-18T15:28:27.851Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11414,7 +11414,7 @@
       "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-17T20:28:37.915Z",
+      "azureLastUpdated": "2026-11-18T15:28:28.422Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11790,7 +11790,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-17T20:28:38.755Z",
+      "azureLastUpdated": "2026-11-18T15:28:29.050Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12166,13 +12166,35 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
-      "azureLastUpdated": "2026-11-17T20:28:39.540Z",
+      "azureLastUpdated": "2026-11-18T15:28:29.757Z",
       "currentIterationName": null,
       "ragStatus": "red",
-      "varianceDays": 4,
+      "varianceDays": 5,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
+        {
+          "id": "7775",
+          "azureId": 7775,
+          "title": "Versão 55",
+          "fullTitle": "#7775 Versão 55",
+          "rawTitle": "Versão 55",
+          "type": "User Story",
+          "state": "New",
+          "assignedTo": null,
+          "eapPhase": "Desenvolvimento",
+          "month": "OUT / 26",
+          "startDate": null,
+          "targetDate": null,
+          "dateStr": "Iteration 1",
+          "ilcHours": 0,
+          "ilcHoursTotal": 0,
+          "clientHours": 0,
+          "status": "planned",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": []
+        },
         {
           "id": "7119",
           "azureId": 7119,
@@ -13387,7 +13409,7 @@
             "executed": 768,
             "percentage": 142,
             "completed": false,
-            "deliverablesTotal": 8,
+            "deliverablesTotal": 9,
             "deliverablesCompleted": 6
           },
           {
@@ -13503,7 +13525,7 @@
       "progress": 84,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
-      "azureLastUpdated": "2026-11-17T20:28:40.429Z",
+      "azureLastUpdated": "2026-11-18T15:28:30.317Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -14808,7 +14830,7 @@
       "progress": 83,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-17T20:28:42.425Z",
+      "azureLastUpdated": "2026-11-18T15:28:31.908Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -15607,7 +15629,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T20:28:44.741Z",
+      "azureLastUpdated": "2026-11-18T15:28:34.434Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21711,7 +21733,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-17T20:28:47.454Z",
+      "azureLastUpdated": "2026-11-18T15:28:37.006Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -23973,7 +23995,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-17T20:28:48.477Z",
+      "azureLastUpdated": "2026-11-18T15:28:37.790Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24834,10 +24856,10 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-17T20:28:50.011Z",
+      "azureLastUpdated": "2026-11-18T15:28:39.295Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
-      "varianceDays": 240,
+      "varianceDays": 241,
       "hasManualProgress": false,
       "hasManualPlannedDates": true,
       "activities": [
@@ -29694,7 +29716,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-17T20:28:51.093Z",
+      "azureLastUpdated": "2026-11-18T15:28:39.934Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30408,7 +30430,7 @@
       "progress": 43,
       "manualRagStatus": "auto",
       "executiveSummary": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
-      "azureLastUpdated": "2026-11-17T20:28:46.351Z",
+      "azureLastUpdated": "2026-11-18T15:28:36.138Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30469,12 +30491,12 @@
           "startDate": "2026-10-29",
           "targetDate": "2026-11-14",
           "dateStr": "14/11/2026",
-          "ilcHours": 97,
-          "ilcHoursTotal": 111,
+          "ilcHours": 105,
+          "ilcHoursTotal": 117,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": false,
-          "isTightMargin": true,
+          "isDelayed": true,
+          "isTightMargin": false,
           "linkedTasks": [
             {
               "id": 7341,
@@ -30590,11 +30612,22 @@
               "id": 7766,
               "title": "[FE] Gestão de Demandas: seguir a versão nova da Gestão do portal (homologação)",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 8,
-              "completedWork": 0,
+              "completedWork": 8,
               "startDate": "2026-11-17",
+              "targetDate": "2026-11-19"
+            },
+            {
+              "id": 7776,
+              "title": "[FE] Cards de indicadores: design do Cockpit nos quadros da Gestão, ordem da informação boa para a ruim e carregamento ao filtrar",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 6,
+              "completedWork": 0,
+              "startDate": "2026-11-18",
               "targetDate": "2026-11-19"
             }
           ]
@@ -30718,8 +30751,8 @@
           "ilcHoursTotal": 70,
           "clientHours": 0,
           "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": true,
+          "isDelayed": true,
+          "isTightMargin": false,
           "linkedTasks": [
             {
               "id": 7344,
@@ -30910,8 +30943,8 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 397,
-        "ilcExecuted": 193,
+        "ilcPlanned": 403,
+        "ilcExecuted": 201,
         "progress": 43,
         "agreedDates": {
           "start": "2026-10-05",
@@ -30925,14 +30958,14 @@
       "hours": {
         "agreed": 340,
         "agreedHours": 340,
-        "planned": 397,
-        "executed": 193,
+        "planned": 403,
+        "executed": 201,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 397,
-        "ilcExecuted": 193,
-        "totalPlanned": 397,
-        "totalExecuted": 193,
+        "ilcPlanned": 403,
+        "ilcExecuted": 201,
+        "totalPlanned": 403,
+        "totalExecuted": 201,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -30945,9 +30978,9 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 289,
-            "executed": 161,
-            "percentage": 56,
+            "planned": 295,
+            "executed": 169,
+            "percentage": 57,
             "completed": false,
             "deliverablesTotal": 4,
             "deliverablesCompleted": 0
@@ -30982,7 +31015,7 @@
         ]
       },
       "ragStatus": "red",
-      "varianceDays": 12,
+      "varianceDays": 13,
       "inconsistencies": [
         "DELAYED_ITEMS"
       ],
@@ -31007,14 +31040,14 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 161,
-          "percent": 83.4
+          "hours": 169,
+          "percent": 84.1
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
           "hours": 32,
-          "percent": 16.6
+          "percent": 15.9
         }
       ],
       "objective": "",
@@ -31059,9 +31092,76 @@
       "progress": 57,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
-      "azureLastUpdated": "2026-11-17T20:28:36.121Z",
+      "azureLastUpdated": "2026-11-18T15:28:27.246Z",
       "currentIterationName": "Iteration 1",
       "activities": [
+        {
+          "id": "7770",
+          "azureId": 7770,
+          "title": "Smart Tracking | Evoluir geolocalização, mapa e avaliação do raio das marcações",
+          "fullTitle": "#7770 Smart Tracking | Evoluir geolocalização, mapa e avaliação do raio das marcações",
+          "rawTitle": "Smart Tracking | Evoluir geolocalização, mapa e avaliação do raio das marcações",
+          "type": "User Story",
+          "state": "Active",
+          "assignedTo": "Luis Carlos Oliveira Santos Junior",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-11-13",
+          "targetDate": "2026-11-18",
+          "dateStr": "18/11/2026",
+          "ilcHours": 3.6,
+          "ilcHoursTotal": 4,
+          "clientHours": 0,
+          "status": "in-progress",
+          "isDelayed": false,
+          "isTightMargin": true,
+          "linkedTasks": [
+            {
+              "id": 7771,
+              "title": "[DEV] Classificar marcações pelo raio do ponto",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 1,
+              "completedWork": 0.8,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-18"
+            },
+            {
+              "id": 7772,
+              "title": "[DEV] Exibir raios e atividades no mapa da viagem",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-18"
+            },
+            {
+              "id": 7773,
+              "title": "[DEV] Corrigir coordenadas e raio com auditoria",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 1,
+              "completedWork": 0.8,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-18"
+            },
+            {
+              "id": 7774,
+              "title": "[DEV] Enviar o aviso de raio à Inbox Rodopar",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-18"
+            }
+          ]
+        },
         {
           "id": "7400",
           "azureId": 7400,
@@ -32029,8 +32129,8 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 299,
-        "ilcExecuted": 162,
+        "ilcPlanned": 303,
+        "ilcExecuted": 165.6,
         "progress": 57,
         "agreedDates": {
           "start": "2026-10-01",
@@ -32044,14 +32144,14 @@
       "hours": {
         "agreed": 264,
         "agreedHours": 264,
-        "planned": 299,
-        "executed": 162,
+        "planned": 303,
+        "executed": 165.6,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 299,
-        "ilcExecuted": 162,
-        "totalPlanned": 299,
-        "totalExecuted": 162,
+        "ilcPlanned": 303,
+        "ilcExecuted": 165.6,
+        "totalPlanned": 303,
+        "totalExecuted": 165.6,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -32064,11 +32164,11 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 161,
-            "executed": 69,
-            "percentage": 43,
+            "planned": 165,
+            "executed": 72.6,
+            "percentage": 44,
             "completed": false,
-            "deliverablesTotal": 5,
+            "deliverablesTotal": 6,
             "deliverablesCompleted": 2
           },
           {
@@ -32100,7 +32200,7 @@
           }
         ]
       },
-      "ragStatus": "green",
+      "ragStatus": "amber",
       "varianceDays": 0,
       "inconsistencies": [],
       "hasManualIlcHours": true,
@@ -32112,14 +32212,14 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 58,
-          "percent": 35.8
+          "hours": 61.6,
+          "percent": 37.2
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
           "hours": 93,
-          "percent": 57.4
+          "percent": 56.2
         },
         {
           "monthKey": "2026-07",
@@ -32131,7 +32231,7 @@
           "monthKey": "2026-03",
           "label": "Mar/26",
           "hours": 9,
-          "percent": 5.6
+          "percent": 5.4
         }
       ],
       "objective": "Tem como objetivo unificar o rastreamento de frota em mapa em tempo real à gestão visual de pedidos em Kanban. Em faturamento, acelera o giro de entregas e a conversão de receitas com visibilidade financeira de cada pedido; em custo, reduz o monitoramento manual da Torre de Controle, perdas por ociosidade/sinistros (via alertas de rota/veículo) e gastos de deploy (CI/CD); e no qualitativo, entrega KPIs em tempo real, alta performance (500+ veículos simultâneos) e UX padronizada.",
@@ -32176,7 +32276,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-17T20:28:41.673Z",
+      "azureLastUpdated": "2026-11-18T15:28:31.033Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32744,7 +32844,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
-      "azureLastUpdated": "2026-11-17T20:28:31.159Z",
+      "azureLastUpdated": "2026-11-18T15:28:25.365Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -32891,7 +32991,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
-      "azureLastUpdated": "2026-11-17T20:28:32.472Z",
+      "azureLastUpdated": "2026-11-18T15:28:25.889Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33082,7 +33182,7 @@
         ]
       },
       "ragStatus": "amber",
-      "varianceDays": 0,
+      "varianceDays": 1,
       "inconsistencies": [],
       "hasManualIlcHours": true,
       "hasManualProgress": false,
@@ -33118,12 +33218,46 @@
         "start": "2026-08-01",
         "end": null
       },
-      "progress": 42,
+      "progress": 44,
       "manualRagStatus": "auto",
       "executiveSummary": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
-      "azureLastUpdated": "2026-11-17T20:28:45.586Z",
+      "azureLastUpdated": "2026-11-18T15:28:35.289Z",
       "currentIterationName": "Novembro",
       "activities": [
+        {
+          "id": "7777",
+          "azureId": 7777,
+          "title": "Revalida bloqueia o envio de código para usuários no mesmo IP #REVALIDA",
+          "fullTitle": "#7777 [Bug] Revalida bloqueia o envio de código para usuários no mesmo IP #REVALIDA",
+          "rawTitle": "[Bug] Revalida bloqueia o envio de código para usuários no mesmo IP #REVALIDA",
+          "type": "User Story",
+          "state": "Resolved",
+          "assignedTo": "Silvio Torres",
+          "eapPhase": "Desenvolvimento",
+          "month": "NOV / 26",
+          "startDate": "2026-11-18",
+          "targetDate": "2026-11-18",
+          "dateStr": "18/11/2026",
+          "ilcHours": 1,
+          "ilcHoursTotal": 1,
+          "clientHours": 0,
+          "status": "completed",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7778,
+              "title": "[DEV] Corrigir limite de envio do Revalida por conta #REVALIDA",
+              "type": "Task",
+              "state": "QA",
+              "assignedTo": "Silvio Torres",
+              "originalEstimate": 1,
+              "completedWork": 1,
+              "startDate": "2026-11-18",
+              "targetDate": "2026-11-18"
+            }
+          ]
+        },
         {
           "id": "7706",
           "azureId": 7706,
@@ -33131,7 +33265,7 @@
           "fullTitle": "#7706 Integrator - Gestão MD",
           "rawTitle": "Integrator - Gestão MD",
           "type": "User Story",
-          "state": "New",
+          "state": "Active",
           "assignedTo": "Francisco Molaia Santos",
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
@@ -33141,7 +33275,7 @@
           "ilcHours": 7,
           "ilcHoursTotal": 3,
           "clientHours": 0,
-          "status": "planned",
+          "status": "in-progress",
           "isDelayed": false,
           "isTightMargin": true,
           "linkedTasks": [
@@ -33192,14 +33326,14 @@
           "eapPhase": "Desenvolvimento",
           "month": "NOV / 26",
           "startDate": "2026-11-10",
-          "targetDate": "2026-11-12",
-          "dateStr": "12/11/2026",
+          "targetDate": "2026-11-18",
+          "dateStr": "18/11/2026",
           "ilcHours": 8,
-          "ilcHoursTotal": 3,
+          "ilcHoursTotal": 4,
           "clientHours": 0,
           "status": "in-progress",
-          "isDelayed": true,
-          "isTightMargin": false,
+          "isDelayed": false,
+          "isTightMargin": true,
           "linkedTasks": [
             {
               "id": 7541,
@@ -33211,6 +33345,17 @@
               "completedWork": 8,
               "startDate": "2026-11-10",
               "targetDate": "2026-11-12"
+            },
+            {
+              "id": 7769,
+              "title": "DevOps | Build e publicação dos artefatos do Portal Integrator em produção - 18/11/2026",
+              "type": "Task",
+              "state": "Active",
+              "assignedTo": "Francisco Molaia Santos",
+              "originalEstimate": 1,
+              "completedWork": 0,
+              "startDate": "2026-11-18",
+              "targetDate": "2026-11-18"
             }
           ]
         },
@@ -33374,9 +33519,9 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 34,
-        "ilcExecuted": 44,
-        "progress": 42,
+        "ilcPlanned": 36,
+        "ilcExecuted": 45,
+        "progress": 44,
         "agreedDates": {
           "start": "2026-10-26",
           "end": "2026-12-31"
@@ -33390,14 +33535,14 @@
       "hours": {
         "agreed": 0,
         "agreedHours": 0,
-        "planned": 34,
-        "executed": 44,
+        "planned": 36,
+        "executed": 45,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 34,
-        "ilcExecuted": 44,
-        "totalPlanned": 34,
-        "totalExecuted": 44,
+        "ilcPlanned": 36,
+        "ilcExecuted": 45,
+        "totalPlanned": 36,
+        "totalExecuted": 45,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -33410,12 +33555,12 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 34,
-            "executed": 44,
-            "percentage": 129,
+            "planned": 36,
+            "executed": 45,
+            "percentage": 125,
             "completed": false,
-            "deliverablesTotal": 5,
-            "deliverablesCompleted": 0
+            "deliverablesTotal": 6,
+            "deliverablesCompleted": 1
           },
           {
             "phase": "Homologação",
@@ -33447,7 +33592,7 @@
         ]
       },
       "ragStatus": "red",
-      "varianceDays": 8,
+      "varianceDays": 9,
       "inconsistencies": [
         "DELAYED_ITEMS"
       ],
@@ -33458,7 +33603,7 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 44,
+          "hours": 45,
           "percent": 100
         }
       ]
@@ -33864,7 +34009,7 @@
         ]
       },
       "ragStatus": "red",
-      "varianceDays": 2,
+      "varianceDays": 3,
       "inconsistencies": [
         "NO_HOURS",
         "DELAYED_ITEMS"
@@ -33878,14 +34023,14 @@
         "classification": "auto",
         "hourlyRate": 150,
         "investmentCost": 0,
-        "monthlyCostSaving": 1333,
+        "monthlyCostSaving": 10658,
         "monthlyRevenueGain": 0,
         "qualitativeTags": [
           "Escalabilidade Operacional",
           "Produtividade & Menos Retrabalho"
         ],
         "qualitativeScore": 4,
-        "notes": "1ª bateria identificou R$ 16 mil de economia e 34 oportunidades de consolidação (8 em Catalão). Mantido conservador até apuração recorrente de veículos eliminados e custo antes/depois."
+        "notes": "Melhor adequação dos perfis veiculares, maior consolidação de cargas compatíveis e programações mais assertivas quanto à capacidade, rota e janela.Comparativo: 82 viagens e 11.021 km a menos; R$ 31.973,78\nfavoráveis em custos simulados. Economia efetiva ainda em validação."
       }
     }
   ]
