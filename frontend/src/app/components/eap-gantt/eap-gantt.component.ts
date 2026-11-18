@@ -604,8 +604,8 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
         </div>
       </div>
 
-      <!-- BOTTOM SECTION: EFFORT & DISTRIBUTION DETAILS (FULL WIDTH ENTERPRISE GRID) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+      <!-- BOTTOM SECTION: EFFORT, DISTRIBUTION & ROI DETAILS (FULL WIDTH ENTERPRISE GRID) -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
         
         <!-- Left: Distribution by EAP Phase -->
         <div class="bg-white p-5 rounded-3xl border border-slate-200/90 shadow-sm flex flex-col justify-between">
@@ -613,15 +613,9 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
             <div class="flex items-center justify-between mb-3">
               <div>
                 <h3 class="text-xs font-black text-slate-800 uppercase tracking-wider">
-                  Orçamento de Horas por Etapa da EAP
+                  Orçamento de Horas
                 </h3>
-                <span class="text-[10px] text-slate-400">
-                  Consumo do esforço orçado vs entregas concluídas
-                </span>
               </div>
-              <span class="text-xs font-extrabold text-slate-700 bg-slate-100 px-2.5 py-1 rounded-xl border border-slate-200">
-                Total Orçado: {{ formatHours(project.hours.totalPlanned) }}h
-              </span>
             </div>
 
             <div class="space-y-3.5 mt-3">
@@ -632,12 +626,6 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
                       {{ i + 1 }}
                     </span>
                     <span>{{ dist.phase }}</span>
-                    <!-- Phase Scope Delivery Badge -->
-                    <span
-                      *ngIf="isPhaseCompleted(project, dist.phase)"
-                      class="text-[10px] font-black bg-emerald-100 text-emerald-800 border border-emerald-200 px-2 py-0.2 rounded-full flex items-center gap-1">
-                      ✓ Concluída
-                    </span>
                   </div>
                   <div class="text-right flex items-center gap-1.5 flex-wrap">
                     <span class="text-slate-900 font-extrabold">{{ formatHours(dist.executed) }}h</span>
@@ -658,7 +646,7 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
                 <!-- Progress bar (visualizing budget consumption) -->
                 <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden border border-slate-200/60">
                   <div
-                    [ngClass]="dist.percentage > 100 ? 'bg-amber-500' : 'bg-blue-600'"
+                    [ngClass]="isPhaseCompleted(project, dist.phase) ? 'bg-emerald-500' : (dist.percentage > 100 ? 'bg-amber-500' : 'bg-blue-600')"
                     class="h-full rounded-full transition-all duration-500"
                     [style.width.%]="Math.min(100, dist.percentage)">
                   </div>
@@ -673,25 +661,16 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
           </div>
         </div>
 
-        <!-- Right: Controle de Esforço: Acordo Comercial vs Execução Azure -->
+        <!-- Right: Controle de Esforço -->
         <div class="bg-white p-5 rounded-3xl border border-slate-200/90 shadow-sm flex flex-col justify-between">
           <div>
             <div class="flex items-center justify-between mb-3">
               <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
                 <h3 class="text-xs font-black text-slate-800 uppercase tracking-wider">
-                  Controle de Esforço: Acordo Comercial vs Execução Azure
+                  Controle de Esforço
                 </h3>
               </div>
-              <span
-                [ngClass]="{
-                  'text-emerald-700 bg-emerald-50 border-emerald-200': getAgreedPercent(project.hours.totalExecuted, getAgreedHours(project)) <= 85,
-                  'text-amber-700 bg-amber-50 border-amber-200': getAgreedPercent(project.hours.totalExecuted, getAgreedHours(project)) > 85 && getAgreedPercent(project.hours.totalExecuted, getAgreedHours(project)) <= 100,
-                  'text-rose-700 bg-rose-50 border-rose-200': getAgreedPercent(project.hours.totalExecuted, getAgreedHours(project)) > 100
-                }"
-                class="text-xs font-extrabold px-2.5 py-0.5 rounded-full border">
-                {{ getAgreedPercent(project.hours.totalExecuted, getAgreedHours(project)) }}% do Acordo Consumido
-              </span>
             </div>
 
             <!-- Big numbers / Dual comparison: Firmado Cliente | Planejado Azure | Executado Azure -->
@@ -769,8 +748,8 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
                 <div class="flex items-center gap-1">
                   <span class="text-slate-500">Saldo Contratual:</span>
                   <span
-                    [ngClass]="getAgreedBalance(project) >= 0 ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-rose-700 bg-rose-50 border-rose-200'"
-                    class="font-extrabold px-1.5 py-0.2 rounded-md border text-[10px]">
+                    [ngClass]="getAgreedBalance(project) >= 0 ? 'text-emerald-700' : 'text-rose-700'"
+                    class="font-extrabold text-[10px]">
                     {{ getAgreedBalance(project) >= 0 ? '+' + formatHours(getAgreedBalance(project)) + 'h disponíveis' : formatHours(getAgreedBalance(project)) + 'h excedidas' }}
                   </span>
                 </div>
@@ -804,6 +783,129 @@ import { Project, ProjectActivity, EapPhase, AzureAuditReport } from '../../mode
               (click)="service.activeView.set('macro')"
               class="text-blue-600 hover:text-blue-800 font-bold transition cursor-pointer">
               ← Voltar ao Portfólio
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: ROI (Quantitativo + Qualitativo) -->
+        <div *ngIf="getRoiMetrics(project) as roiData" class="bg-white p-5 rounded-3xl border border-slate-200/90 shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0"></span>
+                <h3 class="text-xs font-black text-slate-800 uppercase tracking-wider truncate">
+                  ROI
+                </h3>
+              </div>
+              <span
+                [ngClass]="roiData.badgeClass"
+                class="text-[11px] font-extrabold px-2.5 py-0.5 rounded-full border shrink-0">
+                {{ roiData.verdictLabel }}
+              </span>
+            </div>
+
+            <ng-container *ngIf="roiData.hasData; else noRoiTemplate">
+              <!-- 3 Key Financial Boxes -->
+              <div class="grid grid-cols-3 gap-2 mb-3">
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-2.5 text-center flex flex-col justify-between">
+                  <span class="text-[10px] font-bold text-slate-600 uppercase tracking-wider">💸 Investimento</span>
+                  <div class="my-1">
+                    <span class="text-sm sm:text-base font-black text-slate-900 tracking-tight leading-none">
+                      {{ formatCurrency(roiData.investment) }}
+                    </span>
+                  </div>
+                  <span class="text-[9px] text-slate-500 font-semibold block">Custo do Projeto</span>
+                </div>
+
+                <div class="bg-emerald-50/80 border border-emerald-200/90 rounded-2xl p-2.5 text-center flex flex-col justify-between">
+                  <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider">📈 Retorno 12m</span>
+                  <div class="my-1">
+                    <span class="text-sm sm:text-base font-black text-emerald-700 tracking-tight leading-none">
+                      {{ formatCurrency(roiData.annualBenefit) }}
+                    </span>
+                  </div>
+                  <span class="text-[9px] text-emerald-700 font-semibold block">Economia + Lucro</span>
+                </div>
+
+                <div
+                  [ngClass]="roiData.netImpact >= 0 ? 'bg-blue-50/80 border-blue-200/90' : 'bg-rose-50/80 border-rose-200/90'"
+                  class="border rounded-2xl p-2.5 text-center flex flex-col justify-between">
+                  <span
+                    [ngClass]="roiData.netImpact >= 0 ? 'text-blue-800' : 'text-rose-800'"
+                    class="text-[10px] font-bold uppercase tracking-wider">
+                    ⚖️ Líquido
+                  </span>
+                  <div class="my-1">
+                    <span
+                      [ngClass]="roiData.netImpact >= 0 ? 'text-blue-700' : 'text-rose-700'"
+                      class="text-sm sm:text-base font-black tracking-tight leading-none">
+                      {{ roiData.netImpact >= 0 ? '+' : '' }}{{ formatCurrency(roiData.netImpact) }}
+                    </span>
+                  </div>
+                  <span
+                    [ngClass]="roiData.netImpact >= 0 ? 'text-blue-700' : 'text-rose-700'"
+                    class="text-[9px] font-semibold block">
+                    {{ roiData.paybackMonths !== null ? 'Payback: ' + roiData.paybackMonths + 'm' : 'Sem payback' }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Monthly Breakdown + Stage -->
+              <div class="bg-slate-50/90 rounded-2xl p-3 border border-slate-200/80 space-y-1.5 mb-3 text-[11px]">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-600 font-medium">Economia de Custos (mês):</span>
+                  <span class="font-bold text-emerald-700">{{ formatCurrency(roiData.monthlyCostSaving) }}/mês</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-600 font-medium">Ganho de Receita/Margem (mês):</span>
+                  <span class="font-bold text-blue-700">{{ formatCurrency(roiData.monthlyRevenueGain) }}/mês</span>
+                </div>
+                <div class="flex items-center justify-between pt-1 border-t border-slate-200/70">
+                  <span class="text-slate-500 font-medium">Base da Medição:</span>
+                  <span class="font-bold text-slate-800">
+                    {{ roiData.stage === 'realized' ? '✅ Validado c/ Operação' : '📐 Estimativa Gerencial (12m)' }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Qualitative Impact -->
+              <div *ngIf="roiData.qualitativeScore > 0 || roiData.qualitativeTags.length > 0 || roiData.notes" class="space-y-1.5">
+                <div class="flex items-center justify-between text-[11px]">
+                  <span class="font-bold text-slate-700">Impacto Qualitativo &amp; Estratégico</span>
+                  <span *ngIf="roiData.qualitativeScore > 0" class="font-extrabold text-amber-600">
+                    ★ {{ roiData.qualitativeScore }}/5
+                  </span>
+                </div>
+                <div *ngIf="roiData.qualitativeTags.length > 0" class="flex flex-wrap gap-1">
+                  <span *ngFor="let tag of roiData.qualitativeTags"
+                    class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 border border-indigo-200/80">
+                    {{ tag }}
+                  </span>
+                </div>
+                <p *ngIf="roiData.notes" class="text-[11px] text-slate-600 leading-snug line-clamp-2">
+                  {{ roiData.notes }}
+                </p>
+              </div>
+            </ng-container>
+
+            <ng-template #noRoiTemplate>
+              <div class="bg-slate-50/80 border border-dashed border-slate-300 rounded-2xl p-4 text-center space-y-2 my-2">
+                <div class="text-2xl">💹</div>
+                <p class="text-xs font-bold text-slate-700">ROI ainda não mapeado para este projeto</p>
+                <p class="text-[11px] text-slate-500 leading-relaxed">
+                  Informe a economia mensal de custos, ganho de receita e impactos qualitativos na <strong>Curadoria</strong> para calcular automaticamente o ROI e o Payback.
+                </p>
+              </div>
+            </ng-template>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span>Metodologia Híbrida (12m + Qualitativo)</span>
+            <button
+              *ngIf="service.isLocalEnvironment()"
+              (click)="service.isAdminOpen.set(true)"
+              class="text-emerald-700 hover:text-emerald-900 font-bold transition cursor-pointer">
+              ✏️ Configurar na Curadoria
             </button>
           </div>
         </div>
@@ -1688,6 +1790,14 @@ export class EapGanttComponent {
   getPercent(num: number, den: number): number {
     if (!den || den <= 0) return 0;
     return Math.min(100, Math.round((num / den) * 100));
+  }
+
+  formatCurrency(val?: number | null): string {
+    return this.service.formatCurrency(val);
+  }
+
+  getRoiMetrics(project?: Project | null) {
+    return this.service.calculateProjectRoi(project);
   }
 
   cleanActivityTitle(rawTitle?: string | null): string {

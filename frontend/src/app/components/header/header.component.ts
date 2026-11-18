@@ -75,7 +75,8 @@ import { ProjectService } from '../../services/project.service';
               <span>Home</span>
             </button>
 
-            <!-- 2. Cards -->
+            <!-- 2. Cards (oculto no menu) -->
+            <!--
             <button
               (click)="service.activeView.set('cards')"
               [ngClass]="service.activeView() === 'cards' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'"
@@ -86,8 +87,10 @@ import { ProjectService } from '../../services/project.service';
               </svg>
               <span>Cards</span>
             </button>
+            -->
 
-            <!-- 3. Tabela -->
+            <!-- 3. Tabela (oculto no menu) -->
+            <!--
             <button
               (click)="service.activeView.set('table')"
               [ngClass]="service.activeView() === 'table' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'"
@@ -98,6 +101,7 @@ import { ProjectService } from '../../services/project.service';
               </svg>
               <span>Tabela</span>
             </button>
+            -->
 
             <!-- 4. Cronograma -->
             <button
@@ -123,7 +127,8 @@ import { ProjectService } from '../../services/project.service';
               <span>Sustentação</span>
             </button>
 
-            <!-- 6. Equipe -->
+            <!-- 6. Equipe (oculto no menu) -->
+            <!--
             <button
               (click)="service.activeView.set('team')"
               [ngClass]="service.activeView() === 'team' ? 'bg-indigo-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'"
@@ -134,8 +139,21 @@ import { ProjectService } from '../../services/project.service';
               </svg>
               <span>Equipe</span>
             </button>
+            -->
 
-            <!-- 7. Status Report -->
+            <!-- 7. ROI -->
+            <button
+              (click)="service.activeView.set('roi')"
+              [ngClass]="service.activeView() === 'roi' ? 'bg-emerald-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'"
+              class="px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer"
+              title="Visão Executiva de ROI & Impacto Financeiro">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              <span>ROI</span>
+            </button>
+
+            <!-- 8. Status Report -->
             <button
               (click)="service.activeView.set('report')"
               [ngClass]="service.activeView() === 'report' ? 'bg-blue-600 text-white shadow-xs' : 'text-slate-400 hover:text-white'"

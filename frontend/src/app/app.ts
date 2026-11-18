@@ -12,6 +12,7 @@ import { CuratorModalComponent } from './components/curator-modal/curator-modal.
 import { ExecutiveReportComponent } from './components/executive-report/executive-report.component';
 import { MaintenanceDashboardComponent } from './components/maintenance-dashboard/maintenance-dashboard.component';
 import { TeamAllocationComponent } from './components/team-allocation/team-allocation.component';
+import { RoiDashboardComponent } from './components/roi-dashboard/roi-dashboard.component';
 import { LoginCardComponent } from './components/login-card/login-card.component';
 
 @Component({
@@ -30,6 +31,7 @@ import { LoginCardComponent } from './components/login-card/login-card.component
     ExecutiveReportComponent,
     MaintenanceDashboardComponent,
     TeamAllocationComponent,
+    RoiDashboardComponent,
     LoginCardComponent
   ],
   templateUrl: './app.html',

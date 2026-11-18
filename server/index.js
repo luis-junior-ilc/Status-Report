@@ -647,17 +647,12 @@ app.post('/api/public/export-pdf', checkViewerAuth, async (req, res) => {
   pdfRenderCache.set(token, fullHtml);
   setTimeout(() => pdfRenderCache.delete(token), 60000);
   const tmpPdfPath = path.join(os.tmpdir(), `status_report_${token}.pdf`);
-  const isFreshHtml = html.includes('data-pdf-v4="true"');
-  const detectedTheme = html.includes('theme-light') ? 'light' : 'dark';
-  const renderUrl = isFreshHtml
-    ? `http://localhost:${config.port}/api/internal/pdf-render/${token}`
-    : `http://localhost:${config.port}/?view=report&theme=${detectedTheme}`;
+  const renderUrl = `http://localhost:${config.port}/api/internal/pdf-render/${token}`;
 
   const browserArgs = [
     '--headless=new',
     '--disable-gpu',
     '--no-pdf-header-footer',
-    ...(isFreshHtml ? [] : ['--virtual-time-budget=4500']),
     `--print-to-pdf=${tmpPdfPath}`,
     renderUrl
   ];

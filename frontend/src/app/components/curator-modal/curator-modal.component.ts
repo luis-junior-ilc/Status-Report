@@ -148,6 +148,31 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                   </button>
                 </div>
 
+                <!-- Quick Category Pills: Todos | Projetos Novos | Sustentação -->
+                <div class="grid grid-cols-3 gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-[10px] font-bold">
+                  <button
+                    type="button"
+                    (click)="filterCategories.set([]); selectFirstIfCurrentNotVisible()"
+                    [ngClass]="filterCategories().length === 0 ? 'bg-white text-slate-900 shadow-2xs' : 'text-slate-500 hover:text-slate-800'"
+                    class="py-1 px-1.5 rounded-lg transition cursor-pointer truncate">
+                    Todos ({{ service.adminProjects().length }})
+                  </button>
+                  <button
+                    type="button"
+                    (click)="filterCategories.set(['new_project']); selectFirstIfCurrentNotVisible()"
+                    [ngClass]="filterCategories().length === 1 && filterCategories()[0] === 'new_project' ? 'bg-blue-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'"
+                    class="py-1 px-1.5 rounded-lg transition cursor-pointer truncate">
+                    🚀 Novos ({{ getCategoryCount('new_project') }})
+                  </button>
+                  <button
+                    type="button"
+                    (click)="filterCategories.set(['maintenance']); selectFirstIfCurrentNotVisible()"
+                    [ngClass]="filterCategories().length === 1 && filterCategories()[0] === 'maintenance' ? 'bg-purple-600 text-white shadow-2xs' : 'text-slate-600 hover:text-slate-900'"
+                    class="py-1 px-1.5 rounded-lg transition cursor-pointer truncate">
+                    🛠️ Sust. ({{ getCategoryCount('maintenance') }})
+                  </button>
+                </div>
+
                 <!-- Filters Dropdown Trigger Row -->
                 <div class="flex items-center gap-1.5">
                   <!-- Dropdown Trigger Button -->
@@ -173,17 +198,14 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                       </svg>
                     </button>
 
-                    <!-- Invisible backdrop to close popover when clicking outside -->
+                    <!-- Fixed Centered Filter Overlay (never clipped by sidebar overflow) -->
                     <div
                       *ngIf="isFilterDropdownOpen()"
                       (click)="isFilterDropdownOpen.set(false)"
-                      class="fixed inset-0 z-40">
-                    </div>
-
-                    <!-- Dropdown Popover Panel -->
-                    <div
-                      *ngIf="isFilterDropdownOpen()"
-                      class="absolute left-0 top-full mt-1.5 w-full min-w-[280px] max-w-[340px] bg-white rounded-2xl shadow-2xl border border-slate-200 z-50 p-3.5 max-h-[70vh] overflow-y-auto space-y-3.5 animate-in fade-in zoom-in-95 duration-150">
+                      class="fixed inset-0 z-[70] bg-slate-900/35 backdrop-blur-[1px] flex items-center justify-center p-4">
+                      <div
+                        (click)="$event.stopPropagation()"
+                        class="w-full max-w-[580px] bg-white rounded-2xl shadow-2xl border border-slate-200 p-4 max-h-[82vh] overflow-y-auto space-y-3 animate-in fade-in zoom-in-95 duration-150">
                       
                       <!-- Header in Popover -->
                       <div class="flex items-center justify-between pb-2 border-b border-slate-100">
@@ -199,8 +221,46 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                         </button>
                       </div>
 
-                      <!-- Group 1: Visibilidade -->
-                      <div class="space-y-1.5">
+                      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="space-y-3">
+                          <!-- Group 0: Categoria (Projetos Novos vs Sustentação) -->
+                          <div class="space-y-1.5">
+                            <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider flex items-center justify-between">
+                              <span>Categoria</span>
+                              <span class="text-[9px] text-slate-400 font-normal">Tipo de esteira</span>
+                            </div>
+                            <div class="space-y-1">
+                              <label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-slate-50 cursor-pointer text-xs text-slate-700 select-none">
+                                <span class="flex items-center gap-2">
+                                  <input
+                                    type="checkbox"
+                                    [checked]="filterCategories().includes('new_project')"
+                                    (change)="toggleFilter(filterCategories, 'new_project')"
+                                    class="w-3.5 h-3.5 text-blue-600 rounded border-slate-300 focus:ring-blue-500 cursor-pointer">
+                                  <span>🚀 Projetos Novos</span>
+                                </span>
+                                <span class="text-[10px] font-bold bg-blue-50 text-blue-700 px-1.5 py-0.2 rounded border border-blue-200">
+                                  {{ getCategoryCount('new_project') }}
+                                </span>
+                              </label>
+                              <label class="flex items-center justify-between p-1.5 rounded-lg hover:bg-slate-50 cursor-pointer text-xs text-slate-700 select-none">
+                                <span class="flex items-center gap-2">
+                                  <input
+                                    type="checkbox"
+                                    [checked]="filterCategories().includes('maintenance')"
+                                    (change)="toggleFilter(filterCategories, 'maintenance')"
+                                    class="w-3.5 h-3.5 text-purple-600 rounded border-slate-300 focus:ring-purple-500 cursor-pointer">
+                                  <span>🛠️ Sustentação</span>
+                                </span>
+                                <span class="text-[10px] font-bold bg-purple-50 text-purple-700 px-1.5 py-0.2 rounded border border-purple-200">
+                                  {{ getCategoryCount('maintenance') }}
+                                </span>
+                              </label>
+                            </div>
+                          </div>
+
+                          <!-- Group 1: Visibilidade -->
+                          <div class="space-y-1.5 pt-2 border-t border-slate-100">
                         <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider flex items-center justify-between">
                           <span>Visibilidade</span>
                           <span class="text-[9px] text-slate-400 font-normal">Exibição pública</span>
@@ -272,9 +332,11 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                           </label>
                         </div>
                       </div>
+                        </div>
 
+                        <div class="space-y-3">
                       <!-- Group 3: Clientes -->
-                      <div class="space-y-1.5 pt-2 border-t border-slate-100">
+                      <div class="space-y-1.5">
                         <div class="text-[10px] font-black text-slate-400 uppercase tracking-wider flex items-center justify-between">
                           <span>Clientes</span>
                           <span class="text-[9px] text-slate-400 font-normal">Portfólio</span>
@@ -344,6 +406,8 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                           </span>
                         </label>
                       </div>
+                        </div>
+                      </div>
 
                       <!-- Action Button to close popover -->
                       <div class="pt-2 border-t border-slate-100 flex items-center justify-end">
@@ -351,10 +415,11 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                           type="button"
                           (click)="isFilterDropdownOpen.set(false)"
                           class="w-full py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-bold transition shadow-xs cursor-pointer text-center">
-                          Fechar
+                          Aplicar e Fechar
                         </button>
                       </div>
 
+                      </div>
                     </div>
                   </div>
 
@@ -438,42 +503,41 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                   [ngClass]="selectedProjectId() === p.id ? 'bg-blue-50/80 border-blue-400 text-blue-950 shadow-xs' : 'bg-white hover:bg-slate-50/80 border-slate-200 text-slate-800'"
                   class="p-3 rounded-2xl border cursor-pointer transition flex flex-col gap-1.5">
                   
-                  <div class="flex items-center justify-between gap-1">
-                    <span class="text-xs font-bold leading-tight line-clamp-1" [title]="p.name">
-                      {{ p.name }}
-                    </span>
-                    <div class="flex items-center gap-1 shrink-0 flex-wrap justify-end">
-                      <!-- Origin Badge -->
-                      <span
-                        class="text-[9px] font-black px-1.5 py-0.2 rounded"
-                        [ngClass]="isManualProject(p) ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-sky-100 text-sky-800 border border-sky-200'">
-                        {{ isManualProject(p) ? '✍️ Manual' : '☁️ Azure' }}
-                      </span>
-                      <!-- Category Badge -->
-                      <span
-                        *ngIf="p.category === 'maintenance'"
-                        class="text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 border border-purple-200">
-                        🛠️ Sustentação
-                      </span>
-                      <!-- Status Badge -->
-                      <span
-                        class="text-[9px] font-extrabold px-1.5 py-0.2 rounded uppercase"
-                        [ngClass]="p.status === 'Ativo' ? 'bg-emerald-100 text-emerald-800' : (p.status === 'Finalizado' ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800')">
-                        {{ p.status }}
-                      </span>
-                      <!-- Visibility Badge -->
-                      <span
-                        class="text-[9px] font-bold px-1.5 py-0.2 rounded flex items-center gap-0.5"
-                        [ngClass]="p.isVisible ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-500 border border-slate-300'"
-                        [title]="p.isVisible ? 'Projeto visível no Dashboard' : 'Projeto oculto no Dashboard'">
-                        <span>{{ p.isVisible ? '👁️ Visível' : '🚫 Oculto' }}</span>
-                      </span>
-                    </div>
+                  <div class="text-xs font-bold leading-snug break-words" [title]="p.name">
+                    {{ p.name }}
                   </div>
 
                   <div class="flex items-center justify-between text-[10px] text-slate-500 font-medium">
                     <span class="font-bold text-slate-700 truncate max-w-[140px]">{{ p.client }}</span>
                     <span>{{ (p.activities?.length || 0) }} entregas • {{ formatHours(p.hours.totalPlanned) }}h (Azure)</span>
+                  </div>
+
+                  <div class="flex items-center gap-1 flex-wrap">
+                    <!-- Origin Badge -->
+                    <span
+                      class="text-[9px] font-black px-1.5 py-0.2 rounded"
+                      [ngClass]="isManualProject(p) ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-sky-100 text-sky-800 border border-sky-200'">
+                      {{ isManualProject(p) ? '✍️ Manual' : '☁️ Azure' }}
+                    </span>
+                    <!-- Category Badge -->
+                    <span
+                      *ngIf="p.category === 'maintenance'"
+                      class="text-[9px] font-black px-1.5 py-0.2 rounded bg-purple-100 text-purple-800 border border-purple-200">
+                      🛠️ Sustentação
+                    </span>
+                    <!-- Status Badge -->
+                    <span
+                      class="text-[9px] font-extrabold px-1.5 py-0.2 rounded uppercase"
+                      [ngClass]="p.status === 'Ativo' ? 'bg-emerald-100 text-emerald-800' : (p.status === 'Finalizado' ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-800')">
+                      {{ p.status }}
+                    </span>
+                    <!-- Visibility Badge -->
+                    <span
+                      class="text-[9px] font-bold px-1.5 py-0.2 rounded flex items-center gap-0.5"
+                      [ngClass]="p.isVisible ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-500 border border-slate-300'"
+                      [title]="p.isVisible ? 'Projeto visível no Dashboard' : 'Projeto oculto no Dashboard'">
+                      <span>{{ p.isVisible ? '👁️ Visível' : '🚫 Oculto' }}</span>
+                    </span>
                   </div>
 
                   <!-- Inconsistency Badges -->
@@ -741,6 +805,134 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                       <span>💡 Preencha um texto objetivo e resumido para orientar os executivos e o cliente na EAP.</span>
                       <span *ngIf="p.objective" class="font-bold">{{ p.objective.length }} caracteres</span>
                     </div>
+                  </div>
+                </div>
+
+                <!-- SECTION: METODOLOGIA DE ROI & IMPACTO DE NEGÓCIO -->
+                <div class="bg-gradient-to-br from-blue-50/70 via-white to-emerald-50/60 p-4 rounded-2xl border border-blue-200/80 space-y-3">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <h4 class="text-xs font-extrabold text-slate-900 uppercase tracking-wider flex items-center gap-2">
+                        <span>💹 ROI &amp; Impacto Financeiro (Logística)</span>
+                        <span class="text-[10px] font-bold bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full border border-blue-200">
+                          Visível na EAP
+                        </span>
+                      </h4>
+                      <p class="text-[11px] text-slate-600 mt-0.5">
+                        Preencha os ganhos mensais estimados ou realizados (12 meses) e os impactos qualitativos.
+                      </p>
+                    </div>
+                    <div *ngIf="getRoiPreview(p) as prev" class="text-right">
+                      <span
+                        [ngClass]="prev.netImpact > 0 ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : (prev.netImpact < 0 ? 'bg-rose-100 text-rose-800 border-rose-300' : 'bg-slate-100 text-slate-700 border-slate-300')"
+                        class="text-[11px] font-extrabold px-2.5 py-1 rounded-xl border inline-block">
+                        ROI: {{ prev.investment > 0 ? (prev.roiPct >= 0 ? '+' : '') + prev.roiPct + '%' : 'N/A' }}
+                        <span *ngIf="prev.paybackMonths !== null"> • Payback: {{ prev.paybackMonths }}m</span>
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div>
+                      <label class="block text-[11px] font-bold text-slate-700 mb-1">Base da Estimativa</label>
+                      <select
+                        [ngModel]="ensureRoi(p).stage"
+                        (ngModelChange)="ensureRoi(p).stage = $event"
+                        class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="projected">📐 Estimativa Gerencial (12 meses)</option>
+                        <option value="realized">✅ Validado com a Operação</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="block text-[11px] font-bold text-slate-700 mb-1">Classificação Executiva</label>
+                      <select
+                        [ngModel]="ensureRoi(p).classification"
+                        (ngModelChange)="ensureRoi(p).classification = $event"
+                        class="w-full text-xs bg-white border border-slate-300 rounded-xl px-3 py-2 outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="auto">🤖 Automático (pelo cálculo)</option>
+                        <option value="positive">🟢 Positivo (Economia / Lucro)</option>
+                        <option value="strategic">🔵 Estratégico (Ganho Qualitativo)</option>
+                        <option value="neutral">🟡 Em Maturação / Neutro</option>
+                        <option value="negative">🔴 Negativo</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-xs">
+                    <div>
+                      <label class="block text-[10px] font-bold text-slate-700 mb-1">Taxa/Hora TI (R$)</label>
+                      <input
+                        type="number"
+                        min="0"
+                        [ngModel]="ensureRoi(p).hourlyRate"
+                        (ngModelChange)="ensureRoi(p).hourlyRate = +$event || 0"
+                        placeholder="Ex: 150"
+                        class="w-full text-xs bg-white border border-slate-300 rounded-xl px-2.5 py-2 outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                      <label class="block text-[10px] font-bold text-slate-700 mb-1">Invest. Manual (R$)</label>
+                      <input
+                        type="number"
+                        min="0"
+                        [ngModel]="ensureRoi(p).investmentCost"
+                        (ngModelChange)="ensureRoi(p).investmentCost = +$event || 0"
+                        placeholder="0 = auto (h × taxa)"
+                        class="w-full text-xs bg-white border border-slate-300 rounded-xl px-2.5 py-2 outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                    <div>
+                      <label class="block text-[10px] font-bold text-emerald-800 mb-1">Economia/mês (R$)</label>
+                      <input
+                        type="number"
+                        min="0"
+                        [ngModel]="ensureRoi(p).monthlyCostSaving"
+                        (ngModelChange)="ensureRoi(p).monthlyCostSaving = +$event || 0"
+                        placeholder="Ex: 8000"
+                        class="w-full text-xs bg-white border border-emerald-300 rounded-xl px-2.5 py-2 outline-none focus:ring-2 focus:ring-emerald-500" />
+                    </div>
+                    <div>
+                      <label class="block text-[10px] font-bold text-blue-800 mb-1">Lucro/Receita/mês (R$)</label>
+                      <input
+                        type="number"
+                        min="0"
+                        [ngModel]="ensureRoi(p).monthlyRevenueGain"
+                        (ngModelChange)="ensureRoi(p).monthlyRevenueGain = +$event || 0"
+                        placeholder="Ex: 5000"
+                        class="w-full text-xs bg-white border border-blue-300 rounded-xl px-2.5 py-2 outline-none focus:ring-2 focus:ring-blue-500" />
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <div class="flex items-center justify-between">
+                      <label class="text-[11px] font-bold text-slate-700">Aspectos Qualitativos &amp; Nota Estratégica:</label>
+                      <select
+                        [ngModel]="ensureRoi(p).qualitativeScore"
+                        (ngModelChange)="ensureRoi(p).qualitativeScore = +$event || 0"
+                        class="text-[11px] bg-white border border-slate-300 rounded-lg px-2 py-1 font-bold text-amber-700">
+                        <option [ngValue]="0">Sem nota</option>
+                        <option [ngValue]="1">★ 1/5 - Baixo</option>
+                        <option [ngValue]="2">★ 2/5 - Moderado</option>
+                        <option [ngValue]="3">★ 3/5 - Relevante</option>
+                        <option [ngValue]="4">★ 4/5 - Alto</option>
+                        <option [ngValue]="5">★ 5/5 - Crítico / Transformador</option>
+                      </select>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <button
+                        *ngFor="let tag of ROI_QUALITATIVE_OPTIONS"
+                        type="button"
+                        (click)="toggleRoiTag(p, tag)"
+                        [ngClass]="hasRoiTag(p, tag) ? 'bg-indigo-600 text-white border-indigo-700 shadow-xs' : 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400'"
+                        class="text-[10px] font-bold px-2.5 py-1 rounded-lg border transition cursor-pointer">
+                        {{ hasRoiTag(p, tag) ? '✓ ' : '+ ' }}{{ tag }}
+                      </button>
+                    </div>
+                    <textarea
+                      [ngModel]="ensureRoi(p).notes"
+                      (ngModelChange)="ensureRoi(p).notes = $event"
+                      rows="2"
+                      placeholder="Premissas do ROI (ex: Redução de 40h/mês na conferência de CT-e + eliminação de diárias em pátio)..."
+                      class="w-full text-xs text-slate-800 bg-white border border-slate-300 rounded-xl p-2.5 outline-none focus:ring-2 focus:ring-blue-500 resize-y">
+                    </textarea>
                   </div>
                 </div>
 
@@ -1557,7 +1749,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                     </div>
                   </div>
 
-                  <!-- Linha 2: Previsão, Responsável e Descrição -->
+                  <!-- Linha 2: Previsão, Esforço, Responsável e Descrição -->
                   <div class="grid grid-cols-1 sm:grid-cols-12 gap-2">
                     <div class="sm:col-span-3">
                       <label class="block text-[10px] font-bold text-slate-500">Previsão de Início</label>
@@ -1567,6 +1759,14 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                         placeholder="Ex: Novembro/2026 ou A definir"
                         class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-800 outline-none focus:border-blue-500">
                     </div>
+                    <div class="sm:col-span-2">
+                      <label class="block text-[10px] font-bold text-slate-500">Esforço (Horas)</label>
+                      <input
+                        type="text"
+                        [(ngModel)]="item.estimatedHours"
+                        placeholder="Ex: 300"
+                        class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-xs font-bold text-indigo-700 outline-none focus:border-blue-500">
+                    </div>
                     <div class="sm:col-span-3">
                       <label class="block text-[10px] font-bold text-slate-500">Responsável</label>
                       <input
@@ -1575,7 +1775,7 @@ import { WeeklyReport, WeeklyReportProject, RoadmapProject, BoardDecision } from
                         placeholder="Ex: ILC, Comercial & PMO"
                         class="w-full bg-white border border-slate-300 rounded-lg px-2.5 py-1 text-xs text-slate-700 outline-none focus:border-blue-500">
                     </div>
-                    <div class="sm:col-span-6">
+                    <div class="sm:col-span-4">
                       <label class="block text-[10px] font-bold text-slate-500">Descrição / Escopo da Oportunidade</label>
                       <input
                         type="text"
@@ -2556,6 +2756,7 @@ export class CuratorModalComponent implements OnInit {
 
   // Dropdown checkbox filters for Projects & EAP tab
   isFilterDropdownOpen = signal<boolean>(false);
+  filterCategories = signal<string[]>([]); // 'new_project', 'maintenance'
   filterVisibilities = signal<string[]>([]); // 'visivel', 'oculto'
   filterOrigins = signal<string[]>([]); // 'azure', 'manual'
   filterClients = signal<string[]>([]); // client names
@@ -2711,12 +2912,20 @@ export class CuratorModalComponent implements OnInit {
     return this.service.adminProjects().filter(p => p.status === status).length;
   }
 
+  getCategoryCount(category: 'new_project' | 'maintenance'): number {
+    if (category === 'maintenance') {
+      return this.service.adminProjects().filter(p => p.category === 'maintenance').length;
+    }
+    return this.service.adminProjects().filter(p => p.category !== 'maintenance').length;
+  }
+
   getAlertsCount(): number {
     return this.service.adminProjects().filter(p => p.inconsistencies && p.inconsistencies.length > 0).length;
   }
 
   activeFiltersCount = computed(() => {
     let count = 0;
+    count += this.filterCategories().length;
     count += this.filterVisibilities().length;
     count += this.filterOrigins().length;
     count += this.filterClients().length;
@@ -2748,6 +2957,7 @@ export class CuratorModalComponent implements OnInit {
   }
 
   clearAllFilters() {
+    this.filterCategories.set([]);
     this.filterVisibilities.set([]);
     this.filterOrigins.set([]);
     this.filterClients.set([]);
@@ -2770,6 +2980,7 @@ export class CuratorModalComponent implements OnInit {
   filteredAdminProjects = computed(() => {
     let list = this.service.adminProjects();
     const query = this.projectSearch().toLowerCase().trim();
+    const categories = this.filterCategories();
     const visibilities = this.filterVisibilities();
     const origins = this.filterOrigins();
     const clients = this.filterClients();
@@ -2778,6 +2989,14 @@ export class CuratorModalComponent implements OnInit {
 
     return list
       .filter(p => {
+        // 0. Categoria (Projetos Novos vs Sustentação)
+        if (categories.length > 0) {
+          const isMaint = p.category === 'maintenance';
+          const matchNew = categories.includes('new_project') && !isMaint;
+          const matchMaint = categories.includes('maintenance') && isMaint;
+          if (!matchNew && !matchMaint) return false;
+        }
+
         // 1. Visibilidade (se selecionado 'visivel' e/ou 'oculto')
         if (visibilities.length > 0) {
           const isVis = !!p.isVisible;
@@ -3075,6 +3294,7 @@ export class CuratorModalComponent implements OnInit {
         lockedFields: p.lockedFields,
         priority: p.priority || 'P2',
         objective: p.objective || '',
+        roi: p.roi,
         systems: p.systems || [],
         team: p.team || { leader: '', members: [] }
       });
@@ -3382,7 +3602,8 @@ export class CuratorModalComponent implements OnInit {
       stage: 'Discovery',
       strategicValue: 'Alto',
       description: 'Descrição preliminar da oportunidade no radar.',
-      responsible: 'Comercial & PMO'
+      responsible: 'Comercial & PMO',
+      estimatedHours: ''
     });
     this.editableReport.set({ ...report });
   }
@@ -3549,6 +3770,63 @@ export class CuratorModalComponent implements OnInit {
     } finally {
       this.sendingInviteUserId.set(null);
     }
+  }
+
+  readonly ROI_QUALITATIVE_OPTIONS = [
+    'SLA & Experiência do Cliente',
+    'Compliance & Fiscal',
+    'Escalabilidade Operacional',
+    'Produtividade & Menos Retrabalho',
+    'Redução de Risco / Multas'
+  ];
+
+  ensureRoi(p: Project) {
+    if (!p.roi) {
+      p.roi = {
+        stage: 'projected',
+        classification: 'auto',
+        hourlyRate: 150,
+        investmentCost: 0,
+        monthlyCostSaving: 0,
+        monthlyRevenueGain: 0,
+        qualitativeTags: [],
+        qualitativeScore: 0,
+        notes: ''
+      };
+    }
+    if (!Array.isArray(p.roi.qualitativeTags)) {
+      p.roi.qualitativeTags = [];
+    }
+    return p.roi;
+  }
+
+  hasRoiTag(p: Project, tag: string): boolean {
+    return Array.isArray(p.roi?.qualitativeTags) && p.roi!.qualitativeTags.includes(tag);
+  }
+
+  toggleRoiTag(p: Project, tag: string) {
+    const roi = this.ensureRoi(p);
+    const idx = roi.qualitativeTags!.indexOf(tag);
+    if (idx >= 0) {
+      roi.qualitativeTags!.splice(idx, 1);
+    } else {
+      roi.qualitativeTags!.push(tag);
+    }
+  }
+
+  getRoiPreview(p: Project) {
+    const roi = p.roi;
+    if (!roi) return null;
+    const hours = p.hours?.totalExecuted || p.hours?.totalPlanned || p.hours?.agreed || p.agreedHours || 0;
+    const manual = Number(roi.investmentCost || 0);
+    const rate = Number(roi.hourlyRate || 0);
+    const investment = manual > 0 ? manual : Math.round(hours * rate);
+    const monthly = Number(roi.monthlyCostSaving || 0) + Number(roi.monthlyRevenueGain || 0);
+    const annual = monthly * 12;
+    const netImpact = annual - investment;
+    const roiPct = investment > 0 ? Math.round(((annual - investment) / investment) * 100) : 0;
+    const paybackMonths = (monthly > 0 && investment > 0) ? Math.round((investment / monthly) * 10) / 10 : null;
+    return { investment, annual, netImpact, roiPct, paybackMonths };
   }
 }
 

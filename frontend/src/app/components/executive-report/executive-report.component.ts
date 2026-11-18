@@ -49,15 +49,6 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             </option>
           </select>
 
-          <!-- Theme Switcher Button -->
-          <button
-            (click)="togglePresentationTheme()"
-            class="px-2.5 py-1.5 rounded-xl text-[11px] font-bold transition flex items-center gap-1.5 shadow-2xs cursor-pointer border"
-            [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 text-amber-300 border-slate-700 hover:bg-slate-800' : 'bg-slate-100 text-slate-800 border-slate-300 hover:bg-slate-200'"
-            [title]="'Alternar tema da apresentação (atualmente ' + (presentationTheme() === 'dark' ? 'Escuro' : 'Claro') + ')'">
-            <span>{{ presentationTheme() === 'dark' ? '🌙 Tema: Escuro' : '☀️ Tema: Claro' }}</span>
-          </button>
-
           <!-- Presentation Mode Button (Opens interactive PPT 16:9 Landscape viewer) -->
           <button
             (click)="openPresenter()"
@@ -401,6 +392,53 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             </div>
           </div>
 
+          <!-- Linha 3: Pulse Financeiro & ROI Estimado (12 Meses) -->
+          <div *ngIf="portfolioRoiSummary() as roiSum" class="mt-3 pt-3 border-t border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <div class="flex items-center gap-1.5">
+                <span class="text-xs">💹</span>
+                <span class="text-[11px] font-black text-slate-900 uppercase tracking-wider">
+                  ROI &amp; Impacto Financeiro do Portfólio (Estimativa 12m)
+                </span>
+                <span class="text-[10px] font-bold text-slate-500">
+                  • {{ roiSum.mappedCount }}/{{ roiSum.totalCount }} projetos mapeados
+                </span>
+              </div>
+              <button
+                type="button"
+                (click)="service.activeView.set('roi')"
+                class="text-[10px] font-bold text-emerald-700 hover:text-emerald-900 underline cursor-pointer print:hidden">
+                Ver Painel Completo de ROI →
+              </button>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <div class="px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                <span class="text-[10px] font-bold text-slate-600">Investimento</span>
+                <span class="text-xs font-black text-slate-900">{{ service.formatCurrency(roiSum.totalInvestment) }}</span>
+              </div>
+              <div class="px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 flex items-center justify-between">
+                <span class="text-[10px] font-bold text-emerald-800">Economia (12m)</span>
+                <span class="text-xs font-black text-emerald-700">{{ service.formatCurrency(roiSum.totalAnnualCostSaving) }}</span>
+              </div>
+              <div class="px-3 py-2 rounded-xl bg-blue-50 border border-blue-200 flex items-center justify-between">
+                <span class="text-[10px] font-bold text-blue-800">Receita (12m)</span>
+                <span class="text-xs font-black text-blue-700">{{ service.formatCurrency(roiSum.totalAnnualRevenueGain) }}</span>
+              </div>
+              <div
+                [ngClass]="roiSum.netImpact >= 0 ? 'bg-emerald-50/90 border-emerald-300' : 'bg-rose-50/90 border-rose-300'"
+                class="px-3 py-2 rounded-xl border flex items-center justify-between">
+                <span class="text-[10px] font-bold" [ngClass]="roiSum.netImpact >= 0 ? 'text-emerald-900' : 'text-rose-900'">
+                  ROI Global
+                </span>
+                <span class="text-xs font-black" [ngClass]="roiSum.netImpact >= 0 ? 'text-emerald-700' : 'text-rose-700'">
+                  {{ roiSum.totalInvestment > 0 ? ((roiSum.globalRoiPct >= 0 ? '+' : '') + roiSum.globalRoiPct + '%') : '—' }}
+                  <span *ngIf="roiSum.avgPayback !== null" class="text-[10px] font-bold opacity-80">({{ roiSum.avgPayback }}m)</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
           <!-- Priority Distribution Bar -->
           <div class="mt-4 pt-3.5 border-t border-slate-200 flex flex-col md:flex-row md:items-center justify-between gap-3">
             <div class="flex items-center gap-2">
@@ -612,18 +650,21 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               *ngFor="let road of currentReport()?.roadmapProjects"
               class="p-3.5 rounded-xl border-2 border-blue-200 bg-white text-slate-900 shadow-xs flex flex-col justify-between">
               <div>
-                <div class="flex items-center justify-between gap-1 mb-1">
-                  <span class="text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 border border-blue-300 text-blue-900">{{ road.client }}</span>
-                  <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-full" [ngClass]="getRoadmapStageClass(road.stage)">{{ road.stage }}</span>
+                <div class="flex items-center justify-between gap-1 mb-1.5">
+                  <span class="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full bg-blue-100 border border-blue-300 text-blue-900 truncate">{{ road.client }}</span>
+                  <span class="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full border truncate" [ngClass]="getRoadmapStageClass(road.stage)">{{ road.stage }}</span>
+                  <span class="text-[8.5px] font-bold px-1.5 py-0.5 rounded-full border truncate"
+                    [ngClass]="getStrategicValueBadgeClass(road.strategicValue)">
+                    {{ road.strategicValue }}
+                  </span>
                 </div>
                 <h4 class="text-xs font-black truncate leading-snug text-slate-950" [title]="road.name">{{ road.name }}</h4>
                 <p class="text-[10px] leading-snug line-clamp-2 mt-1 text-slate-700 font-medium">{{ road.description }}</p>
               </div>
-              <div class="mt-2.5 pt-1.5 border-t border-slate-200 flex items-center justify-between text-[9px] text-slate-600">
-                <span>Início: <strong class="text-slate-800">{{ road.estimatedStart }}</strong></span>
-                <span class="text-[9px] px-2 py-0.5 rounded-full font-black border shadow-2xs"
-                  [ngClass]="getStrategicValueBadgeClass(road.strategicValue)">
-                  Valor: {{ road.strategicValue }}
+              <div class="mt-2.5 pt-1.5 border-t border-slate-200 flex items-center justify-between gap-2 text-[9px] text-slate-600">
+                <span class="truncate">Início: <strong class="text-slate-800">{{ road.estimatedStart }}</strong></span>
+                <span *ngIf="road.estimatedHours" class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200 font-bold shrink-0">
+                  ⏱️ {{ road.estimatedHours }}h
                 </span>
               </div>
             </div>
@@ -667,6 +708,13 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                   </span>
                 </div>
                 <div class="flex items-center gap-1.5 shrink-0">
+                  <span
+                    *ngIf="getProjectRoi(p) as pRoi"
+                    [ngClass]="pRoi.badgeClass"
+                    class="px-2 py-0.2 rounded-full text-[9px] font-extrabold border shrink-0"
+                    [title]="'Impacto Líquido 12m: ' + service.formatCurrency(pRoi.netImpact)">
+                    {{ pRoi.verdictLabel }}
+                  </span>
                   <span
                     class="px-2 py-0.2 rounded-full text-[10px] font-extrabold shrink-0"
                     [ngClass]="getRagPillClass(p.ragStatus, p.status)">
@@ -1151,16 +1199,8 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             </div>
           </div>
 
-          <!-- Actions: Theme Toggle, Download Landscape PDF & Exit -->
+          <!-- Actions: Download Landscape PDF & Exit -->
           <div class="flex items-center gap-2">
-            <!-- Theme toggle inside presenter -->
-            <button
-              (click)="togglePresentationTheme()"
-              class="px-2.5 py-1.5 rounded-xl text-xs font-bold bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 transition flex items-center gap-1 cursor-pointer"
-              title="Alternar tema da apresentação">
-              <span>{{ presentationTheme() === 'dark' ? '🌙 Escuro' : '☀️ Claro' }}</span>
-            </button>
-
             <button
               (click)="printReport()"
               [disabled]="isDownloadingPdf()"
@@ -1197,9 +1237,15 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </ng-container>
             </ng-container>
 
-            <!-- Slide Sustentação (if exists) -->
-            <ng-container *ngIf="hasMaintenance() && currentSlideIndex() === getMaintenanceSlideIndex()">
-              <ng-container [ngTemplateOutlet]="maintenanceSlideTpl"></ng-container>
+            <!-- Slides Sustentação (2 cards por slide) -->
+            <ng-container *ngIf="hasMaintenance() && currentSlideIndex() >= getMaintenanceSlideIndex() && currentSlideIndex() < getRoadmapStartSlideIndex()">
+              <ng-container
+                [ngTemplateOutlet]="maintenanceSlideTpl"
+                [ngTemplateOutletContext]="{
+                  chunk: maintenanceChunks()[currentSlideIndex() - getMaintenanceSlideIndex()],
+                  chunkIdx: currentSlideIndex() - getMaintenanceSlideIndex()
+                }">
+              </ng-container>
             </ng-container>
 
             <!-- Slides Roadmap Estratégico (paginated in chunks of 15 cards: 3 rows x 5 cols) -->
@@ -1226,7 +1272,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
       <!-- ======================================================== -->
       <!-- PPT SLIDES PRINT CONTAINER (VISIBLE EXCLUSIVELY ON PRINT) -->
       <!-- ======================================================== -->
-      <div class="ppt-slides-print-container">
+      <div class="ppt-slides-print-container" data-pdf-v4="true">
         
         <!-- Slide 1: Visão Consolidada & Indicadores Executivos -->
         <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'">
@@ -1241,9 +1287,12 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </ng-container>
         </div>
 
-        <!-- Slide Sustentação: Indicadores, Gráficos e Sistemas Mantidos -->
-        <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'" *ngIf="hasMaintenance()">
-          <ng-container [ngTemplateOutlet]="maintenanceSlideTpl"></ng-container>
+        <!-- Slides Sustentação: Indicadores, Gráficos e Sistemas Mantidos (2 por página) -->
+        <div class="ppt-slide" [ngClass]="presentationTheme() === 'dark' ? 'theme-dark' : 'theme-light'" *ngFor="let mChunk of maintenanceChunks(); let mChunkIdx = index">
+          <ng-container
+            [ngTemplateOutlet]="maintenanceSlideTpl"
+            [ngTemplateOutletContext]="{ chunk: mChunk, chunkIdx: mChunkIdx }">
+          </ng-container>
         </div>
 
         <!-- Slides Finais: Roadmap Estratégico & Pipeline Futuro (15 por página paisagem) -->
@@ -1472,6 +1521,35 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                     </span>
                   </div>
                 </div>
+
+                <!-- ROI Estimado (12m) no PDF -->
+                <div *ngIf="portfolioRoiSummary() as roiSum"
+                  class="pt-1.5 border-t flex items-center justify-between gap-2 shrink-0"
+                  [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800' : 'border-slate-200'">
+                  <span class="text-[9px] font-black uppercase tracking-tight"
+                    [ngClass]="presentationTheme() === 'dark' ? 'text-emerald-300' : 'text-emerald-900'">
+                    💹 ROI Estimado (12m):
+                  </span>
+                  <div class="flex items-center gap-1.5 flex-wrap text-[8.5px] font-black">
+                    <span class="px-2 py-0.5 rounded border"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950 border-slate-700 text-slate-200' : 'bg-slate-100 border-slate-300 text-slate-900'">
+                      Invest.: {{ service.formatCurrency(roiSum.totalInvestment) }}
+                    </span>
+                    <span class="px-2 py-0.5 rounded border"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-emerald-950/70 border-emerald-700 text-emerald-300' : 'bg-emerald-50 border-emerald-300 text-emerald-900'">
+                      Econ.: {{ service.formatCurrency(roiSum.totalAnnualCostSaving) }}
+                    </span>
+                    <span class="px-2 py-0.5 rounded border"
+                      [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950/70 border-blue-700 text-blue-300' : 'bg-blue-50 border-blue-300 text-blue-900'">
+                      Rec.: {{ service.formatCurrency(roiSum.totalAnnualRevenueGain) }}
+                    </span>
+                    <span class="px-2 py-0.5 rounded border"
+                      [ngClass]="roiSum.netImpact >= 0 ? (presentationTheme() === 'dark' ? 'bg-emerald-900/70 border-emerald-500 text-emerald-200' : 'bg-emerald-100 border-emerald-400 text-emerald-950') : (presentationTheme() === 'dark' ? 'bg-rose-900/70 border-rose-500 text-rose-200' : 'bg-rose-100 border-rose-400 text-rose-950')">
+                      ROI: {{ roiSum.totalInvestment > 0 ? ((roiSum.globalRoiPct >= 0 ? '+' : '') + roiSum.globalRoiPct + '%') : '—' }}
+                      <span *ngIf="roiSum.avgPayback !== null">({{ roiSum.avgPayback }}m)</span>
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1632,10 +1710,17 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                       {{ p.currentMilestone }}
                     </span>
                   </div>
-                  <span class="px-2 py-0.2 rounded-full text-[9px] font-black shrink-0"
-                    [ngClass]="getRagPillClass(p.ragStatus, p.status)">
-                    {{ getRagLabel(p) }}
-                  </span>
+                  <div class="flex items-center gap-1 shrink-0">
+                    <span *ngIf="getProjectRoi(p) as pRoi"
+                      [ngClass]="pRoi.badgeClass"
+                      class="px-1.5 py-0.2 rounded-full text-[8.5px] font-black border shrink-0">
+                      {{ pRoi.verdictLabel }}
+                    </span>
+                    <span class="px-2 py-0.2 rounded-full text-[9px] font-black shrink-0"
+                      [ngClass]="getRagPillClass(p.ragStatus, p.status)">
+                      {{ getRagLabel(p) }}
+                    </span>
+                  </div>
                 </div>
 
                 <!-- Project Name -->
@@ -1776,7 +1861,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
       </ng-template>
 
       <!-- TEMPLATE 2.5: SUSTENTAÇÃO (INDICADORES, GRÁFICOS & SISTEMAS MANTIDOS) -->
-      <ng-template #maintenanceSlideTpl>
+      <ng-template #maintenanceSlideTpl let-chunk="chunk" let-chunkIdx="chunkIdx">
         <div class="h-full flex flex-col justify-between">
           <!-- Slide Header -->
           <div class="flex items-center justify-between px-3.5 py-2 rounded-xl border mb-1.5 bg-slate-900 border-slate-800 text-white shadow-xs">
@@ -1882,10 +1967,10 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </div>
             </div>
 
-            <!-- 4 Maintenance Systems Grid (2x2 in Landscape) -->
-            <div class="grid grid-cols-2 gap-2.5 flex-1 overflow-hidden">
-              <div *ngFor="let mp of currentReport()?.maintenanceSection?.projects"
-                class="p-2.5 rounded-xl border flex flex-col justify-between overflow-hidden shadow-2xs"
+            <!-- 2 Maintenance Systems Grid (2 columns in Landscape, full height without cutting text) -->
+            <div class="grid grid-cols-2 gap-3 flex-1 overflow-hidden">
+              <div *ngFor="let mp of chunk"
+                class="p-3 rounded-xl border flex flex-col justify-between overflow-hidden shadow-2xs"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-purple-500/40 text-slate-100' : 'bg-white border-2 border-purple-200 text-slate-900'">
                 <div class="space-y-1.5">
                   <div class="flex items-center justify-between gap-2">
@@ -1918,25 +2003,25 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                     <strong>⚠️ Ponto de Atenção:</strong> {{ mp.attentionPoints }}
                   </div>
 
-                  <!-- Status Reports Anterior & Atual -->
-                  <div class="grid grid-cols-2 gap-1.5">
-                    <div class="p-1.5 rounded-lg border"
+                  <!-- Status Reports Anterior (cima) & Atual (baixo) -->
+                  <div class="grid grid-cols-1 gap-2">
+                    <div class="p-2 rounded-lg border"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-950/90 border-slate-800 text-slate-300' : 'bg-slate-100 border border-slate-300 text-slate-800'">
-                      <span class="text-[7px] font-black uppercase tracking-wider block mb-0.5"
+                      <span class="text-[7.5px] font-black uppercase tracking-wider block mb-1"
                         [ngClass]="presentationTheme() === 'dark' ? 'text-slate-400' : 'text-slate-600'">
                         Status report anterior
                       </span>
-                      <p class="text-[8px] leading-snug line-clamp-2">
+                      <p class="text-[8.5px] leading-snug">
                         {{ mp.previousStatusReport || 'Sem reporte anterior registrado.' }}
                       </p>
                     </div>
-                    <div class="p-1.5 rounded-lg border"
+                    <div class="p-2 rounded-lg border"
                       [ngClass]="presentationTheme() === 'dark' ? 'bg-purple-950/60 border-purple-600/70 text-purple-100' : 'bg-purple-100/70 border border-purple-300 text-purple-950'">
-                      <span class="text-[7px] font-black uppercase tracking-wider block mb-0.5"
+                      <span class="text-[7.5px] font-black uppercase tracking-wider block mb-1"
                         [ngClass]="presentationTheme() === 'dark' ? 'text-purple-300' : 'text-purple-900'">
                         Status report atual
                       </span>
-                      <p class="text-[8px] leading-snug font-semibold line-clamp-2">
+                      <p class="text-[8.5px] leading-snug font-semibold">
                         {{ mp.statusReport || mp.summary || 'Sustentação contínua e acompanhamento regular.' }}
                       </p>
                     </div>
@@ -1960,7 +2045,7 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             <span>ILC • Governança de Sustentação & Suporte N2/N3</span>
             <span class="text-slate-500">Operações Contínuas</span>
             <span class="font-extrabold" [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-900'">
-              Slide {{ getMaintenanceSlideIndex() + 1 }} de {{ totalSlides() }}
+              Slide {{ getMaintenanceSlideIndex() + (chunkIdx || 0) + 1 }} de {{ totalSlides() }}
             </span>
           </div>
         </div>
@@ -2010,13 +2095,17 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                   class="p-2.5 rounded-xl border shadow-xs flex flex-col justify-between"
                   [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900 border-blue-800/60 text-slate-200' : 'bg-white border-2 border-blue-200 text-slate-900'">
                   <div>
-                    <div class="flex items-center justify-between gap-1 mb-1">
-                      <span class="text-[8px] font-black px-1.5 py-0.2 rounded border"
+                    <div class="flex items-center justify-between gap-1 mb-1.5">
+                      <span class="text-[7.5px] font-bold px-1.5 py-0.5 rounded-full border truncate"
                         [ngClass]="presentationTheme() === 'dark' ? 'bg-blue-950 text-blue-300 border-blue-700' : 'bg-blue-100 text-blue-900 border-blue-300'">
                         {{ road.client }}
                       </span>
-                      <span class="text-[8px] font-bold px-1.5 py-0.2 rounded-full" [ngClass]="getRoadmapStageClass(road.stage)">
+                      <span class="text-[7.5px] font-bold px-1.5 py-0.5 rounded-full border truncate" [ngClass]="getRoadmapStageClass(road.stage)">
                         {{ road.stage }}
+                      </span>
+                      <span class="text-[7.5px] font-bold px-1.5 py-0.5 rounded-full border truncate"
+                        [ngClass]="getStrategicValueBadgeClass(road.strategicValue, presentationTheme())">
+                        {{ road.strategicValue }}
                       </span>
                     </div>
                     <h4 class="text-[11px] font-black truncate leading-snug"
@@ -2029,12 +2118,11 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                       {{ road.description }}
                     </p>
                   </div>
-                  <div class="mt-2 pt-1 border-t flex items-center justify-between text-[8px]"
+                  <div class="mt-2 pt-1 border-t flex items-center justify-between gap-1 text-[8px]"
                     [ngClass]="presentationTheme() === 'dark' ? 'border-slate-800 text-slate-400' : 'border-slate-200 text-slate-600'">
-                    <span>Início: <strong [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-800'">{{ road.estimatedStart }}</strong></span>
-                    <span class="text-[8px] px-1.5 py-0.2 rounded-full font-black border"
-                      [ngClass]="getStrategicValueBadgeClass(road.strategicValue, presentationTheme())">
-                      Valor: {{ road.strategicValue }}
+                    <span class="truncate">Início: <strong [ngClass]="presentationTheme() === 'dark' ? 'text-slate-200' : 'text-slate-800'">{{ road.estimatedStart }}</strong></span>
+                    <span *ngIf="road.estimatedHours" class="px-1.5 py-0.5 rounded-full bg-indigo-50 text-indigo-800 border border-indigo-200 font-bold shrink-0">
+                      ⏱️ {{ road.estimatedHours }}h
                     </span>
                   </div>
                 </div>
@@ -2086,8 +2174,8 @@ export class ExecutiveReportComponent implements OnInit {
   service = inject(ProjectService);
   Math = Math;
 
-  // Theme signal: default to 'dark' for supreme executive contrast
-  presentationTheme = signal<'dark' | 'light'>('dark');
+  // Theme signal: fixed to 'light' (dark theme abolished)
+  presentationTheme = signal<'dark' | 'light'>('light');
 
   // Interactive Presenter signals
   isPresenterOpen = signal<boolean>(false);
@@ -2106,7 +2194,7 @@ export class ExecutiveReportComponent implements OnInit {
   }
 
   togglePresentationTheme(): void {
-    this.presentationTheme.update(t => t === 'dark' ? 'light' : 'dark');
+    this.presentationTheme.set('light');
   }
 
   currentReport = computed(() => this.service.currentWeeklyReport());
@@ -2188,11 +2276,82 @@ export class ExecutiveReportComponent implements OnInit {
         return this.compareByTargetDelivery(a, b);
       });
     } else {
-      list.sort((a, b) => this.compareByTargetDelivery(a, b));
+      // Ordenação padrão no Status Report: do melhor resultado para o pior (Verde -> Amarelo -> Vermelho, menor desvio, maior progresso)
+      list.sort((a, b) => this.compareByBestResult(a, b));
     }
 
     return list;
   });
+
+  portfolioRoiSummary = computed(() => {
+    const liveProjects = this.service.projects().filter(p => p.isVisible && p.category !== 'maintenance');
+    let totalInvestment = 0;
+    let totalAnnualCostSaving = 0;
+    let totalAnnualRevenueGain = 0;
+    let mappedCount = 0;
+    let paybackSum = 0;
+    let paybackCount = 0;
+
+    for (const p of liveProjects) {
+      const r = this.service.calculateProjectRoi(p);
+      if (!r.hasData) continue;
+      mappedCount++;
+      totalInvestment += r.investment;
+      totalAnnualCostSaving += r.monthlyCostSaving * 12;
+      totalAnnualRevenueGain += r.monthlyRevenueGain * 12;
+      if (r.paybackMonths !== null) {
+        paybackSum += r.paybackMonths;
+        paybackCount++;
+      }
+    }
+
+    const totalAnnualBenefit = totalAnnualCostSaving + totalAnnualRevenueGain;
+    const netImpact = totalAnnualBenefit - totalInvestment;
+    const globalRoiPct = totalInvestment > 0 ? Math.round(((totalAnnualBenefit - totalInvestment) / totalInvestment) * 100) : 0;
+    const avgPayback = paybackCount > 0 ? Math.round((paybackSum / paybackCount) * 10) / 10 : null;
+
+    return {
+      totalCount: liveProjects.length,
+      mappedCount,
+      totalInvestment,
+      totalAnnualCostSaving,
+      totalAnnualRevenueGain,
+      netImpact,
+      globalRoiPct,
+      avgPayback
+    };
+  });
+
+  getProjectRoi(ap: any) {
+    const live = this.service.projects().find(p => p.id === ap?.projectId || p.name === ap?.name);
+    if (!live) return null;
+    const r = this.service.calculateProjectRoi(live);
+    return r.hasData ? r : null;
+  }
+
+  compareByBestResult(a: any, b: any): number {
+    const ragRank: Record<string, number> = { green: 1, amber: 2, red: 3 };
+    const rA = ragRank[a?.ragStatus || 'green'] || 99;
+    const rB = ragRank[b?.ragStatus || 'green'] || 99;
+    if (rA !== rB) return rA - rB;
+
+    // Status Finalizado antes de Ativo/Congelado quando ambos estão verdes
+    const statusRank: Record<string, number> = { Finalizado: 1, Ativo: 2, Congelado: 3 };
+    const sA = statusRank[a?.status || 'Ativo'] || 99;
+    const sB = statusRank[b?.status || 'Ativo'] || 99;
+    if (sA !== sB) return sA - sB;
+
+    // Menor desvio (varianceDays) primeiro
+    const vA = Number(a?.varianceDays || 0);
+    const vB = Number(b?.varianceDays || 0);
+    if (vA !== vB) return vA - vB;
+
+    // Maior progresso (%) primeiro
+    const pDiff = Number(b?.progress || 0) - Number(a?.progress || 0);
+    if (pDiff !== 0) return pDiff;
+
+    return this.compareByTargetDelivery(a, b);
+  }
 
   // Milestones da EAP para os Steppers dos Cards
   milestones: string[] = [
@@ -2289,8 +2448,17 @@ export class ExecutiveReportComponent implements OnInit {
     return chunks;
   });
 
+  maintenanceChunks = computed<any[][]>(() => {
+    const list = this.currentReport()?.maintenanceSection?.projects || [];
+    const chunks: any[][] = [];
+    for (let i = 0; i < list.length; i += 2) {
+      chunks.push(list.slice(i, i + 2));
+    }
+    return chunks;
+  });
+
   hasMaintenance = computed<boolean>(() => {
-    return (this.currentReport()?.maintenanceSection?.projects?.length || 0) > 0;
+    return this.maintenanceChunks().length > 0;
   });
 
   hasRoadmap = computed<boolean>(() => {
@@ -2302,7 +2470,7 @@ export class ExecutiveReportComponent implements OnInit {
   }
 
   getRoadmapStartSlideIndex(): number {
-    return 1 + this.projectChunks().length + (this.hasMaintenance() ? 1 : 0);
+    return 1 + this.projectChunks().length + this.maintenanceChunks().length;
   }
 
   getRoadmapChunkEnd(chunkIdx: number): number {
@@ -2311,8 +2479,8 @@ export class ExecutiveReportComponent implements OnInit {
   }
 
   totalSlides = computed<number>(() => {
-    // Slide 1 (Capa & Visão Consolidada) + N project slides + 1 maintenance slide (if exists) + M roadmap slides
-    return 1 + this.projectChunks().length + (this.hasMaintenance() ? 1 : 0) + this.roadmapChunks().length;
+    // Slide 1 (Capa & Visão Consolidada) + N project slides + K maintenance slides (2 per slide) + M roadmap slides
+    return 1 + this.projectChunks().length + this.maintenanceChunks().length + this.roadmapChunks().length;
   });
 
   getChunkEnd(chunkIdx: number): number {

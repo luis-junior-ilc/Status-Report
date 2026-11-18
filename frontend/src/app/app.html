@@ -8,8 +8,8 @@
 
   <!-- Main Content Container -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 print:p-0 print:m-0 print:max-w-none print:w-full">
-    <!-- Top KPIs (Hidden in Executive Report, Maintenance and Team views which have dedicated KPIs) -->
-    <app-kpi-summary *ngIf="service.activeView() !== 'report' && service.activeView() !== 'maintenance' && service.activeView() !== 'team'"></app-kpi-summary>
+    <!-- Top KPIs (Hidden in Executive Report, Maintenance, Team and ROI views which have dedicated KPIs) -->
+    <app-kpi-summary *ngIf="service.activeView() !== 'report' && service.activeView() !== 'maintenance' && service.activeView() !== 'team' && service.activeView() !== 'roi'"></app-kpi-summary>
 
     <!-- Filters & Search Bar (Hidden in Executive Report, Maintenance and Team views) -->
     <app-filters *ngIf="service.activeView() !== 'report' && service.activeView() !== 'maintenance' && service.activeView() !== 'team'"></app-filters>
@@ -60,6 +60,9 @@
 
       <!-- 7. Análise & Alocação de Equipe -->
       <app-team-allocation *ngIf="service.activeView() === 'team'"></app-team-allocation>
+
+      <!-- 8. Painel Consolidado de ROI -->
+      <app-roi-dashboard *ngIf="service.activeView() === 'roi'"></app-roi-dashboard>
     </div>
   </main>
 

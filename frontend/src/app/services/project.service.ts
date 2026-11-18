@@ -29,7 +29,7 @@ export class ProjectService {
   selectedSystem = signal<string>('Todos'); // 'Todos' | 'Portal Integrator' | 'App Smart Tracking' | 'Smart X' | 'App ILC'
   sortBy = signal<'targetDelivery' | 'client' | 'priority' | 'progress'>('targetDelivery');
   searchQuery = signal<string>('');
-  activeView = signal<'macro' | 'eap-gantt' | 'cards' | 'table' | 'report' | 'maintenance' | 'team'>('macro');
+  activeView = signal<'macro' | 'eap-gantt' | 'cards' | 'table' | 'report' | 'maintenance' | 'team' | 'roi'>('macro');
 
   // Maintenance Dashboard signals
   maintenanceMetrics = signal<MaintenanceMetrics | null>(null);
@@ -1223,5 +1223,81 @@ export class ProjectService {
     } catch (err: any) {
       return { success: false, message: err?.error?.message || err.message || 'Erro ao enviar e-mail de convite.' };
     }
+  }
+
+  formatCurrency(val?: number | null): string {
+    const n = Number(val || 0);
+    return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+  }
+
+  calculateProjectRoi(project?: Project | null) {
+    const roi = project?.roi;
+    const agreedOrPlanned = project?.hours?.agreed ?? project?.agreedHours ?? project?.hours?.totalPlanned ?? 0;
+    const executedHours = project?.hours?.totalExecuted || agreedOrPlanned;
+    const hourlyRate = Number(roi?.hourlyRate || 0);
+    const manualInv = Number(roi?.investmentCost || 0);
+    const investment = manualInv > 0 ? manualInv : (hourlyRate > 0 ? Math.round(executedHours * hourlyRate) : 0);
+
+    const monthlyCostSaving = Number(roi?.monthlyCostSaving || 0);
+    const monthlyRevenueGain = Number(roi?.monthlyRevenueGain || 0);
+    const monthlyBenefit = monthlyCostSaving + monthlyRevenueGain;
+    const annualBenefit = monthlyBenefit * 12;
+    const netImpact = annualBenefit - investment;
+    const roiPct = investment > 0 ? Math.round(((annualBenefit - investment) / investment) * 100) : 0;
+    const paybackMonths = (monthlyBenefit > 0 && investment > 0)
+      ? Math.round((investment / monthlyBenefit) * 10) / 10
+      : null;
+
+    const qualitativeTags = Array.isArray(roi?.qualitativeTags) ? roi!.qualitativeTags : [];
+    const qualitativeScore = Number(roi?.qualitativeScore || 0);
+    const notes = (roi?.notes || '').trim();
+    const stage = roi?.stage || 'projected';
+    const hasData = investment > 0 || annualBenefit > 0 || qualitativeTags.length > 0 || qualitativeScore > 0 || !!notes;
+
+    let classification = roi?.classification || 'auto';
+    if (classification === 'auto') {
+      if (!hasData) classification = 'neutral';
+      else if (roiPct > 0 || (investment === 0 && annualBenefit > 0)) classification = 'positive';
+      else if (qualitativeScore >= 4 || (qualitativeTags.length >= 2 && annualBenefit === 0)) classification = 'strategic';
+      else if (roiPct < 0) classification = 'negative';
+      else classification = 'neutral';
+    }
+
+    let verdictLabel = 'Não Mapeado';
+    let badgeClass = 'text-slate-600 bg-slate-100 border-slate-200';
+    if (hasData) {
+      if (classification === 'positive') {
+        verdictLabel = investment > 0 ? `Positivo (+${roiPct}% ROI)` : 'Positivo';
+        badgeClass = 'text-emerald-700 bg-emerald-50 border-emerald-200';
+      } else if (classification === 'strategic') {
+        verdictLabel = 'Estratégico (Qualitativo)';
+        badgeClass = 'text-indigo-700 bg-indigo-50 border-indigo-200';
+      } else if (classification === 'negative') {
+        verdictLabel = investment > 0 ? `Negativo (${roiPct}% ROI)` : 'Negativo';
+        badgeClass = 'text-rose-700 bg-rose-50 border-rose-200';
+      } else {
+        verdictLabel = 'Em Maturação';
+        badgeClass = 'text-amber-700 bg-amber-50 border-amber-200';
+      }
+    }
+
+    return {
+      hasData,
+      stage,
+      classification,
+      investment,
+      monthlyCostSaving,
+      monthlyRevenueGain,
+      monthlyBenefit,
+      annualBenefit,
+      netImpact,
+      roiPct,
+      paybackMonths,
+      qualitativeTags,
+      qualitativeScore,
+      notes,
+      verdictLabel,
+      badgeClass
+    };
   }
 }

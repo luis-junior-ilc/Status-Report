@@ -914,6 +914,7 @@ class ProjectStore {
     if (updates.name !== undefined && updates.name.trim()) proj.name = updates.name.trim();
     if (updates.description !== undefined) proj.description = updates.description;
     if (updates.objective !== undefined) proj.objective = updates.objective;
+    if (updates.roi !== undefined) proj.roi = updates.roi;
     if (updates.client !== undefined) proj.client = this.mapClientName(updates.client);
     if (updates.category !== undefined) proj.category = updates.category;
     if (updates.status !== undefined) proj.status = updates.status;

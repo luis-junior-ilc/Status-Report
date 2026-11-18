@@ -134,6 +134,18 @@ export interface AzureAuditReport {
   items: AzureAuditItem[];
 }
 
+export interface ProjectRoi {
+  stage?: 'projected' | 'realized';
+  classification?: 'auto' | 'positive' | 'neutral' | 'strategic' | 'negative';
+  investmentCost?: number;
+  hourlyRate?: number;
+  monthlyCostSaving?: number;
+  monthlyRevenueGain?: number;
+  qualitativeTags?: string[];
+  qualitativeScore?: number;
+  notes?: string;
+}
+
 export interface Project {
   id: string;
   azureId: string | null;
@@ -141,6 +153,7 @@ export interface Project {
   name: string;
   description: string;
   objective?: string;
+  roi?: ProjectRoi;
   client: string;
   category?: 'new_project' | 'maintenance';
   status: ProjectStatus;
