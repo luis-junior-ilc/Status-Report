@@ -1,5 +1,5 @@
 {
-  "lastSync": "2026-11-19T17:40:46.844Z",
+  "lastSync": "2026-11-19T18:10:50.911Z",
   "projects": [
     {
       "id": "a197458f-88c5-4fec-8ce7-a981ee3f6709",
@@ -25,7 +25,7 @@
       "progress": 98,
       "manualRagStatus": "amber",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-19T17:40:20.621Z",
+      "azureLastUpdated": "2026-11-19T18:10:22.166Z",
       "currentIterationName": "Iteration 26",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -7927,7 +7927,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
-      "azureLastUpdated": "2026-11-19T17:40:21.153Z",
+      "azureLastUpdated": "2026-11-19T18:10:22.517Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -8227,7 +8227,7 @@
       "progress": 97,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-19T17:40:22.389Z",
+      "azureLastUpdated": "2026-11-19T18:10:23.448Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8620,7 +8620,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-19T17:40:23.147Z",
+      "azureLastUpdated": "2026-11-19T18:10:24.115Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -8964,7 +8964,7 @@
       "progress": 0,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-19T17:40:25.331Z",
+      "azureLastUpdated": "2026-11-19T18:10:25.743Z",
       "currentIterationName": null,
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9086,7 +9086,7 @@
       "progress": 54,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 4.",
-      "azureLastUpdated": "2026-11-19T17:40:26.286Z",
+      "azureLastUpdated": "2026-11-19T18:10:26.852Z",
       "currentIterationName": "Iteration 4",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -9917,7 +9917,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
-      "azureLastUpdated": "2026-11-19T17:40:28.267Z",
+      "azureLastUpdated": "2026-11-19T18:10:28.929Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11414,7 +11414,7 @@
       "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-19T17:40:28.969Z",
+      "azureLastUpdated": "2026-11-19T18:10:29.825Z",
       "currentIterationName": "Iteration 01",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -11790,7 +11790,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto segue em operação assistida.",
-      "azureLastUpdated": "2026-11-19T17:40:29.737Z",
+      "azureLastUpdated": "2026-11-19T18:10:30.868Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
@@ -12166,7 +12166,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
-      "azureLastUpdated": "2026-11-19T17:40:30.918Z",
+      "azureLastUpdated": "2026-11-19T18:10:31.851Z",
       "currentIterationName": null,
       "ragStatus": "red",
       "varianceDays": 6,
@@ -13522,14 +13522,81 @@
         "start": "2026-09-21",
         "end": null
       },
-      "progress": 84,
+      "progress": 93,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
-      "azureLastUpdated": "2026-11-19T17:40:31.709Z",
+      "azureLastUpdated": "2026-11-19T18:10:32.691Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "green",
       "varianceDays": 0,
       "activities": [
+        {
+          "id": "7313",
+          "azureId": 7313,
+          "title": "Homologação",
+          "fullTitle": "#7313 Homologação",
+          "rawTitle": "Homologação",
+          "type": "Feature",
+          "state": "New",
+          "assignedTo": "Vitor Neves",
+          "eapPhase": "Homologação",
+          "month": "DEZ / 26",
+          "startDate": "2026-11-27",
+          "targetDate": "2026-12-05",
+          "dateStr": "05/12/2026",
+          "ilcHours": 8,
+          "ilcHoursTotal": 8,
+          "clientHours": 0,
+          "status": "planned",
+          "isDelayed": false,
+          "isTightMargin": false,
+          "linkedTasks": [
+            {
+              "id": 7319,
+              "title": "[BE] Parametrização e Configuração de Webhooks de Produção",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-11-30",
+              "targetDate": "2026-12-05"
+            },
+            {
+              "id": 7320,
+              "title": "[BE] Geração de Builds, Deploy nas Lojas (Stores) e Monitoramento",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Thiago Rodrigues do Nascimento Silva",
+              "originalEstimate": 0,
+              "completedWork": 0,
+              "startDate": "2026-11-30",
+              "targetDate": "2026-12-05"
+            },
+            {
+              "id": 7529,
+              "title": "Testes Fluxo zapsign Ponta a Ponta",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Vitor Neves",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-11-10",
+              "targetDate": "2026-11-11"
+            },
+            {
+              "id": 7839,
+              "title": "[QA] Testes Fluxo zapsign Ponta a Ponta",
+              "type": "Task",
+              "state": "Closed",
+              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
+              "originalEstimate": 4,
+              "completedWork": 4,
+              "startDate": "2026-11-13",
+              "targetDate": "2026-11-19"
+            }
+          ]
+        },
         {
           "id": "7311",
           "azureId": 7311,
@@ -14120,8 +14187,8 @@
           "startDate": "2026-08-31",
           "targetDate": "2026-09-14",
           "dateStr": "14/09/2026",
-          "ilcHours": 39,
-          "ilcHoursTotal": 39,
+          "ilcHours": 35,
+          "ilcHoursTotal": 35,
           "clientHours": 0,
           "status": "completed",
           "isDelayed": false,
@@ -14166,8 +14233,8 @@
               "type": "Task",
               "state": "Closed",
               "assignedTo": "Vitor Neves",
-              "originalEstimate": 10,
-              "completedWork": 10,
+              "originalEstimate": 6,
+              "completedWork": 6,
               "startDate": "2026-10-05",
               "targetDate": "2026-10-06"
             },
@@ -14346,95 +14413,6 @@
               "completedWork": 1.5,
               "startDate": "2026-09-22",
               "targetDate": "2026-09-24"
-            }
-          ]
-        },
-        {
-          "id": "7313",
-          "azureId": 7313,
-          "title": "Homologação",
-          "fullTitle": "#7313 Homologação",
-          "rawTitle": "Homologação",
-          "type": "Feature",
-          "state": "New",
-          "assignedTo": "Vitor Neves",
-          "eapPhase": "Homologação",
-          "month": "DEZ / 26",
-          "startDate": "2026-11-27",
-          "targetDate": "2026-12-05",
-          "dateStr": "05/12/2026",
-          "ilcHours": 0,
-          "ilcHoursTotal": 32,
-          "clientHours": 0,
-          "status": "planned",
-          "isDelayed": false,
-          "isTightMargin": false,
-          "linkedTasks": [
-            {
-              "id": 7316,
-              "title": "Criação de Roteiros e Cenários de Teste",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 8,
-              "completedWork": 0,
-              "startDate": "2026-11-27",
-              "targetDate": "2027-01-05"
-            },
-            {
-              "id": 7317,
-              "title": "Execução de Testes Integrados de Ponta a Ponta (End-to-End)",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Luis Carlos Oliveira Santos Junior",
-              "originalEstimate": 16,
-              "completedWork": 0,
-              "startDate": "2026-11-27",
-              "targetDate": "2026-12-05"
-            },
-            {
-              "id": 7319,
-              "title": "[BE] Parametrização e Configuração de Webhooks de Produção",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues do Nascimento Silva",
-              "originalEstimate": 0,
-              "completedWork": 0,
-              "startDate": "2026-11-30",
-              "targetDate": "2026-12-05"
-            },
-            {
-              "id": 7320,
-              "title": "[BE] Geração de Builds, Deploy nas Lojas (Stores) e Monitoramento",
-              "type": "Task",
-              "state": "New",
-              "assignedTo": "Thiago Rodrigues do Nascimento Silva",
-              "originalEstimate": 0,
-              "completedWork": 0,
-              "startDate": "2026-11-30",
-              "targetDate": "2026-12-05"
-            },
-            {
-              "id": 7529,
-              "title": "Testes Fluxo zapsign Ponta a Ponta",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Vitor Neves",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-10",
-              "targetDate": "2026-11-11"
-            },
-            {
-              "id": 7839,
-              "title": "[QA] Testes Fluxo zapsign Ponta a Ponta",
-              "type": "Task",
-              "state": "Active",
-              "assignedTo": "Thiago Rodrigues Do Nascimento Silva",
-              "originalEstimate": 4,
-              "completedWork": 0,
-              "startDate": "2026-11-13",
-              "targetDate": "2026-11-19"
             }
           ]
         },
@@ -14675,19 +14653,19 @@
       "hours": {
         "agreed": 173.6,
         "agreedHours": 173.6,
-        "planned": 286.2,
-        "executed": 246,
+        "planned": 258.2,
+        "executed": 250,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 286.2,
-        "ilcExecuted": 246,
-        "totalPlanned": 286.2,
-        "totalExecuted": 246,
+        "ilcPlanned": 258.2,
+        "ilcExecuted": 250,
+        "totalPlanned": 258.2,
+        "totalExecuted": 250,
         "distribution": [
           {
             "phase": "Planejamento",
-            "planned": 63,
-            "executed": 63,
+            "planned": 59,
+            "executed": 59,
             "percentage": 100,
             "completed": true,
             "deliverablesTotal": 2,
@@ -14704,9 +14682,9 @@
           },
           {
             "phase": "Homologação",
-            "planned": 32,
-            "executed": 0,
-            "percentage": 0,
+            "planned": 8,
+            "executed": 8,
+            "percentage": 100,
             "completed": false,
             "deliverablesTotal": 1,
             "deliverablesCompleted": 0
@@ -14732,9 +14710,9 @@
         ]
       },
       "azureOriginal": {
-        "ilcPlanned": 286.2,
-        "ilcExecuted": 246,
-        "progress": 84,
+        "ilcPlanned": 258.2,
+        "ilcExecuted": 250,
+        "progress": 93,
         "agreedDates": {
           "start": "2026-08-31",
           "end": "2026-12-05"
@@ -14773,20 +14751,20 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 155,
-          "percent": 54.8
+          "hours": 131,
+          "percent": 52.4
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
-          "hours": 77,
+          "hours": 68,
           "percent": 27.2
         },
         {
           "monthKey": "2026-09",
           "label": "Set/26",
           "hours": 51,
-          "percent": 18
+          "percent": 20.4
         }
       ],
       "objective": "Tem como objetivo automatizar a assinatura eletrônica do contrato de transporte diretamente no app Smart Tracking via WebView e API da ZapSign. Em faturamento, reduz a desistência de motoristas e libera imediatamente a ativação no TMS Rodopar para gerar viagens faturáveis; em custo, economiza centenas de horas de desenvolvimento próprio (Build vs. Buy) com licença de apenas R$ 140 a R$ 200/mês, além de reduzir passivos jurídicos; e no qualitativo, garante validade jurídica imediata (ICP-Brasil, 2FA, geolocalização e SHA256) e suporte nativo para biometria facial futura.",
@@ -14830,7 +14808,7 @@
       "progress": 81,
       "manualRagStatus": "auto",
       "executiveSummary": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
-      "azureLastUpdated": "2026-11-19T17:40:33.591Z",
+      "azureLastUpdated": "2026-11-19T18:10:34.414Z",
       "currentIterationName": "Iteration 1",
       "ragStatus": "amber",
       "varianceDays": 1,
@@ -15677,14 +15655,14 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 99,
-          "percent": 16.2
+          "hours": 101.2,
+          "percent": 16.5
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
           "hours": 420,
-          "percent": 68.9
+          "percent": 68.6
         },
         {
           "monthKey": "2026-09",
@@ -15696,7 +15674,7 @@
           "monthKey": "2026-08",
           "label": "Ago/26",
           "hours": 90,
-          "percent": 14.8
+          "percent": 14.7
         }
       ],
       "objective": "Tem como objetivo automatizar a solicitação, cotação em leilão (Bid) e aprovação em alçadas de fretes expressos, extinguindo e-mails e PFRs manuais. Em faturamento, acelera a conversão de fretes urgentes (SLAs de 30–40 min) e garante a cobrança de taxas extras pós-pedido (diárias/horas paradas); em custo, reduz o valor do frete via aglutinação de cargas em raio de 150 km, leilão simultâneo (60% Preço / 40% Tempo) e trava contra desvios > 10% da média histórica; e no qualitativo, centraliza auditoria (\"Pasta Digital\"), segurança Anti-IDOR e parametrização sem hardcode.",
@@ -15740,7 +15718,7 @@
       "progress": 82,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-19T17:40:38.054Z",
+      "azureLastUpdated": "2026-11-19T18:10:44.886Z",
       "currentIterationName": "SPRINT 7a",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -21844,7 +21822,7 @@
       "progress": 91,
       "manualRagStatus": "auto",
       "executiveSummary": ".",
-      "azureLastUpdated": "2026-11-19T17:40:41.600Z",
+      "azureLastUpdated": "2026-11-19T18:10:47.046Z",
       "currentIterationName": "SPRINT JUL - 2022 - 1 QUINZENA",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -24106,7 +24084,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Em andamento.",
-      "azureLastUpdated": "2026-11-19T17:40:42.527Z",
+      "azureLastUpdated": "2026-11-19T18:10:47.703Z",
       "currentIterationName": null,
       "ragStatus": "green",
       "varianceDays": 0,
@@ -24967,7 +24945,7 @@
       "progress": 87,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Iteration 20.",
-      "azureLastUpdated": "2026-11-19T17:40:45.981Z",
+      "azureLastUpdated": "2026-11-19T18:10:50.286Z",
       "currentIterationName": "Iteration 20",
       "ragStatus": "red",
       "varianceDays": 242,
@@ -29827,7 +29805,7 @@
       "progress": 53,
       "manualRagStatus": "auto",
       "executiveSummary": "Projeto integrado ao Azure DevOps. Iteração atual: Sprint 5.",
-      "azureLastUpdated": "2026-11-19T17:40:46.843Z",
+      "azureLastUpdated": "2026-11-19T18:10:50.911Z",
       "currentIterationName": "Sprint 6",
       "ragStatus": "amber",
       "varianceDays": 0,
@@ -30538,10 +30516,10 @@
         "start": "2026-10-05",
         "end": null
       },
-      "progress": 41,
+      "progress": 47,
       "manualRagStatus": "auto",
       "executiveSummary": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
-      "azureLastUpdated": "2026-11-19T17:40:40.100Z",
+      "azureLastUpdated": "2026-11-19T18:10:46.292Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -30660,7 +30638,7 @@
           "startDate": "2026-10-29",
           "targetDate": "2026-11-20",
           "dateStr": "20/11/2026",
-          "ilcHours": 64,
+          "ilcHours": 86,
           "ilcHoursTotal": 97,
           "clientHours": 0,
           "status": "planned",
@@ -30715,10 +30693,10 @@
               "id": 7780,
               "title": "[FE] Smart Tracking igual à Gestão Embarcada do portal: levantamento das telas e das APIs",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 6,
-              "completedWork": 0,
+              "completedWork": 6,
               "startDate": "2026-11-18",
               "targetDate": "2026-11-20"
             },
@@ -30726,10 +30704,10 @@
               "id": 7781,
               "title": "[FE] Smart Tracking igual à Gestão Embarcada do portal: lista e detalhe da viagem",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 16,
-              "completedWork": 0,
+              "completedWork": 16,
               "startDate": "2026-11-18",
               "targetDate": "2026-11-21"
             },
@@ -30760,8 +30738,8 @@
           "startDate": "2026-10-29",
           "targetDate": "2026-11-20",
           "dateStr": "20/11/2026",
-          "ilcHours": 105,
-          "ilcHoursTotal": 125,
+          "ilcHours": 119,
+          "ilcHoursTotal": 131,
           "clientHours": 0,
           "status": "in-progress",
           "isDelayed": false,
@@ -30892,10 +30870,10 @@
               "id": 7776,
               "title": "[FE] Cards de indicadores: design do Cockpit nos quadros da Gestão, ordem da informação boa para a ruim e carregamento ao filtrar",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 6,
-              "completedWork": 0,
+              "completedWork": 6,
               "startDate": "2026-11-18",
               "targetDate": "2026-11-19"
             },
@@ -30903,12 +30881,23 @@
               "id": 7783,
               "title": "[FE] Gestão de Demandas: Tracking da demanda igual ao Tracking Logístico da Gestão nova",
               "type": "Task",
-              "state": "New",
+              "state": "QA",
               "assignedTo": "Mike Andrade",
               "originalEstimate": 8,
-              "completedWork": 0,
+              "completedWork": 8,
               "startDate": "2026-11-18",
               "targetDate": "2026-11-20"
+            },
+            {
+              "id": 7846,
+              "title": "[FE] Filtros da Gestão de Demandas e do Smart Tracking: conferência com dados reais e correção",
+              "type": "Task",
+              "state": "New",
+              "assignedTo": "Mike Andrade",
+              "originalEstimate": 6,
+              "completedWork": 0,
+              "startDate": "2026-11-19",
+              "targetDate": "2026-11-21"
             }
           ]
         },
@@ -31122,9 +31111,9 @@
         "dates": true
       },
       "azureOriginal": {
-        "ilcPlanned": 462,
-        "ilcExecuted": 213,
-        "progress": 41,
+        "ilcPlanned": 468,
+        "ilcExecuted": 249,
+        "progress": 47,
         "agreedDates": {
           "start": "2026-10-05",
           "end": "2026-12-01"
@@ -31137,14 +31126,14 @@
       "hours": {
         "agreed": 340,
         "agreedHours": 340,
-        "planned": 462,
-        "executed": 213,
+        "planned": 468,
+        "executed": 249,
         "clientPlanned": 0,
         "clientExecuted": 0,
-        "ilcPlanned": 462,
-        "ilcExecuted": 213,
-        "totalPlanned": 462,
-        "totalExecuted": 213,
+        "ilcPlanned": 468,
+        "ilcExecuted": 249,
+        "totalPlanned": 468,
+        "totalExecuted": 249,
         "distribution": [
           {
             "phase": "Planejamento",
@@ -31157,9 +31146,9 @@
           },
           {
             "phase": "Desenvolvimento",
-            "planned": 342,
-            "executed": 169,
-            "percentage": 49,
+            "planned": 348,
+            "executed": 205,
+            "percentage": 59,
             "completed": false,
             "deliverablesTotal": 4,
             "deliverablesCompleted": 0
@@ -31217,14 +31206,14 @@
         {
           "monthKey": "2026-11",
           "label": "Nov/26",
-          "hours": 169,
-          "percent": 84.1
+          "hours": 217,
+          "percent": 87.1
         },
         {
           "monthKey": "2026-10",
           "label": "Out/26",
           "hours": 32,
-          "percent": 15.9
+          "percent": 12.9
         }
       ],
       "objective": "O projeto App ILC Integrator tem como objetivo desenvolver e implantar a interface móvel (Android/iOS) integrada às APIs da plataforma logística ILC, levando mobilidade e visibilidade em tempo real às operações de clientes, transportadores e gestores. Por meio de módulos como Gestão de Demandas, Smart Tracking, Cockpit, Alertas e Frete Expresso, o aplicativo busca eliminar a dependência exclusiva do portal web, agilizar a tomada de decisão — como o acompanhamento de viagens críticas, auditoria de comprovantes e envio/aprovação de cotações — e dar resposta rápida a exceções operacionais diretamente no celular, respeitando os perfis e níveis de permissão de cada usuário.",
@@ -31269,7 +31258,7 @@
       "progress": 57,
       "manualRagStatus": "auto",
       "executiveSummary": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
-      "azureLastUpdated": "2026-11-19T17:40:27.143Z",
+      "azureLastUpdated": "2026-11-19T18:10:27.570Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -32453,7 +32442,7 @@
       "progress": 100,
       "manualRagStatus": "auto",
       "executiveSummary": "Pendente atualização do projeto no Azure",
-      "azureLastUpdated": "2026-11-19T17:40:32.574Z",
+      "azureLastUpdated": "2026-11-19T18:10:33.667Z",
       "currentIterationName": "Iteration 1",
       "activities": [
         {
@@ -33021,7 +33010,7 @@
       "progress": 6,
       "manualRagStatus": "auto",
       "executiveSummary": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
-      "azureLastUpdated": "2026-11-19T17:40:23.777Z",
+      "azureLastUpdated": "2026-11-19T18:10:24.739Z",
       "currentIterationName": null,
       "activities": [],
       "priority": "P2",
@@ -33168,7 +33157,7 @@
       "progress": 80,
       "manualRagStatus": "auto",
       "executiveSummary": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
-      "azureLastUpdated": "2026-11-19T17:40:24.709Z",
+      "azureLastUpdated": "2026-11-19T18:10:25.346Z",
       "currentIterationName": "Novembro",
       "activities": [
         {
@@ -33398,7 +33387,7 @@
       "progress": 59,
       "manualRagStatus": "auto",
       "executiveSummary": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
-      "azureLastUpdated": "2026-11-19T17:40:39.113Z",
+      "azureLastUpdated": "2026-11-19T18:10:45.660Z",
       "currentIterationName": "Novembro",
       "activities": [
         {

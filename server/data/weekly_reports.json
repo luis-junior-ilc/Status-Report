@@ -12,7 +12,7 @@
       "onTrack": 5,
       "attention": 4,
       "critical": 0,
-      "averageProgress": 62
+      "averageProgress": 63
     },
     "activeProjects": [
       {
@@ -22,7 +22,7 @@
         "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
         "status": "Ativo",
         "currentMilestone": "Planejamento",
-        "progress": 41,
+        "progress": 47,
         "ragStatus": "amber",
         "agreedDelivery": "2026-12-01",
         "targetDelivery": "2026-12-01",
@@ -32,8 +32,8 @@
         "previousStatusReport": "Está com o protótipo aprovado e em pleno desenvolvimento mobile sem impedimentos. Atualmente, o foco está na conexão das telas com o backend, reaproveitando inicialmente os endpoints e rotas já mapeados no painel web (como os de Gestão de Demandas) antes de demandar a criação ou ajuste de rotas específicas ao time de backend.",
         "previousStatusReportDate": "2026-10-27",
         "attentionPoints": "Risco de atraso caso o processo de publicação na loja não seja adiantado por e-mail.",
-        "hoursExecuted": 213,
-        "hoursPlanned": 462,
+        "hoursExecuted": 249,
+        "hoursPlanned": 468,
         "hoursAgreed": 340,
         "priority": "P2",
         "category": "new_project",
@@ -214,7 +214,7 @@
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 84,
+        "progress": 93,
         "ragStatus": "green",
         "agreedDelivery": "2026-12-05",
         "targetDelivery": "2026-12-05",
@@ -224,8 +224,8 @@
         "previousStatusReport": "A integração de assinatura eletrônica de contratos via ZapSign no onboarding de motoristas está na reta final de entrega. A estrutura de banco de dados, as configurações de produção, a rotina para salvar o PDF assinado diretamente no file server interno (garantindo link permanente para consulta sem risco de expiração) e a padronização do JSON de retorno já foram concluídas e subidas em produção no backend; no momento, o frontend mobile realiza a validação técnica final em produção — junto à correção de scroll para fontes ampliadas no Smart Tracking — para liberar os testes de QA e finalizar o alinhamento de consumo com a proc da Rodopar.",
         "previousStatusReportDate": "2026-10-06",
         "attentionPoints": "Contratos não estão sendo gerados com a assinatura automática do subcontrante, que aguarda definição.",
-        "hoursExecuted": 246,
-        "hoursPlanned": 286.2,
+        "hoursExecuted": 250,
+        "hoursPlanned": 258.2,
         "hoursAgreed": 173.6,
         "priority": "P1",
         "category": "new_project",
@@ -1472,10 +1472,10 @@
     "maintenanceSection": {
       "totalProjects": 3,
       "totalHours": 261,
-      "newProjectHours": 199,
-      "totalPeriodHours": 460,
-      "maintenancePercent": 57,
-      "newProjectPercent": 43,
+      "newProjectHours": 203,
+      "totalPeriodHours": 464,
+      "maintenancePercent": 56,
+      "newProjectPercent": 44,
       "activeSystemsCount": 4,
       "teamMembersCount": 4,
       "teamMembers": [
