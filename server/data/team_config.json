@@ -1,10 +1,43 @@
 [
   {
+    "name": "Adauto dos Santos Lucas",
+    "isVisible": true,
+    "role": "Engenheiro de Software",
+    "allocatedProjects": [
+      "TPO - TORRE DE CONTROLE - KANBAN"
+    ]
+  },
+  {
     "name": "Adriano Damasceno Otranto",
     "isVisible": true,
     "role": "Engenheiro de Software Sênior",
     "allocatedProjects": [
       "GESTÃO DE DEMANDAS (MVP)"
+    ]
+  },
+  {
+    "name": "Alan dos Santos Teixeira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "SUSTENTAÇÃO"
+    ]
+  },
+  {
+    "name": "Amanda Santos de Oliveira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "TPO - TORRE DE CONTROLE1"
+    ]
+  },
+  {
+    "name": "Ana Martins",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)",
+      "TPO - TORRE DE CONTROLE1"
     ]
   },
   {
@@ -22,6 +55,16 @@
     "role": "Especialista de Sistemas",
     "allocatedProjects": [
       "GE - GESTÃO EMBARCADA"
+    ]
+  },
+  {
+    "name": "Bruno Lima",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "GE - GESTÃO EMBARCADA - KANBAN",
+      "GESTÃO MD",
+      "INFRAESTRUTURA"
     ]
   },
   {
@@ -57,6 +100,15 @@
     ]
   },
   {
+    "name": "Diego Eduardo Oliveira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "SUSTENTAÇÃO",
+      "TPO - TORRE DE CONTROLE1"
+    ]
+  },
+  {
     "name": "Equipe de Sustentação",
     "isVisible": true,
     "role": "Especialista de Sistemas",
@@ -77,11 +129,35 @@
     ]
   },
   {
+    "name": "Fabricio Oliveira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INFRAESTRUTURA"
+    ]
+  },
+  {
+    "name": "Felipy Cabral",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "GESTÃO MD"
+    ]
+  },
+  {
     "name": "Filipe Andrade",
     "isVisible": true,
     "role": "Especialista de Sistemas",
     "allocatedProjects": [
       "GE - GESTÃO EMBARCADA"
+    ]
+  },
+  {
+    "name": "Filipe Antiqueira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "GESTÃO MD"
     ]
   },
   {
@@ -108,6 +184,14 @@
     ]
   },
   {
+    "name": "Gabriel Nathan Dias",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "ILC - INTEGRATOR (antigo)"
+    ]
+  },
+  {
     "name": "Guillermes Stephen Viana Mozzer",
     "isVisible": true,
     "role": "Especialista de Sistemas",
@@ -125,11 +209,51 @@
     ]
   },
   {
+    "name": "Igor Henrique Gonçalves Rapozo",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)"
+    ]
+  },
+  {
+    "name": "Italo Giovanni Pedroza Guglielm",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "GE - GESTÃO EMBARCADA - KANBAN"
+    ]
+  },
+  {
     "name": "Jadson Silva",
     "isVisible": true,
     "role": "Especialista de Sistemas",
     "allocatedProjects": [
       "GE - GESTÃO EMBARCADA"
+    ]
+  },
+  {
+    "name": "Jefferson Silva Galvao",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR - KANBAN"
+    ]
+  },
+  {
+    "name": "Kayque Silva",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "TPO - TORRE DE CONTROLE1"
+    ]
+  },
+  {
+    "name": "Laizorrane Pires de Oliveira",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR - KANBAN"
     ]
   },
   {
@@ -183,6 +307,16 @@
     ]
   },
   {
+    "name": "Lucas Raimundo Santana",
+    "isVisible": true,
+    "role": "Engenheiro de Software",
+    "allocatedProjects": [
+      "INT - INTEGRATOR - KANBAN",
+      "GE - GESTÃO EMBARCADA - KANBAN",
+      "TPO - TORRE DE CONTROLE - KANBAN"
+    ]
+  },
+  {
     "name": "Luciana Melhado",
     "isVisible": true,
     "role": "Especialista de Sistemas",
@@ -222,6 +356,23 @@
     ]
   },
   {
+    "name": "Marco Antonio Machado",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "Gestão MD - Itens Críticos"
+    ]
+  },
+  {
+    "name": "Marcus Pansani",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)",
+      "JETTA CARGO"
+    ]
+  },
+  {
     "name": "Mike Andrade",
     "isVisible": true,
     "role": "Líder Técnico / Arquiteto",
@@ -234,6 +385,23 @@
       "Mirassol - Assinatura Digital de Documentos",
       "Mirassol - Projeto Check List por Viagem",
       "Mirassol - Projeto Safety"
+    ]
+  },
+  {
+    "name": "Pedro Vieira Vidal",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)",
+      "JETTA CARGO"
+    ]
+  },
+  {
+    "name": "Priscila Rosell Cremaschi",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)"
     ]
   },
   {
@@ -287,6 +455,14 @@
     ]
   },
   {
+    "name": "Ricardo",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "GESTÃO MD"
+    ]
+  },
+  {
     "name": "Saddam José Viera Flores",
     "isVisible": true,
     "role": "Engenheiro de Software Sênior",
@@ -324,6 +500,22 @@
     "role": "Especialista de Sistemas",
     "allocatedProjects": [
       "GE - GESTÃO EMBARCADA"
+    ]
+  },
+  {
+    "name": "Tecnico Integrator",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "INT - INTEGRATOR (Antigo)"
+    ]
+  },
+  {
+    "name": "Tecnico TPO - Torre",
+    "isVisible": true,
+    "role": "Especialista de Sistemas",
+    "allocatedProjects": [
+      "TPO - TORRE DE CONTROLE1"
     ]
   },
   {

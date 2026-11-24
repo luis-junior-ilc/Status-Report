@@ -1,18 +1,18 @@
 [
   {
-    "id": "2026-W47",
-    "weekNumber": 47,
+    "id": "2026-W48",
+    "weekNumber": 48,
     "year": 2026,
-    "title": "Semana 47/ 2026",
-    "period": "12/11/2026 a 17/11/2026",
-    "meetingDate": "2026-11-17",
-    "executiveSummary": "A semana foi marcada pela subida em produção do Revalida e de correções críticas no Smart Tracking (incluindo o controle de raio/cerca eletrônica para operações da Mirassol), pelo avanço final do ZapSign/Rodopar e do App ILC (com tracking integrado ao Google Maps), e pela automação de testes do Frete Expresso 2.0. Em BI, finalizamos o ciclo de faturamento e o levantamento executivo da John Deere, além de entregarmos o primeiro dashboard operacional da Boge (On-Time Pickup). Paralelamente, demos partida imediata ao projeto Antifraude (detecção de manipulação de documentos e biometria facial), estruturamos as esteiras dos projetos Safety e Checklist por Viagem, e fortalecemos a gestão do portfólio com os novos fluxos de BI e Sustentação no Azure e a mensuração de retorno financeiro (Valor vs. Esforço) dos projetos.",
+    "title": "Semana 48 / 2026",
+    "period": "18/11/2026 a 24/11/2026",
+    "meetingDate": "2026-11-24",
+    "executiveSummary": "No ciclo de 17/11 a 24/11, alcançamos marcos importantes de entrega com a conclusão do desenvolvimento dos módulos do novo App ILC (iniciando hoje a homologação via APK e a integração de Push Notifications via Azure), a subida da V2 do Gestão de Demandas (com unificação de itens por card, controle de devolução de contêiner vazio e início da aplicação do novo Design System) e a entrada do Frete Expresso 2.0 na reta final de validação operacional para entrega em 30/11. Na frente de segurança e mobilidade, implementamos a captura de Device ID no Smart Tracking (pacote Antifraude), homologamos o controle de marcações fora de raio para a Mirassol, otimizamos o fluxo do Revalida (desbloqueio por usuário) e concluímos os testes ponta a ponta do ZapSign integrado à Rodopar (aguardando apenas credenciais de produção). Em BI e clientes, solucionamos 100% das divergências de elegibilidade do SLA 5 da John Deere — destravando o fechamento de performance das plantas (Brasil/EUA) e o faturamento do novo ano fiscal —, apoiamos o BID da Archroma, avançamos nos painéis da Boge e iniciamos a avaliação do Microsoft Fabric e de dashboards em HTML; por fim, em governança, incorporamos a visão financeira de ROI ao Status Report, instituímos o rastreamento diário por número de task no Azure e preparamos o lançamento operacional do Zammad.",
     "statusPulse": {
-      "totalActive": 9,
-      "onTrack": 5,
-      "attention": 4,
-      "critical": 0,
-      "averageProgress": 63
+      "totalActive": 11,
+      "onTrack": 7,
+      "attention": 1,
+      "critical": 3,
+      "averageProgress": 55
     },
     "activeProjects": [
       {
@@ -21,9 +21,932 @@
         "client": "ILC (Interno)",
         "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
         "status": "Ativo",
-        "currentMilestone": "Planejamento",
-        "progress": 47,
+        "currentMilestone": "Desenvolvimento",
+        "progress": 69,
+        "ragStatus": "red",
+        "agreedDelivery": "2026-12-01",
+        "targetDelivery": "2026-12-01",
+        "varianceDays": 2,
+        "statusReport": "Na última semana (17 a 24/11), Mike Andrade finalizou os ajustes de layout, filtros e telas dos módulos do App ILC (Gestão de Demandas, Smart Tracking e Cockpit), deixando o aplicativo pronto para testes, enquanto Francisco Molaia concluiu a Fase 1 do backend de notificações e avançou nos testes de push notification da Fase 2 (Tasks 768 / 7819). Como houve bloqueio ao subir o app na Google Play por conta da versão antiga em produção (Task 7482), a equipe optou pela instalação manual via APK hoje (24/11) para que Luis Carlos inicie a homologação.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Na última semana (09/11 a 16/11), o desenvolvimento do ILC - App Integrator avançou nas conexões com a API (como na tela de perfil), concluiu praticamente toda a área de Gestão de Demandas e integrou o Google Maps para exibir o mapa de tracking com pontos e traçado das viagens. Nos últimos dias, após uma breve pausa para a demanda de antifraude, o foco concentrou-se nos ajustes finais do cockpit e das buscas e filtros dos módulos, além do encaminhamento para publicação do aplicativo na loja e atualização futura da Wiki, seguindo sem impedimentos.",
+        "previousStatusReportDate": "2026-10-27",
+        "attentionPoints": "Bloqueio na Google Play (Task 7482): A subida para testes internos na loja foi bloqueada pela defasagem da versão em produção, sendo contornada hoje (24/11) com instalação manual via APK para iniciar a homologação.",
+        "hoursExecuted": 364,
+        "hoursPlanned": 464,
+        "hoursAgreed": 340,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App ILC"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Mike Andrade",
+          "Francisco Molaia"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Mike Andrade",
+            "Francisco Molaia"
+          ]
+        }
+      },
+      {
+        "projectId": "4d1d445e-584d-4bdb-a176-afce663b0300",
+        "name": "John Deere - Adição de Item na Promessa",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Operação Assistida",
+        "progress": 95,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-11-30",
+        "targetDelivery": "2026-11-30",
+        "varianceDays": 0,
+        "statusReport": "Projeto segue em operação assistida.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Projeto segue em operação assistida.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 115,
+        "hoursPlanned": 120,
+        "hoursAgreed": 120,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "7a1136ad-134c-41fe-a684-79e8b2ab5c93",
+        "name": "John Deere - Frete Expresso 2.0",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 81,
         "ragStatus": "amber",
+        "agreedDelivery": "2027-01-16",
+        "targetDelivery": "2027-01-16",
+        "varianceDays": 2,
+        "statusReport": "Na última semana (17 a 24/11), o Frete Expresso entrou na reta final de desenvolvimento, com Luis Carlos iniciando e mantendo o fluxo de testes — avançando na validação operacional (Task 7265) e preparando a etapa de pedido, histórico e auditoria (Task 7267). O fechamento ocorre nesta semana, com entrega e apresentação do pacote de desenvolvimento prevista para 30/11, seguida pelas etapas de treinamento e operação assistida.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "A reestruturação completa do módulo de Frete Expresso teve apresentação realizada ao cliente em 06/11 e conta com nova demonstração agendada para 19/11. O projeto segue em ciclo contínuo de testes e homologação — com os casos de teste sendo estruturados no Azure DevOps para execução automatizada a cada deploy —, enquanto as tratativas de SLA e justificativas de casos excepcionais no módulo atual já foram saneadas para o fechamento de faturamento.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 612.2,
+        "hoursPlanned": 761.2,
+        "hoursAgreed": 750,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App ILC"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "c99e39c8-2702-4961-8624-117ce09beac7",
+        "name": "John Deere - Reprogramação Sistêmica - Duplicação de Pedidos",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Finalizado",
+        "currentMilestone": "Operação Assistida",
+        "progress": 100,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-11-17",
+        "targetDelivery": "2026-11-17",
+        "varianceDays": 0,
+        "statusReport": "Projeto segue em operação assistida.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Projeto segue em operação assistida.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 116,
+        "hoursPlanned": 116,
+        "hoursAgreed": 116,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Luis Santos",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Luis Santos",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "manual-1794403000991",
+        "name": "John Deere - Rotas Dinâmicas",
+        "client": "John Deere",
+        "clientLogo": "/assets/logos/john-deere.png?t=1791579235167",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 88,
+        "ragStatus": "red",
+        "agreedDelivery": "2026-11-30",
+        "targetDelivery": "2026-11-16",
+        "varianceDays": 4,
+        "statusReport": ".",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": ".",
+        "previousStatusReportDate": "2026-11-03",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Jetta",
+          "Portal Integrator"
+        ],
+        "teamLeader": "Tiago Figueiredo",
+        "teamMembers": [
+          "Tiago Figueiredo"
+        ],
+        "team": {
+          "leader": "Tiago Figueiredo",
+          "members": [
+            "Tiago Figueiredo"
+          ]
+        }
+      },
+      {
+        "projectId": "c064a093-ea7c-45e6-8ec6-5bf10a5794a9",
+        "name": "Mirassol - Assinatura Digital de Documentos",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 93,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-12-05",
+        "targetDelivery": "2026-12-05",
+        "varianceDays": 0,
+        "statusReport": "Na última semana (17 a 24/11), o projeto de Assinatura Digital de Documentos (ZapSign) teve a integração com o Rodopar finalizada por Thiago Rodrigues e os testes de ponta a ponta em QA concluídos por Vitor Neves e Thiago, incluindo a validação para motorista e proprietário de veículo e os ajustes para exibição do novo contrato no app. Com a homologação validada, o projeto aguarda apenas a liberação dos acessos de produção pela Mirassol para realizar o ajuste final no Xform (adição de seção) e validar o fluxo completo em produção.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Avançou com a criação da estrutura e banco em produção, o ajuste do endpoint para salvar os PDFs no servidor (armazenando apenas a URL) e a liberação da funcionalidade na versão 54 do aplicativo Smart Tracking para validação em QA. A equipe realizou testes ponta a ponta do fluxo de recebimento e assinatura de contratos no app e por e-mail — incluindo correções recentes em um problema que impedia o salvamento dos arquivos no servidor — e segue agora nos testes finais para homologação e na conclusão da integração com o Rodopar.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 250,
+        "hoursPlanned": 258.2,
+        "hoursAgreed": 173.6,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Smart X"
+        ],
+        "teamLeader": "Vito Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Thiago Rodrigues",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vito Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Thiago Rodrigues",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "a5fcfbb4-ab62-4aff-b0fa-3f623219a49c",
+        "name": "Mirassol - Input Gestão de demandas",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Operação Assistida",
+        "progress": 100,
+        "ragStatus": "green",
+        "agreedDelivery": "2026-10-27",
+        "targetDelivery": "2026-10-27",
+        "varianceDays": 0,
+        "statusReport": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Avançou na triagem inteligente e no tratamento dos dados recebidos por e-mail: o Vitor concluiu o desenvolvimento e iniciou testes da melhoria que distingue o que é ou não uma demanda (avisando o usuário quando não for) e validou com sucesso o envio de data de coleta e o tratamento de campos vazios.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "Acesso em produção (Mirassol): Subida bloqueada aguardando a Mirassol liberar as credenciais de produção.\nAjuste no Xform: Após a liberação do acesso, Thiago Rodrigues adicionará uma seção no Xform para validar o fluxo em produção.\nErro em produção (Xform): Aguarda retorno no Teams sobre erro pontual de motorista e investigação de tela branca via logs.",
+        "hoursExecuted": 651,
+        "hoursPlanned": 666,
+        "hoursAgreed": 646,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App ILC"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Luis Santos",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Luis Santos",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "6b3df41e-8e88-470d-ad66-45dd3211646e",
+        "name": "Mirassol - Prevenção de Fraudes Documentais",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 3,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Na última semana (17 a 24/11), não houve atualizações registradas sobre os testes da API de fraude documental (500 créditos), sob responsabilidade de Vitor Neves (2026.11.24 Ata Daily.md); o único avanço relacionado à frente antifraude no período foi a implementação do envio de modelo do telefone e device ID no cadastro de motorista do Smart Tracking por Mike Andrade (Tasks 7855 e 7856).",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "previousStatusReportDate": "2026-11-17",
+        "attentionPoints": "API de fraude documental: Testes com os 500 créditos permanecem pendentes e sem atualização recente.",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Portal Integrator"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "53f7da8a-e2d4-4a4a-bdcf-5a8d4a8bfad6",
+        "name": "Mirassol - Projeto Check List por Viagem",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Congelado",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 6,
+        "ragStatus": "amber",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Teve foco na preparação para entrada na esteira de desenvolvimento: no início da semana, realizamos um alinhamento inicial (em conjunto com o projeto Safety) para estruturar os próximos passos na esteira e, ontem (16/11), o trabalho avançou para a elaboração da documentação do projeto visando dar continuidade a esse processo.",
+        "previousStatusReportDate": "2026-11-03",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Smart X"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Thiago Rodrigues",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Thiago Rodrigues",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "eb438ca6-f25e-4c5c-ab4b-a45e1b243ba1",
+        "name": "Mirassol - Projeto Safety",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Planejamento",
+        "progress": 6,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Na última semana (17 a 24/11), o Projeto Check List por Viagem foi mencionado apenas nos dias 17 e 18/11 por Luis Carlos, que planejava dar continuidade à documentação do projeto; a partir de 19/11, não houve novas atualizações registradas, permanecendo a documentação/esteira como pendência em aberto.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Teve andamento focado na sua preparação para entrar na esteira de desenvolvimento: no início da semana (09/11 e 10/11),  realizamos um alinhamento inicial (em conjunto com o Checklist por Viagem) para definir os próximos passos e, ontem (16/11), o foco voltou-se para a elaboração da documentação do projeto visando dar sequência ao fluxo na esteira.",
+        "previousStatusReportDate": "2026-11-03",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P3",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Luis Santos",
+          "Mike Andrade"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Luis Santos",
+            "Mike Andrade"
+          ]
+        }
+      },
+      {
+        "projectId": "421baf91-de01-4ab1-a2f4-3e25d155eade",
+        "name": "Mirassol - Smart Tracking - Autenticação Facial",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 3,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Na última semana (17 a 24/11), não houve registro de avanços ou atualizações nas dailys para o projeto Autenticação Facial, permanecendo pendente o acompanhamento da aprovação da API facial (em aberto desde 12/11) sob responsabilidade de Vitor Neves",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "previousStatusReportDate": "2026-11-17",
+        "attentionPoints": "Aprovação da API facial: Aguarda aprovação desde 12/11, sem atualização recente sobre o andamento",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "fe5e4511-8387-4c5c-bdcb-bae166bd5857",
+        "name": "Mirassol - Smart Tracking – Implantação do Controle Geográfico",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 5,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Na última semana (17 a 24/11), Vitor Neves e Silvio Torres subiram e homologaram (front e back) uma versão inicial do controle geográfico (bloqueio por raio), configurada inicialmente para notificar a Mirassol sobre marcações fora do raio sem realizar o bloqueio imediato, além da preparação de uma apresentação para o Marrath levar à diretoria da Mirassol em 17/11. Desde então, não houve novas atualizações nas dailys sobre a atualização dos demais raios faltantes com o Gustavo",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "previousStatusReportDate": "2026-11-17",
+        "attentionPoints": "Raios pendentes: Falta concluir com o Gustavo a atualização dos demais raios que ficaram de fora, sem atualização desde 17/11.\nModo apenas notificação: A versão atual apenas notifica marcações fora do raio, dependendo do alinhamento pós-apresentação à diretoria para ativação do bloqueio efetivo.",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App Smart Tracking",
+          "App ILC"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "caaaa6c3-0dd9-49bb-81c4-a7b757102304",
+        "name": "Mirassol - Torre de Controle 4.0",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 57,
+        "ragStatus": "red",
+        "agreedDelivery": "2026-11-30",
+        "targetDelivery": "2026-11-30",
+        "varianceDays": 4,
+        "statusReport": "Na última semana o projeto teve avanços no front e no back com Vitor Neves e Silvio Torres, culminando na subida da V2 por Silvio — no modelo de card único com vários itens e controle de devolução de container —, além do trabalho no tracking e na aplicação do Design System (cuja revisão de bugs ficará com Thiago Rodrigues). Em paralelo, Luis Carlos conduziu alinhamentos com Silvio e Vitor sobre a frente, e no App ILC o módulo seguiu apontado para a v1 de produção enquanto a V2 é finalizada.",
+        "statusReportDate": "2026-11-24",
+        "previousStatusReport": "Avançou principalmente no fluxo de input automatizado e na sua integração com o aplicativo: o Vitor implementou e realizou testes bem-sucedidos para distinguir e-mails que são ou não demandas (além de subir data de coleta e tratar campos vazios), enquanto o Silvio trabalhou no modelamento via IA para consolidar múltiplos itens em um único card.",
+        "previousStatusReportDate": "2026-10-27",
+        "attentionPoints": "Finalização da V2 e Design System: A V2 segue em subida pelo Silvio Torres e ainda aguarda revisão final de bugs pelo Thiago Rodrigues.\nOrdem 45 (Andrei): Inclusão de itens sem DI depende do envio das dimensões/características pelo Andrei e alinhamento de tratamento manual com Luis Carlos e Tiago Figueiredo",
+        "hoursExecuted": 165.6,
+        "hoursPlanned": 303,
+        "hoursAgreed": 264,
+        "priority": "P1",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Silvio Torres",
+          "Luis Santos"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Silvio Torres",
+            "Luis Santos"
+          ]
+        }
+      }
+    ],
+    "roadmapProjects": [
+      {
+        "id": "road-1",
+        "name": "ILC Pay (Rodobank)",
+        "client": "Mirassol",
+        "estimatedStart": "dezembro/26",
+        "stage": "Escopo",
+        "strategicValue": "Muito Alto",
+        "description": "Aplicativo bancário destinado aos motoristas contratados pela Mirassol e Extrato financeiro",
+        "responsible": "ILC",
+        "estimatedHours": "300"
+      },
+      {
+        "id": "road-2",
+        "name": "Televida",
+        "client": "Mirassol",
+        "estimatedStart": "dezembro/2026",
+        "stage": "Arquitetura",
+        "strategicValue": "Médio",
+        "description": "Funcionalidade de telemedicina no App Smart Tracking",
+        "responsible": "ILC",
+        "estimatedHours": "100"
+      },
+      {
+        "id": "road-3",
+        "name": "Modernização do ROC",
+        "client": "ILC",
+        "estimatedStart": "janeiro/2027",
+        "stage": "Ideação",
+        "strategicValue": "Muito Alto",
+        "description": "Aprimorar o relatório de ocupação de carga de forma que ele fique mais acertivo e com redução de ação humana.",
+        "responsible": "ILC",
+        "estimatedHours": "200"
+      },
+      {
+        "id": "road-1792612651664",
+        "name": "Auditoria de Comprovantes",
+        "client": "Mirassol",
+        "estimatedStart": "novembro/2026",
+        "stage": "Priorização",
+        "strategicValue": "Alto",
+        "description": "Criar solução para auditar automaticamente comprovantes por meio de IA.",
+        "responsible": "ILC",
+        "estimatedHours": "150"
+      },
+      {
+        "id": "road-1792692974138",
+        "name": "Justificativa na cancelamento do pedido",
+        "client": "John Deere",
+        "estimatedStart": "março/2027",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Implementação do campo justificativa no cancelamento de um pedido, incluindo evidência quando aplicável.",
+        "responsible": "ILC",
+        "estimatedHours": "40"
+      },
+      {
+        "id": "road-1793113036162",
+        "name": "Reprogramação de itens na promessas",
+        "client": "John Deere",
+        "estimatedStart": "janeiro/2027",
+        "stage": "Discovery",
+        "strategicValue": "Alto",
+        "description": "Com a mudança no promessa de entrega foi percebida a necessidade de um mecanismo que force o fornecedor dizer a data de itens não prometidos, pois a falta dessa informação interfere diretamente no SLA da operação.",
+        "responsible": "ILC",
+        "estimatedHours": "40"
+      },
+      {
+        "id": "road-1793728314479",
+        "name": "Programa de Milhagens",
+        "client": "ILC",
+        "estimatedStart": "abril/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Clube de beneficios para motoristas por meio do app Smart Tracking",
+        "responsible": "ILC",
+        "estimatedHours": "500"
+      },
+      {
+        "id": "road-1793728316205",
+        "name": "Pátios e Docas",
+        "client": "ILC",
+        "estimatedStart": "março/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Green Truck",
+        "responsible": "ILC",
+        "estimatedHours": "200"
+      },
+      {
+        "id": "road-1793728316596",
+        "name": "Promessas de embalagens",
+        "client": "John Deere",
+        "estimatedStart": "abril/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Promessa de entrega para solicitar embalagens",
+        "responsible": "ILC",
+        "estimatedHours": "300"
+      },
+      {
+        "id": "road-1793728316997",
+        "name": "Cockpit de crossdocking",
+        "client": "ILC",
+        "estimatedStart": "maio/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Qual o melhor modelo de retirar a carga do transportador para enviar ao cliente.",
+        "responsible": "ILC",
+        "estimatedHours": "350"
+      },
+      {
+        "id": "road-1793728317391",
+        "name": "Gestão de Fretes Mortos",
+        "client": "ILC",
+        "estimatedStart": "junho/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Automatização processo de gestão do frete morto",
+        "responsible": "ILC",
+        "estimatedHours": "40"
+      },
+      {
+        "id": "road-1793728317797",
+        "name": "Controle de CO²",
+        "client": "ILC",
+        "estimatedStart": "junho/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Simple Carbon",
+        "responsible": "ILC",
+        "estimatedHours": "80"
+      },
+      {
+        "id": "road-1793728318202",
+        "name": "Gestão à Vista",
+        "client": "John Deere",
+        "estimatedStart": "fevereiro/2027",
+        "stage": "Espera",
+        "strategicValue": "Alto",
+        "description": "Descrição preliminar da oportunidade no radar.",
+        "responsible": "Comercial & PMO",
+        "estimatedHours": "150"
+      },
+      {
+        "id": "road-1793728318587",
+        "name": "Frete Expresso no App ILC",
+        "client": "John Deere",
+        "estimatedStart": "fevereiro/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Inclusão das etapas solicitação, cotação e aprovação do Frete Expresso no App ILC",
+        "responsible": "ILC",
+        "estimatedHours": "40"
+      },
+      {
+        "id": "road-1793728318931",
+        "name": "Smart Tracking no App ILC",
+        "client": "ILC",
+        "estimatedStart": "março/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "48"
+      },
+      {
+        "id": "road-1793728319315",
+        "name": "Tracking de Notas no App ILC",
+        "client": "ILC",
+        "estimatedStart": "abril/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "48"
+      },
+      {
+        "id": "road-1793728319667",
+        "name": "Melhorias e Reduções de custo",
+        "client": "ILC",
+        "estimatedStart": "julho/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Lançar no sistema e atrelar a iniciativa/módulo para avaliação do cliente",
+        "responsible": "ILC",
+        "estimatedHours": "120"
+      },
+      {
+        "id": "road-1793728819113",
+        "name": "Rota Críticas (Gestão integrada de itens críticos)",
+        "client": "ILC",
+        "estimatedStart": "agosto/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "Realizar engenharia reversa para identificar o item crítico com antecipação.",
+        "responsible": "ILC",
+        "estimatedHours": "80"
+      },
+      {
+        "id": "road-1793728819757",
+        "name": "Estoque de embalagens",
+        "client": "ILC",
+        "estimatedStart": "setembro/2027",
+        "stage": "Ideação",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "70"
+      },
+      {
+        "id": "road-1793728820314",
+        "name": "Migração para SQL Server",
+        "client": "ILC",
+        "estimatedStart": "dezembro/2026",
+        "stage": "Viabilidade",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "240"
+      },
+      {
+        "id": "road-1793728820953",
+        "name": "Xforms – Melhorias operacionais",
+        "client": "ILC",
+        "estimatedStart": "março/2027",
+        "stage": "Ideação",
+        "strategicValue": "Médio",
+        "description": "Forms Tipo Quiz",
+        "responsible": "ILC",
+        "estimatedHours": "80"
+      },
+      {
+        "id": "road-1794322429895",
+        "name": "Padronização do frontend portal web e apps",
+        "client": "ILC",
+        "estimatedStart": "dezembro/2026",
+        "stage": "Discovery",
+        "strategicValue": "Alto",
+        "description": "",
+        "responsible": "ILC",
+        "estimatedHours": "200"
+      }
+    ],
+    "boardDecisions": [],
+    "maintenanceSection": {
+      "totalProjects": 3,
+      "totalHours": 3,
+      "newProjectHours": 138.8,
+      "totalPeriodHours": 141.8,
+      "maintenancePercent": 2,
+      "newProjectPercent": 98,
+      "activeSystemsCount": 1,
+      "teamMembersCount": 2,
+      "teamMembers": [
+        "Silvio Torres",
+        "Francisco Molaia Santos"
+      ],
+      "startDate": "2026-11-18",
+      "endDate": "2026-11-24",
+      "periodLabel": "18/11/2026 a 24/11/2026",
+      "projects": [
+        {
+          "id": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
+          "projectId": "a7d5d8e7-c1e1-4d14-9aac-746ea346ac02",
+          "name": "ILC - App Smart Tracking",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 780,
+          "hoursPlanned": 559,
+          "hoursAgreed": 720,
+          "statusReport": "Na última semana, as frentes de sustentação do App Smart Tracking envolveram melhorias no mapa por Silvio Torres (17/11) e a implementação por Mike Andrade do envio de modelo do telefone e device ID no cadastro do motorista para identificação do aparelho (Tasks 7855 e 7856). Além disso, Silvio iniciou a investigação de um possível problema de rastreamento via celular em uma operação (23/11), e Tiago Figueiredo confirmou hoje (24/11) que o aplicativo já está disponibilizado e entra em fase de testes de validação nesta semana para liberação.",
+          "statusReportDate": "2026-11-24",
+          "previousStatusReport": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
+          "previousStatusReportDate": "2026-10-27",
+          "attentionPoints": "Validação para liberação: O aplicativo disponibilizado precisa concluir os testes de validação com Tiago Figueiredo nesta semana antes da liberação.\nRastreamento via celular: Segue em investigação por Silvio Torres o diagnóstico de possível falha no rastreamento via celular para uma operação.\nAtendimento (Zammad): A liberação do fluxo de chamados do Smart Tracking aguarda retorno do Andrei com responsáveis e datas de treinamento dos atendentes.",
+          "teamLeader": "Mike Andrade",
+          "teamMembers": [
+            "Mike Andrade"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Mike Andrade",
+            "members": [
+              "Mike Andrade"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Na última semana, as frentes de sustentação do App Smart Tracking envolveram melhorias no mapa por Silvio Torres (17/11) e a implementação por Mike Andrade do envio de modelo do telefone e device ID no cadastro do motorista para identificação do aparelho (Tasks 7855 e 7856). Além disso, Silvio iniciou a investigação de um possível problema de rastreamento via celular em uma operação (23/11), e Tiago Figueiredo confirmou hoje (24/11) que o aplicativo já está disponibilizado e entra em fase de testes de validação nesta semana para liberação."
+        },
+        {
+          "id": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "projectId": "7b01ce9c-ccb5-482e-873a-7b748df766d0",
+          "name": "ILC - Business Intelligence (BI)",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 0,
+          "hoursExecutedInPeriod": 0,
+          "lifetimeHoursExecuted": 6,
+          "hoursPlanned": 6,
+          "hoursAgreed": 0,
+          "statusReport": "Na última semana, Lucas Maier (com apoio de Silvio Torres) corrigiu e validou 100% a solução do BI de SLA 5, atualizou as lâminas de performance e faturamento da John Deere (incluindo alinhamento com o Antonio) e iniciou levantamentos de DRE. Hoje (24/11), Lucas atua nos ajustes do BI após a correção de reprogramação de pedidos e participa de reunião com a Latin sobre a futura migração dos modelos para o Microsoft Fabric, além de estruturar novos dashboards em HTML.",
+          "statusReportDate": "2026-11-24",
+          "previousStatusReport": "Envolveu a criação e adoção do novo projeto dedicado no Azure para organizar as tasks da área, além da conclusão do faturamento de outubro da John Deere (com treinamento da Jéssica) e do tratamento de inconsistências e justificativas de SLA para a entrega de performance. A equipe também realizou ajustes nas views para garantir o isolamento de dados entre clientes (evitando reflexos da Boge na John Deere), solicitou a inclusão da coluna de pedido de coleta no relatório INT 0080 e segue apurando o comportamento das linhas de promessa retroativas e reprogramações que impactam métricas e faturamento, além do levantamento de dados para a apresentação da John Deere desta semana.",
+          "previousStatusReportDate": "2026-11-03",
+          "attentionPoints": "Validação operacional (SLA 5): BI corrigido aguarda validação operacional junto ao Tiago Figueiredo para fechamento da performance mensal (prazo citado até 24/11).\nReprogramação de pedidos: Acompanhamento necessário hoje (24/11) para evitar possíveis quebras de atualização no BI após subida do ajuste pelo Francisco Molaia.\nBI da Boge: Aguarda definição de regras de prazo pela Boge (Transit Time) e verificação de ajustes enviados pelo Gustavo (On-time Pickup).",
+          "teamLeader": "Lucas Maier Gomes Bruno",
+          "teamMembers": [
+            "Lucas Maier Gomes Bruno"
+          ],
+          "periodTeamMembers": [],
+          "team": {
+            "leader": "Lucas Maier Gomes Bruno",
+            "members": [
+              "Lucas Maier Gomes Bruno"
+            ]
+          },
+          "recentActivities": [],
+          "summary": "Na última semana, Lucas Maier (com apoio de Silvio Torres) corrigiu e validou 100% a solução do BI de SLA 5, atualizou as lâminas de performance e faturamento da John Deere (incluindo alinhamento com o Antonio) e iniciou levantamentos de DRE. Hoje (24/11), Lucas atua nos ajustes do BI após a correção de reprogramação de pedidos e participa de reunião com a Latin sobre a futura migração dos modelos para o Microsoft Fabric, além de estruturar novos dashboards em HTML."
+        },
+        {
+          "id": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "projectId": "98611aed-bd9f-4151-84d3-475a06c4098e",
+          "name": "ILC - Sustentação",
+          "client": "ILC (Interno)",
+          "status": "Ativo",
+          "ragStatus": "red",
+          "hoursExecuted": 3,
+          "hoursExecutedInPeriod": 3,
+          "lifetimeHoursExecuted": 47,
+          "hoursPlanned": 37,
+          "hoursAgreed": 0,
+          "statusReport": "Na última semana, as tarefas de Sustentação  concentraram-se em correções operacionais e liberações de acesso: Silvio Torres corrigiu o fluxo de bloqueio do Revalida (de IP para usuário) e realizou liberação de cadastro em massa de EDI/FTL, enquanto Francisco Molaia tratou duplicidades na Gestão MD, subiu ajuste de reprogramação de pedidos, concluiu o relatório do Fernando em QA e deixou o Zammad liberado para testes",
+          "statusReportDate": "2026-11-24",
+          "previousStatusReport": "Focaram na criação do novo projeto dedicado no Azure (organizado com sprints mensais e area paths por módulo) para migrar e acompanhar as tasks que antes ficavam no projeto Integrator. No dia a dia operacional, a equipe atuou no suporte ao GestãoMD (investigando arquivos sem processamento e falhas no retorno de fornecedores), na subida de correções no Portal Integrator, no lançamento escalonado do Revalida, na verificação de falhas pontuais de recebimento no SharePoint, na migração de URLs do Angular para o padrão ilc.com.br e no apoio a demandas pontuais de relatórios e acessos/VPN.",
+          "previousStatusReportDate": "2026-11-03",
+          "attentionPoints": "Gestão MD (SharePoint): Processamento segue sem os novos arquivos porque João Dias ainda não os disponibilizou no SharePoint após o feriado (já cobrado por Francisco).\nZammad (Chamados): Aguarda Andrei enviar a planilha de responsáveis por operação, definir formulários e agendar treinamentos (Tiago Figueiredo cobrará hoje, 24/11).\nRelatório do Fernando (QA): Concluído por Francisco, mas parado aguardando Andrei indicar quem assumirá a validação durante as férias do Fernando.\nXform em produção: Thiago Rodrigues aguarda retorno no Teams sobre erro pontual de motorista e investiga bug intermitente de tela branca via logs.",
+          "teamLeader": "Luis Carlos Oliveira Santos Junior",
+          "teamMembers": [
+            "Luis Carlos Oliveira Santos Junior"
+          ],
+          "periodTeamMembers": [
+            "Silvio Torres",
+            "Francisco Molaia Santos"
+          ],
+          "team": {
+            "leader": "Luis Carlos Oliveira Santos Junior",
+            "members": [
+              "Luis Carlos Oliveira Santos Junior"
+            ]
+          },
+          "recentActivities": [
+            {
+              "id": "7777",
+              "title": "Revalida bloqueia o envio de código para usuários no mesmo IP #REVALIDA",
+              "targetDate": "2026-11-18",
+              "hours": 1,
+              "status": "completed",
+              "assignedTo": "Silvio Torres"
+            },
+            {
+              "id": "7540",
+              "title": "DevOps - Publicação",
+              "targetDate": "2026-11-18",
+              "hours": 9,
+              "status": "in-progress",
+              "assignedTo": "Francisco Molaia Santos"
+            },
+            {
+              "id": "ilc---sustenta--o-operacional",
+              "title": "Atividades Operacionais & Suporte",
+              "targetDate": "2026-11-18",
+              "hours": 1,
+              "status": "in_progress",
+              "assignedTo": "Equipe de Sustentação"
+            }
+          ],
+          "summary": "Na última semana, as tarefas de Sustentação  concentraram-se em correções operacionais e liberações de acesso: Silvio Torres corrigiu o fluxo de bloqueio do Revalida (de IP para usuário) e realizou liberação de cadastro em massa de EDI/FTL, enquanto Francisco Molaia tratou duplicidades na Gestão MD, subiu ajuste de reprogramação de pedidos, concluiu o relatório do Fernando em QA e deixou o Zammad liberado para testes"
+        }
+      ]
+    }
+  },
+  {
+    "id": "2026-W47",
+    "weekNumber": 47,
+    "year": 2026,
+    "title": "Semana 47/ 2026",
+    "period": "12/11/2026 a 17/11/2026",
+    "meetingDate": "2026-11-17",
+    "executiveSummary": "A semana foi marcada pela subida em produção do Revalida e de correções críticas no Smart Tracking (incluindo o controle de raio/cerca eletrônica para operações da Mirassol), pelo avanço final do ZapSign/Rodopar e do App ILC (com tracking integrado ao Google Maps), e pela automação de testes do Frete Expresso 2.0. Em BI, finalizamos o ciclo de faturamento e o levantamento executivo da John Deere, além de entregarmos o primeiro dashboard operacional da Boge (On-Time Pickup). Paralelamente, demos partida imediata ao projeto Antifraude (detecção de manipulação de documentos e biometria facial), estruturamos as esteiras dos projetos Safety e Checklist por Viagem, e fortalecemos a gestão do portfólio com os novos fluxos de BI e Sustentação no Azure e a mensuração de retorno financeiro (Valor vs. Esforço) dos projetos.",
+    "statusPulse": {
+      "totalActive": 11,
+      "onTrack": 7,
+      "attention": 1,
+      "critical": 3,
+      "averageProgress": 53
+    },
+    "activeProjects": [
+      {
+        "projectId": "8bcd36f6-678a-4d3c-a0a6-40a92b5ea91a",
+        "name": "ILC - App Integrator 2026",
+        "client": "ILC (Interno)",
+        "clientLogo": "/assets/logos/ilc.png?t=1791579200206",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 69,
+        "ragStatus": "red",
         "agreedDelivery": "2026-12-01",
         "targetDelivery": "2026-12-01",
         "varianceDays": 0,
@@ -32,8 +955,8 @@
         "previousStatusReport": "Está com o protótipo aprovado e em pleno desenvolvimento mobile sem impedimentos. Atualmente, o foco está na conexão das telas com o backend, reaproveitando inicialmente os endpoints e rotas já mapeados no painel web (como os de Gestão de Demandas) antes de demandar a criação ou ajuste de rotas específicas ao time de backend.",
         "previousStatusReportDate": "2026-10-27",
         "attentionPoints": "Risco de atraso caso o processo de publicação na loja não seja adiantado por e-mail.",
-        "hoursExecuted": 249,
-        "hoursPlanned": 468,
+        "hoursExecuted": 364,
+        "hoursPlanned": 464,
         "hoursAgreed": 340,
         "priority": "P2",
         "category": "new_project",
@@ -178,7 +1101,7 @@
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
         "progress": 88,
-        "ragStatus": "amber",
+        "ragStatus": "red",
         "agreedDelivery": "2026-11-30",
         "targetDelivery": "2026-11-16",
         "varianceDays": 0,
@@ -290,14 +1213,55 @@
         }
       },
       {
-        "projectId": "53f7da8a-e2d4-4a4a-bdcf-5a8d4a8bfad6",
-        "name": "Mirassol - Projeto Check List por Viagem",
+        "projectId": "6b3df41e-8e88-470d-ad66-45dd3211646e",
+        "name": "Mirassol - Prevenção de Fraudes Documentais",
         "client": "Mirassol",
         "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
-        "progress": 6,
+        "progress": 0,
         "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "statusReportDate": "2026-11-17",
+        "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking",
+          "Portal Integrator"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "53f7da8a-e2d4-4a4a-bdcf-5a8d4a8bfad6",
+        "name": "Mirassol - Projeto Check List por Viagem",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Congelado",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 6,
+        "ragStatus": "amber",
         "agreedDelivery": "2027-01-31",
         "targetDelivery": "2027-01-31",
         "varianceDays": 0,
@@ -373,6 +1337,88 @@
         }
       },
       {
+        "projectId": "421baf91-de01-4ab1-a2f4-3e25d155eade",
+        "name": "Mirassol - Smart Tracking - Autenticação Facial",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 0,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "statusReportDate": "2026-11-17",
+        "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "App Smart Tracking"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
+        "projectId": "fe5e4511-8387-4c5c-bdcb-bae166bd5857",
+        "name": "Mirassol - Smart Tracking – Implantação do Controle Geográfico",
+        "client": "Mirassol",
+        "clientLogo": "/assets/logos/mirassol.png?t=1791579205262",
+        "status": "Ativo",
+        "currentMilestone": "Desenvolvimento",
+        "progress": 0,
+        "ragStatus": "green",
+        "agreedDelivery": "2027-01-31",
+        "targetDelivery": "2027-01-31",
+        "varianceDays": 0,
+        "statusReport": "Projeto sincronizado com o Azure DevOps. Iteração: Em andamento.",
+        "statusReportDate": "2026-11-17",
+        "previousStatusReport": "Validação técnica preliminar e alinhamento de escopo operacional com os líderes de projeto.",
+        "previousStatusReportDate": "2026-10-06",
+        "attentionPoints": "",
+        "hoursExecuted": 0,
+        "hoursPlanned": 0,
+        "hoursAgreed": 0,
+        "priority": "P2",
+        "category": "new_project",
+        "systems": [
+          "Portal Integrator",
+          "App Smart Tracking",
+          "App ILC"
+        ],
+        "teamLeader": "Vitor Neves",
+        "teamMembers": [
+          "Vitor Neves",
+          "Mike Andrade",
+          "Silvio Torres"
+        ],
+        "team": {
+          "leader": "Vitor Neves",
+          "members": [
+            "Vitor Neves",
+            "Mike Andrade",
+            "Silvio Torres"
+          ]
+        }
+      },
+      {
         "projectId": "caaaa6c3-0dd9-49bb-81c4-a7b757102304",
         "name": "Mirassol - Torre de Controle 4.0",
         "client": "Mirassol",
@@ -380,7 +1426,7 @@
         "status": "Ativo",
         "currentMilestone": "Desenvolvimento",
         "progress": 57,
-        "ragStatus": "amber",
+        "ragStatus": "red",
         "agreedDelivery": "2026-11-30",
         "targetDelivery": "2026-11-30",
         "varianceDays": 0,
@@ -660,16 +1706,17 @@
     "boardDecisions": [],
     "maintenanceSection": {
       "totalProjects": 3,
-      "totalHours": 54.4,
+      "totalHours": 62.4,
       "newProjectHours": 169,
-      "totalPeriodHours": 223.4,
-      "maintenancePercent": 24,
-      "newProjectPercent": 76,
-      "activeSystemsCount": 3,
-      "teamMembersCount": 2,
+      "totalPeriodHours": 231.4,
+      "maintenancePercent": 27,
+      "newProjectPercent": 73,
+      "activeSystemsCount": 4,
+      "teamMembersCount": 3,
       "teamMembers": [
         "Francisco Molaia Santos",
-        "Silvio Torres"
+        "Silvio Torres",
+        "Thiago Rodrigues Do Nascimento Silva"
       ],
       "startDate": "2026-11-12",
       "endDate": "2026-11-17",
@@ -685,7 +1732,7 @@
           "hoursExecuted": 0,
           "hoursExecutedInPeriod": 0,
           "lifetimeHoursExecuted": 780,
-          "hoursPlanned": 552,
+          "hoursPlanned": 559,
           "hoursAgreed": 720,
           "statusReport": "Concentrou-se na liberação da versão 54 para testes em QA — com correções de acessibilidade para evitar quebra de layout ao aumentar a fonte do celular e ajustes de raio/cerca — e na resolução de bugs críticos em formulários pelo Thiago, incluindo falhas de cache em respostas, tela branca em produção (já validada com motorista) e formulários quebrados por links vazios. Mais recentemente, a equipe também avançou na validação da planilha de raios e coordenadas das empresas da Mirassol para ativar a sinalização e bloqueio de marcações fora de raio, além de iniciar a análise de logs para investigar erros de rede (network error) e viagens que não estavam sendo exibidas para alguns motoristas.",
           "statusReportDate": "2026-10-27",
@@ -712,7 +1759,7 @@
           "name": "ILC - Business Intelligence (BI)",
           "client": "ILC (Interno)",
           "status": "Ativo",
-          "ragStatus": "amber",
+          "ragStatus": "red",
           "hoursExecuted": 6,
           "hoursExecutedInPeriod": 6,
           "lifetimeHoursExecuted": 6,
