@@ -51,7 +51,7 @@ class AzureDevOpsService {
   }
 
   async getAllProjects() {
-    const data = await this.fetchApi('_apis/projects?api-version=7.0');
+    const data = await this.fetchApi('_apis/projects?$top=500&api-version=7.0');
     return data.value || [];
   }
 

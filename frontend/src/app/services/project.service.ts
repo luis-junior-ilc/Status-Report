@@ -300,6 +300,7 @@ export class ProjectService {
 
   formatEditionTitle(rep: any): string {
     if (!rep) return '';
+    if (rep.id === 'live') return '⚡ Agora (Tempo Real)';
     const match = (rep.title || '').match(/Semana\s+(\d+)\s*\/\s*(\d+)/i);
     if (match) {
       return `Semana ${match[1]} / ${match[2]}`;

@@ -41,9 +41,10 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           
           <!-- Dropdown da Edição -->
           <select
-            [ngModel]="service.selectedReportId()"
+            [ngModel]="currentReport()?.id === 'live' ? 'live' : (service.selectedReportId() === 'latest' ? (currentReport()?.id || 'latest') : service.selectedReportId())"
             (ngModelChange)="onSelectReport($event)"
             class="text-[11px] font-bold rounded-xl px-2.5 py-1.5 border border-slate-300 bg-slate-50 text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 shadow-2xs cursor-pointer">
+            <option value="live">⚡ Agora (Tempo Real)</option>
             <option *ngFor="let rep of service.weeklyReports()" [value]="rep.id">
               {{ service.formatEditionTitle(rep) }}
             </option>
@@ -78,6 +79,24 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
       <!-- STANDARD REPORT VIEW (VISIBLE ON SCREEN, HIDDEN ON PRINT) -->
       <!-- ======================================================== -->
       <div *ngIf="!service.isLoadingReport() && currentReport()" class="standard-report-view space-y-5 print:hidden">
+
+        <!-- 0. SÍNTESE EXECUTIVA DO CICLO -->
+        <div class="rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50/90 via-white to-slate-50 p-4 sm:p-5 shadow-xs">
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-2 mb-2.5 border-b border-blue-200/80">
+            <div class="flex items-center gap-2">
+              <span class="text-sm">📌</span>
+              <h3 class="text-xs sm:text-sm font-black uppercase tracking-tight text-blue-950">
+                Síntese Executiva do Ciclo
+              </h3>
+            </div>
+            <span class="text-[10px] font-extrabold text-blue-900 bg-blue-100/80 px-2.5 py-0.5 rounded-full border border-blue-200">
+              {{ service.formatEditionTitle(currentReport()) }} • {{ currentReport()?.period }}
+            </span>
+          </div>
+          <p class="text-xs sm:text-[13px] leading-relaxed font-medium text-slate-800 whitespace-pre-line">
+            {{ currentReport()?.executiveSummary || 'Acompanhamento semanal de entregas e alinhamento dos marcos operacionais com a diretoria.' }}
+          </p>
+        </div>
 
         <!-- 1. HERO BANNER: EXECUTIVE PULSE KPIS (HIGH CONTRAST) -->
         <div class="rounded-2xl border border-slate-300 bg-white text-slate-900 shadow-xs p-3.5 sm:p-4 transition-all overflow-visible space-y-2.5">
@@ -548,8 +567,8 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </div>
         </div>
 
-        <!-- 2. RADAR DE ATENÇÃO IMEDIATA DA DIRETORIA -->
-        <div *ngIf="topCriticalProjects().length > 0"
+        <!-- 2. RADAR DE ATENÇÃO IMEDIATA DA DIRETORIA (oculto) -->
+        <div *ngIf="false && topCriticalProjects().length > 0"
           class="rounded-2xl border-2 border-orange-300 bg-orange-50/70 p-4 sm:p-5 transition-all">
           <div class="flex items-center justify-between pb-2.5 mb-3 border-b border-orange-300">
             <div class="flex items-center gap-2">
@@ -644,10 +663,10 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
             <span class="text-[10px] font-extrabold text-blue-900">Pipeline de novas demandas e expansões</span>
           </div>
 
-          <div *ngIf="currentReport()?.roadmapProjects?.length; else emptyRoadmap"
+          <div *ngIf="sortedRoadmapProjects().length; else emptyRoadmap"
             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-3">
             <div
-              *ngFor="let road of currentReport()?.roadmapProjects"
+              *ngFor="let road of sortedRoadmapProjects()"
               class="p-3.5 rounded-xl border-2 border-blue-200 bg-white text-slate-900 shadow-xs flex flex-col justify-between">
               <div>
                 <div class="flex items-center justify-between gap-1 mb-1.5">
@@ -1339,13 +1358,13 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
           </div>
 
           <!-- Slide Body -->
-          <div class="flex-1 flex flex-col justify-between gap-2 overflow-hidden my-0.5">
+          <div class="flex-1 flex flex-col justify-between gap-2 overflow-hidden my-0.5 min-h-0">
             <!-- Top Row: Resumo Executivo (col-span-4) + Todos os 13 Indicadores Executivos (col-span-8) -->
-            <div class="grid grid-cols-12 gap-2.5 h-[54%]">
+            <div class="grid grid-cols-12 gap-2.5 flex-1 min-h-0">
               
               <!-- Resumo Executivo + Sistemas -->
               <div
-                class="col-span-4 p-2.5 rounded-xl flex flex-col justify-between shadow-xs border"
+                class="col-span-4 p-2.5 rounded-xl flex flex-col justify-between shadow-xs border overflow-hidden"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-blue-500/40 text-slate-200' : 'bg-white border-2 border-blue-300 text-slate-900'">
                 <div>
                   <div class="flex items-center gap-1.5 mb-1">
@@ -1379,9 +1398,9 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                 </div>
               </div>
 
-              <!-- Todos os 13 Indicadores Executivos + Prioridades -->
+              <!-- Todos os 13 Indicadores Executivos + Prioridades + ROI -->
               <div
-                class="col-span-8 p-3 rounded-xl flex flex-col justify-between shadow-xs border h-full"
+                class="col-span-8 p-2.5 rounded-xl flex flex-col justify-between shadow-xs border overflow-hidden"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-slate-900/95 border-slate-800 text-white' : 'bg-white border-2 border-slate-300 text-slate-900'">
                 
                 <!-- Card Header -->
@@ -1396,8 +1415,8 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
                   </span>
                 </div>
 
-                <!-- Grid de Indicadores (Ocupando 100% da altura livre do card) -->
-                <div class="flex-1 grid grid-rows-2 gap-2 my-2 min-h-0">
+                <!-- Grid de Indicadores -->
+                <div class="flex-1 grid grid-rows-2 gap-1.5 my-1.5 min-h-0">
                   <!-- Linha 1: 7 Indicadores Principais -->
                   <div class="grid grid-cols-7 gap-2 h-full">
                     <!-- 1. Ativos -->
@@ -1553,11 +1572,12 @@ import { WeeklyReportProject, RoadmapProject, BoardDecision } from '../../models
               </div>
             </div>
 
-            <!-- Bottom Row: Radar de Atenção (50%) + Deliberações da Diretoria (50%) -->
-            <div class="grid grid-cols-2 gap-2.5 h-[44%]">
+            <!-- Bottom Row: Deliberações da Diretoria (auto-height shrink-0 so it never overlaps Top Row) -->
+            <div class="grid grid-cols-1 gap-2 shrink-0">
               
-              <!-- Radar de Atenção -->
+              <!-- Radar de Atenção (oculto) -->
               <div
+                *ngIf="false"
                 class="p-3 rounded-xl flex flex-col justify-between shadow-xs overflow-hidden border"
                 [ngClass]="presentationTheme() === 'dark' ? 'bg-orange-950/30 border-orange-500/40 text-slate-200' : 'bg-white border-2 border-orange-300 text-slate-900'">
                 <div>
@@ -2439,8 +2459,58 @@ export class ExecutiveReportComponent implements OnInit {
   // Roadmap chunks: 15 items per slide (3 rows x 5 columns) so no row is ever clipped in landscape
   readonly roadmapChunkSize = 15;
 
+  parseRoadmapStartTimestamp(raw?: string | null): number {
+    const s = (raw || '').trim().toLowerCase();
+    if (!s || s.includes('definir')) return Number.MAX_SAFE_INTEGER;
+
+    const months: Record<string, number> = {
+      janeiro: 1, jan: 1,
+      fevereiro: 2, fev: 2,
+      'março': 3, marco: 3, mar: 3,
+      abril: 4, abr: 4,
+      maio: 5, mai: 5,
+      junho: 6, jun: 6,
+      julho: 7, jul: 7,
+      agosto: 8, ago: 8,
+      setembro: 9, set: 9,
+      outubro: 10, out: 10,
+      novembro: 11, nov: 11,
+      dezembro: 12, dez: 12
+    };
+
+    const textMatch = s.match(/^([a-zçãéô]+)\s*[\/\-\s]\s*(\d{2,4})$/i);
+    if (textMatch) {
+      const m = months[textMatch[1]] || 12;
+      let y = parseInt(textMatch[2], 10);
+      if (y < 100) y += 2000;
+      return new Date(y, m - 1, 1).getTime();
+    }
+
+    const numMatch = s.match(/^(?:(\d{1,2})[\/\-])?(\d{1,2})[\/\-](\d{2,4})$/);
+    if (numMatch) {
+      const d = numMatch[1] ? parseInt(numMatch[1], 10) : 1;
+      const m = parseInt(numMatch[2], 10);
+      let y = parseInt(numMatch[3], 10);
+      if (y < 100) y += 2000;
+      return new Date(y, m - 1, d).getTime();
+    }
+
+    const parsed = Date.parse(s);
+    return isNaN(parsed) ? Number.MAX_SAFE_INTEGER - 1 : parsed;
+  }
+
+  sortedRoadmapProjects = computed<RoadmapProject[]>(() => {
+    const list = (this.currentReport()?.roadmapProjects || []).slice();
+    return list.sort((a, b) => {
+      const tA = this.parseRoadmapStartTimestamp(a.estimatedStart);
+      const tB = this.parseRoadmapStartTimestamp(b.estimatedStart);
+      if (tA !== tB) return tA - tB;
+      return (a.name || '').localeCompare(b.name || '', 'pt-BR');
+    });
+  });
+
   roadmapChunks = computed<RoadmapProject[][]>(() => {
-    const list = this.currentReport()?.roadmapProjects || [];
+    const list = this.sortedRoadmapProjects();
     const chunks: RoadmapProject[][] = [];
     for (let i = 0; i < list.length; i += this.roadmapChunkSize) {
       chunks.push(list.slice(i, i + this.roadmapChunkSize));

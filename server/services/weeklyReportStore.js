@@ -831,14 +831,43 @@ class WeeklyReportStore {
     this.reports.sort((a, b) => b.id.localeCompare(a.id));
     for (let i = 0; i < this.reports.length; i++) {
       const report = this.reports[i];
-      const isLatest = i === 0;
+      // Todas as edições salvas são snapshots imutáveis (fotos do momento em que foram geradas)
       this.syncReportWithProjects(report, {
-        syncLiveMetrics: isLatest,
+        syncLiveMetrics: false,
         preserveIncomingProjectTexts: true
       });
     }
     this.syncLatestReportToProjects();
     this.persist();
+  }
+
+  buildLiveReport() {
+    const now = new Date();
+    const latestPrev = this.reports[0] || null;
+    const liveReport = {
+      id: 'live',
+      weekNumber: getISOWeekNumber(now),
+      year: now.getFullYear(),
+      title: 'Agora (Tempo Real)',
+      period: `Atualizado em ${now.toLocaleDateString('pt-BR')} às ${now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}`,
+      meetingDate: now.toISOString().split('T')[0],
+      executiveSummary: latestPrev?.executiveSummary || '',
+      statusPulse: {
+        totalActive: 0,
+        onTrack: 0,
+        attention: 0,
+        critical: 0,
+        averageProgress: 0
+      },
+      activeProjects: [],
+      roadmapProjects: latestPrev?.roadmapProjects ? JSON.parse(JSON.stringify(latestPrev.roadmapProjects)) : DEFAULT_ROADMAP,
+      boardDecisions: latestPrev?.boardDecisions ? JSON.parse(JSON.stringify(latestPrev.boardDecisions)) : DEFAULT_DECISIONS
+    };
+    this.syncReportWithProjects(liveReport, {
+      syncLiveMetrics: true,
+      preserveIncomingProjectTexts: false
+    });
+    return liveReport;
   }
 
   getAllReports() {
@@ -857,18 +886,21 @@ class WeeklyReportStore {
   }
 
   getReportById(id) {
+    if (id === 'live') {
+      return this.buildLiveReport();
+    }
     this.reports.sort((a, b) => b.id.localeCompare(a.id));
     if (!id || id === 'latest') {
       const rep = this.reports[0] || null;
       if (rep) {
-        this.syncReportWithProjects(rep, { syncLiveMetrics: true, preserveIncomingProjectTexts: true });
+        // Retorna o snapshot congelado sem sobrescrever métricas com o estado ao vivo
+        this.syncReportWithProjects(rep, { syncLiveMetrics: false, preserveIncomingProjectTexts: true });
       }
       return rep;
     }
     const rep = this.reports.find(r => r.id === id) || null;
     if (rep) {
-      const isLatest = this.reports.length > 0 && this.reports[0].id === rep.id;
-      this.syncReportWithProjects(rep, { syncLiveMetrics: isLatest, preserveIncomingProjectTexts: true });
+      this.syncReportWithProjects(rep, { syncLiveMetrics: false, preserveIncomingProjectTexts: true });
     }
     return rep;
   }
@@ -962,9 +994,10 @@ class WeeklyReportStore {
     const isLatest = this.reports.length > 0 && this.reports[0].id === reportData.id;
 
     if (isLatest) {
-      // Sync live metrics ONLY for the latest/newly created edition, leaving all historical reports untouched
+      // Ao salvar uma edição existente, preserva o snapshot congelado; só sincroniza métricas ao vivo se for edição nova sem projetos
+      const shouldSyncLive = isNewEdition && (!Array.isArray(savedReport.activeProjects) || savedReport.activeProjects.length === 0);
       this.syncReportWithProjects(savedReport, {
-        syncLiveMetrics: true,
+        syncLiveMetrics: shouldSyncLive,
         preserveIncomingProjectTexts: true
       });
 
